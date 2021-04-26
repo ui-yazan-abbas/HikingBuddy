@@ -24,14 +24,10 @@ public class Comment {
     @JsonIdentityReference(alwaysAsId = true)
     private Post commentedPost;
 
-
     @ManyToOne
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     @JsonIdentityReference(alwaysAsId = true)
     private User user;
-
-
-
 
     public String getBody() {
         return body;
@@ -40,7 +36,6 @@ public class Comment {
     public void setBody(String body) {
         this.body = body;
     }
-
 
     public Long getId() {
         return id;

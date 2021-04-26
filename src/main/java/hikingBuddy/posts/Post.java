@@ -27,7 +27,7 @@ public class Post {
     private List<Comment> commentList;
     @ManyToOne
     @JsonIdentityReference(alwaysAsId = true)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     private User user;
 
 
