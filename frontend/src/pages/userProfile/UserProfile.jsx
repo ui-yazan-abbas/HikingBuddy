@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+import imgPlaceholder from "../../assets/placeholder.jpeg"
+import ImgUpload from './ImgUpload';
 
 export default function UserProfile(props) {
     const [userForm, setUserForm]= useState({
         name:"",
         email:"",
         bio:"",
-        image:"image_url"
+        image: imgPlaceholder
     });
 
     const change= ({target:{name, value}}) =>{
@@ -13,11 +15,16 @@ export default function UserProfile(props) {
         [name]: value,
         });
     }
+    const handleSubmit = e => {
+        e.preventDefault();
+    }
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
+                <img className="img" src={userForm.image} alt=""/> <br/>
+                <ImgUpload uploadImg={change}/>
                 <label htmlFor="name-input">Name:</label>
                 <input type="text" id="name-input" name="name"
                 value={userForm.name} onChange={change}/>
@@ -32,12 +39,9 @@ export default function UserProfile(props) {
                 <input type="text" id="bio-input" name="bio"
                 value={userForm.name} onChange={change}/>
                 </div>
-                <div>
-                <label htmlFor="img-input">Bio:</label>
-                <input type="text" id="img-input" name="img"
-                value={userForm.name} onChange={change}/>
-                </div>
+               <button type="submit">Save Changes </button>
             </form>
+            
             
         </div>
     )

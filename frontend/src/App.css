@@ -123,3 +123,8 @@ html,
 .btn2:hover::before {
   height: 180%;
 }
+.img{
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+}
