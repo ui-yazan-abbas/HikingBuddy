@@ -46,10 +46,6 @@ export default function App() {
           <Route path="/chat">
             <ChatPage />
           </Route>
-
-          <Route path="/">
-            <HomePage />
-          </Route>
         </Switch>
       </div>
     </BrowserRouter>
@@ -62,8 +58,11 @@ export default function App() {
           <Route path="/signup">
             <SignUpPage onSubmite={register} />
           </Route>
-          <Route path="/">
+          <Route path="/login">
             <AuthPage onSubmit={login} />
+          </Route>
+          <Route path="/">
+            <HomePage />
           </Route>
         </Switch>
       </div>
