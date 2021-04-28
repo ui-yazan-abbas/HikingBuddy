@@ -86,7 +86,7 @@ export default function Blog() {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="HikingBudy" sections={sections} />
+        <Header title="HikingBuddy" sections={sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           <div className="AvatarWrap">
