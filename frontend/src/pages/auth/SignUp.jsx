@@ -1,5 +1,15 @@
+// NPM Packages
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+//Styling
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from "semantic-ui-react";
 
 export default function SignUp({ onSubmite }) {
   const [name, setName] = useState("");
@@ -7,59 +17,54 @@ export default function SignUp({ onSubmite }) {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h4 className="AvatarWrap">Join us!</h4>
-        <div>
-          <div className="form-group">
-            <label>Name:</label>
-            <input
-              type="text"
-              className="form-control"
+    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as="h2" color="ui green header" textAlign="center">
+          <Image src="https://www.linkpicture.com/q/icon_14.png" /> Join us and
+          start sharing!
+        </Header>
+        <Form size="large">
+          <Segment stacked>
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
             />
-          </div>
-
-          <div className="form-group">
-            <label>Email:</label>
-            <input
-              type="email"
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="E-mail address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
-              placeholder="Email"
             />
-          </div>
-
-          <div className="form-group">
-            <label>Password:</label>
-            <input
-              type="password"
+            <Form.Input
+              fluid
+              icon="lock"
+              iconPosition="left"
               placeholder="Password"
-              className="form-control"
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
 
-          <div className="AvatarWrap">
-            <button
-              className="btn btn-info"
-              className="btn btn-info"
+            <Button
+              color="green"
+              fluid
+              size="large"
               onClick={(e) => onSubmite({ name, email, password })}
             >
-              Create account
-            </button>
-          </div>
-          <div className="AvatarWrap">
-            <Link to="/" variant="body2">
-              {"Don't have an account? Sign In"}
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+              Join us now!
+            </Button>
+          </Segment>
+        </Form>
+        <Message>
+          Already have an account? <a href="/login">Login</a>
+        </Message>
+      </Grid.Column>
+    </Grid>
   );
 }
