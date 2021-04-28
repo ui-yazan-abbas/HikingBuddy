@@ -16,14 +16,13 @@ export default function Footer() {
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>
-          <Grid.Column width={7}>
-          <Image
-          size="small"
-          src="https://www.linkpicture.com/q/logo5_5.png"
-          href="/"
-        />
-            </Grid.Column>
-            <Grid.Column width={3}>
+            <Grid.Column width={3}></Grid.Column>
+            <Grid.Column width={7}>
+              <Image
+                size="small"
+                src="https://www.linkpicture.com/q/logo5_5.png"
+                href="/"
+              />
               <p>
                 For nature and mountain lovers, for lovers of safety and good
                 company.
@@ -37,7 +36,7 @@ export default function Footer() {
                 <List.Item as="a">We love nature</List.Item>
                 <List.Item as="a">Best plans ever</List.Item>
               </List>
-            </Grid.Column>  
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>

@@ -93,7 +93,7 @@ const HomepageLayout = () => (
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Button color="green" size="huge">
+            <Button inverted color="green" size="huge">
               <a href="/signup"> Start connecting with others!</a>
             </Button>
           </Grid.Column>
