@@ -1,7 +1,7 @@
 import Api from "./Api";
 
 class PostsApi {
-    getAllPosts() {
+    viewAllPosts() {
         return Api.get('/posts');
     }
 
