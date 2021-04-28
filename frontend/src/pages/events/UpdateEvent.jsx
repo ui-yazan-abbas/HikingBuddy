@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import PostsApi from "../../api/PostsApi";
+import EventApi from "../../api/EventsApi";
 
-export default function UpdateEvent({ onUpdateClick, onSubmite, post }) {
-  const [body, setBody] = React.useState(post.body);
+export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
+  const [body, setBody] = React.useState(event.body);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, post }) {
         />
 
         <button className="btn btn-info" onClick={handleUpdate}>
-          Submit change
+          Submit changes in event
         </button>
       </div>
     </div>
