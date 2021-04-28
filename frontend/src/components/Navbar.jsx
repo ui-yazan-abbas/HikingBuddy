@@ -34,8 +34,6 @@ export default function Navbar({ onLogout }) {
               Posts
             </Link>
           </li>
-<<<<<<< HEAD
-=======
           <li className="nav-item">
             <Link to="/profile" className="nav-link">
               My Profile
@@ -46,9 +44,7 @@ export default function Navbar({ onLogout }) {
               Chat
             </Link>
           </li>
-          
 
->>>>>>> main
         </ul>
 
         <button
