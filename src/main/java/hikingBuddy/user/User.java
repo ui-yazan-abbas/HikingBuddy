@@ -1,6 +1,7 @@
 package hikingBuddy.user;
 
 import hikingBuddy.comments.Comment;
+import hikingBuddy.events.Event;
 import hikingBuddy.posts.Post;
 import org.hibernate.validator.constraints.Length;
 
@@ -39,6 +40,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user")
+    private List<Event> events;
 
     // Hibernate needs a default constructor to function
     public User() {}
