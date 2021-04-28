@@ -21,10 +21,12 @@ export default function AuthPage({ onSubmit }) {
     <div className="login">
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
+      <div className="container">
         <Header as="h2" color="ui green header" textAlign="center">
           <Image src="https://www.linkpicture.com/q/icon_14.png" />
           Log-in to your account
         </Header>
+        </div>
         <Form size="large">
           <Segment stacked>
             <Form.Input
