@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MainFeaturedPost(props) {
-  //Consts  
+  //Consts
   const classes = useStyles();
   const { post } = props;
 
@@ -72,7 +72,7 @@ export default function MainFeaturedPost(props) {
             </Typography>
             <button className="btn btn-light " id="navbarColor01">
               {" "}
-              <a href="/posts">Start Posting</a>
+              <a href="/signup">Start Exploring!</a>
             </button>
           </div>
         </Grid>
