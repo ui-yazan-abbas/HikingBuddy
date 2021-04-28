@@ -11,6 +11,7 @@ import PostsPage from "./pages/posts/PostsPage";
 import ChatPage from "./pages/chat/ChatPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import "./App.css";
+import UserProfile from "./pages/userProfile/UserProfile";
 
 async function register(registrationData) {
   const registerSuccess = await Auth.register(registrationData);
@@ -40,11 +41,18 @@ export default function App() {
 
       <div className="container mt-5">
         <Switch>
-          <Route path="/posts">
+          <Route exact path="/posts">
             <PostsPage />
           </Route>
-          <Route path="/chat">
+          <Route exact path="/chat">
             <ChatPage />
+          </Route>
+
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path ="/profile">
+            <UserProfile  />
           </Route>
         </Switch>
       </div>
