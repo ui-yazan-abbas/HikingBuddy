@@ -41,7 +41,7 @@ export default function EventsPage({ event, onDeleteClick }) {
   }, [setEvents]);
 
   // Components
-  const CardsArray = events.map((event) => (
+  const CardsArray1 = events.map((event) => (
     <EventsCard key={event.id} event={event} onDeleteClick={() => deleteEvent(event)} />
   ));
 
@@ -49,7 +49,7 @@ export default function EventsPage({ event, onDeleteClick }) {
     <div>
       <EventsForm onSubmit={(eventData) => createEvent(eventData)} />
 
-      {CardsArray}
+      {CardsArray1}
     </div>
   );
 }

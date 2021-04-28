@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import EventApi from "../../api/EventsApi";
+import EventsApi from "../../api/EventsApi";
 
 export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
-  const [body, setBody] = React.useState(event.body);
+  const [eventBody, setEventBody] = React.useState(event.body);
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    onUpdateClick({ body: body });
+    onUpdateClick({ body: eventBody });
     onSubmite();
   };
   return (
@@ -14,12 +14,12 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
       <div className="card-body">
         <textarea
           className="form-control"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+          value={eventBody}
+          onChange={(e) => setEventBody(e.target.value)}
         />
 
         <button className="btn btn-info" onClick={handleUpdate}>
-          Submit changes in event
+          Submit event changes
         </button>
       </div>
     </div>

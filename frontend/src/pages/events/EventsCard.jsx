@@ -33,7 +33,6 @@ export default function EventsCard({ event, onDeleteClick, onUpdateClick }) {
           src="https://react.semantic-ui.com/images/avatar/small/steve.jpg"
         />
         <Comment.Content>
-        <p></p>
           <Comment.Author as="a"> {event.user}</Comment.Author>
           <Comment.Metadata>
             <div>{moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>

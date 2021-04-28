@@ -1,14 +1,16 @@
 import React from "react";
 
 export default function EventsForm({ onSubmit }) {
-  const [body, setBody] = React.useState("");
+  const [eventBody, setEventBody] = React.useState("");
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
-    onSubmit({ body: body });
+    onSubmit({ body:
+      eventBody,
+       });
 
     // Clear the input field
-    setBody("");
+    setEventBody("");
   };
 
   return (
@@ -20,8 +22,8 @@ export default function EventsForm({ onSubmit }) {
             <textarea
               className="form-control"
               placeholder= "Where should we hike this time?"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
+              value={eventBody}
+              onChange={(e) => setEventBody(e.target.value)}
             />
           </div>
 
