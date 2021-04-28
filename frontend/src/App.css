@@ -151,10 +151,10 @@ html,
   background-size: cover;
   background: url("./assets/jin-7.jpeg");
   background-repeat: no-repeat;
- background-position: center;
- background-size: cover;
- overflow: hidden;
- box-sizing: content-box;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  box-sizing: content-box;
 }
 .signup{
   position: fixed;
@@ -166,10 +166,10 @@ html,
   background-size: cover;
   background: url("./assets/jin-1.jpeg");
   background-repeat: no-repeat;
- background-position: center;
- background-size: cover;
- overflow: hidden;
- box-sizing: content-box;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  box-sizing: content-box;
 }
 .container{
   background-color: rgba(242, 242, 242, 0.66);

@@ -1,6 +1,5 @@
 package hikingBuddy.posts;
 
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -21,16 +20,16 @@ public class Post {
     @NotEmpty
     private String body;
 
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @OneToMany(mappedBy = "commentedPost", cascade = CascadeType.ALL)
-
     private List<Comment> commentList;
+
     @ManyToOne
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     private User user;
-
-
 
     public Post() {
     }
@@ -54,6 +53,7 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
+
     public User getUser() {
         return user;
     }
@@ -70,7 +70,3 @@ public class Post {
         this.commentList = commentList;
     }
 }
-
-
-
-
