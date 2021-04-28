@@ -130,3 +130,9 @@ html,
   border-radius: 8px;
 }
 
+.color-nav{
+  background-color: #5db556;
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+

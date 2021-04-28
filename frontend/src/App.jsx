@@ -4,13 +4,15 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 // Project files
 import Auth from "./services/Auth";
 import Navbar from "./components/Navbar";
-import AuthPage from "./pages/auth/AuthPage";
+import Login from "./pages/auth/Login";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
 import ChatPage from "./pages/chat/ChatPage";
-import SignUpPage from "./pages/auth/SignUpPage";
-import "./App.css";
+import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
+//Styling
+import "./App.css";
+import "semantic-ui-css/semantic.min.css";
 
 async function register(registrationData) {
   const registerSuccess = await Auth.register(registrationData);
@@ -56,8 +58,8 @@ export default function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route exact path ="/profile">
-            <UserProfile  />
+          <Route exact path="/profile">
+            <UserProfile />
           </Route>
         </Switch>
       </div>
@@ -69,10 +71,10 @@ export default function App() {
       <div className="container mt-5">
         <Switch>
           <Route path="/signup">
-            <SignUpPage onSubmite={register} />
+            <SignUp onSubmite={register} />
           </Route>
           <Route path="/login">
-            <AuthPage onSubmit={login} />
+            <Login onSubmit={login} />
           </Route>
           <Route path="/">
             <HomePage />
