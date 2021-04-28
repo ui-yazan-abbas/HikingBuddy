@@ -22,6 +22,9 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
 
+    @Column(name="bio")
+    private String bio;
+
     @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters")
     @NotEmpty(message = "Please provide a password")
     @Column(name = "password")
@@ -33,6 +36,7 @@ public class User {
 
     @Column(name = "image_url")
     private String imageUrl;
+
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
@@ -52,6 +56,25 @@ public class User {
         this.password = password;
         this.name = name;
     }
+    public User setUpdateUser (User updateUser) {
+        if (updateUser.getImageUrl() == null) {
+            updateUser.setImageUrl(this.getImageUrl());
+        }
+        if (updateUser.getBio() == null) {
+            updateUser.setBio(this.getBio());
+        }
+        if (updateUser.getName()== null) {
+            updateUser.setName(this.getName());
+        }
+        if (updateUser.getPassword()== null) {
+            updateUser.setPassword(this.getPassword());
+        }
+        if (updateUser.getEmail() == null) {
+            updateUser.setEmail(this.getEmail());
+        }
+        return updateUser;
+    }
+
 
     public Long getId() {
         return id;
@@ -99,5 +122,21 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

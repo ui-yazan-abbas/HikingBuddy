@@ -26,7 +26,7 @@ export default function ImgUpload({uploadImg}) {
               //simulate the event object so its doesn't clash with handleChange
               uploadImg({
                 target: {
-                  name: "image",
+                  name: "imageUrl",
                   value: response.data.secure_url,
                 },
               });
