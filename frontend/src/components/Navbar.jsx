@@ -35,6 +35,11 @@ export default function Navbar({ onLogout }) {
             </Link>
           </li>
           <li className="nav-item">
+            <Link to="/events" className="nav-link">
+              Events
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/profile" className="nav-link">
               My Profile
             </Link>
