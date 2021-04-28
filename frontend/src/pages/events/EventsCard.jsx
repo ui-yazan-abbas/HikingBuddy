@@ -1,63 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import CommentCard from "../comments/CommentCard";
-import CommentForm from "../comments/CommentForm";
-import CommentsApi from "../../api/CommentsApi";
-import PostsApi from "../../api/PostsApi";
+import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment"; 
 import { Button, Comment, Form, Header } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css'
 
 
-export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
+export default function EventsCard({ event, onDeleteClick, onUpdateClick }) {
   const [isUpdating, setIsUpdating] = useState(false);
-  const [comments, setComments] = useState([]);
-  const [postTitle, setPostTitle] = useState(post.body);
+  const [isRefreshing, setRefreshing] = useState(event.body);
 
-  async function createComment(commentData) {
+  async function updateEvent(eventToUpdate) {
     try {
-      const response = await CommentsApi.createComment(post.id, commentData);
-      const comment = response.data;
-      const newComment = comments.concat(comment);
-
-      setComments(newComment);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  async function deleteComment(post) {
-    try {
-      await CommentsApi.deleteComment(post.id);
-      const newComments = comments.filter((p) => p.id !== post.id);
-
-      setComments(newComments);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  async function updatePost(postToUpdate) {
-    try {
-      await PostsApi.updatePost(post.id, postToUpdate);
-      PostsApi.getPostById(post.id)
-        .then(({ data }) => setPostTitle(data.body))
+      await EventsApi.updateEvent(event.id, eventToUpdate);
+      EventsApi.getEventById(event.id)
+        .then(({ data }) => setRefreshing(data.body))
         .catch((err) => console.error(err));
     } catch (e) {
       console.error(e);
     }
   }
 
-  useEffect(() => {
-    CommentsApi.getComments(post.id)
-      .then(({ data }) => setComments(data))
-      .catch((err) => console.error(err));
-  }, [setComments]);
-
   // Components
-  
-let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
+
   return (
 
     <Comment.Group>
@@ -68,47 +34,30 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
         />
         <Comment.Content>
         <p></p>
-          <Comment.Author as="a"> {post.user}</Comment.Author>
+          <Comment.Author as="a"> {event.user}</Comment.Author>
           <Comment.Metadata>
-            <div>{moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>
+            <div>{moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>
           </Comment.Metadata>
-          <Comment.Text>{postTitle}</Comment.Text>
+          <Comment.Text>{isRefreshing}</Comment.Text>
           <Comment.Actions>
-            <Comment.Action active>Reply</Comment.Action>
             <Comment.Action active onClick={() => setIsUpdating(true)}>
-              Edit Post
+              Edit Event
             </Comment.Action>
             <Comment.Action onClick={onDeleteClick} active>
               {" "}
-              Delete post
+              Delete event
             </Comment.Action>
            
           </Comment.Actions>
-
-        
-          <div className="comments-container">
-          {comments
-            && filteredCommentList.map((comment) => (
-                <CommentCard
-                  key={post.id}
-                  comment={comment}
-                  onDeleteClick={() => deleteComment(comment)}
-                />
-              ))
-            }
-        </div>
         
           {isUpdating && (
             <UpdateEvent
-              onUpdateClick={(postData) => updatePost(postData)}
-              post={post}
+              onUpdateClick={(eventData) => updateEvent(eventData)}
+              event={event}
               onSubmite={() => setIsUpdating(false)}
             />
           )}
 
-          <div className="comments-form">
-            <CommentForm id={post.id} onSubmit={createComment} />
-          </div>
         </Comment.Content>
       </Comment>
     </Comment.Group>
