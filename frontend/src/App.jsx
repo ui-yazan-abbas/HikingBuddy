@@ -21,6 +21,7 @@ import "semantic-ui-css/semantic.min.css";
 import UserApi from "./api/UserApi";
 
 
+
 async function register(registrationData) {
   const registerSuccess = await Auth.register(registrationData);
   if (!registerSuccess) {

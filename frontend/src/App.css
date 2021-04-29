@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .AvatarWrap {
   display: flex;
   flex-direction: row;
@@ -17,8 +19,8 @@
 }
 
 body, html{
-  
-  
+
+
   margin: 0;
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -138,8 +140,13 @@ html,
 }
 li {float: left;
   list-style-type:none;
+  padding: 1rem;
   }
 
+.logout {
+  font-family: Roboto;
+
+}
 
 .color-nav{
   background-color: #5db556;
@@ -147,6 +154,13 @@ li {float: left;
   color: white;
   margin-bottom: 2rem;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 3rem;
+}
+
 
 .hidden.menu {
   display: none;
@@ -241,17 +255,17 @@ li {float: left;
 .containerr{
   background-color: rgba(242, 242, 242, 0.66);
   border-radius: 5px;
-  
+
 }
 .ccontainerr{
   background-color: rgba(242, 242, 242, 0.66);
   border-radius: 5px;
  margin-top: 10px;
- margin-right: 280px;
+ margin-right: 20px;
  margin-left: 20px;
 }
 .post{
-  background: url();
+  /*background: url();*/
   background-color: rgba(242, 242, 242, 0.66);
 }
 
@@ -265,4 +279,14 @@ li {float: left;
 }
 
 
+
+.card {
+ padding: 50px;
+  /*background: #f4f3f5;*/
+}
+
+.postcard {
+  padding: 2rem;
+
+}
 
