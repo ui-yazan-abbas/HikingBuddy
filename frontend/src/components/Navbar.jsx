@@ -87,7 +87,7 @@ export default function Navbar({ onLogout }) {
   const classes = useStyles();
 
   return (
-    <AppBar className="color-nav" position="static">
+    <AppBar className="color-nav"  style={{ background: '#5db556' }}  position="static">
       <Toolbar>
         <IconButton>
           <Link className="navbar-brand" to="/">
