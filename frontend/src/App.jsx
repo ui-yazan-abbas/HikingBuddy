@@ -14,6 +14,7 @@ import UserProfile from "./pages/userProfile/UserProfile";
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 
+
 async function register(registrationData) {
   const registerSuccess = await Auth.register(registrationData);
   if (!registerSuccess) {
