@@ -17,12 +17,15 @@ export default function SignUp({ onSubmite }) {
   const [password, setPassword] = useState("");
 
   return (
+    <div className="signup">
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
+        <div className="containerr">
         <Header as="h2" color="ui green header" textAlign="center">
           <Image src="https://www.linkpicture.com/q/icon_14.png" /> Join us and
           start sharing!
         </Header>
+        </div>
         <Form size="large">
           <Segment stacked>
             <Form.Input
@@ -51,14 +54,12 @@ export default function SignUp({ onSubmite }) {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Button
-              color="green"
-              fluid
-              size="large"
+            <button className="btn btn1"
+           
               onClick={(e) => onSubmite({ name, email, password })}
             >
               Join us now!
-            </Button>
+            </button>
           </Segment>
         </Form>
         <Message>
@@ -66,5 +67,6 @@ export default function SignUp({ onSubmite }) {
         </Message>
       </Grid.Column>
     </Grid>
+    </div>
   );
 }

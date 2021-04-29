@@ -22,11 +22,12 @@ export default function ImgUpload({uploadImg}) {
                 "https://api.cloudinary.com/v1_1/dz2vr4bag/image/upload",
                 imgFile
               );
+              //
               console.log("Responce:",response);
               //simulate the event object so its doesn't clash with handleChange
               uploadImg({
                 target: {
-                  name: "image",
+                  name: "imageUrl",
                   value: response.data.secure_url,
                 },
               });
