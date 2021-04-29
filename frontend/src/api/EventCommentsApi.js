@@ -17,4 +17,4 @@ class EventCommentsApi {
     }
 }
 
-export default new CommentsApi();
+export default new EventCommentsApi();

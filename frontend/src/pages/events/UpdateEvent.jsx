@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import EventsApi from "../../api/EventsApi";
 
 export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
-  const [eventBody, setEventBody] = React.useState(event.body);
+  const [eventBody, setEventBody] = React.useState(event.eventBody);
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    onUpdateClick({ body: eventBody });
+    onUpdateClick({ eventBody: eventBody });
     onSubmite();
   };
   return (

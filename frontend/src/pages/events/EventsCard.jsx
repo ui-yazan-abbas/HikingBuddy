@@ -7,14 +7,13 @@ import { Button, Comment, Form, Header } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css'
 import EventCommentsApi from "../../api/EventCommentsApi";
 import CommentCard from "../comments/CommentCard";
-import UpdateCard from "../posts/UpdateCard";
 import CommentForm from "../comments/CommentForm";
 
 
 export default function EventsCard({ event, onDeleteClick}) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
-  const [isRefreshing, setRefreshing] = useState(event.body);
+  const [isRefreshing, setRefreshing] = useState(event.eventBody);
 
   async function createEventComment(eventCommentData) {
     try {
@@ -43,7 +42,7 @@ export default function EventsCard({ event, onDeleteClick}) {
     try {
       await EventsApi.updateEvent(event.id, eventToUpdate);
       EventsApi.getEventById(event.id)
-          .then(({ data }) => setRefreshing(data.body))
+          .then(({ data }) => setRefreshing(data.eventBody))
           .catch((err) => console.error(err));
     } catch (e) {
       console.error(e);
@@ -55,6 +54,8 @@ export default function EventsCard({ event, onDeleteClick}) {
         .then(({ data }) => setEventComments(data))
         .catch((err) => console.error(err));
   }, [setEventComments]);
+
+  console.log(event);
 
   // Components
 
@@ -69,7 +70,6 @@ export default function EventsCard({ event, onDeleteClick}) {
               src="https://react.semantic-ui.com/images/avatar/small/steve.jpg"
           />
           <Comment.Content>
-            <p></p>
             <Comment.Author as="a"> {event.user}</Comment.Author>
             <Comment.Metadata>
               <div>{moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>

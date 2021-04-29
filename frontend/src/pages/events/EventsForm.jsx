@@ -5,7 +5,7 @@ export default function EventsForm({ onSubmit }) {
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
-    onSubmit({ body:
+    onSubmit({ eventBody:
       eventBody,
        });
 
