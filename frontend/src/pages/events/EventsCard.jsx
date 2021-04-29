@@ -5,11 +5,39 @@ import UpdateEvent from "./UpdateEvent";
 import moment from "moment"; 
 import { Button, Comment, Form, Header } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css'
+import EventCommentsApi from "../../api/EventCommentsApi";
+import CommentCard from "../comments/CommentCard";
+import UpdateCard from "../posts/UpdateCard";
+import CommentForm from "../comments/CommentForm";
 
 
 export default function EventsCard({ event, onDeleteClick}) {
   const [isUpdating, setIsUpdating] = useState(false);
+  const [eventComments, setEventComments] = useState([]);
   const [isRefreshing, setRefreshing] = useState(event.body);
+
+  async function createEventComment(eventCommentData) {
+    try {
+      const response = await EventCommentsApi.createEventComment(event.id, eventCommentData);
+      const eventComment = response.data;
+      const newEventComment = eventComments.concat(eventComment);
+
+      setEventComments(newEventComment);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function deleteEventComment(event) {
+    try {
+      await EventCommentsApi.deleteEventComment(event.id);
+      const newEventComments = eventComments.filter((ev) => ev.id !== event.id);
+
+      setEventComments(newEventComments);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   async function updateEvent(eventToUpdate) {
     try {
@@ -22,7 +50,15 @@ export default function EventsCard({ event, onDeleteClick}) {
     }
   }
 
+  useEffect(() => {
+    EventCommentsApi.getEventComments(event.id)
+        .then(({ data }) => setEventComments(data))
+        .catch((err) => console.error(err));
+  }, [setEventComments]);
+
   // Components
+
+  let filteredEventCommentList = eventComments.filter(item => item.commentedEvent == event.id)
 
   return (
 
@@ -33,6 +69,7 @@ export default function EventsCard({ event, onDeleteClick}) {
               src="https://react.semantic-ui.com/images/avatar/small/steve.jpg"
           />
           <Comment.Content>
+            <p></p>
             <Comment.Author as="a"> {event.user}</Comment.Author>
             <Comment.Metadata>
               <div>{moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>
@@ -49,6 +86,19 @@ export default function EventsCard({ event, onDeleteClick}) {
 
             </Comment.Actions>
 
+
+            <div className="comments-container">
+              {eventComments
+              && filteredEventCommentList.map((eventComment) => (
+                  <CommentCard
+                      key={event.id}
+                      eventComment={eventComment}
+                      onDeleteClick={() => deleteEventComment(eventComment)}
+                  />
+              ))
+              }
+            </div>
+
             {isUpdating && (
                 <UpdateEvent
                     onUpdateClick={(eventData) => updateEvent(eventData)}
@@ -57,6 +107,9 @@ export default function EventsCard({ event, onDeleteClick}) {
                 />
             )}
 
+            <div className="comments-form">
+              <CommentForm id={event.id} onSubmit={createEventComment} />
+            </div>
           </Comment.Content>
         </Comment>
       </Comment.Group>

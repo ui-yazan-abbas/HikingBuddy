@@ -3,6 +3,8 @@ package hikingBuddy.events;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import hikingBuddy.comments.Comment;
+import hikingBuddy.eventComments.EventComment;
 import hikingBuddy.user.User;
 
 import javax.persistence.*;
@@ -20,6 +22,9 @@ public class Event{
     private String eventBody;
     // private LocalDate eventStartDateTime;
 
+    @OneToMany(mappedBy = "commentedEvent", cascade = CascadeType.ALL)
+
+    private List<EventComment> eventCommentList;
     @ManyToOne
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     @JsonIdentityReference(alwaysAsId = true)
@@ -55,6 +60,14 @@ public class Event{
 
     public void setUser(User userEvents) {
         this.user = userEvents;
+    }
+
+    public List<EventComment> getEventCommentList() {
+        return eventCommentList;
+    }
+
+    public void setEventCommentList(List<EventComment> eventCommentList) {
+        this.eventCommentList = eventCommentList;
     }
 
 }

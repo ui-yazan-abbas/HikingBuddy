@@ -58,13 +58,13 @@ public class EventController {
     }
 
     //Updates event given its Id
-   /* @PutMapping("/events/{id}")
+   @PutMapping("/events/{id}")
     public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody Event eventParam){
 
         Event existingEvent = eventRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
         Event event = eventService.updateEvent(id, eventParam, existingEvent);
         return ResponseEntity.ok(event);
-    }*/
+    }
 
 
 
