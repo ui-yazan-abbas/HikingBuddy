@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Form } from "semantic-ui-react";
 
 export default function PostForm({ onSubmit }) {
   const [body, setBody] = React.useState("");
@@ -14,21 +15,23 @@ export default function PostForm({ onSubmit }) {
   return (
     <div className="card">
       <div className="card-body">
-        <h4 className="card-title">Make a new post</h4>
+        {/* <h4 className="card-title">Make a new post</h4> */}
         <div>
+        
           <div className="form-group">
-            <textarea
+            <Form>
+            <Form.Field>
+              
+              <input 
               className="form-control"
-              placeholder= "What's on your mind?"
+              placeholder="What's on your mind?" 
               value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-          </div>
-
-          <div className="form-group">
-            <button onClick={handleSubmit}>
+              onChange={(e) => setBody(e.target.value)}/>
+            </Form.Field>
+            <Button onClick={handleSubmit} type="submit">
               Post
-            </button>
+            </Button>
+            </Form>
           </div>
         </div>
       </div>

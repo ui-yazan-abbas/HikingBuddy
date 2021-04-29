@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Form } from 'semantic-ui-react'
-
+import { Button, Form } from "semantic-ui-react";
 
 export default function CommentForm({ id, onSubmit }) {
   const [body, setBody] = React.useState("");
@@ -17,19 +16,20 @@ export default function CommentForm({ id, onSubmit }) {
     <div className="card">
       <div className="card-body">
         <div>
-          <div className="form-group">
-            <textarea
-              className="form-control"
-              placeholder="Reply.... "
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-            />
-          </div>
+          
 
           <div className="form-group">
-            <button onClick={handleSubmit}>
-              Add comment
-            </button>
+            <Form>
+            <Form.Field>
+              <input placeholder="Reply...." 
+              value={body}
+              onChange={(e) => setBody(e.target.value)}/>
+              
+            </Form.Field>
+            <Button onClick={handleSubmit} type="submit">
+              Add Comment
+            </Button>
+            </Form>
           </div>
         </div>
       </div>
