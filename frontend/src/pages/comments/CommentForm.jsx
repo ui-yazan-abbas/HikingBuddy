@@ -16,19 +16,24 @@ export default function CommentForm({ id, onSubmit }) {
     <div className="card">
       <div className="card-body">
         <div>
-          
-
           <div className="form-group">
             <Form>
-            <Form.Field>
-              <input placeholder="Reply...." 
-              value={body}
-              onChange={(e) => setBody(e.target.value)}/>
-              
-            </Form.Field>
-            <Button onClick={handleSubmit} type="submit">
-              Add Comment
-            </Button>
+              <Form.Field>
+                <input
+                  placeholder="Reply...."
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
+                />
+              </Form.Field>
+              <Button
+                s="a"
+                inverted
+                color="blue"
+                onClick={handleSubmit}
+                type="submit"
+              >
+                Add Comment
+              </Button>
             </Form>
           </div>
         </div>
