@@ -12,7 +12,7 @@ export default function PostForm({ onSubmit }) {
     setBody("");
   };
 
-   return (
+    return (
     <div className="card">
       <div className="card-body">
         {/* <h4 className="card-title">Make a new post</h4> */}
