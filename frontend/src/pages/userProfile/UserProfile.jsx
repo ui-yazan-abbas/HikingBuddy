@@ -3,7 +3,7 @@ import imgPlaceholder from "../../assets/placeholder.jpeg"
 import ImgUpload from './ImgUpload';
 import UserApi from "../../api/UserApi"
 
-export default function UserProfile({userData}) {
+export default function UserProfile({userData, getUserData}) {
     const [userForm, setUserForm]= useState({
         name: userData.name,
         email: userData.email,
@@ -21,6 +21,7 @@ console.log("userDatafromUser", userData)
         await UserApi.updateUser(userData)
         .then(response=>setUserForm(response.data))
         .catch(err => console.error(err))
+        getUserData().then(responce => setUserForm(responce))
     }
     const handleSubmit = e => {
         e.preventDefault();
@@ -29,11 +30,11 @@ console.log("userDatafromUser", userData)
     console.log(userForm);
 
     return (
-        <div>
+        <div className="profile">
             <form onSubmit={handleSubmit}>
                 <div>
                 <img className="img" src={userForm.imageUrl} alt=""/> <br/>
-                <ImgUpload uploadImg={change}/>
+                <ImgUpload className="profile" uploadImg={change}/>
                 <label htmlFor="name-input">Name:</label>
                 <input type="text" id="name-input" name="name"
                 value={userForm.name} onChange={change}/>

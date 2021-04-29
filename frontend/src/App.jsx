@@ -1,6 +1,7 @@
 // NPM Packages
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 // Project files
 import Auth from "./services/Auth";
 import Navbar from "./components/Navbar";
@@ -10,6 +11,10 @@ import PostsPage from "./pages/posts/PostsPage";
 import ChatPage from "./pages/chat/ChatPage";
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
+
+import Chat from './components/Chat/chat';
+import Join from './components/Join/join';
+
 //Styling
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
@@ -62,11 +67,15 @@ const getUserData = async() => {
             <PostsPage />
           </Route>
           <Route exact path="/chat">
-            <ChatPage />
+
+           <Route path="/chat" exact component={Join} />
+           <Route path="/Chat/chat" component={Chat} />
+
+      
           </Route>
 
           <Route exact path="/profile">
-            <UserProfile userData={userData} />
+            <UserProfile userData={userData} getUserData={getUserData} />
           </Route>
         </Switch>
       </div>
