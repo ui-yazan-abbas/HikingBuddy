@@ -21,7 +21,7 @@ export default function Feedback() {
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
             <Header as="h3" style={{ fontSize: "2em" }}>
               "If you love the outdoors sports and enjoy nature in a safe way,
-              don't hesitate to join HikkingBuddy!."
+              don't hesitate to join HikingBuddy!."
             </Header>
             <p style={{ fontSize: "1.33em" }}>
               <Image

@@ -78,6 +78,7 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
          
           <Comment.Actions>
             <Comment.Action active>Reply</Comment.Action>
+            
             <Comment.Action active onClick={() => setIsUpdating(true)}>
               Edit Post
             </Comment.Action>
@@ -88,6 +89,8 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
            
           </Comment.Actions>
           </div>
+
+          
 
         
           <div className="comments-container">
