@@ -51,12 +51,12 @@ export default function App() {
           <Route exact path="/posts">
             <PostsPage />
           </Route>
-          //<Route exact path="/chat">
+          <Route exact path="/chat">
 
            <Route path="/chat" exact component={Join} />
-           <Route path="/chat/chat" component={Chat} />
+           <Route path="/Chat/chat" component={Chat} />
 
-         // <ChatPage />
+      
           </Route>
 
           <Route exact path="/">
