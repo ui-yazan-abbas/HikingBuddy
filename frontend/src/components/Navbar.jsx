@@ -1,9 +1,12 @@
+//NPM packages
 import React from "react";
 import { Link } from "react-router-dom";
+//styling from boostrap
+
 
 export default function Navbar({ onLogout }) {
   return (
-    <nav className="color-nav navbar navbar-expand-lg  navbar-white" variant="light">
+    <nav className="color-nav navbar navbar-expand-lg  navbar-dark" variant="">
   
  <Link className="navbar-brand" to="/">
 <img width="120px" height="auto" text="align" className="img-responsive"  src="https://www.linkpicture.com/q/logo5_5.png"  alt="logo" />
