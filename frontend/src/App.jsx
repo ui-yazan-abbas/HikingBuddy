@@ -64,9 +64,6 @@ const getUserData = async() => {
             <ChatPage />
           </Route>
 
-          <Route exact path="/">
-            <HomePage />
-          </Route>
           <Route exact path="/profile">
             <UserProfile userData={userData} />
           </Route>

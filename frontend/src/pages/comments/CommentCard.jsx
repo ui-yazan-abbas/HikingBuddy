@@ -8,7 +8,7 @@ import 'semantic-ui-css/semantic.min.css'
 
 export default function CommentCard({ comment, onDeleteClick }) {
   return (
-    <div className="ccontainer">
+    <div className="ccontainerr">
     <Comment.Group>
       <Comment>
         <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg" />

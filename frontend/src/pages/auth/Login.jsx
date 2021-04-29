@@ -21,7 +21,7 @@ export default function AuthPage({ onSubmit }) {
     <div className="login">
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-      <div className="container">
+      <div className="containerr">
         <Header as="h2" color="ui green header" textAlign="center">
           <Image src="https://www.linkpicture.com/q/icon_14.png" />
           Log-in to your account
@@ -47,14 +47,15 @@ export default function AuthPage({ onSubmit }) {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Button
+            <button
+            className=""
               color="green"
               fluid
-              size="large"
+              size=""
               onClick={() => onSubmit({ email, password })}
             >
               Login
-            </Button>
+            </button>
           </Segment>
         </Form>
         <Message>
