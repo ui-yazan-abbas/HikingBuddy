@@ -33,16 +33,20 @@ export default function Navbar({ onLogout }) {
               Chat
             </Link>
           </li>
-          
+
+          <li className="nav-item">
+            <button className="logout" id="navbarColor01"
+                    onClick={onLogout}
+            >
+              Logout
+            </button>
+          </li>
+
+
 
         </ul>
 
-        <button
-          className="btn btn-outline-light " id="navbarColor01"
-          onClick={onLogout}
-        >
-          Logout
-        </button>
+
       </div>
     </nav>
   );

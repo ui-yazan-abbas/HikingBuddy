@@ -1,4 +1,6 @@
 import React from "react";
+import { Button, Form } from 'semantic-ui-react'
+
 
 export default function CommentForm({ id, onSubmit }) {
   const [body, setBody] = React.useState("");
@@ -25,7 +27,7 @@ export default function CommentForm({ id, onSubmit }) {
           </div>
 
           <div className="form-group">
-            <button className="btn btn-info" onClick={handleSubmit}>
+            <button onClick={handleSubmit}>
               Add comment
             </button>
           </div>
