@@ -17,8 +17,8 @@
 }
 
 body, html{
-  
-  
+
+
   margin: 0;
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -236,7 +236,7 @@ li {float: left;
 .containerr{
   background-color: rgba(242, 242, 242, 0.66);
   border-radius: 5px;
-  
+
 }
 .ccontainerr{
   background-color: rgba(242, 242, 242, 0.66);
