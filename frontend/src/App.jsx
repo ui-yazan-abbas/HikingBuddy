@@ -1,6 +1,7 @@
 // NPM Packages
 import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 // Project files
 import Auth from "./services/Auth";
 import Navbar from "./components/Navbar";
@@ -10,6 +11,10 @@ import PostsPage from "./pages/posts/PostsPage";
 import ChatPage from "./pages/chat/ChatPage";
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
+
+import Chat from './components/Chat/chat';
+import Join from './components/Join/join';
+
 //Styling
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
@@ -46,8 +51,12 @@ export default function App() {
           <Route exact path="/posts">
             <PostsPage />
           </Route>
-          <Route exact path="/chat">
-            <ChatPage />
+          //<Route exact path="/chat">
+
+           <Route path="/chat" exact component={Join} />
+           <Route path="/chat/chat" component={Chat} />
+
+         // <ChatPage />
           </Route>
 
           <Route exact path="/">
