@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
-@RequestMapping("/users")
+@RequestMapping("/user")
 @RestController
 public class UserController {
     UserRepository userRepository;
@@ -25,7 +25,6 @@ public class UserController {
         User user = userService.findUserByEmail(userName);
         return ResponseEntity.ok(user);
     }
-
 
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User updateUserData, Principal principal) {
