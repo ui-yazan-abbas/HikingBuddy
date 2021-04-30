@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -17,9 +16,23 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+    public User findUserByName(String name) {
+        return userRepository.findByName(name);
+    }
+
+    public User updateUser (User user, User updateUserData) {
+        updateUserData = user.setUpdateUser(updateUserData);
+        updateUserData.setId(user.getId());
+        updateUserData.setComments(user.getComments());
+        updateUserData.setPosts(user.getPosts());
+        return updateUserData;
+    }
+
     public void register(User user) {
         String encryptedPass = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPass);
         userRepository.save(user);
     }
+
+
 }

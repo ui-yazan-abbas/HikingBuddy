@@ -59,7 +59,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
   
 let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
   return (
-
+ <div className="postcard">
     <Comment.Group>
       <Comment>
         <Comment.Avatar
@@ -68,13 +68,17 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
         />
         <Comment.Content>
         <p></p>
+
+        <div className="container">
           <Comment.Author as="a"> {post.user}</Comment.Author>
           <Comment.Metadata>
             <div>{moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>
           </Comment.Metadata>
           <Comment.Text>{postTitle}</Comment.Text>
+         
           <Comment.Actions>
             <Comment.Action active>Reply</Comment.Action>
+            
             <Comment.Action active onClick={() => setIsUpdating(true)}>
               Edit Post
             </Comment.Action>
@@ -84,6 +88,9 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
             </Comment.Action>
            
           </Comment.Actions>
+          </div>
+
+          
 
         
           <div className="comments-container">
@@ -112,5 +119,6 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
         </Comment.Content>
       </Comment>
     </Comment.Group>
+ </div>
   );
 }

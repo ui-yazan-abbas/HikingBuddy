@@ -12,29 +12,33 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
-@Table(name="account")
+@Table(name = "account")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-
-
     @Email(message = "Invalid email address! Please provide a valid email address")
     @NotEmpty(message = "Please provide an email address")
     @Column(name = "email", unique = true)
     private String email;
 
+    @Column(name="bio")
+    private String bio;
 
-    @Length(min = 5, max=100, message = "Password length most be between 5-100 characters")
+    @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters")
     @NotEmpty(message = "Please provide a password")
     @Column(name = "password")
     private String password;
 
-    @Length(min = 3, max=100, message = "Name must be between 3-100 characters")
+    @Length(min = 3, max = 100, message = "Name must be between 3-100 characters")
     @Column(name = "name")
     private String name;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
@@ -49,15 +53,35 @@ public class User {
     private List<EventComment> eventComments;
 
     // Hibernate needs a default constructor to function
-    public User() {}
+    public User() {
+    }
 
-    public User(@Email(message = "Invalid email address! Please provide a valid email address") @NotEmpty(message = "Please provide an email address") String email, @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters") String password, @Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name) {
+    public User(
+            @Email(message = "Invalid email address! Please provide a valid email address") @NotEmpty(message = "Please provide an email address") String email,
+            @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters") String password,
+            @Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name) {
         this.email = email;
         this.password = password;
         this.name = name;
     }
-
-
+    public User setUpdateUser (User updateUser) {
+        if (updateUser.getImageUrl() == null) {
+            updateUser.setImageUrl(this.getImageUrl());
+        }
+        if (updateUser.getBio() == null) {
+            updateUser.setBio(this.getBio());
+        }
+        if (updateUser.getName()== null) {
+            updateUser.setName(this.getName());
+        }
+        if (updateUser.getPassword()== null) {
+            updateUser.setPassword(this.getPassword());
+        }
+        if (updateUser.getEmail() == null) {
+            updateUser.setEmail(this.getEmail());
+        }
+        return updateUser;
+    }
 
 
     public Long getId() {
@@ -108,19 +132,19 @@ public class User {
         this.comments = comments;
     }
 
-    public List<Event> getEvents() {
-        return events;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public List<EventComment> getEventComments() {
-        return eventComments;
+    public String getBio() {
+        return bio;
     }
 
-    public void setEventComments(List<EventComment> eventComments) {
-        this.eventComments = eventComments;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

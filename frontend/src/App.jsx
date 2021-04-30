@@ -1,6 +1,7 @@
 // NPM Packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 // Project files
 import Auth from "./services/Auth";
 import Navbar from "./components/Navbar";
@@ -11,9 +12,16 @@ import EventsPage from "./pages/events/EventsPage";
 import ChatPage from "./pages/chat/ChatPage";
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
+
+import Chat from './components/Chat/chat';
+import Join from './components/Join/join';
+
 //Styling
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
+import UserApi from "./api/UserApi";
+
+
 
 async function register(registrationData) {
   const registerSuccess = await Auth.register(registrationData);
@@ -32,11 +40,24 @@ async function login(loginData) {
 export default function App() {
   // State
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
-
+  const [userData, setUserData] = useState({})
   // Constants
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
+  //get userData on sign in
+const getUserData = async() => {
+  await UserApi.getUser()
+  .then(res => setUserData(res.data))
+  .catch(err => console.error(err))
+}
   // Components
+  useEffect(() => {
+    const abortFetch = new AbortController();
+    getUserData();
+    return () => abortFetch.abort();
+  }, [loggedIn]);
+  console.log("userData",userData)
+
   const loggedInRouter = (
     <BrowserRouter>
       <Navbar onLogout={() => Auth.logout()} />
@@ -56,14 +77,15 @@ export default function App() {
             <PostsPage />
           </Route>
           <Route exact path="/chat">
-            <ChatPage />
+
+           <Route path="/chat" exact component={Join} />
+           <Route path="/Chat/chat" component={Chat} />
+
+      
           </Route>
 
-          <Route exact path="/">
-            <HomePage />
-          </Route>
           <Route exact path="/profile">
-            <UserProfile />
+            <UserProfile userData={userData} getUserData={getUserData} />
           </Route>
         </Switch>
       </div>
