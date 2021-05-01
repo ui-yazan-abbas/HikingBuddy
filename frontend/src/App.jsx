@@ -54,7 +54,7 @@ export default function App() {
           //<Route exact path="/chat">
 
            <Route path="/chat" exact component={Join} />
-           <Route path="/chat/chat" component={Chat} />
+         //  <Route path="/chat/chat" component={Chat} />
 
          // <ChatPage />
           </Route>
