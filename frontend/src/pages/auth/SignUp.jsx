@@ -17,54 +17,62 @@ export default function SignUp({ onSubmite }) {
   const [password, setPassword] = useState("");
 
   return (
-    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="ui green header" textAlign="center">
-          <Image src="https://www.linkpicture.com/q/icon_14.png" /> Join us and
-          start sharing!
-        </Header>
-        <Form size="large">
-          <Segment stacked>
-            <Form.Input
-              fluid
-              icon="user"
-              iconPosition="left"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Form.Input
-              fluid
-              icon="user"
-              iconPosition="left"
-              placeholder="E-mail address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Form.Input
-              fluid
-              icon="lock"
-              iconPosition="left"
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+    <div className="signup">
+      <Grid
+        textAlign="center"
+        style={{ height: "100vh" }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <div className="containerr">
+            <Header as="h2" color="ui green header" textAlign="center">
+              <Image src="https://www.linkpicture.com/q/icon_14.png" /> Join us
+              and start sharing!
+            </Header>
+          </div>
+          <Form size="large">
+            <Segment stacked>
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="E-mail address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-            <Button
-              color="green"
-              fluid
-              size="large"
-              onClick={(e) => onSubmite({ name, email, password })}
-            >
-              Join us now!
-            </Button>
-          </Segment>
-        </Form>
-        <Message>
-          Already have an account? <a href="/login">Login</a>
-        </Message>
-      </Grid.Column>
-    </Grid>
+              <Button
+                as="a"
+                inverted
+                color="green"
+                onClick={(e) => onSubmite({ name, email, password })}
+              >
+                Join us now!
+              </Button>
+            </Segment>
+          </Form>
+          <Message>
+            Already have an account? <a href="/login">Login</a>
+          </Message>
+        </Grid.Column>
+      </Grid>
+    </div>
   );
 }

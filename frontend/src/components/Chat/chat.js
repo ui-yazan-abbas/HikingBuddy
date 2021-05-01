@@ -50,8 +50,10 @@ const Chat = ({ location }) => {
   return (
     <div className="outerContainer">
       <div className="container">
-          <Messages messages={messages} name={name} />
+      <Messages messages={messages} name={name} />
+      <form>
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+          </form>
       </div>
     </div>
   );
