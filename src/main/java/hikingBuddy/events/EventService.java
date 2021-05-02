@@ -21,7 +21,7 @@ public class EventService {
         existingEvent.setEventDifficulty(eventParam.getEventDifficulty());
         existingEvent.setEventMaxNum(eventParam.getEventMaxNum());
         existingEvent.setEventDuration(eventParam.getEventDuration());*/
-        existingEvent.setEventBody(eventParam.getEventBody());
+        existingEvent.setBody(eventParam.getBody());
        /* existingEvent.setEventMustBring(eventParam.getEventMustBring());
         existingEvent.setEventMeetPoint(eventParam.getEventMeetPoint());*/
         Event event = eventRepository.save(existingEvent);

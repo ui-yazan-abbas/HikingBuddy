@@ -132,6 +132,22 @@ public class User {
         this.comments = comments;
     }
 
+      public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public List<EventComment> getEventComments() {
+        return eventComments;
+    }
+
+    public void setEventComments(List<EventComment> eventComments) {
+        this.eventComments = eventComments;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }

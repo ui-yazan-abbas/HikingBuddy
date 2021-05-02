@@ -6,7 +6,7 @@ import EventsForm from "./EventsForm";
 import EventsCard from "./EventsCard";
 import EventsApi from "../../api/EventsApi";
 
-export default function EventsPage({ }) {
+export default function EventsPage({ event, onDeleteClick }) {
   // Local state
   const [events, setEvents] = useState([]);
 
@@ -42,7 +42,11 @@ export default function EventsPage({ }) {
 
   // Components
   const CardsArray1 = events.map((event) => (
-    <EventsCard key={event.id} event={event} onDeleteClick={() => deleteEvent(event)} />
+    <EventsCard
+      key={event.id}
+      event={event}
+      onDeleteClick={() => deleteEvent(event)}
+    />
   ));
 
   return (

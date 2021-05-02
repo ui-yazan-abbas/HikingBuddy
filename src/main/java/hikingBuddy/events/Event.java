@@ -19,7 +19,7 @@ public class Event{
 
     @Column(nullable = false)
     @NotEmpty
-    private String eventBody;
+    private String body;
     // private LocalDate eventStartDateTime;
 
     @OneToMany(mappedBy = "commentedEvent", cascade = CascadeType.ALL)
@@ -34,8 +34,8 @@ public class Event{
     public Event() {
     }
 
-    public Event(@NotEmpty String eventBody) {
-        this.eventBody = eventBody;
+    public Event(@NotEmpty String body) {
+        this.body = body;
     }
 
     public Long getId() {
@@ -46,12 +46,12 @@ public class Event{
         this.id = id;
     }
 
-    public String getEventBody() {
-        return eventBody;
+    public String getBody() {
+        return body;
     }
 
-    public void setEventBody(String eventBody) {
-        this.eventBody = eventBody;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public User getUser() {
