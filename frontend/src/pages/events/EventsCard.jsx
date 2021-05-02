@@ -6,8 +6,6 @@ import moment from "moment";
 import { Button, Comment, Form, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import EventCommentsApi from "../../api/EventCommentsApi";
-import CommentCard from "../comments/CommentCard";
-import CommentForm from "../comments/CommentForm";
 import EventCommentCard from "../eventComments/EventCommentCard";
 import EventCommentForm from "../eventComments/EventCommentForm";
 
@@ -91,7 +89,7 @@ export default function EventsCard({ event, onDeleteClick }) {
           <div className="comments-container">
             {eventComments &&
               filteredEventCommentList.map((eventComment) => (
-                <CommentCard
+                <EventCommentCard
                   key={event.id}
                   eventComment={eventComment}
                   onDeleteClick={() => deleteEventComment(eventComment)}
@@ -108,7 +106,7 @@ export default function EventsCard({ event, onDeleteClick }) {
           )}
 
           <div className="comments-form">
-            <CommentForm id={event.id} onSubmit={createEventComment} />
+            <EventCommentForm id={event.id} onSubmit={createEventComment} />
           </div>
         </Comment.Content>
       </Comment>
