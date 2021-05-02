@@ -8,19 +8,19 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/auth/Login";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
-import ChatPage from "./pages/chat/ChatPage";
+// import ChatPage from "./pages/chat/ChatPage";
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
-
-import Chat from './components/Chat/chat';
-import Join from './components/Join/join';
+import ChatPage from "./components/Chat2/client/ChatPage";
+import ChatHome from "./components/Chat2/client/ChatHome/ChatHome";
+import ChatRoom from "./components/Chat2/client/ChatRoom/ChatRoom";
+/* import Chat from './components/Chat/chat';
+import Join from './components/Join/join'; */
 
 //Styling
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 import UserApi from "./api/UserApi";
-
-
 
 async function register(registrationData) {
   const registerSuccess = await Auth.register(registrationData);
@@ -39,23 +39,23 @@ async function login(loginData) {
 export default function App() {
   // State
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
-  const [userData, setUserData] = useState({})
+  const [userData, setUserData] = useState({});
   // Constants
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   //get userData on sign in
-const getUserData = async() => {
-  await UserApi.getUser()
-  .then(res => setUserData(res.data))
-  .catch(err => console.error(err))
-}
+  const getUserData = async () => {
+    await UserApi.getUser()
+      .then((res) => setUserData(res.data))
+      .catch((err) => console.error(err));
+  };
   // Components
   useEffect(() => {
     const abortFetch = new AbortController();
     getUserData();
     return () => abortFetch.abort();
   }, [loggedIn]);
-  console.log("userData",userData)
+  console.log("userData", userData);
 
   const loggedInRouter = (
     <BrowserRouter>
@@ -66,12 +66,17 @@ const getUserData = async() => {
           <Route exact path="/posts">
             <PostsPage />
           </Route>
-          <Route exact path="/chat">
+
+          {/* <Route exact path="/chat">
 
            <Route path="/chat" exact component={Join} />
            <Route path="/Chat/chat" component={Chat} />
+          </Route> */}
 
-      
+          <Route exact path="/chat">
+            <ChatPage />
+            {/*  <Route path="/chat" exact component={ChatHome} />
+            <Route path="/:roomId" component={ChatRoom} /> */}
           </Route>
 
           <Route exact path="/profile">
