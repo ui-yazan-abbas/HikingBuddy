@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 // Project files
 import Auth from "./services/Auth";
 import Navbar from "./components/Navbar";
