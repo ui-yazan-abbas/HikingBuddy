@@ -8,6 +8,8 @@ import 'semantic-ui-css/semantic.min.css'
 import EventCommentsApi from "../../api/EventCommentsApi";
 import CommentCard from "../comments/CommentCard";
 import CommentForm from "../comments/CommentForm";
+import EventCommentCard from "../eventComments/EventCommentCard";
+import EventCommentForm from "../eventComments/EventCommentForm";
 
 
 export default function EventsCard({ event, onDeleteClick}) {
@@ -54,8 +56,6 @@ export default function EventsCard({ event, onDeleteClick}) {
         .then(({ data }) => setEventComments(data))
         .catch((err) => console.error(err));
   }, [setEventComments]);
-
-  console.log(event);
 
   // Components
 
