@@ -55,18 +55,19 @@ export default function UserProfile({ userData, getUserData }) {
         </div>
         <div>
           <label htmlFor="bio-input">Bio:</label>
-          <input
+          <textarea
             type="text"
             id="bio-input"
             name="bio"
             value={userForm.bio}
             onChange={change}
-          />
+            rows="5"
+            cols="80"
+            id="TITLE"
+          ></textarea>
         </div>
         <Button type="submit">Save Changes </Button>
       </Form>
-
-    
     </div>
   );
 }

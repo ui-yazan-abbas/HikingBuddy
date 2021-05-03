@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 .AvatarWrap {
   display: flex;
@@ -18,9 +18,8 @@
   padding: 7px 14px;
 }
 
-body, html{
-
-
+body,
+html {
   margin: 0;
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -128,26 +127,25 @@ html,
   height: 180%;
 }
 
-.img{
+.img {
   width: 100px;
   height: 100px;
   border-radius: 8px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  
 }
-li {float: left;
-  list-style-type:none;
+li {
+  float: left;
+  list-style-type: none;
   padding: 1rem;
-  }
+}
 
 .logout {
   font-family: Roboto;
-
 }
 
-.color-nav{
+.color-nav {
   background-color: #5db556;
   font-family: "Lato", sans-serif;
   color: white;
@@ -159,7 +157,6 @@ ul {
   margin: 0;
   padding: 3rem;
 }
-
 
 .hidden.menu {
   display: none;
@@ -175,7 +172,6 @@ ul {
 .masthead .ui.menu .ui.button {
   margin-left: 0.5em;
 }
-
 
 .ui.vertical.stripe {
   padding: 8em 0;
@@ -221,7 +217,7 @@ ul {
     min-height: 350px;
   }
 }
-.login{
+.login {
   position: fixed;
   top: 0;
   left: 0;
@@ -236,7 +232,7 @@ ul {
   overflow: hidden;
   box-sizing: content-box;
 }
-.signup{
+.signup {
   position: fixed;
   top: 0;
   left: 0;
@@ -251,38 +247,35 @@ ul {
   overflow: hidden;
   box-sizing: content-box;
 }
-.containerr{
+.containerr {
   background-color: rgba(242, 242, 242, 0.66);
   border-radius: 5px;
-
 }
-.ccontainerr{
+.ccontainerr {
   background-color: rgba(242, 242, 242, 0.66);
   border-radius: 5px;
- margin-top: 10px;
- margin-right: 20px;
- margin-left: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
-.post{
+.post {
   /*background: url();*/
   background-color: rgba(242, 242, 242, 0.66);
 }
 
-.profile{
+.profile {
   margin: auto;
   width: 50%;
   /* padding: 10px; */
 }
 
-
-
 .card {
- padding: 50px;
+  padding: 50px;
   /*background: #f4f3f5;*/
 }
 
 .postcard {
   padding: 2rem;
-
 }
+
 
