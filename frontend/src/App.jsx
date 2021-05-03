@@ -85,7 +85,7 @@ const getUserData = async() => {
           </Route>
 
           <Route exact path="/profile">
-            <UserProfile userData={userData} getUserData={getUserData} />
+            <UserProfile userData={userData} />
           </Route>
         </Switch>
       </div>
