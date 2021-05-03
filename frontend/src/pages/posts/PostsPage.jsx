@@ -49,9 +49,9 @@ export default function PostsPage({ post, onDeleteClick }) {
   return (
     <div className="post">
       <div>
-      <Form onSubmit={(postData) => createPost(postData)} />
+        <Form onSubmit={(postData) => createPost(postData)} />
 
-      {CardsArray}
+        {CardsArray}
       </div>
     </div>
   );

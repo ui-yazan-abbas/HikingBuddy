@@ -2,26 +2,19 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-//import { BrowserRouter as Router, Route } from "react-router-dom";
 // Project files
 import Auth from "./services/Auth";
 import Navbar from "./components/Navbar";
 import Login from "./pages/auth/Login";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
-<<<<<<< HEAD
-// import ChatPage from "./pages/chat/ChatPage";
-=======
 import EventsPage from "./pages/events/EventsPage";
 import ChatPage from "./pages/chat/ChatPage";
->>>>>>> d5520f957bf444cc895f4040c943b4bc49b280eb
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
-import ChatPage from "./components/Chat2/client/ChatPage";
-import ChatHome from "./components/Chat2/client/ChatHome/ChatHome";
-import ChatRoom from "./components/Chat2/client/ChatRoom/ChatRoom";
-/* import Chat from './components/Chat/chat';
-import Join from './components/Join/join'; */
+
+import Chat from "./components/Chat/chat";
+import Join from "./components/Join/join";
 
 //Styling
 import "./App.css";
@@ -81,17 +74,9 @@ export default function App() {
           <Route exact path="/posts">
             <PostsPage />
           </Route>
-
-          {/* <Route exact path="/chat">
-
-           <Route path="/chat" exact component={Join} />
-           <Route path="/Chat/chat" component={Chat} />
-          </Route> */}
-
           <Route exact path="/chat">
-            <ChatPage />
-            {/*  <Route path="/chat" exact component={ChatHome} />
-            <Route path="/:roomId" component={ChatRoom} /> */}
+            <Route path="/chat" exact component={Join} />
+            <Route path="/Chat/chat" component={Chat} />
           </Route>
 
           <Route exact path="/profile">
