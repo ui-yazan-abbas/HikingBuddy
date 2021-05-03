@@ -11,14 +11,14 @@ export default function UserProfile({ userData }) {
     bio: userData.bio,
     imageUrl: userData.imageUrl,
   });
- 
+
   const change = ({ target: { name, value } }) => {
     setUserForm({ ...userForm, [name]: value });
   };
 
   const updateUser = async () => {
     try {
-      await UserApi.updateUser(userForm).then(response =>
+      await UserApi.updateUser(userForm).then((response) =>
         setUserForm(response.data)
       );
     } catch (err) {
@@ -34,7 +34,7 @@ export default function UserProfile({ userData }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        await UserApi.getUser().then(response => setUserForm(response.data));
+        await UserApi.getUser().then((response) => setUserForm(response.data));
       } catch (err) {
         console.error(err);
       }
@@ -42,13 +42,20 @@ export default function UserProfile({ userData }) {
     fetchUser();
   }, []);
 
+
+  //save button confirmation alert
+  function saveButton() {
+    alert("You have updated your profile!");
+  }
+
   return (
     <div className="profile">
       <Form onSubmit={handleSubmit}>
         <div>
           <img className="img" src={userForm.imageUrl} alt="" /> <br />
           <ImgUpload className="profile" uploadImg={change} />
-          <label htmlFor="name-input">Name:</label>
+          <label htmlFor="name-input"
+          >Name:</label>
           <input
             type="text"
             id="name-input"
@@ -80,7 +87,9 @@ export default function UserProfile({ userData }) {
             id="TITLE"
           ></textarea>
         </div>
-        <Button type="submit">Save Changes </Button>
+        <Button type="submit" onClick={saveButton}>
+          Save Changes
+        </Button>
       </Form>
     </div>
   );
