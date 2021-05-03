@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/auth/Login";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
+import EventsPage from "./pages/events/EventsPage";
 import ChatPage from "./pages/chat/ChatPage";
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
@@ -63,6 +64,15 @@ const getUserData = async() => {
 
       <div className="container mt-5">
         <Switch>
+          <Route path="/posts">
+            <PostsPage />
+          </Route>
+          <Route path="/events">
+            <EventsPage />
+          </Route>
+          <Route path="/chat">
+            <ChatPage />
+          </Route>
           <Route exact path="/posts">
             <PostsPage />
           </Route>

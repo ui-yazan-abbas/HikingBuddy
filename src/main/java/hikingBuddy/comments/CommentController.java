@@ -33,7 +33,7 @@ public class CommentController {
     }
 
 
-    //Creates a new comment + Works in Postman
+    //Creates a new comment
 
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<Comment> createComment(@PathVariable Long postId, @RequestBody Comment commentParam) {
@@ -45,7 +45,6 @@ public class CommentController {
     }
 
 
-    // !!! New method !!! Works in Postman
     //Returns all comments on post given by postId
     @GetMapping("/posts/{postId}/comments")
     public ResponseEntity<List<Comment>> getComments(@PathVariable Long postId) {

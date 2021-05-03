@@ -36,7 +36,7 @@ export default function PostsPage({ post, onDeleteClick }) {
   }
 
   useEffect(() => {
-    PostsApi.getAllPosts()
+    PostsApi.viewAllPosts()
       .then(({ data }) => setPosts(data))
       .catch((err) => console.error(err));
   }, [setPosts]);

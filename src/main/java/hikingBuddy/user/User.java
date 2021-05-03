@@ -1,6 +1,8 @@
 package hikingBuddy.user;
 
 import hikingBuddy.comments.Comment;
+import hikingBuddy.eventComments.EventComment;
+import hikingBuddy.events.Event;
 import hikingBuddy.posts.Post;
 import org.hibernate.validator.constraints.Length;
 
@@ -43,6 +45,12 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user")
+    private List<Event> events;
+
+    @OneToMany(mappedBy = "user")
+    private List<EventComment> eventComments;
 
     // Hibernate needs a default constructor to function
     public User() {
@@ -122,6 +130,22 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+      public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public List<EventComment> getEventComments() {
+        return eventComments;
+    }
+
+    public void setEventComments(List<EventComment> eventComments) {
+        this.eventComments = eventComments;
     }
 
     public String getImageUrl() {
