@@ -8,9 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
-
 
 @RestController
 public class PostController {
@@ -18,7 +16,6 @@ public class PostController {
     PostService postService;
     UserRepository userRepository;
     AuthService authService;
-
 
     @Autowired
     public PostController(PostRepository postRepository, PostService postService, UserRepository userRepository , AuthService authService) {

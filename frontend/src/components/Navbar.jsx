@@ -107,6 +107,11 @@ export default function Navbar({ onLogout }) {
           {/* <MenuIcon /> */}
         </IconButton>
         <li className="nav-item">
+          <Link to="/profile" className="nav-link">
+            My Profile
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link to="/posts" className="nav-link">
             Posts
           </Link>
@@ -114,11 +119,6 @@ export default function Navbar({ onLogout }) {
         <li className="nav-item">
           <Link to="/events" className="nav-link">
             Events
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/profile" className="nav-link">
-            My Profile
           </Link>
         </li>
         <li className="nav-item">
