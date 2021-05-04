@@ -20,7 +20,7 @@ public class Event{
     @Column(nullable = false)
     @NotEmpty
     private String body;
-    // private LocalDate eventStartDateTime;
+    private String trailName;
 
     @OneToMany(mappedBy = "commentedEvent", cascade = CascadeType.ALL)
 
@@ -34,8 +34,9 @@ public class Event{
     public Event() {
     }
 
-    public Event(@NotEmpty String body) {
+    public Event(@NotEmpty String body, @NotEmpty String trailName) {
         this.body = body;
+        this.trailName = trailName;
     }
 
     public Long getId() {
@@ -53,6 +54,16 @@ public class Event{
     public void setBody(String body) {
         this.body = body;
     }
+
+    public String getTrailName() {
+        return trailName;
+    }
+
+    public void setTrailName(String trailName) {
+        this.trailName = trailName;
+    }
+
+
 
     public User getUser() {
         return user;
