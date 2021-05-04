@@ -126,7 +126,7 @@ export default function Navbar({ onLogout }) {
             Chat
           </Link>
         </li>
-        <Button basic color="green" id="navbarColor01" onClick={onLogout}>
+        <Button basic color="blue" id="navbarColor01" onClick={onLogout}>
           Logout
         </Button>
 
