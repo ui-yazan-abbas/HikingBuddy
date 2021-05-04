@@ -8,6 +8,7 @@ import UpdateCard from "./UpdateCard";
 import moment from "moment"; 
 import { Button, Comment, Form, Header } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css'
+import { useHistory, Link } from "react-router-dom";
 
 
 export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
@@ -70,7 +71,7 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
         <p></p>
 
         <div className="container">
-          <Comment.Author as="a"> {post.user}</Comment.Author>
+          <Comment.Author as="a"> <Link to= {`/profile`}>{post.user}</Link></Comment.Author>
           <Comment.Metadata>
             <div>{moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>
           </Comment.Metadata>
