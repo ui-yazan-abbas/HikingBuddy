@@ -7,9 +7,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 
-
 import { fade, makeStyles } from "@material-ui/core/styles";
-import { Button } from 'semantic-ui-react'
+import { Button } from "semantic-ui-react";
 
 //Styles
 const useStyles = makeStyles((theme) => ({
@@ -87,7 +86,11 @@ export default function Navbar({ onLogout }) {
   const classes = useStyles();
 
   return (
-    <AppBar className="color-nav"  style={{ background: '#5db556' }}  position="static">
+    <AppBar
+      className="color-nav"
+      style={{ background: "#5db556" }}
+      position="static"
+    >
       <Toolbar>
         <IconButton>
           <Link className="navbar-brand" to="/">
@@ -109,6 +112,11 @@ export default function Navbar({ onLogout }) {
           </Link>
         </li>
         <li className="nav-item">
+          <Link to="/events" className="nav-link">
+            Events
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link to="/profile" className="nav-link">
             My Profile
           </Link>
@@ -117,15 +125,10 @@ export default function Navbar({ onLogout }) {
           <Link to="/chat" className="nav-link">
             Chat
           </Link>
-
-          
         </li>
-        <Button basic color='green'
-            id="navbarColor01"
-            onClick={onLogout}
-          >
-            Logout
-          </Button>
+        <Button basic color="green" id="navbarColor01" onClick={onLogout}>
+          Logout
+        </Button>
 
         <div className={classes.search}>
           <div className={classes.searchIcon}></div>
