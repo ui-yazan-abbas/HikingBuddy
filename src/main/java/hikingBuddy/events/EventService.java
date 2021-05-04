@@ -16,14 +16,17 @@ public class EventService {
 
     public Event updateEvent(Long id, Event eventParam, Event existingEvent){
         existingEvent.setTrailName(eventParam.getTrailName());
-        /*existingEvent.setEventOrg(eventParam.getEventOrg());
-        existingEvent.setEventTrail(eventParam.getEventTrail());
-        existingEvent.setEventDifficulty(eventParam.getEventDifficulty());
-        existingEvent.setEventMaxNum(eventParam.getEventMaxNum());
-        existingEvent.setEventDuration(eventParam.getEventDuration());*/
         existingEvent.setBody(eventParam.getBody());
+        existingEvent.setEventDate(eventParam.getEventDate());
+        existingEvent.setEventDuration(eventParam.getEventDuration());
+        existingEvent.setEventDistance(eventParam.getEventDistance());
+        existingEvent.setMaxNum(eventParam.getMaxNum());
+        existingEvent.setEventDifficulty(eventParam.getEventDifficulty());
+        existingEvent.setMeetPoint(eventParam.getMeetPoint());
+        existingEvent.setTrailHyperlink(eventParam.getTrailHyperlink());
+        
        /* existingEvent.setEventMustBring(eventParam.getEventMustBring());
-        existingEvent.setEventMeetPoint(eventParam.getEventMeetPoint());*/
+        */
         Event event = eventRepository.save(existingEvent);
         return event;
     }
