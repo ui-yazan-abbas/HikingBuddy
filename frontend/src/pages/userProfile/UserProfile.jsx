@@ -82,7 +82,7 @@ export default function UserProfile({ userData }) {
             name="bio"
             value={userForm.bio}
             onChange={change}
-            rows="5"
+            rows="6"
             cols="80"
             id="TITLE"
           ></textarea>
