@@ -10,7 +10,6 @@ export default function ImgUpload({uploadImg}) {
         let imagePreset = new FormData();
         imagePreset.append("file", imageFile);
         imagePreset.append("upload_preset", "HikingBuddy")
-        console.log("what the fuck",imagePreset);
         setImgFile(imagePreset);
     }
 
@@ -23,7 +22,7 @@ export default function ImgUpload({uploadImg}) {
                 imgFile
               );
               //
-              console.log("Responce:",response);
+           
               //simulate the event object so its doesn't clash with handleChange
               uploadImg({
                 target: {
