@@ -74,18 +74,13 @@ export default function App() {
           <Route exact path="/posts">
             <PostsPage />
           </Route>
-
-          <Route exact path="/posts">
-            <EventsPage />
-          </Route>
-
           <Route exact path="/chat">
             <Route path="/chat" exact component={Join} />
             <Route path="/Chat/chat" component={Chat} />
           </Route>
 
           <Route exact path="/profile">
-            <UserProfile userData={userData} getUserData={getUserData} />
+            <UserProfile userData={userData} />
           </Route>
         </Switch>
       </div>
