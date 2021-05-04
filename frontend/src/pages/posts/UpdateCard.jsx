@@ -23,6 +23,7 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
             />
           </Form.Field>
         </Form>
+
         <Button primary onClick={handleUpdate}>
           Submit change
         </Button>
