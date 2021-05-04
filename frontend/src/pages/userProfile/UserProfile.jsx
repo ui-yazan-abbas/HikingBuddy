@@ -49,8 +49,7 @@ console.log("userDatafromUser", userData)
                 <input type="text" id="bio-input" name="bio"
                 value={userForm.bio} onChange={change}/>
                 </div>
-                
-               
+               <button type="submit">Save Changes </button>
             </form>
             
         </div>
