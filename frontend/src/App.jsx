@@ -58,7 +58,7 @@ export default function App() {
 
   const loggedInRouter = (
     <BrowserRouter>
-      <Navbar onLogout={() => Auth.logout()} />
+      <Navbar onLogout={() => Auth.logout()}  userData={userData}/>
 
       <div className="container mt-5">
         <Switch>
@@ -79,9 +79,11 @@ export default function App() {
             <Route path="/Chat/chat" component={Chat} />
           </Route>
 
-          <Route exact path="/profile">
-            <UserProfile userData={userData} />
-          </Route>
+          {/* <Route exact path="/:name/profile">
+            <UserProfile userData={userData} match={} />
+          </Route> */}
+          <Route exact path="/:name/profile" 
+          component={(props) => (<UserProfile match={props.match} userData={userData} />)}/>
         </Switch>
       </div>
     </BrowserRouter>

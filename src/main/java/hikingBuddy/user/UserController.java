@@ -26,6 +26,12 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @GetMapping("/{name}")
+    public ResponseEntity<User> getUserByName(@PathVariable String name) {
+        User user = userService.findUserByName(name);
+        return ResponseEntity.ok(user);
+    }
+
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User updateUserData, Principal principal) {
         String userName = principal.getName();
