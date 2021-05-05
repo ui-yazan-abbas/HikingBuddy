@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar({ onLogout }) {
+export default function Navbar({ onLogout, userData }) {
   // State
   const [query, setQuery] = useState("");
 
@@ -107,7 +107,7 @@ export default function Navbar({ onLogout }) {
           {/* <MenuIcon /> */}
         </IconButton>
         <li className="nav-item">
-          <Link to="/profile" className="nav-link">
+          <Link to={`/${userData.name}/profile`} className="nav-link">
             My Profile
           </Link>
         </li>

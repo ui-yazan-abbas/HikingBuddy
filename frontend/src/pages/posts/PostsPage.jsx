@@ -7,10 +7,11 @@ import Form from "./Form";
 import Card from "./Card";
 import UpdateCard from "./UpdateCard";
 
-export default function PostsPage({ post, onDeleteClick }) {
+export default function PostsPage({ userData }) {
   // Local state
   const [posts, setPosts] = useState([]);
 
+  console.log("post", userData);
   // Methods
   async function createPost(postData) {
     try {
@@ -43,15 +44,20 @@ export default function PostsPage({ post, onDeleteClick }) {
 
   // Components
   const CardsArray = posts.map((post) => (
-    <Card key={post.id} post={post} onDeleteClick={() => deletePost(post)} />
+    <Card
+      key={post.id}
+      post={post}
+      onDeleteClick={() => deletePost(post)}
+      userData={userData}
+    />
   ));
 
   return (
     <div className="post">
       <div>
-      <Form onSubmit={(postData) => createPost(postData)} />
+        <Form onSubmit={(postData) => createPost(postData)} />
 
-      {CardsArray}
+        {CardsArray}
       </div>
     </div>
   );
