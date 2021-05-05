@@ -19,22 +19,14 @@ export default function UserProfile({ userData, match, setUserData }) {
     }
   }, [info]);
 
-  const updateUser = async () => {
-    try {
-      await UserApi.updateUser(user).then(res => setUser(res.data));
-    } catch (err) {
-      console.error(err);
-    }
-    // getUserData().then((responce) => setUserForm(responce));
-  };
   
   const followUser = () => {
-    setUser({
-      ...user,
+    setUser({ ...user, 
       followersList: [userData],
     });
-    updateUser();
+  
   };
+  
   console.log("user", user);
   console.log("userData", userData);
 

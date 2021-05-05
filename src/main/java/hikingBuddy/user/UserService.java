@@ -25,6 +25,7 @@ public class UserService {
         updateUserData.setId(user.getId());
         updateUserData.setComments(user.getComments());
         updateUserData.setPosts(user.getPosts());
+        updateUserData.setFollowersList(user.getFollowersList());
         return updateUserData;
     }
 
