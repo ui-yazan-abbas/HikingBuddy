@@ -122,7 +122,7 @@ export default function Navbar({ onLogout }) {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/chat" className="nav-link">
+          <Link to="/join" className="nav-link">
             Chat
           </Link>
         </li>

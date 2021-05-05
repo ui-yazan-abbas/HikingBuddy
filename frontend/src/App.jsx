@@ -9,12 +9,11 @@ import Login from "./pages/auth/Login";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
 import EventsPage from "./pages/events/EventsPage";
-import ChatPage from "./pages/chat/ChatPage";
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
 
-import Chat from "./components/Chat/chat";
-import Join from "./components/Join/join";
+import Chat from "./components/ChatComponents/Chat/Chat";
+import ChatPage from "./components/ChatComponents/Join/Join";
 
 //Styling
 import "./App.css";
@@ -68,16 +67,12 @@ export default function App() {
           <Route path="/events">
             <EventsPage />
           </Route>
-          <Route path="/chat">
-            <ChatPage />
-          </Route>
           <Route exact path="/posts">
             <PostsPage />
           </Route>
-          <Route exact path="/chat">
-            <Route path="/join" exact component={Join} />
+
+            <Route exact path="/join" exact component={ChatPage} />
             <Route path="/chat" component={Chat} />
-          </Route>
 
           <Route exact path="/profile">
             <UserProfile userData={userData} />
