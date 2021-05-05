@@ -1,6 +1,5 @@
 import React from "react";
 
-import React, { Component } from "react";
 import {
   Button,
   Checkbox,
@@ -49,7 +48,6 @@ export default function EventsForm({ onSubmit }) {
     <div className="card">
       <div className="card-body">
         <h4 className="card-title">Create a hiking event</h4>
-        <div>
           <Form>
             <Form.Group widths="equal">
               <Form.Field
@@ -127,6 +125,5 @@ export default function EventsForm({ onSubmit }) {
           </Form>
         </div>
       </div>
-    </div>
   );
 }
