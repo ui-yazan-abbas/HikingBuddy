@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
-import io from "socket.io-client";
+import io from 'socket.io-client';
 
+import TextContainer from '../TextContainer/TextContainer';
 import Messages from '../Messages/Messages';
+import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 
 import './Chat.css';
 
-const ENDPOINT = 'https://localhost:5000';
+const ENDPOINT = 'http://localhost:5000/';
 
 let socket;
+
+const connectionOptions =  {
+  'force new connection' : true,
+  "reconnectionAttempts": "Infinity",
+  "timeout" : 10000,
+  "transports" : ["websocket"]
+};
 
 const Chat = ({ location }) => {
   const [name, setName] = useState('');
@@ -21,7 +30,8 @@ const Chat = ({ location }) => {
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
 
-    socket = io(ENDPOINT);
+    // socket = io(ENDPOINT);
+    socket = io.connect('http://localhost:5000',connectionOptions);
 
     setRoom(room);
     setName(name)
@@ -52,13 +62,13 @@ const Chat = ({ location }) => {
   }
 
   return (
-    <div className="outerContainer">
-      <div className="container">
-      <Messages messages={messages} name={name} />
-      <form>
+    <div className="outerContainer2">
+      <div className="container2">
+          <InfoBar room={room} />
+          <Messages messages={messages} name={name} />
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
-          </form>
       </div>
+      <TextContainer users={users}/>
     </div>
   );
 }

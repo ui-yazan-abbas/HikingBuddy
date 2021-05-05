@@ -75,8 +75,8 @@ export default function App() {
             <PostsPage />
           </Route>
           <Route exact path="/chat">
-            <Route path="/chat" exact component={Join} />
-            <Route path="/Chat/chat" component={Chat} />
+            <Route path="/join" exact component={Join} />
+            <Route path="/chat" component={Chat} />
           </Route>
 
           <Route exact path="/profile">
