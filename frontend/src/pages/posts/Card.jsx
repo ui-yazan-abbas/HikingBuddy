@@ -83,10 +83,11 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
             <Comment.Action active onClick={() => setIsUpdating(true)}>
               Edit Post
             </Comment.Action>
-            <Comment.Action onClick={onDeleteClick} active>
+            {post.user !== post.user && (<Comment.Action onClick={onDeleteClick} active>
               {" "}
               Delete post
             </Comment.Action>
+            )}
            
           </Comment.Actions>
           </div>

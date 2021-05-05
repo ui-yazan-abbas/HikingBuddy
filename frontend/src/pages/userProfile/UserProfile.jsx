@@ -4,6 +4,7 @@ import ImgUpload from "./ImgUpload";
 import UserApi from "../../api/UserApi";
 import { Button, Form } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
+import PostsPage from "../posts/PostsPage";
 
 export default function UserProfile({ userData, match }) {
   const [user, setUser] = useState({});
@@ -42,6 +43,7 @@ export default function UserProfile({ userData, match }) {
           setUser={setUser}
         />
       )}
+     
     </div>
   );
 }
