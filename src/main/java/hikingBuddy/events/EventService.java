@@ -17,7 +17,6 @@ public class EventService {
     public Event updateEvent(Long id, Event eventParam, Event existingEvent){
         existingEvent.setTrailName(eventParam.getTrailName());
         existingEvent.setBody(eventParam.getBody());
-        existingEvent.setEventDate(eventParam.getEventDate());
         existingEvent.setEventDuration(eventParam.getEventDuration());
         existingEvent.setEventDistance(eventParam.getEventDistance());
         existingEvent.setMaxNum(eventParam.getMaxNum());

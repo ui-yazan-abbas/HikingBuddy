@@ -12,9 +12,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 @Entity
 public class Event{
     @Id
@@ -24,10 +21,6 @@ public class Event{
     @Column(nullable = false)
     @NotEmpty
     private String trailName;
-
-    @Column(nullable = false)
-    @NotNull
-    private LocalDate eventDate; 
 
     @Column(nullable = false)
     @NotNull
@@ -67,14 +60,11 @@ public class Event{
     public Event() {
     }
 
-    public Event(@NotEmpty String body, @NotEmpty String trailName, @NotEmpty String date, @NotNull float eventDuration,
+    public Event(@NotEmpty String body, @NotEmpty String trailName, @NotNull float eventDuration,
      @NotNull int eventDistance, @NotNull int maxNum, @NotEmpty String eventDifficulty, @NotEmpty String meetPoint, String trailHyperlink) {
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         this.body = body;
         this.trailName = trailName;
-        this.eventDate = LocalDate.parse(date, formatter);
         this.eventDuration = eventDuration;
         this.eventDistance = eventDistance;
         this.maxNum = maxNum;
@@ -105,14 +95,6 @@ public class Event{
 
     public void setTrailName(String trailName) {
         this.trailName = trailName;
-    }
-
-    public LocalDate getEventDate() {
-        return eventDate;
-    }
-
-    public void setEventDate(LocalDate eventDate) {
-        this.eventDate = eventDate;
     }
 
       public float getEventDuration() {
