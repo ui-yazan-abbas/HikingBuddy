@@ -7,6 +7,7 @@ import UpdateCard from "./UpdateCard";
 import moment from "moment";
 import { Button, Comment, Form, Header, Icon } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import { useHistory, Link } from "react-router-dom";
 //  Importing the buttons to be used for react share
 import {
   FacebookShareButton,
@@ -17,10 +18,11 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-
 export default function PostCard({
   post,
   onDeleteClick,
+  onUpdateClick,
+  userData,
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
@@ -88,7 +90,10 @@ export default function PostCard({
             <p></p>
 
             <div className="container">
-              <Comment.Author as="a"> {post.user}</Comment.Author>
+              <Comment.Author as="a">
+                {" "}
+                <Link to={`/${post.user}/profile`}>{post.user}</Link>
+              </Comment.Author>
               <Comment.Metadata>
                 <div>
                   {moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}
@@ -106,38 +111,12 @@ export default function PostCard({
                 <Comment.Action active onClick={() => setIsUpdating(true)}>
                   Edit Post
                 </Comment.Action>
-                <Comment.Action onClick={onDeleteClick} active>
-                  {" "}
-                  Delete post
-                </Comment.Action>
-
-                {/* Buttons for share to social media  */}
-
-                <FacebookShareButton
-                  url={window.location.href}//share the actual link of the post
-                  title={post.user} //the user who wrote the post 
-                  description={postTitle}//the comment written in the post is shared
-                  quote="link"
-                >
-                  <FacebookIcon className="mx-3" size={36} round />
-                </FacebookShareButton>
-                <TwitterShareButton
-                  url={window.location.href}
-                  title={postTitle}//the comment written in the post is shared
-                  quote="link"
-                  hashtag="hiking"
-                >
-                  <TwitterIcon className="mx-3" size={36} round />
-                </TwitterShareButton>
-                <WhatsappShareButton
-                  url={window.location.href}
-                  separator = ""
-                  title={postTitle}//the comment written in the post is shared
-                  quote="link"
-                >
-                  <WhatsappIcon size={40} round={true} />
-                </WhatsappShareButton>
-                {/* Buttons for share to social media finish here  */}
+                {post.user == post.user && (
+                  <Comment.Action onClick={onDeleteClick} active>
+                    {" "}
+                    Delete post
+                  </Comment.Action>
+                )}
               </Comment.Actions>
             </div>
 
