@@ -82,13 +82,8 @@ export default function App() {
           {/* <Route exact path="/:name/profile">
             <UserProfile userData={userData} match={} />
           </Route> */}
-          <Route
-            exact
-            path="/:name/profile"
-            component={(props) => (
-              <UserProfile match={props.match} userData={userData} />
-            )}
-          />
+          <Route exact path="/:name/profile" 
+          component={(props) => (<UserProfile match={props.match} userData={userData} setUserData={setUserData} />)}/>
         </Switch>
       </div>
     </BrowserRouter>

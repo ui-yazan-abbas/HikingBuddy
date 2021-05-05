@@ -13,15 +13,14 @@ export default function EditUserProfile({ userData, setToggler, setUser}) {
   });
 
   const change = ({ target: { name, value } }) => {
-    setUserForm({ ...userForm, [name]: value });
-    console.log(userForm)
+    setUserForm({ ...userForm,[name]: value});
+    console.log("here",userForm)
   };
 
   const updateUser = async () => {
     try {
       await UserApi.updateUser(userForm).then((response) =>{
-        setUserForm(response.data)
-        
+        setUser(response.data)
       });
     } catch (err) {
       console.error(err);
@@ -30,15 +29,14 @@ export default function EditUserProfile({ userData, setToggler, setUser}) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateUser(userForm);
-    setUser(userForm)
+    updateUser();
     setToggler(false)
   };
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        await UserApi.getUser().then((response) => setUserForm(response.data));
+        await UserApi.getUser()
       } catch (err) {
         console.error(err);
       }
