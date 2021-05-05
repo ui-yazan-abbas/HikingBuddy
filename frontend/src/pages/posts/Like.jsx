@@ -67,6 +67,11 @@ class Like extends Component {
         likeCount: state.likeCount + 1,
         dislikeCount: dislikes,
       }));
+    } else {
+      this.setState((state) => ({
+        likeCount: state.likeCount - 1,
+        dislikeCount: dislikes,
+      }));
     }
   }
 
@@ -74,6 +79,11 @@ class Like extends Component {
     if (this.state.dislikeCount === dislikes) {
       this.setState((state) => ({
         dislikeCount: state.dislikeCount + 1,
+        likeCount: likes,
+      }));
+    } else {
+      this.setState((state) => ({
+        dislikeCount: state.dislikeCount - 1,
         likeCount: likes,
       }));
     }
