@@ -117,7 +117,36 @@ export default function PostCard({
                     Delete post
                   </Comment.Action>
                 )}
-              </Comment.Actions>
+
+                {/* Buttons for share to social media  */}
+
+                <FacebookShareButton
+                  url={window.location.href}//share the actual link of the post
+                  title={post.user} //the user who wrote the post 
+                  description={postTitle}//the comment written in the post is shared
+                  quote="link"
+                >
+                  <FacebookIcon className="mx-3" size={36} round />
+                </FacebookShareButton>
+                <TwitterShareButton
+                  url={window.location.href}
+                  title={postTitle}//the comment written in the post is shared
+                  quote="link"
+                  hashtag="hiking"
+                >
+                  <TwitterIcon className="mx-3" size={36} round />
+                </TwitterShareButton>
+                <WhatsappShareButton
+                  url={window.location.href}
+                  separator = ""
+                  title={postTitle}//the comment written in the post is shared
+                  quote="link"
+                >
+                  <WhatsappIcon size={40} round={true} />
+                </WhatsappShareButton>
+                {/* Buttons for share to social media finish here  */}
+              
+              </Comment.Actions> 
             </div>
 
             <div className="comments-container">
