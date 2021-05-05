@@ -9,6 +9,7 @@ import hikingBuddy.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 import java.time.LocalDate;
@@ -23,14 +24,28 @@ public class Event{
     @Column(nullable = false)
     @NotEmpty
     private String trailName;
+    @Column(nullable = false)
+    @NotEmpty
     private LocalDate eventDate; 
+    @Column(nullable = false)
+    @NotNull
     private float eventDuration;
+    @Column(nullable = false)
+    @NotNull
     private int eventDistance;
+    @Column(nullable = false)
+    @NotEmpty
     private String eventDifficulty;
+    @Column(nullable = false)
+    @NotNull
     private int maxNum;
+    @Column(nullable = false)
+    @NotEmpty
     private String meetPoint;
-    private String trailHyperlink;
+    @Column(nullable = false)
+    @NotEmpty
     private String body;
+    private String trailHyperlink;
 
     @OneToMany(mappedBy = "commentedEvent", cascade = CascadeType.ALL)
 
@@ -44,8 +59,8 @@ public class Event{
     public Event() {
     }
 
-    public Event(@NotEmpty String body, @NotEmpty String trailName, String date, float eventDuration,
-     int eventDistance, int maxNum, String eventDifficulty, String meetPoint, String trailHyperlink) {
+    public Event(@NotEmpty String body, @NotEmpty String trailName, @NotEmpty String date, @NotNull float eventDuration,
+     @NotNull int eventDistance, @NotNull int maxNum, @NotEmpty String eventDifficulty, @NotEmpty String meetPoint, String trailHyperlink) {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 

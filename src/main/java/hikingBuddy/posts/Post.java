@@ -8,6 +8,7 @@ import hikingBuddy.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -19,6 +20,15 @@ public class Post {
     @Column(nullable = false)
     @NotEmpty
     private String body;
+
+    @Column(nullable = false)
+    @NotEmpty
+    private String postLocation;
+
+     @Column(nullable = false)
+    @NotNull
+    private int postDistance;
+
 
     @Column(name = "image_url")
     private String imageUrl;
@@ -34,8 +44,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(@NotEmpty String body) {
+    public Post(@NotEmpty String body, @NotEmpty String postLocation, @NotNull int postDistance) {
         this.body = body;
+        this.postLocation = postLocation;
+        this.postDistance = postDistance;
     }
 
     public Long getId() {
@@ -52,6 +64,22 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String getPostLocation() {
+        return postLocation;
+    }
+
+    public void setPostLocation(String postLocation) {
+        this.postLocation = postLocation;
+    }
+
+      public int getPostDistance() {
+        return postDistance;
+    }
+
+    public void setPostDistance(int postDistance) {
+        this.postDistance = postDistance;
     }
 
     public User getUser() {
