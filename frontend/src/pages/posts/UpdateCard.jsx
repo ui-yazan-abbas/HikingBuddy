@@ -3,11 +3,17 @@ import PostsApi from "../../api/PostsApi";
 import { Button, Form } from "semantic-ui-react";
 
 export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
+  const [postLocation, setPostLocation] = React.useState(post.postLocation);
   const [body, setBody] = React.useState(post.body);
+  const [postDistance, setPostDistance] = React.useState(post.postDistance);
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    onUpdateClick({ body: body });
+    onUpdateClick({
+      postLocation: postLocation,
+      body: body,
+      postDistance: postDistance,
+    });
     onSubmite();
   };
   return (
@@ -17,7 +23,25 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
           <Form.Field>
             <input
               className="form-control"
-              placeholder="What's on your mind?"
+              placeholder="Håga Trail"
+              value={postLocation}
+              onChange={(e) => setPostLocation(e.target.value)}
+            />
+          </Form.Field>
+
+          <Form.Field>
+            <input
+              className="form-control"
+              placeholder="35"
+              value={postDistance}
+              onChange={(e) => setPostDistance(e.target.value)}
+            />
+          </Form.Field>
+
+          <Form.Field>
+            <input
+              className="form-control"
+              placeholder="I recommend because..."
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />

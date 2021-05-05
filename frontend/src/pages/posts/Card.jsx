@@ -24,7 +24,9 @@ export default function PostCard({
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
-  const [postTitle, setPostTitle] = useState(post.body);
+  const [postTitle, setPostTitle] = useState(post.postLocation);
+  const [postKm, setPostKm] = useState(post.postDistance);
+  const [postBody, setPostBody] = useState(post.body);
 
   async function createComment(commentData) {
     try {
@@ -53,7 +55,9 @@ export default function PostCard({
     try {
       await PostsApi.updatePost(post.id, postToUpdate);
       PostsApi.getPostById(post.id)
-        .then(({ data }) => setPostTitle(data.body))
+        .then(({ data }) => setPostTitle(data.postLocation))
+        .then(({ data }) => setPostKm(data.postDistance))
+        .then(({ data }) => setPostBody(data.body))
         .catch((err) => console.error(err));
     } catch (e) {
       console.error(e);
@@ -91,6 +95,10 @@ export default function PostCard({
                 </div>
               </Comment.Metadata>
               <Comment.Text>{postTitle}</Comment.Text>
+
+              <Comment.Text>{postKm}</Comment.Text>
+
+              <Comment.Text>{postBody}</Comment.Text>
 
               <Comment.Actions>
                 <Comment.Action active>Reply</Comment.Action>

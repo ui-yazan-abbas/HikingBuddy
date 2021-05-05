@@ -25,7 +25,7 @@ public class Post {
     @NotEmpty
     private String postLocation;
 
-     @Column(nullable = false)
+    @Column(nullable = false)
     @NotNull
     private int postDistance;
 
