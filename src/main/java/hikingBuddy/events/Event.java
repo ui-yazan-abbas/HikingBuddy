@@ -24,27 +24,35 @@ public class Event{
     @Column(nullable = false)
     @NotEmpty
     private String trailName;
+
     @Column(nullable = false)
-    @NotEmpty
+    @NotNull
     private LocalDate eventDate; 
+
     @Column(nullable = false)
     @NotNull
     private float eventDuration;
+
     @Column(nullable = false)
     @NotNull
     private int eventDistance;
+
     @Column(nullable = false)
     @NotEmpty
     private String eventDifficulty;
+
     @Column(nullable = false)
     @NotNull
     private int maxNum;
+
     @Column(nullable = false)
     @NotEmpty
     private String meetPoint;
+
     @Column(nullable = false)
     @NotEmpty
     private String body;
+    
     private String trailHyperlink;
 
     @OneToMany(mappedBy = "commentedEvent", cascade = CascadeType.ALL)
