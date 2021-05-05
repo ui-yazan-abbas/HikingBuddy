@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
-
 import CommentCard from "../comments/CommentCard";
 import CommentForm from "../comments/CommentForm";
 import CommentsApi from "../../api/CommentsApi";
 import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
 import moment from "moment";
-import { Button, Comment, Form, Header } from "semantic-ui-react";
+import { Button, Comment, Form, Header, Icon } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { useHistory, Link } from "react-router-dom";
+//  Importing the buttons to be used for react share
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "react-share";
 
 export default function PostCard({
   post,
@@ -61,11 +69,11 @@ export default function PostCard({
   }, [setComments]);
 
   // Components
-  console.log("the fuck", post);
+
   let filteredCommentList = comments.filter(
     (item) => item.commentedPost == post.id
   );
-  console.log("userName", userData);
+
   return (
     <div className="postcard">
       <Comment.Group>
