@@ -80,7 +80,7 @@ export default function App() {
           </Route>
 
           <Route exact path="/profile">
-            <UserProfile userData={userData} getUserData={getUserData} />
+            <UserProfile userData={userData} />
           </Route>
         </Switch>
       </div>
