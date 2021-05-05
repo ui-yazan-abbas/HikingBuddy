@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Input } from "semantic-ui-react";
 
 export default function PostForm({ onSubmit }) {
   const [postLocation, setPostLocation] = React.useState("");
@@ -8,10 +8,11 @@ export default function PostForm({ onSubmit }) {
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
-    onSubmit({ 
+    onSubmit({
       postLocation: postLocation,
       body: body,
-      postDistance: postDistance });
+      postDistance: postDistance,
+    });
 
     // Clear the input field
     setPostLocation("");
@@ -27,8 +28,8 @@ export default function PostForm({ onSubmit }) {
         <div>
           <div className="form-group">
             <Form>
-            <p>Location/Trail name</p>
-            <Form.Field>
+              <p>Location/Trail name</p>
+              <Form.Field>
                 <input
                   className="form-control"
                   placeholder="Håga Trail"
@@ -39,10 +40,12 @@ export default function PostForm({ onSubmit }) {
 
               <p>Distance in km</p>
               <Form.Field>
-                <input
-                  className="form-control"
+                <Input
+
                   placeholder="35"
-                  value={postDistance} 
+                  label={{ basic: true, content: 'km' }}
+                  labelPosition='right'
+                  value={postDistance}
                   onChange={(e) => setPostDistance(e.target.value)}
                 />
               </Form.Field>
