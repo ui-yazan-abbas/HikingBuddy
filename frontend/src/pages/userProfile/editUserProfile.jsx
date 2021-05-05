@@ -26,6 +26,19 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
     }
     // getUserData().then((responce) => setUserForm(responce));
   };
+  
+  
+  //  async function deleteUser(name) {
+  //   try {
+  //     await UserApi.deleteuser(post.name);
+  //     const newUser = user.filter((u) => u.name !== user.name);
+
+  //     setUser(newUser);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     updateUser();
@@ -43,7 +56,6 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
     fetchUser();
   }, []);
 
-  //save button confirmation alert
 
   return (
     <div className="editprofile">
@@ -85,6 +97,8 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
           ></textarea>
         </div>
         <Button type="submit">Save Changes</Button>
+        
+        <Button>Delete Profile</Button>
       </Form>
     </div>
   );
