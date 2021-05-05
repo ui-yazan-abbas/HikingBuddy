@@ -112,11 +112,15 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
             onChange={(e) => setBody(e.target.value)}
           />
 
-          <Form.Field control={Button}>
-            {" "}
+          <Button
+            as="a"
+            inverted
+            color="blue"
             onClick={handleUpdate}
+            type="submit"
+          >
             Submit event changes
-          </Form.Field>
+          </Button>
         </Form>
       </div>
     </div>

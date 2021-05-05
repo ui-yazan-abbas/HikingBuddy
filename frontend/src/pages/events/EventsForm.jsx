@@ -47,83 +47,91 @@ export default function EventsForm({ onSubmit }) {
   return (
     <div className="card">
       <div className="card-body">
-        <h4 className="card-title">Create a hiking event</h4>
-          <Form>
-            <Form.Group widths="equal">
-              <Form.Field
-                control={Input}
-                label="Location/Trail name"
-                placeholder="Höga Kusten"
-                value={trailName}
-                onChange={(e) => setTrailName(e.target.value)}
-              />
-
-              <Form.Field
-                control={Input}
-                label="Duration in days"
-                placeholder="3"
-                width={2}
-                value={eventDuration}
-                onChange={(e) => setEventDuration(e.target.value)}
-              />
-
-              <Form.Field
-                control={Input}
-                label="Distance in km"
-                placeholder="83"
-                width={2}
-                value={eventDistance}
-                onChange={(e) => setEventDistance(e.target.value)}
-              />
-
-              <Form.Field
-                control={Input}
-                label="Max participants"
-                placeholder="7"
-                width={2}
-                value={maxNum}
-                onChange={(e) => setMaxNum(e.target.value)}
-              />
-
-              <Form.Field
-                control={Input}
-                label="Difficulty"
-                placeholder="Easy/Medium/Expert"
-                value={eventDifficulty}
-                onChange={(e) => setEventDifficulty(e.target.value)}
-              />
-
-              <Form.Field
-                control={Input}
-                label="Meeting point"
-                placeholder="Central station, Stockholm"
-                value={meetPoint}
-                onChange={(e) => setMeetPoint(e.target.value)}
-              />
-
-              <div class="ui labeled input">
-                <label>Website link to location/link</label>
-                <div class="ui label label">http://</div>
-                <input type="text" placeholder="www.hogakusten.com/en" />
-                value={trailHyperlink}
-                onChange={(e) => setTrailHyperlink(e.target.value)}
-              </div>
-            </Form.Group>
+        <h2 className="card-title">Create a hiking event</h2>
+        <Form>
+          <Form.Group widths="equal">
             <Form.Field
-              control={TextArea}
-              label="About event"
-              placeholder="It´s an easy trail I took before and now..."
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
+              control={Input}
+              label="Location/Trail name"
+              placeholder="Höga Kusten"
+              value={trailName}
+              onChange={(e) => setTrailName(e.target.value)}
             />
 
-            <Form.Field control={Button}>
-              {" "}
-              onClick={handleSubmit}
-              Create event
-            </Form.Field>
-          </Form>
-        </div>
+            <Form.Field
+              control={Input}
+              label="Difficulty"
+              placeholder="Easy/Medium/Expert"
+              value={eventDifficulty}
+              onChange={(e) => setEventDifficulty(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group widths="equal">
+          <Form.Field
+             control={Input}
+              label="Duration in days"
+              placeholder="3"
+              width={4}
+              value={eventDuration}
+              onChange={(e) => setEventDuration(e.target.value)}
+            />
+
+            <Form.Field
+              control={Input}
+              label="Distance in km"
+              placeholder="83"
+              width={4}
+              value={eventDistance}
+              onChange={(e) => setEventDistance(e.target.value)}
+            />
+
+            <Form.Field
+              control={Input}
+              label="Max participants"
+              placeholder="7"
+              width={4}
+              value={maxNum}
+              onChange={(e) => setMaxNum(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group widths="equal">
+            <Form.Field
+              control={Input}
+              label="Meeting point"
+              placeholder="Central station, Stockholm"
+              value={meetPoint}
+              onChange={(e) => setMeetPoint(e.target.value)}
+            />
+
+            <Form.Field
+              control={Input}
+              label="Website link to location or trail"
+              placeholder="https://www.hogakusten.com/en"
+              value={trailHyperlink}
+              onChange={(e) => setTrailHyperlink(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Field
+            control={TextArea}
+            label="About event"
+            placeholder="It´s an easy trail I took before and now..."
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
+
+          <Button
+            as="a"
+            inverted
+            color="blue"
+            onClick={handleSubmit}
+            type="submit"
+          >
+            Create event
+          </Button>
+        </Form>
       </div>
+    </div>
   );
 }

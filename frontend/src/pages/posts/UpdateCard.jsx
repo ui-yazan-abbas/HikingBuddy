@@ -47,7 +47,14 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
             />
           </Form.Field>
         </Form>
-        <Button primary onClick={handleUpdate}>
+
+        <Button
+          as="a"
+          inverted
+          color="blue"
+          onClick={handleUpdate}
+          type="submit"
+        >
           Submit change
         </Button>
       </div>

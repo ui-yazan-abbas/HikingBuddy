@@ -41,10 +41,9 @@ export default function PostForm({ onSubmit }) {
               <p>Distance in km</p>
               <Form.Field>
                 <Input
-
                   placeholder="35"
-                  label={{ basic: true, content: 'km' }}
-                  labelPosition='right'
+                  label={{ basic: true, content: "km" }}
+                  labelPosition="right"
                   value={postDistance}
                   onChange={(e) => setPostDistance(e.target.value)}
                 />

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
-import { Button, Comment, Form, Header } from "semantic-ui-react";
+import { Button, Comment, Form, Header, Input, TextArea } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
