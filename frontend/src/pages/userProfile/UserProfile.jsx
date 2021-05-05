@@ -6,7 +6,7 @@ import { Button, Form } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
 import PostsPage from "../posts/PostsPage";
 
-export default function UserProfile({ userData, match }) {
+export default function UserProfile({ userData, match, setUserData }) {
   const [user, setUser] = useState({});
   const [toggler, setToggler] = useState(false);
   const info = match.params.name.replace(/\s/g, "%20");
@@ -19,7 +19,24 @@ export default function UserProfile({ userData, match }) {
     }
   }, [info]);
 
-  const followUser = () => {};
+  const updateUser = async () => {
+    try {
+      await UserApi.updateUser(user).then(res => setUser(res.data));
+    } catch (err) {
+      console.error(err);
+    }
+    // getUserData().then((responce) => setUserForm(responce));
+  };
+  
+  const followUser = () => {
+    setUser({
+      ...user,
+      followersList: [userData],
+    });
+    updateUser();
+  };
+  console.log("user", user);
+  console.log("userData", userData);
 
   return (
     <div className="profile">
@@ -32,7 +49,7 @@ export default function UserProfile({ userData, match }) {
             <button onClick={() => setToggler(true)}>Edit Profile</button>
           )}
           {userData.name !== user.name && (
-            <button onClick={followUser()}>Follow</button>
+            <button onClick={followUser}>Follow</button>
           )}
         </>
       )}
@@ -43,7 +60,6 @@ export default function UserProfile({ userData, match }) {
           setUser={setUser}
         />
       )}
-     
     </div>
   );
 }

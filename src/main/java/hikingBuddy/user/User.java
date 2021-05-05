@@ -24,7 +24,7 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name="bio")
+    @Column(name = "bio")
     private String bio;
 
     @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters")
@@ -39,7 +39,6 @@ public class User {
     @Column(name = "image_url")
     private String imageUrl;
 
-
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
@@ -51,6 +50,15 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<EventComment> eventComments;
+
+    // @ManyToOne
+    // private User userFollowed;
+
+    // @OneToMany(mappedBy = "user")
+    // private List<User> followersList;
+
+    @OneToMany
+    private List<User> followersList;
 
     // Hibernate needs a default constructor to function
     public User() {
@@ -64,17 +72,18 @@ public class User {
         this.password = password;
         this.name = name;
     }
-    public User setUpdateUser (User updateUser) {
+
+    public User setUpdateUser(User updateUser) {
         if (updateUser.getImageUrl() == null) {
             updateUser.setImageUrl(this.getImageUrl());
         }
         if (updateUser.getBio() == null) {
             updateUser.setBio(this.getBio());
         }
-        if (updateUser.getName()== null) {
+        if (updateUser.getName() == null) {
             updateUser.setName(this.getName());
         }
-        if (updateUser.getPassword()== null) {
+        if (updateUser.getPassword() == null) {
             updateUser.setPassword(this.getPassword());
         }
         if (updateUser.getEmail() == null) {
@@ -82,7 +91,6 @@ public class User {
         }
         return updateUser;
     }
-
 
     public Long getId() {
         return id;
@@ -132,7 +140,7 @@ public class User {
         this.comments = comments;
     }
 
-      public List<Event> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
@@ -146,6 +154,14 @@ public class User {
 
     public void setEventComments(List<EventComment> eventComments) {
         this.eventComments = eventComments;
+    }
+
+    public List<User> getFollowersList() {
+        return followersList;
+    }
+
+    public void setFollowersList(List<User> followersList) {
+        this.followersList = followersList;
     }
 
     public String getImageUrl() {
@@ -162,5 +178,9 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public void addFollower(User follower) {
+        this.followersList.add(follower);
     }
 }
