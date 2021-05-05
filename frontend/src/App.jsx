@@ -72,7 +72,7 @@ export default function App() {
             <ChatPage />
           </Route>
           <Route exact path="/posts">
-            <PostsPage />
+            <PostsPage  userData={userData}/>
           </Route>
           <Route exact path="/chat">
             <Route path="/chat" exact component={Join} />
