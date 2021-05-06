@@ -13,7 +13,6 @@ export default function PostsPage({ user }) {
   // Local state
   const [posts, setPosts] = useState([]);
 
-
   // Methods
  
   // Components

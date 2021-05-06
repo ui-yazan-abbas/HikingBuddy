@@ -26,6 +26,19 @@ export default function EditUserProfile({ currentUser, setToggler, setUser }) {
     }
     // getcurrentUser().then((responce) => setUserForm(responce));
   };
+  
+  
+  //  async function deleteUser(name) {
+  //   try {
+  //     await UserApi.deleteuser(post.name);
+  //     const newUser = user.filter((u) => u.name !== user.name);
+
+  //     setUser(newUser);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     updateUser();
@@ -46,7 +59,7 @@ export default function EditUserProfile({ currentUser, setToggler, setUser }) {
   //save button confirmation alert
 
   return (
-    <div className="profile">
+    <div className="editprofile">
       <Form onSubmit={handleSubmit}>
         <div>
           <img className="img" src={userForm.imageUrl} alt="" /> <br />

@@ -9,12 +9,11 @@ import Login from "./pages/auth/Login";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
 import EventsPage from "./pages/events/EventsPage";
-import ChatPage from "./pages/chat/ChatPage";
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
 
-import Chat from "./components/Chat/chat";
-import Join from "./components/Join/join";
+import Chat from "./components/ChatComponents/Chat/Chat";
+import ChatPage from "./components/ChatComponents/Join/Join";
 
 //Styling
 import "./App.css";
@@ -73,8 +72,8 @@ export default function App() {
             <ChatPage />
           </Route>
           <Route path="/chat">
-            <Route path="/chat" exact component={Join} />
-            <Route path="/Chat/chat" component={Chat} />
+            <Route exact path="/join" exact component={ChatPage} />
+            <Route path="/chat" component={Chat} />
           </Route>
           <Route
             exact

@@ -83,11 +83,10 @@ export default function Navbar({ onLogout, currentUser }) {
     history.push(`/parcels/${query}`);
   }
 
-  const handleLogout = ()=> {
-    onLogout()
-    history.push("/")
-    
-  }
+  const handleLogout = () => {
+    onLogout();
+    history.push("/");
+  };
   //Styles
   const classes = useStyles();
 
@@ -128,7 +127,7 @@ export default function Navbar({ onLogout, currentUser }) {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/chat" className="nav-link">
+          <Link to="/join" className="nav-link">
             Chat
           </Link>
         </li>

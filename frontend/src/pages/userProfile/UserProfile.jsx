@@ -38,7 +38,7 @@ export default function UserProfile({ currentUser, match }) {
     <div className="profile">
       {!toggler && (
         <>
-          <img className="img" src={user.imageUrl} alt="" /> <br />
+          <img className="profile" src={user.imageUrl} alt="" /> <br />
           <h1>{user.name}</h1>
           <h3>{user.bio}</h3>
           {currentUser.name === user.name && (
