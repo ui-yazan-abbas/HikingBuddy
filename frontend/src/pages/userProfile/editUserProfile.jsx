@@ -98,7 +98,7 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
         </div>
         <Button type="submit">Save Changes</Button>
         
-        <Button>Delete Profile</Button>
+  
       </Form>
     </div>
   );
