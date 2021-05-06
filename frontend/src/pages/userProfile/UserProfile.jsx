@@ -42,11 +42,11 @@ export default function UserProfile({ userData, match, setUserData }) {
     <div className="profile">
       {!toggler && (
         <>
-          <img className="img" src={user.imageUrl} alt="" /> <br />
+          <img className="profile" src={user.imageUrl} alt="" /> <br />
           <h1>{user.name}</h1>
           <h3>{user.bio}</h3>
           {userData.name === user.name && (
-            <button onClick={() => setToggler(true)}>Edit Profile</button>
+            <Button onClick={() => setToggler(true)}>Edit Profile</Button>
           )}
           {userData.name !== user.name && (
             <button onClick={followUser}>Follow</button>
