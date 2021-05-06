@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import hikingBuddy.Likes.PostLike;
 import hikingBuddy.comments.Comment;
 import hikingBuddy.user.User;
 
@@ -27,9 +26,6 @@ public class Post {
 
     @OneToMany(mappedBy = "commentedPost", cascade = CascadeType.ALL)
     private List<Comment> commentList;
-
-    @OneToMany(mappedBy = "postLike")
-    private List<PostLike> postLikes;
 
     @ManyToOne
     @JsonIdentityReference(alwaysAsId = true)
@@ -73,13 +69,5 @@ public class Post {
 
     public void setCommentList(List<Comment> commentList) {
         this.commentList = commentList;
-    }
-
-    public List<PostLike> getPostLikes(){
-        return this.postLikes;
-    }
-
-    public void setPostLikes(List<PostLike> postLikes){
-        this.postLikes=postLikes;
     }
 }

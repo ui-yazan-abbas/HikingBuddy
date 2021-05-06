@@ -13,9 +13,9 @@ public class PostLikeService {
 
     public PostLike savePostLike (PostLike postLike){ return postLikeRepository.save(postLike); }
 
-    public PostLike updatePostLike(Long id, PostLike postLikeParam, PostLike existingPostLike){
-        existingPostLike.setPostLike(postLikeParam.getPostLike());
-        PostLike postLike = postLikeRepository.save(existingPostLike);
+    public PostLike updatePostLike(Long id, PostLike postLikeParam){
+        postLikeParam.setId(id);
+        PostLike postLike = postLikeRepository.save(postLikeParam);
         return postLike;
     }
 
