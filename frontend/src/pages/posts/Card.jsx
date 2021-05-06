@@ -151,39 +151,6 @@ export default function PostCard({
                   <WhatsappIcon size={40} round={true} />
                 </WhatsappShareButton>
                 {/* Buttons for share to social media finish here  */}
-                {post.user == post.user && (
-                  <Comment.Action onClick={onDeleteClick} active>
-                    {" "}
-                    Delete post
-                  </Comment.Action>
-                )}
-                {/* Buttons for share to social media  */}
-
-                <FacebookShareButton
-                  url={window.location.href} //share the actual link of the post
-                  title={post.user} //the user who wrote the post
-                  description={postTitle} //the comment written in the post is shared
-                  quote="link"
-                >
-                  <FacebookIcon className="mx-3" size={36} round />
-                </FacebookShareButton>
-                <TwitterShareButton
-                  url={window.location.href}
-                  title={postTitle} //the comment written in the post is shared
-                  quote="link"
-                  hashtag="hiking"
-                >
-                  <TwitterIcon className="mx-3" size={36} round />
-                </TwitterShareButton>
-                <WhatsappShareButton
-                  url={window.location.href}
-                  separator=""
-                  title={postTitle} //the comment written in the post is shared
-                  quote="link"
-                >
-                  <WhatsappIcon size={40} round={true} />
-                </WhatsappShareButton>
-                {/* Buttons for share to social media finish here  */}
               </Comment.Actions>
             </div>
 
@@ -202,7 +169,7 @@ export default function PostCard({
               <UpdateCard
                 onUpdateClick={(postData) => {
                   updatePost(postData);
-                  setIsUpdating(false)
+                  setIsUpdating(false);
                 }}
                 post={post}
               />
