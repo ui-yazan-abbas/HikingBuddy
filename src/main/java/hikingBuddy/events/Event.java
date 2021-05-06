@@ -9,6 +9,7 @@ import hikingBuddy.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -19,8 +20,33 @@ public class Event{
 
     @Column(nullable = false)
     @NotEmpty
+    private String trailName;
+
+    @Column(nullable = false)
+    @NotNull
+    private float eventDuration;
+
+    @Column(nullable = false)
+    @NotNull
+    private int eventDistance;
+
+    @Column(nullable = false)
+    @NotEmpty
+    private String eventDifficulty;
+
+    @Column(nullable = false)
+    @NotNull
+    private int maxNum;
+
+    @Column(nullable = false)
+    @NotEmpty
+    private String meetPoint;
+
+    @Column(nullable = false)
+    @NotEmpty
     private String body;
-    // private LocalDate eventStartDateTime;
+    
+    private String trailHyperlink;
 
     @OneToMany(mappedBy = "commentedEvent", cascade = CascadeType.ALL)
 
@@ -34,8 +60,17 @@ public class Event{
     public Event() {
     }
 
-    public Event(@NotEmpty String body) {
+    public Event(@NotEmpty String body, @NotEmpty String trailName, @NotNull float eventDuration,
+     @NotNull int eventDistance, @NotNull int maxNum, @NotEmpty String eventDifficulty, @NotEmpty String meetPoint, String trailHyperlink) {
+
         this.body = body;
+        this.trailName = trailName;
+        this.eventDuration = eventDuration;
+        this.eventDistance = eventDistance;
+        this.maxNum = maxNum;
+        this.eventDifficulty = eventDifficulty;
+        this.meetPoint = meetPoint;
+        this.trailHyperlink = trailHyperlink;
     }
 
     public Long getId() {
@@ -53,6 +88,64 @@ public class Event{
     public void setBody(String body) {
         this.body = body;
     }
+
+    public String getTrailName() {
+        return trailName;
+    }
+
+    public void setTrailName(String trailName) {
+        this.trailName = trailName;
+    }
+
+      public float getEventDuration() {
+        return eventDuration;
+    }
+
+    public void setEventDuration(float eventDuration) {
+        this.eventDuration = eventDuration;
+    }
+
+     public int getEventDistance() {
+        return eventDistance;
+    }
+
+    public void setEventDistance(int eventDistance) {
+        this.eventDistance = eventDistance;
+    }
+
+     public int getMaxNum() {
+        return maxNum;
+    }
+
+    public void setMaxNum(int maxNum) {
+        this.maxNum = maxNum;
+    }
+
+    public String getEventDifficulty() {
+        return eventDifficulty;
+    }
+
+    public void setEventDifficulty(String eventDifficulty) {
+        this.eventDifficulty = eventDifficulty;
+    }
+
+    public String getMeetPoint() {
+        return meetPoint;
+    }
+
+    public void setMeetPoint(String meetPoint) {
+        this.meetPoint = meetPoint;
+    }
+
+    public String getTrailHyperlink() {
+        return trailHyperlink;
+    }
+
+    public void setTrailHyperlink(String trailHyperlink) {
+        this.trailHyperlink = trailHyperlink;
+    }
+
+
 
     public User getUser() {
         return user;

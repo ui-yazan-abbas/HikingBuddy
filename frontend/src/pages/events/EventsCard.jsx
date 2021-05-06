@@ -3,8 +3,26 @@ import React, { useEffect, useState } from "react";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
-import { Button, Comment, Form, Header } from "semantic-ui-react";
+import {
+  Button,
+  Comment,
+  Form,
+  Header,
+  Input,
+  TextArea,
+} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+
+//  Importing the buttons to be used for react share
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "react-share";
+
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
 import EventCommentForm from "../eventComments/EventCommentForm";
@@ -12,7 +30,22 @@ import EventCommentForm from "../eventComments/EventCommentForm";
 export default function EventsCard({ event, onDeleteClick }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
-  const [isRefreshing, setRefreshing] = useState(event.body);
+
+  //Hooks for Event fields
+  const [isNewTrailName, setNewTrailName] = useState(event.trailName);
+  const [isNewEventDuration, setNewEventDuration] = useState(
+    event.eventDuration
+  );
+  const [isNewEventDistance, setNewEventDistance] = useState(
+    event.eventDistance
+  );
+  const [isNewEventDifficulty, setNewEventDifficulty] = useState(
+    event.eventDifficulty
+  );
+  const [isNewMaxNum, setNewMaxNum] = useState(event.maxNum);
+  const [isNewMeetPoint, setNewMeetPoint] = useState(event.meetPoint);
+  const [isNewHyperlink, setNewHyperlink] = useState(event.trailHyperlink);
+  const [isRefreshingBody, setRefreshingBody] = useState(event.body);
 
   async function createEventComment(eventCommentData) {
     try {
@@ -44,7 +77,17 @@ export default function EventsCard({ event, onDeleteClick }) {
     try {
       await EventsApi.updateEvent(event.id, eventToUpdate);
       EventsApi.getEventById(event.id)
-        .then(({ data }) => setRefreshing(data.body))
+
+        .then(({ data }) => {
+          setNewTrailName(data.trailName);
+          setNewEventDuration(data.eventDuration);
+          setNewEventDistance(data.eventDistance);
+          setNewEventDifficulty(data.eventDifficulty);
+          setNewMaxNum(data.maxNum);
+          setNewMeetPoint(data.meetPoint);
+          setNewHyperlink(data.trailHyperlink);
+          setRefreshingBody(data.body);
+        })
         .catch((err) => console.error(err));
     } catch (e) {
       console.error(e);
@@ -75,15 +118,53 @@ export default function EventsCard({ event, onDeleteClick }) {
           <Comment.Metadata>
             <div>{moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>
           </Comment.Metadata>
-          <Comment.Text>{isRefreshing}</Comment.Text>
+
+          <Comment.Text>{isNewTrailName}</Comment.Text>
+          <Comment.Text>{isNewEventDuration}</Comment.Text>
+          <Comment.Text>{isNewEventDistance}</Comment.Text>
+          <Comment.Text>{isNewEventDifficulty}</Comment.Text>
+          <Comment.Text>{isNewMaxNum}</Comment.Text>
+          <Comment.Text>{isNewMeetPoint}</Comment.Text>
+          <Comment.Text>{isNewHyperlink}</Comment.Text>
+          <Comment.Text>{isRefreshingBody}</Comment.Text>
+
           <Comment.Actions>
             <Comment.Action active onClick={() => setIsUpdating(true)}>
               Edit event
             </Comment.Action>
-            <Comment.Action onClick={onDeleteClick} active>
-              {" "}
-              Delete event
-            </Comment.Action>
+            {event.user == event.user && (
+              <Comment.Action onClick={onDeleteClick} active>
+                {" "}
+                Delete event
+              </Comment.Action>
+            )}
+            {/* Buttons for share to social media  */}
+
+            <FacebookShareButton
+              url={window.location.href} //share the actual link of the post
+              title={event.user} //the user who wrote the post
+              description={isNewTrailName} //the comment written in the post is shared
+              quote="link"
+            >
+              <FacebookIcon className="mx-3" size={36} round />
+            </FacebookShareButton>
+            <TwitterShareButton
+              url={window.location.href}
+              title={isNewTrailName} //the comment written in the post is shared
+              quote="link"
+              hashtag="hiking"
+            >
+              <TwitterIcon className="mx-3" size={36} round />
+            </TwitterShareButton>
+            <WhatsappShareButton
+              url={window.location.href}
+              separator=""
+              title={isNewTrailName} //the comment written in the post is shared
+              quote="link"
+            >
+              <WhatsappIcon size={40} round={true} />
+            </WhatsappShareButton>
+            {/* Buttons for share to social media finish here  */}
           </Comment.Actions>
 
           <div className="comments-container">

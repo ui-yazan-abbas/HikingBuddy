@@ -19,23 +19,17 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-<<<<<<< HEAD
-/* import moment from "moment";
-import { Button, Comment, Form, Header } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css"; */
-
-export default function PostCard({ post, onDeleteClick }) {
-=======
 export default function PostCard({
   post,
   onDeleteClick,
   onUpdateClick,
   userData,
 }) {
->>>>>>> main
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
-  const [postTitle, setPostTitle] = useState(post.body);
+  const [postTitle, setPostTitle] = useState(post.postLocation);
+  const [postKm, setPostKm] = useState(post.postDistance);
+  const [postBody, setPostBody] = useState(post.body);
 
   async function createComment(commentData) {
     try {
@@ -64,7 +58,11 @@ export default function PostCard({
     try {
       await PostsApi.updatePost(post.id, postToUpdate);
       PostsApi.getPostById(post.id)
-        .then(({ data }) => setPostTitle(data.body))
+        .then(({ data }) => {
+          setPostTitle(data.postLocation);
+          setPostKm(data.postDistance);
+          setPostBody(data.body);
+        })
         .catch((err) => console.error(err));
     } catch (e) {
       console.error(e);
@@ -105,6 +103,10 @@ export default function PostCard({
               </Comment.Metadata>
               <Comment.Text>{postTitle}</Comment.Text>
 
+              <Comment.Text>{postKm}</Comment.Text>
+
+              <Comment.Text>{postBody}</Comment.Text>
+
               <Comment.Actions>
                 {/* <Comment.Action Like> </Comment.Action> */}
                 <Comment.Action active>
@@ -117,7 +119,6 @@ export default function PostCard({
                 <Comment.Action active onClick={() => setIsUpdating(true)}>
                   Edit Post
                 </Comment.Action>
-<<<<<<< HEAD
                 <Comment.Action onClick={onDeleteClick} active>
                   {" "}
                   Delete post
@@ -150,14 +151,39 @@ export default function PostCard({
                   <WhatsappIcon size={40} round={true} />
                 </WhatsappShareButton>
                 {/* Buttons for share to social media finish here  */}
-=======
                 {post.user == post.user && (
                   <Comment.Action onClick={onDeleteClick} active>
                     {" "}
                     Delete post
                   </Comment.Action>
                 )}
->>>>>>> main
+                {/* Buttons for share to social media  */}
+
+                <FacebookShareButton
+                  url={window.location.href} //share the actual link of the post
+                  title={post.user} //the user who wrote the post
+                  description={postTitle} //the comment written in the post is shared
+                  quote="link"
+                >
+                  <FacebookIcon className="mx-3" size={36} round />
+                </FacebookShareButton>
+                <TwitterShareButton
+                  url={window.location.href}
+                  title={postTitle} //the comment written in the post is shared
+                  quote="link"
+                  hashtag="hiking"
+                >
+                  <TwitterIcon className="mx-3" size={36} round />
+                </TwitterShareButton>
+                <WhatsappShareButton
+                  url={window.location.href}
+                  separator=""
+                  title={postTitle} //the comment written in the post is shared
+                  quote="link"
+                >
+                  <WhatsappIcon size={40} round={true} />
+                </WhatsappShareButton>
+                {/* Buttons for share to social media finish here  */}
               </Comment.Actions>
             </div>
 
@@ -174,9 +200,11 @@ export default function PostCard({
 
             {isUpdating && (
               <UpdateCard
-                onUpdateClick={(postData) => updatePost(postData)}
+                onUpdateClick={(postData) => {
+                  updatePost(postData);
+                  setIsUpdating(false)
+                }}
                 post={post}
-                onSubmite={() => setIsUpdating(false)}
               />
             )}
 
