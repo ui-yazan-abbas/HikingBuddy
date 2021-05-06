@@ -14,7 +14,7 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
       body: body,
       postDistance: postDistance,
     });
-    onSubmite();
+
   };
   return (
     <div className="card mt-3">

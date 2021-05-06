@@ -68,8 +68,8 @@ export default function EventsForm({ onSubmit }) {
           </Form.Group>
 
           <Form.Group widths="equal">
-          <Form.Field
-             control={Input}
+            <Form.Field
+              control={Input}
               label="Duration in days"
               placeholder="3"
               width={4}

@@ -11,7 +11,6 @@ export default function PostsPage({ userData }) {
   // Local state
   const [posts, setPosts] = useState([]);
 
-  console.log("post", userData);
   // Methods
   async function createPost(postData) {
     try {

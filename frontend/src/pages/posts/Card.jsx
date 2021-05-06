@@ -57,9 +57,11 @@ export default function PostCard({
     try {
       await PostsApi.updatePost(post.id, postToUpdate);
       PostsApi.getPostById(post.id)
-        .then(({ data }) => setPostTitle(data.postLocation))
-        .then(({ data }) => setPostKm(data.postDistance))
-        .then(({ data }) => setPostBody(data.body))
+        .then(({ data }) => {
+          setPostTitle(data.postLocation);
+          setPostKm(data.postDistance);
+          setPostBody(data.body);
+        })
         .catch((err) => console.error(err));
     } catch (e) {
       console.error(e);
@@ -121,16 +123,16 @@ export default function PostCard({
                 {/* Buttons for share to social media  */}
 
                 <FacebookShareButton
-                  url={window.location.href}//share the actual link of the post
-                  title={post.user} //the user who wrote the post 
-                  description={postTitle}//the comment written in the post is shared
+                  url={window.location.href} //share the actual link of the post
+                  title={post.user} //the user who wrote the post
+                  description={postTitle} //the comment written in the post is shared
                   quote="link"
                 >
                   <FacebookIcon className="mx-3" size={36} round />
                 </FacebookShareButton>
                 <TwitterShareButton
                   url={window.location.href}
-                  title={postTitle}//the comment written in the post is shared
+                  title={postTitle} //the comment written in the post is shared
                   quote="link"
                   hashtag="hiking"
                 >
@@ -138,15 +140,14 @@ export default function PostCard({
                 </TwitterShareButton>
                 <WhatsappShareButton
                   url={window.location.href}
-                  separator = ""
-                  title={postTitle}//the comment written in the post is shared
+                  separator=""
+                  title={postTitle} //the comment written in the post is shared
                   quote="link"
                 >
                   <WhatsappIcon size={40} round={true} />
                 </WhatsappShareButton>
                 {/* Buttons for share to social media finish here  */}
-              
-              </Comment.Actions> 
+              </Comment.Actions>
             </div>
 
             <div className="comments-container">
@@ -162,9 +163,11 @@ export default function PostCard({
 
             {isUpdating && (
               <UpdateCard
-                onUpdateClick={(postData) => updatePost(postData)}
+                onUpdateClick={(postData) => {
+                  updatePost(postData);
+                  setIsUpdating(false)
+                }}
                 post={post}
-                onSubmite={() => setIsUpdating(false)}
               />
             )}
 
