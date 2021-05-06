@@ -1,9 +1,9 @@
-.form2 {
+ .form2 {
   display: flex;
   border-top: 2px solid #D3D3D3;
 }
 
-.input {
+/* .input {
   border: none;
   border-radius: 0;
   padding: 5%;
@@ -13,7 +13,8 @@
 
 input:focus, textarea:focus, select:focus{
   outline: none;
-}
+} */
+
 
 .sendButton {
   color: #fff !important;
