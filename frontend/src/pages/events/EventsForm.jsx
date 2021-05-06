@@ -81,6 +81,7 @@ export default function EventsForm({ onSubmit }) {
               onChange={(e) => setEventDuration(e.target.value)}
             />
 
+            {/* For distance */}
             <Form.Field
               required
               control={Input}
@@ -91,10 +92,12 @@ export default function EventsForm({ onSubmit }) {
               onChange={(e) => setEventDistance(e.target.value)}
             />
 
+            {/* For calendar */}
             <Form.Field
               required
               control={Input}
-              label="Max participants"
+              type="date"
+              label="Date"
               placeholder="7"
               width={4}
               value={maxNum}
@@ -116,6 +119,8 @@ export default function EventsForm({ onSubmit }) {
               control={Input}
               label="Website link to location or trail"
               placeholder="https://www.hogakusten.com/en"
+              type="url"
+              name="url"
               value={trailHyperlink}
               onChange={(e) => setTrailHyperlink(e.target.value)}
             />
