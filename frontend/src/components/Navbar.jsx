@@ -76,12 +76,6 @@ export default function Navbar({ onLogout, userData }) {
   // Consts
   const history = useHistory();
 
-  // Get the correct url
-  function onSearch(event) {
-    event.preventDefault();
-
-    history.push(`/parcels/${query}`);
-  }
   //Styles
   const classes = useStyles();
 

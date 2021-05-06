@@ -99,7 +99,7 @@ export default function EventsForm({ onSubmit }) {
           <Form.Group widths="equal">
             <Form.Field
               control={Input}
-              label="Meeting point"
+              label="Meeting point and time"
               placeholder="Central station, Stockholm"
               value={meetPoint}
               onChange={(e) => setMeetPoint(e.target.value)}
