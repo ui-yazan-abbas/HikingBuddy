@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import imgPlaceholder from "../../assets/placeholder.jpeg";
 import ImgUpload from "./ImgUpload";
 import UserApi from "../../api/UserApi";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Card, Container, Icon, Image } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
 import PostsPage from "../posts/PostsPage";
+import moment from "moment";
 
 export default function UserProfile({ userData, match, setUserData }) {
   const [user, setUser] = useState({});
@@ -21,13 +22,13 @@ export default function UserProfile({ userData, match, setUserData }) {
 
   const updateUser = async () => {
     try {
-      await UserApi.updateUser(user).then(res => setUser(res.data));
+      await UserApi.updateUser(user).then((res) => setUser(res.data));
     } catch (err) {
       console.error(err);
     }
     // getUserData().then((responce) => setUserForm(responce));
   };
-  
+
   const followUser = () => {
     setUser({
       ...user,
@@ -39,20 +40,31 @@ export default function UserProfile({ userData, match, setUserData }) {
   console.log("userData", userData);
 
   return (
-    <div className="profile">
+    <Card centered margin>
       {!toggler && (
         <>
-          <img className="profile" src={user.imageUrl} alt="" /> <br />
-          <h1>{user.name}</h1>
-          <h3>{user.bio}</h3>
-          {userData.name === user.name && (
-            <Button inverted
-            color="blue" onClick={() => setToggler(true)}>Edit Profile</Button>
-          )}
-          {userData.name !== user.name && (
-            <button inverted
-            color="green" onClick={followUser}>Follow</button>
-          )}
+          <Image src={user.imageUrl} alt="" />
+          <Card.Content>
+            <Card.Header> {user.name}</Card.Header>
+            <Card.Meta>
+              <span className="date">
+                Joined in {moment(user.createAt).format("YYYY")}
+              </span>
+            </Card.Meta>
+            <Card.Description>{user.bio} </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            {userData.name === user.name && (
+              <Button inverted color="blue" onClick={() => setToggler(true)}>
+                Edit Profile
+              </Button>
+            )}
+            {userData.name !== user.name && (
+              <Button inverted color="green" onClick={followUser}>
+                Follow
+              </Button>
+            )}
+          </Card.Content>
         </>
       )}
       {toggler && (
@@ -62,7 +74,7 @@ export default function UserProfile({ userData, match, setUserData }) {
           setUser={setUser}
         />
       )}
-    </div>
+    </Card>
   );
 }
 

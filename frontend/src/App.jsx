@@ -61,8 +61,8 @@ export default function App() {
 
       <div className="container mt-5">
         <Switch>
-          <Route path="/posts">
-            <PostsPage />
+        <Route exact path="/posts">
+            <PostsPage userData={userData} />
           </Route>
           <Route path="/events">
             <EventsPage />
