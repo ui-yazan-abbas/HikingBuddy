@@ -65,7 +65,6 @@ export default function PostCard({
   useEffect(() => {
     CommentsApi.getComments(post.id)
       .then(({ data }) => setComments(data))
-      .catch((err) => console.error(err));
   }, [setComments]);
 
   // Components

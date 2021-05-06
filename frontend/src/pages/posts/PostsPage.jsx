@@ -11,14 +11,13 @@ export default function PostsPage({ userData }) {
   // Local state
   const [posts, setPosts] = useState([]);
 
-  console.log("post", userData);
+  console.log("post", userData?.name);
   // Methods
   async function createPost(postData) {
     try {
       const response = await PostsApi.createPost(postData);
       const post = response.data;
       const newPosts = posts.concat(post);
-
       setPosts(newPosts);
     } catch (e) {
       console.error(e);
