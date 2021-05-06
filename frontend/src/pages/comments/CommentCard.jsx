@@ -13,7 +13,7 @@ export default function CommentCard({ comment, onDeleteClick, user }) {
     <div className="ccontainerr">
       <Comment.Group>
         <Comment>
-          <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg" />
+          <Comment.Avatar src={user.imageUrl} />
           <Comment.Content>
             <Link to={`/${comment.user}/profile`}>
               <Comment.Author>{comment.user}</Comment.Author>

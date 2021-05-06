@@ -18,12 +18,7 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-export default function PostCard({
-  post,
-  onDeleteClick,
-  onUpdateClick,
-  user,
-}) {
+export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
   const [postTitle, setPostTitle] = useState(post.postLocation);
@@ -69,8 +64,7 @@ export default function PostCard({
   }
 
   useEffect(() => {
-    CommentsApi.getComments(post.id)
-      .then(({ data }) => setComments(data))
+    CommentsApi.getComments(post.id).then(({ data }) => setComments(data));
   }, [setComments]);
 
   // Components
@@ -83,10 +77,7 @@ export default function PostCard({
     <div className="postcard">
       <Comment.Group>
         <Comment>
-          <Comment.Avatar
-            as="a"
-            src="https://react.semantic-ui.com/images/avatar/small/steve.jpg"
-          />
+          <Comment.Avatar as="a" src={user.imageUrl} />
           <Comment.Content>
             <p></p>
 
@@ -111,14 +102,14 @@ export default function PostCard({
 
                 {post.user == user.name && (
                   <>
-                  <Comment.Action onClick={onDeleteClick} active>
-                    {" "}
-                    Delete post
-                  </Comment.Action>
-                <Comment.Action active onClick={() => setIsUpdating(true)}>
-                  Edit Post
-                </Comment.Action>
-                </>
+                    <Comment.Action onClick={onDeleteClick} active>
+                      {" "}
+                      Delete post
+                    </Comment.Action>
+                    <Comment.Action active onClick={() => setIsUpdating(true)}>
+                      Edit Post
+                    </Comment.Action>
+                  </>
                 )}
 
                 {/* Buttons for share to social media  */}
@@ -155,7 +146,7 @@ export default function PostCard({
               {comments &&
                 filteredCommentList.map((comment) => (
                   <CommentCard
-                  user={user}
+                    user={user}
                     key={post.id}
                     comment={comment}
                     onDeleteClick={() => deleteComment(comment)}
@@ -167,7 +158,7 @@ export default function PostCard({
               <UpdateCard
                 onUpdateClick={(postData) => {
                   updatePost(postData);
-                  setIsUpdating(false)
+                  setIsUpdating(false);
                 }}
                 post={post}
               />
