@@ -12,6 +12,17 @@ import {
   TextArea,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+
+//  Importing the buttons to be used for react share
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "react-share";
+
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
 import EventCommentForm from "../eventComments/EventCommentForm";
@@ -131,15 +142,15 @@ export default function EventsCard({ event, onDeleteClick }) {
 
             <FacebookShareButton
               url={window.location.href} //share the actual link of the post
-              title={post.user} //the user who wrote the post
-              description={postTitle} //the comment written in the post is shared
+              title={event.user} //the user who wrote the post
+              description={isNewTrailName} //the comment written in the post is shared
               quote="link"
             >
               <FacebookIcon className="mx-3" size={36} round />
             </FacebookShareButton>
             <TwitterShareButton
               url={window.location.href}
-              title={postTitle} //the comment written in the post is shared
+              title={isNewTrailName} //the comment written in the post is shared
               quote="link"
               hashtag="hiking"
             >
@@ -148,7 +159,7 @@ export default function EventsCard({ event, onDeleteClick }) {
             <WhatsappShareButton
               url={window.location.href}
               separator=""
-              title={postTitle} //the comment written in the post is shared
+              title={isNewTrailName} //the comment written in the post is shared
               quote="link"
             >
               <WhatsappIcon size={40} round={true} />
