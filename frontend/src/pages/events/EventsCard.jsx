@@ -10,6 +10,10 @@ import {
   Header,
   Input,
   TextArea,
+  Card,
+  Icon,
+  Responsive,
+  Segment,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
@@ -106,27 +110,41 @@ export default function EventsCard({ event, onDeleteClick }) {
     (item) => item.commentedEvent == event.id
   );
 
-  return (
-    <Comment.Group>
-      <Comment>
-        <Comment.Avatar
-          as="a"
-          src="https://react.semantic-ui.com/images/avatar/small/steve.jpg"
-        />
-        <Comment.Content>
-          <Comment.Author as="a"> {event.user}</Comment.Author>
-          <Comment.Metadata>
-            <div>{moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}</div>
-          </Comment.Metadata>
+  const extra = (
+    <a>
+      <Icon name="calendar" />
+      {isNewMaxNum}
+    </a>
+  );
 
-          <Comment.Text>{isNewTrailName}</Comment.Text>
-          <Comment.Text>{isNewEventDuration}</Comment.Text>
-          <Comment.Text>{isNewEventDistance}</Comment.Text>
-          <Comment.Text>{isNewEventDifficulty}</Comment.Text>
-          <Comment.Text>{isNewMaxNum}</Comment.Text>
-          <Comment.Text>{isNewMeetPoint}</Comment.Text>
-          <Comment.Text>{isNewHyperlink}</Comment.Text>
-          <Comment.Text>{isRefreshingBody}</Comment.Text>
+  return (
+    <div className="postcard">
+      <Comment.Group>
+        <Comment>
+          <Comment.Avatar
+            as="a"
+            src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg"
+          />
+
+          <Comment.Content>
+            <Comment.Author> Created by {event.user}</Comment.Author>
+            <Comment.Metadata>
+              <div>
+                {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
+              </div>
+            </Comment.Metadata>
+          </Comment.Content>
+
+          <br></br>
+
+          <Card
+            color="olive"
+            image=<img src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"></img>
+            header={isNewTrailName}
+            meta={isNewEventDistance}
+            description={isNewHyperlink}
+            extra={extra}
+          />
 
           <Comment.Actions>
             <Comment.Action active onClick={() => setIsUpdating(true)}>
@@ -139,6 +157,9 @@ export default function EventsCard({ event, onDeleteClick }) {
               </Comment.Action>
             )}
             {/* Buttons for share to social media  */}
+
+            <br></br>
+            <br></br>
 
             <FacebookShareButton
               url={window.location.href} //share the actual link of the post
@@ -189,8 +210,8 @@ export default function EventsCard({ event, onDeleteClick }) {
           <div className="comments-form">
             <EventCommentForm id={event.id} onSubmit={createEventComment} />
           </div>
-        </Comment.Content>
-      </Comment>
-    </Comment.Group>
+        </Comment>
+      </Comment.Group>
+    </div>
   );
 }

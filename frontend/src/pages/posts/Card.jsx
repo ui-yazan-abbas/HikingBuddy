@@ -103,7 +103,7 @@ export default function PostCard({
               </Comment.Metadata>
               <Comment.Text>{postTitle}</Comment.Text>
 
-              <Comment.Text>{postKm}</Comment.Text>
+              <Comment.Text>{postKm} km </Comment.Text>
 
               <Comment.Text>{postBody}</Comment.Text>
 
