@@ -83,7 +83,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
 
             <Form.Field
               control={Input}
-              label="Max participants"
+              label="Date"
               placeholder="7"
               width={4}
               value={maxNum}

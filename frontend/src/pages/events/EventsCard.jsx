@@ -142,7 +142,7 @@ export default function EventsCard({ event, onDeleteClick }) {
             image=<img src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"></img>
             header={isNewTrailName}
             meta={isNewEventDistance}
-            description={isNewHyperlink}
+            description={isNewEventDifficulty}
             extra={extra}
           />
 
@@ -156,11 +156,10 @@ export default function EventsCard({ event, onDeleteClick }) {
                 Delete event
               </Comment.Action>
             )}
+            {eventComments.length} comment(s)
             {/* Buttons for share to social media  */}
-
             <br></br>
             <br></br>
-
             <FacebookShareButton
               url={window.location.href} //share the actual link of the post
               title={event.user} //the user who wrote the post
