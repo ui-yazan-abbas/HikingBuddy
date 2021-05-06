@@ -11,9 +11,9 @@ class UserApi {
     getUserByName(name) {
         return Api.get(`/user/${name}`);
     }
-    deleteUser(name) {
-        return Api.delete(`/user/${name}`);
-    }
+    // deleteUser(name) {
+    //     return Api.delete(`  `);
+    // }
 
 }
 
