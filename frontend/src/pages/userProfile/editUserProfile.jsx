@@ -96,7 +96,8 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
             id="TITLE"
           ></textarea>
         </div>
-        <Button type="submit">Save Changes</Button>
+        <Button inverted
+            color="blue" type="submit">Save Changes</Button>
         
   
       </Form>

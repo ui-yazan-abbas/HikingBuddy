@@ -46,10 +46,12 @@ export default function UserProfile({ userData, match, setUserData }) {
           <h1>{user.name}</h1>
           <h3>{user.bio}</h3>
           {userData.name === user.name && (
-            <Button onClick={() => setToggler(true)}>Edit Profile</Button>
+            <Button inverted
+            color="blue" onClick={() => setToggler(true)}>Edit Profile</Button>
           )}
           {userData.name !== user.name && (
-            <button onClick={followUser}>Follow</button>
+            <button inverted
+            color="green" onClick={followUser}>Follow</button>
           )}
         </>
       )}
