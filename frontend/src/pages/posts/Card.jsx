@@ -22,7 +22,7 @@ export default function PostCard({
   post,
   onDeleteClick,
   onUpdateClick,
-  userData,
+  user,
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
@@ -99,14 +99,16 @@ export default function PostCard({
               <Comment.Actions>
                 <Comment.Action active>Reply</Comment.Action>
 
-                <Comment.Action active onClick={() => setIsUpdating(true)}>
-                  Edit Post
-                </Comment.Action>
-                {post.user == post.user && (
+                {post.user == user.name && (
+                  <>
                   <Comment.Action onClick={onDeleteClick} active>
                     {" "}
                     Delete post
                   </Comment.Action>
+                <Comment.Action active onClick={() => setIsUpdating(true)}>
+                  Edit Post
+                </Comment.Action>
+                </>
                 )}
               </Comment.Actions>
             </div>
@@ -115,6 +117,7 @@ export default function PostCard({
               {comments &&
                 filteredCommentList.map((comment) => (
                   <CommentCard
+                  user={user}
                     key={post.id}
                     comment={comment}
                     onDeleteClick={() => deleteComment(comment)}

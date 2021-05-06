@@ -21,91 +21,70 @@ import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 import UserApi from "./api/UserApi";
 
-async function register(registrationData) {
-  const registerSuccess = await Auth.register(registrationData);
-  if (!registerSuccess) {
-    alert("Couldn't register check credentials and try again");
-  }
-}
-
-async function login(loginData) {
-  const loginSuccess = await Auth.login(loginData);
-  if (!loginSuccess) {
-    alert("Invalid credentials");
-  }
-}
-
 export default function App() {
   // State
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
-  const [userData, setUserData] = useState({});
+  const [currentUser, setcurrentUser] = useState({});
   // Constants
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
-  //get userData on sign in
-  const getUserData = async () => {
+  //get currentUser on sign in
+  const getcurrentUser = async () => {
     await UserApi.getUser()
-      .then((res) => setUserData(res.data))
+      .then((res) => setcurrentUser(res.data))
       .catch((err) => console.error(err));
   };
   // Components
   useEffect(() => {
     const abortFetch = new AbortController();
-    getUserData();
+    getcurrentUser();
     return () => abortFetch.abort();
   }, [loggedIn]);
-  console.log("userData", userData);
+  console.log("currentUser", currentUser);
 
-  const loggedInRouter = (
-    <BrowserRouter>
-      <Navbar onLogout={() => Auth.logout()}  userData={userData}/>
+  return (
+    <div className="container">
+      <BrowserRouter>
+        {loggedIn && (
+          <Navbar onLogout={() => Auth.logout()} currentUser={currentUser} />
+        )}
 
-      <div className="container mt-5">
         <Switch>
-          <Route path="/posts">
-            <PostsPage />
+          {!loggedIn && (
+            <>
+              <Route path="/signup">
+                <SignUp />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+            </>
+          )}
+          <Route exact path="/posts">
+            <PostsPage user={currentUser} />
           </Route>
-          <Route path="/events">
+          <Route exact path="/events">
             <EventsPage />
           </Route>
-          <Route path="/chat">
+          <Route exact path="/chat">
             <ChatPage />
           </Route>
-          <Route exact path="/posts">
-            <PostsPage  userData={userData}/>
-          </Route>
-          <Route exact path="/chat">
+          <Route path="/chat">
             <Route path="/chat" exact component={Join} />
             <Route path="/Chat/chat" component={Chat} />
           </Route>
-
-          {/* <Route exact path="/:name/profile">
-            <UserProfile userData={userData} match={} />
-          </Route> */}
-          <Route exact path="/:name/profile" 
-          component={(props) => (<UserProfile match={props.match} userData={userData} setUserData={setUserData} />)}/>
+          <Route
+            exact
+            path="/:name/profile"
+            component={(props) => (
+              <UserProfile match={props.match} currentUser={currentUser} />
+            )}
+          />
         </Switch>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </div>
   );
-
-  const notLoggedInRouter = (
-    <BrowserRouter>
-      <div className="container mt-5">
-        <Switch>
-          <Route path="/signup">
-            <SignUp onSubmite={register} />
-          </Route>
-          <Route path="/login">
-            <Login onSubmit={login} />
-          </Route>
-          <Route path="/">
-            <HomePage />
-          </Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
-
-  return loggedIn ? loggedInRouter : notLoggedInRouter;
 }

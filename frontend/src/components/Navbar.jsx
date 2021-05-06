@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar({ onLogout, userData }) {
+export default function Navbar({ onLogout, currentUser }) {
   // State
   const [query, setQuery] = useState("");
 
@@ -81,6 +81,12 @@ export default function Navbar({ onLogout, userData }) {
     event.preventDefault();
 
     history.push(`/parcels/${query}`);
+  }
+
+  const handleLogout = ()=> {
+    onLogout()
+    history.push("/")
+    
   }
   //Styles
   const classes = useStyles();
@@ -107,7 +113,7 @@ export default function Navbar({ onLogout, userData }) {
           {/* <MenuIcon /> */}
         </IconButton>
         <li className="nav-item">
-          <Link to={`/${userData.name}/profile`} className="nav-link">
+          <Link to={`/${currentUser.name}/profile`} className="nav-link">
             My Profile
           </Link>
         </li>
@@ -126,7 +132,7 @@ export default function Navbar({ onLogout, userData }) {
             Chat
           </Link>
         </li>
-        <Button basic color="blue" id="navbarColor01" onClick={onLogout}>
+        <Button basic color="blue" id="navbarColor01" onClick={handleLogout}>
           Logout
         </Button>
 

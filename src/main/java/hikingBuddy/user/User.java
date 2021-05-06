@@ -9,6 +9,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -58,7 +60,7 @@ public class User {
     // private List<User> followersList;
 
     @OneToMany
-    private List<User> followersList;
+    private Collection<User> followersList;
 
     // Hibernate needs a default constructor to function
     public User() {
@@ -156,11 +158,11 @@ public class User {
         this.eventComments = eventComments;
     }
 
-    public List<User> getFollowersList() {
+    public Collection<User> getFollowersList() {
         return followersList;
     }
 
-    public void setFollowersList(List<User> followersList) {
+    public void setFollowersList(Collection<User> followersList) {
         this.followersList = followersList;
     }
 
@@ -183,4 +185,5 @@ public class User {
     public void addFollower(User follower) {
         this.followersList.add(follower);
     }
+    
 }

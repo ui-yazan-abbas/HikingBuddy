@@ -1,5 +1,7 @@
 // NPM Packages
 import React, { useState } from "react";
+import {useHistory} from 'react-router-dom'
+import Auth from "../../services/Auth";
 //Styling
 import {
   Button,
@@ -11,11 +13,20 @@ import {
   Segment,
 } from "semantic-ui-react";
 
-export default function SignUp({ onSubmite }) {
+export default function SignUp({ onSubmit }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let history = useHistory()
 
+
+  const register = async (registrationData) => {
+    const registerSuccess = await Auth.register(registrationData);
+    if (!registerSuccess) {
+      alert("Couldn't register check credentials and try again");
+    }
+    history.push("/posts")
+  }
   return (
     <div className="signup">
       <Grid
@@ -62,7 +73,7 @@ export default function SignUp({ onSubmite }) {
                 as="a"
                 inverted
                 color="green"
-                onClick={(e) => onSubmite({ name, email, password })}
+                onClick={(e) => register({ name, email, password })}
               >
                 Join us now!
               </Button>

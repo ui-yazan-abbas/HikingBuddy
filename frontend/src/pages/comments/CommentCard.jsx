@@ -7,7 +7,8 @@ import { Comment, Icon } from "semantic-ui-react";
 import moment from "moment";
 import "semantic-ui-css/semantic.min.css";
 
-export default function CommentCard({ comment, onDeleteClick }) {
+export default function CommentCard({ comment, onDeleteClick, user }) {
+  console.log(comment);
   return (
     <div className="ccontainerr">
       <Comment.Group>
@@ -24,9 +25,11 @@ export default function CommentCard({ comment, onDeleteClick }) {
             </Comment.Metadata>
             <Comment.Text>{comment.body}</Comment.Text>
             <Comment.Actions>
-              <Comment.Action onClick={onDeleteClick}>
-                Delete Comment
-              </Comment.Action>
+              {comment.user === user.name && (
+                <Comment.Action onClick={onDeleteClick}>
+                  Delete Comment
+                </Comment.Action>
+              )}
             </Comment.Actions>
           </Comment.Content>
         </Comment>

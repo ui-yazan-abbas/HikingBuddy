@@ -6,7 +6,7 @@ import { Button, Form } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
 import PostsPage from "../posts/PostsPage";
 
-export default function UserProfile({ userData, match, setUserData }) {
+export default function UserProfile({ currentUser, match }) {
   const [user, setUser] = useState({});
   const [toggler, setToggler] = useState(false);
   const info = match.params.name.replace(/\s/g, "%20");
@@ -19,16 +19,20 @@ export default function UserProfile({ userData, match, setUserData }) {
     }
   }, [info]);
 
-  
-  const followUser = () => {
-    setUser({ ...user, 
-      followersList: [userData],
-    });
-  
+  const updateUser = async () => {
+    try {
+      let name = user.name.replace(/\s/g, "%20");
+      await UserApi.addFollower(name, currentUser);
+    } catch (err) {
+      console.error(err);
+    }
   };
-  
-  console.log("user", user);
-  console.log("userData", userData);
+
+  const followUser = () => {
+    setUser({ ...user, followersList: [...user.followersList, currentUser] });
+    updateUser();
+  };
+
 
   return (
     <div className="profile">
@@ -37,26 +41,33 @@ export default function UserProfile({ userData, match, setUserData }) {
           <img className="img" src={user.imageUrl} alt="" /> <br />
           <h1>{user.name}</h1>
           <h3>{user.bio}</h3>
-          {userData.name === user.name && (
+          {currentUser.name === user.name && (
             <button onClick={() => setToggler(true)}>Edit Profile</button>
           )}
-          {userData.name !== user.name && (
-            <button onClick={followUser}>Follow</button>
-          )}
+          {currentUser.name !== user.name &&
+            user.followersList?.includes(currentUser) && (
+              <button onClick={followUser}>Follow</button>
+            )}
         </>
       )}
       {toggler && (
         <EditUserProfile
-          userData={userData}
+          currentUser={currentUser}
           setToggler={setToggler}
           setUser={setUser}
         />
       )}
+
+      <h3>{user.followersList?.length}</h3>
+
+      {user.followersList?.map((i) => (
+        <li id={i.id}>{i.name}</li>
+      ))}
     </div>
   );
 }
 
-// getUserData().then((responce) => setUserForm(responce));
+// getcurrentUser().then((responce) => setUserForm(responce));
 
 /* const getUserByName = () => {
      UserApi.getUserByName(info)

@@ -7,12 +7,18 @@ import Form from "./Form";
 import Card from "./Card";
 import UpdateCard from "./UpdateCard";
 
-export default function PostsPage({ userData }) {
+import UserApi from "../../api/UserApi"
+
+export default function PostsPage({ user }) {
   // Local state
   const [posts, setPosts] = useState([]);
 
-  console.log("post", userData?.name);
+
   // Methods
+ 
+  // Components
+  
+
   async function createPost(postData) {
     try {
       const response = await PostsApi.createPost(postData);
@@ -47,7 +53,7 @@ export default function PostsPage({ userData }) {
       key={post.id}
       post={post}
       onDeleteClick={() => deletePost(post)}
-      userData={userData}
+      user={user}
     />
   ));
 
