@@ -3,8 +3,7 @@ import ImgUpload from "./ImgUpload";
 import UserApi from "../../api/UserApi";
 import { Button, Form } from "semantic-ui-react";
 
-export default function EditUserProfile({ userData, setToggler, setUser}) {
- 
+export default function EditUserProfile({ userData, setToggler, setUser }) {
   const [userForm, setUserForm] = useState({
     name: userData.name,
     email: userData.email,
@@ -13,52 +12,60 @@ export default function EditUserProfile({ userData, setToggler, setUser}) {
   });
 
   const change = ({ target: { name, value } }) => {
-    setUserForm({ ...userForm,[name]: value});
-    console.log("here",userForm)
+    setUserForm({ ...userForm, [name]: value });
+    console.log("here", userForm);
   };
 
   const updateUser = async () => {
     try {
-      await UserApi.updateUser(userForm).then((response) =>{
-        setUser(response.data)
+      await UserApi.updateUser(userForm).then((response) => {
+        setUser(response.data);
       });
     } catch (err) {
       console.error(err);
     }
     // getUserData().then((responce) => setUserForm(responce));
   };
+  
+  
+  //  async function deleteUser(name) {
+  //   try {
+  //     await UserApi.deleteuser(post.name);
+  //     const newUser = user.filter((u) => u.name !== user.name);
+
+  //     setUser(newUser);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     updateUser();
-    setToggler(false)
+    setToggler(false);
   };
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        await UserApi.getUser()
+        await UserApi.getUser();
       } catch (err) {
         console.error(err);
       }
     };
     fetchUser();
   }, []);
- 
 
-
-  //save button confirmation alert
-  
 
   return (
-    <div className="profile">
+    <div className="editprofile">
       <Form onSubmit={handleSubmit}>
         <div>
           <img className="img" src={userForm.imageUrl} alt="" /> <br />
-        <ImgUpload className="profile" uploadImg={change} />
-          <label htmlFor="name-input"
-          >Name:</label>
+          <ImgUpload className="profile" uploadImg={change} />
+          <label htmlFor="name-input">Name:</label>
           <input
-  disabled
+            disabled
             type="text"
             id="name-input"
             name="name"
@@ -89,9 +96,9 @@ export default function EditUserProfile({ userData, setToggler, setUser}) {
             id="TITLE"
           ></textarea>
         </div>
-        <Button type="submit" >
-          Save Changes
-        </Button>
+        <Button type="submit">Save Changes</Button>
+        
+  
       </Form>
     </div>
   );
