@@ -3,94 +3,71 @@ import imgPlaceholder from "../../assets/placeholder.jpeg";
 import ImgUpload from "./ImgUpload";
 import UserApi from "../../api/UserApi";
 import { Button, Form } from "semantic-ui-react";
+import EditUserProfile from "./editUserProfile";
+import PostsPage from "../posts/PostsPage";
 
-export default function UserProfile({ userData }) {
-  const [userForm, setUserForm] = useState({
-    name: userData.name,
-    email: userData.email,
-    bio: userData.bio,
-    imageUrl: userData.imageUrl,
-  });
+export default function UserProfile({ userData, match, setUserData }) {
+  const [user, setUser] = useState({});
+  const [toggler, setToggler] = useState(false);
+  const info = match.params.name.replace(/\s/g, "%20");
 
-  const change = ({ target: { name, value } }) => {
-    setUserForm({ ...userForm, [name]: value });
-  };
+  useEffect(() => {
+    try {
+      UserApi.getUserByName(info).then((res) => setUser(res.data));
+    } catch (err) {
+      console.error(err);
+    }
+  }, [info]);
 
   const updateUser = async () => {
     try {
-      await UserApi.updateUser(userForm).then((response) =>
-        setUserForm(response.data)
-      );
+      await UserApi.updateUser(user).then(res => setUser(res.data));
     } catch (err) {
       console.error(err);
     }
     // getUserData().then((responce) => setUserForm(responce));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateUser(userForm);
+  
+  const followUser = () => {
+    setUser({
+      ...user,
+      followersList: [userData],
+    });
+    updateUser();
   };
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        await UserApi.getUser().then((response) => setUserForm(response.data));
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchUser();
-  }, []);
-
-
-  //save button confirmation alert
-  function saveButton() {
-    alert("You have updated your profile!");
-  }
+  console.log("user", user);
+  console.log("userData", userData);
 
   return (
     <div className="profile">
-      <Form onSubmit={handleSubmit}>
-        <div>
-          <img className="img" src={userForm.imageUrl} alt="" /> <br />
-          <ImgUpload className="profile" uploadImg={change} />
-          <label htmlFor="name-input"
-          >Name:</label>
-          <input
-            type="text"
-            id="name-input"
-            name="name"
-            value={userForm.name}
-            onChange={change}
-          />
-        </div>
-        <div>
-          <label htmlFor="email-input">Email:</label>
-          <input
-            type="text"
-            id="email-input"
-            name="email"
-            value={userForm.email}
-            onChange={change}
-          />
-        </div>
-        <div>
-          <label htmlFor="bio-input">Bio:</label>
-          <textarea
-            type="text"
-            id="bio-input"
-            name="bio"
-            value={userForm.bio}
-            onChange={change}
-            rows="6"
-            cols="80"
-            id="TITLE"
-          ></textarea>
-        </div>
-        <Button type="submit" onClick={saveButton}>
-          Save Changes
-        </Button>
-      </Form>
+      {!toggler && (
+        <>
+          <img className="img" src={user.imageUrl} alt="" /> <br />
+          <h1>{user.name}</h1>
+          <h3>{user.bio}</h3>
+          {userData.name === user.name && (
+            <button onClick={() => setToggler(true)}>Edit Profile</button>
+          )}
+          {userData.name !== user.name && (
+            <button onClick={followUser}>Follow</button>
+          )}
+        </>
+      )}
+      {toggler && (
+        <EditUserProfile
+          userData={userData}
+          setToggler={setToggler}
+          setUser={setUser}
+        />
+      )}
     </div>
   );
 }
+
+// getUserData().then((responce) => setUserForm(responce));
+
+/* const getUserByName = () => {
+     UserApi.getUserByName(info)
+      .then((res) => setUser(res.data))
+      .catch((err) => console.error(err));
+  }; */

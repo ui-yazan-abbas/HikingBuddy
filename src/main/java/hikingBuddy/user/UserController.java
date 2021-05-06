@@ -26,6 +26,13 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @GetMapping("/{name}")
+    public ResponseEntity<User> getUserByName(@PathVariable String name) {
+        User user = userService.findUserByName(name);
+        return ResponseEntity.ok(user);
+    }
+
+
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User updateUserData, Principal principal) {
         String userName = principal.getName();
@@ -43,5 +50,15 @@ public class UserController {
         User user = userService.findUserByEmail(userName);
         userRepository.delete(user);
     }
+
+    // @PutMapping("/follow")
+    // public ResponseEntity<User> followUser(@RequestBody User user, Principal principal){
+    //     String userName = principal.getName();
+    //     User wantToFollow = userService.findUserByEmail(userName);
+    //     User toBeFollowed = userService.findUserByEmail(user.getEmail());
+    //     toBeFollowed.addFollower(wantToFollow);
+    //     return ResponseEntity.ok(toBeFollowed);
+
+    // }
 
 }
