@@ -1,18 +1,20 @@
 package hikingBuddy.Likes;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import hikingBuddy.posts.Post;
+import hikingBuddy.user.User;
 
 @Entity
 public class PostLike {
@@ -21,22 +23,25 @@ public class PostLike {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(nullable = false)
-    private String likeBy;
+    @Column(nullable = false)
+    @NotEmpty
+    private String body;
 
     @ManyToOne
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
-    @JoinColumn(nullable = false)
-    @NotNull
-    public Post postlike;
+    private Post likedPost;
 
-    public PostLike(){
+    @ManyToOne
+    @JsonIdentityReference(alwaysAsId=true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
+    public User user;
 
+    public String getBody(){
+        return body;
     }
-
-    public PostLike(String likeBy){
-        this.likeBy=likeBy;
+    public void setBody(String body){
+        this.body=body;
     }
 
     public Long getId(){
@@ -48,22 +53,22 @@ public class PostLike {
         this.id = id;
     }
 
-    public String getLikeBy() {
-        return this.likeBy;
+    public Post getLikedPost() {
+        return this.likedPost;
     }
 
-    public void setLikeBy(String likeBy) {
-        this.likeBy = likeBy;
+    public void setLikedPost(Post likedPost) {
+        this.likedPost = likedPost;
     }
 
-    public void setPostLike(Post postlike) {
-        this.postlike = postlike;
-    }
-
-    public Post getPostLike() {
-        return this.postlike;
+    public User getUser(){
+        return user;
     }
     
+    public void setUser(User userLikes){
+        this.user= userLikes;
 
+    }
+    
 }
  
