@@ -26,7 +26,9 @@ export default function PostCard({
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
-  const [postTitle, setPostTitle] = useState(post.body);
+  const [postTitle, setPostTitle] = useState(post.postLocation);
+  const [postKm, setPostKm] = useState(post.postDistance);
+  const [postBody, setPostBody] = useState(post.body);
 
   async function createComment(commentData) {
     try {
@@ -55,7 +57,11 @@ export default function PostCard({
     try {
       await PostsApi.updatePost(post.id, postToUpdate);
       PostsApi.getPostById(post.id)
-        .then(({ data }) => setPostTitle(data.body))
+        .then(({ data }) => {
+          setPostTitle(data.postLocation);
+          setPostKm(data.postDistance);
+          setPostBody(data.body);
+        })
         .catch((err) => console.error(err));
     } catch (e) {
       console.error(e);
@@ -97,6 +103,10 @@ export default function PostCard({
               </Comment.Metadata>
               <Comment.Text>{postTitle}</Comment.Text>
 
+              <Comment.Text>{postKm}</Comment.Text>
+
+              <Comment.Text>{postBody}</Comment.Text>
+
               <Comment.Actions>
                 <Comment.Action active>Reply</Comment.Action>
 
@@ -109,6 +119,34 @@ export default function PostCard({
                     Delete post
                   </Comment.Action>
                 )}
+
+                {/* Buttons for share to social media  */}
+
+                <FacebookShareButton
+                  url={window.location.href} //share the actual link of the post
+                  title={post.user} //the user who wrote the post
+                  description={postTitle} //the comment written in the post is shared
+                  quote="link"
+                >
+                  <FacebookIcon className="mx-3" size={36} round />
+                </FacebookShareButton>
+                <TwitterShareButton
+                  url={window.location.href}
+                  title={postTitle} //the comment written in the post is shared
+                  quote="link"
+                  hashtag="hiking"
+                >
+                  <TwitterIcon className="mx-3" size={36} round />
+                </TwitterShareButton>
+                <WhatsappShareButton
+                  url={window.location.href}
+                  separator=""
+                  title={postTitle} //the comment written in the post is shared
+                  quote="link"
+                >
+                  <WhatsappIcon size={40} round={true} />
+                </WhatsappShareButton>
+                {/* Buttons for share to social media finish here  */}
               </Comment.Actions>
             </div>
 
@@ -125,9 +163,11 @@ export default function PostCard({
 
             {isUpdating && (
               <UpdateCard
-                onUpdateClick={(postData) => updatePost(postData)}
+                onUpdateClick={(postData) => {
+                  updatePost(postData);
+                  setIsUpdating(false)
+                }}
                 post={post}
-                onSubmite={() => setIsUpdating(false)}
               />
             )}
 
