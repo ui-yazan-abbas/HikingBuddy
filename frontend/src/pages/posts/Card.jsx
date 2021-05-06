@@ -8,6 +8,7 @@ import Like from "../posts/Like";
 import moment from "moment";
 import { Button, Comment, Form, Header, Icon } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import { useHistory, Link } from "react-router-dom";
 //  Importing the buttons to be used for react share
 import {
   FacebookShareButton,
@@ -18,11 +19,20 @@ import {
   WhatsappIcon,
 } from "react-share";
 
+<<<<<<< HEAD
 /* import moment from "moment";
 import { Button, Comment, Form, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css"; */
 
 export default function PostCard({ post, onDeleteClick }) {
+=======
+export default function PostCard({
+  post,
+  onDeleteClick,
+  onUpdateClick,
+  userData,
+}) {
+>>>>>>> main
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
   const [postTitle, setPostTitle] = useState(post.body);
@@ -84,7 +94,10 @@ export default function PostCard({ post, onDeleteClick }) {
             <p></p>
 
             <div className="container">
-              <Comment.Author as="a"> {post.user}</Comment.Author>
+              <Comment.Author as="a">
+                {" "}
+                <Link to={`/${post.user}/profile`}>{post.user}</Link>
+              </Comment.Author>
               <Comment.Metadata>
                 <div>
                   {moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}
@@ -104,6 +117,7 @@ export default function PostCard({ post, onDeleteClick }) {
                 <Comment.Action active onClick={() => setIsUpdating(true)}>
                   Edit Post
                 </Comment.Action>
+<<<<<<< HEAD
                 <Comment.Action onClick={onDeleteClick} active>
                   {" "}
                   Delete post
@@ -136,6 +150,14 @@ export default function PostCard({ post, onDeleteClick }) {
                   <WhatsappIcon size={40} round={true} />
                 </WhatsappShareButton>
                 {/* Buttons for share to social media finish here  */}
+=======
+                {post.user == post.user && (
+                  <Comment.Action onClick={onDeleteClick} active>
+                    {" "}
+                    Delete post
+                  </Comment.Action>
+                )}
+>>>>>>> main
               </Comment.Actions>
             </div>
 

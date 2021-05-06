@@ -8,6 +8,10 @@ class UserApi {
     getUser() {
         return Api.get("/user");
     }
+    getUserByName(name) {
+        return Api.get(`/user/${name}`);
+
+    }
 
 }
 
