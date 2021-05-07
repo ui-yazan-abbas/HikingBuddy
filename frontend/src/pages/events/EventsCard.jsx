@@ -14,6 +14,11 @@ import {
   Icon,
   Responsive,
   Segment,
+  Grid,
+  
+Container,
+  
+ 
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
@@ -118,7 +123,10 @@ export default function EventsCard({ event, onDeleteClick }) {
   );
 
   return (
-    <div className="postcard">
+   /*  <div className="title"
+<h3 className="card-title">Hiking events</h3>
+</div> */
+<Card centered margin>
       <Comment.Group>
         <Comment>
           <Comment.Avatar
@@ -216,6 +224,6 @@ export default function EventsCard({ event, onDeleteClick }) {
           </div>
         </Comment>
       </Comment.Group>
-    </div>
+      </Card>
   );
 }
