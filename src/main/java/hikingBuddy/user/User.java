@@ -60,7 +60,7 @@ public class User {
     // private List<User> followersList;
 
     @OneToMany
-    private Collection<User> followersList;
+    private List<User> followersList;
 
     // Hibernate needs a default constructor to function
     public User() {
@@ -158,11 +158,11 @@ public class User {
         this.eventComments = eventComments;
     }
 
-    public Collection<User> getFollowersList() {
+    public List<User> getFollowersList() {
         return followersList;
     }
 
-    public void setFollowersList(Collection<User> followersList) {
+    public void setFollowersList(List<User> followersList) {
         this.followersList = followersList;
     }
 

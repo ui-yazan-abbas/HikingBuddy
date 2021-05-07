@@ -19,17 +19,17 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
-    public User updateUser(User user, User updatecurrentUser) {
-        updatecurrentUser = user.setUpdateUser(updatecurrentUser);
-        updatecurrentUser.setId(user.getId());
-        updatecurrentUser.setComments(user.getComments());
-        updatecurrentUser.setPosts(user.getPosts());
-        updatecurrentUser.setFollowersList(user.getFollowersList());
-        return updatecurrentUser;
+    public User updateUser(User user, User updateUserData) {
+        updateUserData = user.setUpdateUser(updateUserData);
+        updateUserData.setId(user.getId());
+        updateUserData.setComments(user.getComments());
+        updateUserData.setPosts(user.getPosts());
+        updateUserData.setFollowersList(user.getFollowersList());
+        return updateUserData;
     }
 
-    public User addFollower(User updatecurrentUser, User user) {
-        user.addFollower(updatecurrentUser);
+    public User addFollower(User updateUserData, User user) {
+        user.addFollower(updateUserData);
         return user;
     }
 

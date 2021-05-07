@@ -67,6 +67,13 @@ export default function UserProfile({ currentUser, match }) {
           <li id={i.id}>{i.name}</li>
         </>
       ))}
+      {toggler && (
+        <EditUserProfile
+          currentUser={currentUser}
+          setToggler={setToggler}
+          setUser={setUser}
+        />
+      )}
 
       <hr />
       <h3>Your Posts:</h3>
@@ -75,13 +82,7 @@ export default function UserProfile({ currentUser, match }) {
           <PostCard post={post} user={user} />
         </>
       ))}
-      {toggler && (
-        <EditUserProfile
-          currentUser={currentUser}
-          setToggler={setToggler}
-          setUser={setUser}
-        />
-      )}
+      
     </Card>
   );
 }
