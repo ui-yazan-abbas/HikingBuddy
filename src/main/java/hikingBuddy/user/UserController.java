@@ -33,22 +33,22 @@ public class UserController {
     }
 
     @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User updateUserData, Principal principal) {
+    public ResponseEntity<User> updateUser(@RequestBody User updatecurrentUser, Principal principal) {
         String userName = principal.getName();
         User user = userService.findUserByEmail(userName);
-        updateUserData = userService.updateUser(user, updateUserData);
-        userRepository.save(updateUserData);
-        return ResponseEntity.ok(updateUserData);
+        updatecurrentUser = userService.updateUser(user, updatecurrentUser);
+        userRepository.save(updatecurrentUser);
+        return ResponseEntity.ok(updatecurrentUser);
 
     }
 
     @PutMapping("/{name}/follow")
-    public ResponseEntity<User> updateFollowers(@RequestBody User updateUserData, @PathVariable String name) {
+    public ResponseEntity<User> updateFollowers(@RequestBody User updatecurrentUser, @PathVariable String name) {
 
         User user = userService.findUserByName(name);
-        user = userService.addFollower(updateUserData, user);
+        user = userService.addFollower(updatecurrentUser, user);
         userRepository.save(user);
-        return ResponseEntity.ok(updateUserData);
+        return ResponseEntity.ok(updatecurrentUser);
     }
 
     @DeleteMapping

@@ -23,20 +23,20 @@ public class Event{
     private String trailName;
 
     @Column(nullable = false)
-    @NotNull
-    private float eventDuration;
+    @NotEmpty
+    private String eventDuration;
 
     @Column(nullable = false)
-    @NotNull
-    private int eventDistance;
+    @NotEmpty
+    private String eventDistance;
 
     @Column(nullable = false)
     @NotEmpty
     private String eventDifficulty;
 
     @Column(nullable = false)
-    @NotNull
-    private int maxNum;
+    @NotEmpty
+    private String maxNum;
 
     @Column(nullable = false)
     @NotEmpty
@@ -60,8 +60,8 @@ public class Event{
     public Event() {
     }
 
-    public Event(@NotEmpty String body, @NotEmpty String trailName, @NotNull float eventDuration,
-     @NotNull int eventDistance, @NotNull int maxNum, @NotEmpty String eventDifficulty, @NotEmpty String meetPoint, String trailHyperlink) {
+    public Event(@NotEmpty String body, @NotEmpty String trailName, @NotEmpty String eventDuration,
+     @NotEmpty String eventDistance, @NotEmpty String maxNum, @NotEmpty String eventDifficulty, @NotEmpty String meetPoint, String trailHyperlink) {
 
         this.body = body;
         this.trailName = trailName;
@@ -97,27 +97,27 @@ public class Event{
         this.trailName = trailName;
     }
 
-      public float getEventDuration() {
+      public String getEventDuration() {
         return eventDuration;
     }
 
-    public void setEventDuration(float eventDuration) {
+    public void setEventDuration(String eventDuration) {
         this.eventDuration = eventDuration;
     }
 
-     public int getEventDistance() {
+     public String getEventDistance() {
         return eventDistance;
     }
 
-    public void setEventDistance(int eventDistance) {
+    public void setEventDistance(String eventDistance) {
         this.eventDistance = eventDistance;
     }
 
-     public int getMaxNum() {
+     public String getMaxNum() {
         return maxNum;
     }
 
-    public void setMaxNum(int maxNum) {
+    public void setMaxNum(String maxNum) {
         this.maxNum = maxNum;
     }
 
