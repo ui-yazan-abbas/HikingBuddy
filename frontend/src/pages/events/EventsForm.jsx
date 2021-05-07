@@ -1,4 +1,5 @@
 import React from "react";
+import EventSearch from "../events/EventSearch";
 
 import {
   Button,
@@ -47,8 +48,10 @@ export default function EventsForm({ onSubmit }) {
   return (
     <div className="card">
       <div className="card-body">
-        <h2 className="card-title">Create a hiking event</h2>
+        {/* <h2 className="card-title">Create a hiking event</h2> */}
         <Form>
+          <EventSearch />
+
           <Form.Group widths="equal">
             <Form.Field
               control={Input}
