@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import imgPlaceholder from "../../assets/placeholder.jpeg";
-import ImgUpload from "./ImgUpload";
 import UserApi from "../../api/UserApi";
-import { Button, Card, Container, Icon, Image } from "semantic-ui-react";
+import { Button, Card, Image } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
-import PostsPage from "../posts/PostsPage";
 import moment from "moment";
+import PostCard from "../posts/Card";
 
 export default function UserProfile({ currentUser, match }) {
   const [user, setUser] = useState({});
@@ -33,7 +31,7 @@ export default function UserProfile({ currentUser, match }) {
     setUser({ ...user, followersList: [...user.followersList, currentUser] });
     updateUser();
   };
-
+  console.log("user", user);
   return (
     <Card centered margin>
       {!toggler && (
@@ -63,12 +61,18 @@ export default function UserProfile({ currentUser, match }) {
         </>
       )}
       <h3 className="h3">Number of followers: {user.followersList?.length}</h3>
-
+      <h3>{user.name}'s Followers:</h3>
       {user.followersList?.map((i) => (
         <>
-          <h3>{user.name}'s Followers:</h3>
           <li id={i.id}>{i.name}</li>
-          <li>{i.imageUrl}</li>
+        </>
+      ))}
+
+      <hr />
+      <h3>Your Posts:</h3>
+      {user.posts?.map((post) => (
+        <>
+          <PostCard post={post} user={user} />
         </>
       ))}
       {toggler && (

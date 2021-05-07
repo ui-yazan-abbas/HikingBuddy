@@ -14,7 +14,7 @@ import {
   Button,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 //  Importing the buttons to be used for react share
 import {
   FacebookShareButton,
@@ -86,19 +86,16 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
         <Segment color="blue">
           <Header as="h3" dividing content="" textAlign="center"></Header>
           <Comment.Group>
-            <Header
+            {/* <Header
               as="h3"
               dividing
               content="Stackable Vertically Divided Grid"
               textAlign="center"
             >
               Posts
-            </Header>
+            </Header> */}
             <Comment>
-              <Comment.Avatar
-                as="a"
-                src={user.imageUrl}
-              />
+              <Comment.Avatar as="a" src={user.imageUrl} />
               <Comment.Content>
                 <p></p>
 

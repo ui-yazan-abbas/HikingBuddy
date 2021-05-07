@@ -5,9 +5,6 @@ import React, { useEffect, useState } from "react";
 import PostsApi from "../../api/PostsApi";
 import Form from "./Form";
 import Card from "./Card";
-import UpdateCard from "./UpdateCard";
-
-import UserApi from "../../api/UserApi"
 
 export default function PostsPage({ user }) {
   // Local state
