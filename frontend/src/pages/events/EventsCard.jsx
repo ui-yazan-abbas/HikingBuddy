@@ -16,6 +16,7 @@ import {
   Segment,
   Container,
   Image,
+  CommentAuthor,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
@@ -33,9 +34,10 @@ import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
 import EventCommentForm from "../eventComments/EventCommentForm";
 
-export default function EventsCard({ event, onDeleteClick }) {
+export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
+  console.log("useerrrrrr", user);
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -130,13 +132,10 @@ export default function EventsCard({ event, onDeleteClick }) {
     <Card centered margin>
       <Comment.Group>
         <Comment>
-          <Comment.Avatar
-            as="a"
-            src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg"
-          />
+          <Comment.Avatar as="a" src={user.imageUrl} />
 
           <Comment.Content>
-            <Comment.Author> Created by {event.user}</Comment.Author>
+           <Link to={`/${event.user}/profile`}> <CommentAuthor>{event.user}</CommentAuthor></Link>
             <Comment.Metadata>
               <div>
                 {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
@@ -166,23 +165,35 @@ export default function EventsCard({ event, onDeleteClick }) {
 
             <Card.Content extra>
               <Card.Meta>
-                <span className="date">{extra}</span>
+                <span className="date">{extra} </span>
+
+                <Button
+            as="a"
+            inverted
+            color="olive"
+            type="submit"
+          >
+            More details
+          </Button>
+
               </Card.Meta>
             </Card.Content>
           </Card>
          <div className="AvatarWrap">
           <Comment.Actions>
-            <Comment.Action active onClick={() => setIsUpdating(true)}>
-              Edit event
-            </Comment.Action>
-            {event.user == event.user && (
-              <Comment.Action onClick={onDeleteClick} active>
-                {" "}
-                Delete event
-              </Comment.Action>
+            {event.user == user.name && (
+              <>
+                <Comment.Action active onClick={() => setIsUpdating(true)}>
+                  Edit event
+                </Comment.Action>
+                <Comment.Action onClick={onDeleteClick} active>
+                  {" "}
+                  Delete event
+                </Comment.Action>
+              </>
             )}
+            {eventComments.length} comment(s)
             {/* Buttons for share to social media  */}
-
             <br></br>
             <br></br>
 
@@ -224,6 +235,7 @@ export default function EventsCard({ event, onDeleteClick }) {
                   key={event.id}
                   eventComment={eventComment}
                   onDeleteClick={() => deleteEventComment(eventComment)}
+                  user={user}
                 />
               ))}
           </div>
