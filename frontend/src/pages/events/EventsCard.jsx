@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import JoinButton from "./JoinButton";
-import { Link } from "react-router-dom";
-import Like from "../posts/Like";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
@@ -18,7 +16,6 @@ import {
   Segment,
   Container,
   Image,
-  CommentAuthor,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
@@ -36,10 +33,9 @@ import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
 import EventCommentForm from "../eventComments/EventCommentForm";
 
-export default function EventsCard({ event, onDeleteClick, user }) {
+export default function EventsCard({ event, onDeleteClick }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
-  console.log("useerrrrrr", user);
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -131,15 +127,16 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   );
 
   return (
-
     <Card centered margin>
-
       <Comment.Group>
         <Comment>
-          <Comment.Avatar as="a" src={user.imageUrl} />
+          <Comment.Avatar
+            as="a"
+            src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg"
+          />
 
           <Comment.Content>
-           <Link to={`/${event.user}/profile`}> <CommentAuthor>{event.user}</CommentAuthor></Link>
+            <Comment.Author> Created by {event.user}</Comment.Author>
             <Comment.Metadata>
               <div>
                 {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
@@ -169,41 +166,29 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
             <Card.Content extra>
               <Card.Meta>
-                <span className="date">{extra} </span>
-
-                <Button
-            as="a"
-            inverted
-            color="olive"
-            type="submit"
-          >
-            More details
-          </Button>
-
+                <span className="date">{extra}</span>
               </Card.Meta>
             </Card.Content>
           </Card>
-
+         <div className="AvatarWrap">
           <Comment.Actions>
-            {event.user == user.name && (
-              <>
-                <Comment.Action active onClick={() => setIsUpdating(true)}>
-                  Edit event
-                </Comment.Action>
-                <Comment.Action onClick={onDeleteClick} active>
-                  {" "}
-                  Delete event
-                </Comment.Action>
-              </>
+            <Comment.Action active onClick={() => setIsUpdating(true)}>
+              Edit event
+            </Comment.Action>
+            {event.user == event.user && (
+              <Comment.Action onClick={onDeleteClick} active>
+                {" "}
+                Delete event
+              </Comment.Action>
             )}
-            {eventComments.length} comment(s)
             {/* Buttons for share to social media  */}
+
             <br></br>
             <br></br>
 
             {/* Buttons for share to social media and like button */}
-            <Button.Group  size="small">
-            <JoinButton />
+            <Button.Group size="small">
+              <JoinButton />
               <FacebookShareButton
                 url={window.location.href} //share the actual link of the post
                 title={event.user} //the user who wrote the post
@@ -231,7 +216,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             </Button.Group>
             {/* Buttons for share to social media finish here  */}
           </Comment.Actions>
-
+          </div>
           <div className="comments-container">
             {eventComments &&
               filteredEventCommentList.map((eventComment) => (
@@ -239,11 +224,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                   key={event.id}
                   eventComment={eventComment}
                   onDeleteClick={() => deleteEventComment(eventComment)}
-                  user={user}
                 />
               ))}
           </div>
-
           {isUpdating && (
             <UpdateEvent
               onUpdateClick={(eventData) => updateEvent(eventData)}
@@ -255,9 +238,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
           <div className="comments-form">
             <EventCommentForm id={event.id} onSubmit={createEventComment} />
           </div>
-
-        </Comment>      
-      </Comment.Group>    
-      </Card>
+        </Comment>
+      </Comment.Group>
+    </Card>
   );
 }
