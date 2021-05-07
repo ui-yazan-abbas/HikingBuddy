@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import imgPlaceholder from "../../assets/placeholder.jpeg";
-import ImgUpload from "./ImgUpload";
 import UserApi from "../../api/UserApi";
-import { Button, Card, Container, Icon, Image } from "semantic-ui-react";
+import { Button, Card, Image } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
-import PostsPage from "../posts/PostsPage";
 import moment from "moment";
+import PostCard from "../posts/Card";
 
-export default function UserProfile({ userData, match, setUserData }) {
+export default function UserProfile({ currentUser, match }) {
   const [user, setUser] = useState({});
   const [toggler, setToggler] = useState(false);
   const info = match.params.name.replace(/\s/g, "%20");
@@ -22,23 +20,18 @@ export default function UserProfile({ userData, match, setUserData }) {
 
   const updateUser = async () => {
     try {
-      await UserApi.updateUser(user).then((res) => setUser(res.data));
+      let name = user.name.replace(/\s/g, "%20");
+      await UserApi.addFollower(name, currentUser);
     } catch (err) {
       console.error(err);
     }
-    // getUserData().then((responce) => setUserForm(responce));
   };
 
   const followUser = () => {
-    setUser({
-      ...user,
-      followersList: [userData],
-    });
+    setUser({ ...user, followersList: [...user.followersList, currentUser] });
     updateUser();
   };
   console.log("user", user);
-  console.log("userData", userData);
-
   return (
     <Card centered margin>
       {!toggler && (
@@ -54,12 +47,12 @@ export default function UserProfile({ userData, match, setUserData }) {
             <Card.Description>{user.bio} </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            {userData.name === user.name && (
+            {currentUser.name === user.name && (
               <Button inverted color="blue" onClick={() => setToggler(true)}>
                 Edit Profile
               </Button>
             )}
-            {userData.name !== user.name && (
+            {currentUser.name !== user.name && (
               <Button inverted color="green" onClick={followUser}>
                 Follow
               </Button>
@@ -67,21 +60,29 @@ export default function UserProfile({ userData, match, setUserData }) {
           </Card.Content>
         </>
       )}
+      <h3 className="h3">Number of followers: {user.followersList?.length}</h3>
+      <h3>{user.name}'s Followers:</h3>
+      {user.followersList?.map((i) => (
+        <>
+          <li id={i.id}>{i.name}</li>
+        </>
+      ))}
       {toggler && (
         <EditUserProfile
-          userData={userData}
+          currentUser={currentUser}
           setToggler={setToggler}
           setUser={setUser}
         />
       )}
+
+      <hr />
+      <h3>Your Posts:</h3>
+      {user.posts?.map((post) => (
+        <>
+          <PostCard post={post} user={user} />
+        </>
+      ))}
+      
     </Card>
   );
 }
-
-// getUserData().then((responce) => setUserForm(responce));
-
-/* const getUserByName = () => {
-     UserApi.getUserByName(info)
-      .then((res) => setUser(res.data))
-      .catch((err) => console.error(err));
-  }; */

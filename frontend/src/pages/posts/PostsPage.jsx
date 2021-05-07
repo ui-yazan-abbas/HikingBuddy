@@ -5,19 +5,21 @@ import React, { useEffect, useState } from "react";
 import PostsApi from "../../api/PostsApi";
 import Form from "./Form";
 import Card from "./Card";
-import UpdateCard from "./UpdateCard";
 
-export default function PostsPage({ userData }) {
+export default function PostsPage({ user }) {
   // Local state
   const [posts, setPosts] = useState([]);
 
   // Methods
+ 
+  // Components
+  
+
   async function createPost(postData) {
     try {
       const response = await PostsApi.createPost(postData);
       const post = response.data;
       const newPosts = posts.concat(post);
-
       setPosts(newPosts);
     } catch (e) {
       console.error(e);
@@ -47,7 +49,7 @@ export default function PostsPage({ userData }) {
       key={post.id}
       post={post}
       onDeleteClick={() => deletePost(post)}
-      userData={userData}
+      user={user}
     />
   ));
 
