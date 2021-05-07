@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ImgUpload from "./ImgUpload";
 import UserApi from "../../api/UserApi";
-import { Button, Form } from "semantic-ui-react";
+import { Container, Segment, Button, Form, Card } from "semantic-ui-react";
 
 export default function EditUserProfile({ userData, setToggler, setUser }) {
   const [userForm, setUserForm] = useState({
@@ -26,8 +26,7 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
     }
     // getUserData().then((responce) => setUserForm(responce));
   };
-  
-  
+
   //  async function deleteUser(name) {
   //   try {
   //     await UserApi.deleteuser(post.name);
@@ -56,50 +55,55 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
     fetchUser();
   }, []);
 
-
   return (
-    <div className="editprofile">
+    <Card centered margin>
       <Form onSubmit={handleSubmit}>
-        <div>
-          <img className="img" src={userForm.imageUrl} alt="" /> <br />
-          <ImgUpload className="profile" uploadImg={change} />
-          <label htmlFor="name-input">Name:</label>
-          <input
-            disabled
-            type="text"
-            id="name-input"
-            name="name"
-            value={userForm.name}
-            onChange={change}
-          />
-        </div>
-        <div>
-          <label htmlFor="email-input">Email:</label>
-          <input
-            type="text"
-            id="email-input"
-            name="email"
-            value={userForm.email}
-            onChange={change}
-          />
-        </div>
-        <div>
-          <label htmlFor="bio-input">Bio:</label>
-          <textarea
-            type="text"
-            id="bio-input"
-            name="bio"
-            onChange={change}
-            value={userForm.bio}
-            rows="6"
-            cols="80"
-            id="TITLE"
-          ></textarea>
-        </div>
-        <Button type="submit">Save Changes</Button>
-        
-  
+        <Segment attached>
+          <Card fluid color="yellow" header="Edit your profile" />
+          <div>
+            <img className="img" src={userForm.imageUrl} alt="" /> <br />
+            <ImgUpload className="profile" uploadImg={change} />
+            <label htmlFor="name-input">Name:</label>
+            <input
+              disabled
+              type="text"
+              id="name-input"
+              name="name"
+              value={userForm.name}
+              onChange={change}
+            />
+          </div>
+          <div>
+            <label htmlFor="email-input">Email:</label>
+            <input
+              type="text"
+              id="email-input"
+              name="email"
+              value={userForm.email}
+              onChange={change}
+            />
+          </div>
+          <div>
+            <label htmlFor="bio-input">Bio:</label>
+            <textarea
+              type="text"
+              id="bio-input"
+              name="bio"
+              onChange={change}
+              value={userForm.bio}
+              rows="6"
+              cols="80"
+              id="TITLE"
+            ></textarea>
+          </div>
+          <br></br>
+          <Card.Content extra>
+            <Button inverted color="blue" type="submit">
+              Save Changes
+            </Button>
+          </Card.Content>
+        </Segment>
       </Form>
-    </div>
+    </Card>
   );
 }
