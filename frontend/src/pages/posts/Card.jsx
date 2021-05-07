@@ -5,6 +5,8 @@ import CommentsApi from "../../api/CommentsApi";
 import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
 import moment from "moment";
+import Like from "../posts/Like";
+
 import {
   Grid,
   Comment,
@@ -83,7 +85,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   return (
     <Container>
       <Grid.Column only="widescreen" widescreen={10}>
-        <Segment color="blue">
+        <Segment>
           <Header as="h3" dividing content="" textAlign="center"></Header>
           <Comment.Group>
             {/* <Header
@@ -110,11 +112,9 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     </div>
                   </Comment.Metadata>
 
-                  <Comment.Text>{postTitle}</Comment.Text>
-
-                  <Comment.Text>{postKm}</Comment.Text>
-
-                  <Comment.Text>{postBody}</Comment.Text>
+                  <Comment.Text>Location: {postTitle}</Comment.Text>
+                  <Comment.Text>Distance: {postKm}</Comment.Text>
+                  <Comment.Text>Why recommending: {postBody}</Comment.Text>
 
                   <Header
                     as="h3"
@@ -146,7 +146,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                 <br></br>
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small">
-                  <Button color="red" icon="heart" size="small" />
+                    <Like />
+                    <br></br>
                   <FacebookShareButton
                     url={window.location.href} //share the actual link of the post
                     title={post.user} //the user who wrote the post

@@ -23,24 +23,23 @@ export default function PostForm({ onSubmit }) {
   return (
     <Container>
       <Grid.Column only="widescreen" widescreen={10}>
-        <Segment inverted color="blue">
-          <h2>Enjoyed a hike? Share and recommend!</h2>
+        <Segment style={{ background: "#d6fbe0" }}>
+          <h2 style={{ color: "#4185ca" }}>Enjoyed a hike? Share and recommend!</h2>
           {/* <h4 className="card-title">Make a new post</h4> */}
           <Form inverted>
             <Form.Group widths="equal">
               <Form.Field>
+              <label style={{ color: "#5db556" }}>Location/Trail name</label>
                 <Form.Input
                   fluid
-                  label="Location/Trail name"
                   placeholder="Håga Trail"
                   value={postLocation}
                   onChange={(e) => setPostLocation(e.target.value)}
                 />
               </Form.Field>
               <Form.Field>
+              <label style={{ color: "#5db556" }}>Distance Km</label>
                 <Form.Input
-                  fluid
-                  label="Distance KM"
                   placeholder="35"
                   value={postDistance}
                   onChange={(e) => setPostDistance(e.target.value)}
@@ -48,9 +47,9 @@ export default function PostForm({ onSubmit }) {
               </Form.Field>
             </Form.Group>
             <Form.Field>
+            <label style={{ color: "#5db556" }}>Recommended hiking</label>
               <Form.Input
                 fluid
-                label="Recommended hiking"
                 placeholder="I recommend because..."
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
