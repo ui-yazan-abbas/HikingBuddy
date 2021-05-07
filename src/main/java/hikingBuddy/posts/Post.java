@@ -41,6 +41,8 @@ public class Post {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     private User user;
 
+    //bring another field with property
+
     public Post() {
     }
 

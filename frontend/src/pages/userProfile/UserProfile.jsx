@@ -52,11 +52,12 @@ export default function UserProfile({ currentUser, match }) {
                 Edit Profile
               </Button>
             )}
-            {currentUser.name !== user.name && (
-              <Button inverted color="green" onClick={followUser}>
-                Follow
-              </Button>
-            )}
+            {currentUser.name !== user.name &&
+              !user.followersList?.includes(currentUser) && (
+                <Button inverted color="green" onClick={followUser}>
+                  Follow
+                </Button>
+              )}
           </Card.Content>
         </>
       )}
@@ -82,7 +83,6 @@ export default function UserProfile({ currentUser, match }) {
           <PostCard post={post} user={user} />
         </>
       ))}
-      
     </Card>
   );
 }

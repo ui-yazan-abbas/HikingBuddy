@@ -56,7 +56,6 @@ export default function EditUserProfile({ currentUser, setToggler, setUser }) {
   }, []);
 
   //save button confirmation alert
-
   return (
     <Card centered margin>
       <Form onSubmit={handleSubmit}>
