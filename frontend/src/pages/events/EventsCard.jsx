@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Like from "../posts/Like";
-
+import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
@@ -202,8 +201,7 @@ export default function EventsCard({ event, onDeleteClick }) {
 
             {/* Buttons for share to social media and like button */}
             <Button.Group  size="small">
-            <Like />
-
+            <JoinButton />
               <FacebookShareButton
                 url={window.location.href} //share the actual link of the post
                 title={event.user} //the user who wrote the post

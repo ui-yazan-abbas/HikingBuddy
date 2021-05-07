@@ -3,12 +3,12 @@ import ImgUpload from "./ImgUpload";
 import UserApi from "../../api/UserApi";
 import { Container, Segment, Button, Form, Card } from "semantic-ui-react";
 
-export default function EditUserProfile({ userData, setToggler, setUser }) {
+export default function EditUserProfile({ currentUser, setToggler, setUser }) {
   const [userForm, setUserForm] = useState({
-    name: userData.name,
-    email: userData.email,
-    bio: userData.bio,
-    imageUrl: userData.imageUrl,
+    name: currentUser.name,
+    email: currentUser.email,
+    bio: currentUser.bio,
+    imageUrl: currentUser.imageUrl,
   });
 
   const change = ({ target: { name, value } }) => {
@@ -24,7 +24,7 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
     } catch (err) {
       console.error(err);
     }
-    // getUserData().then((responce) => setUserForm(responce));
+    // getcurrentUser().then((responce) => setUserForm(responce));
   };
 
   //  async function deleteUser(name) {
@@ -55,6 +55,7 @@ export default function EditUserProfile({ userData, setToggler, setUser }) {
     fetchUser();
   }, []);
 
+  //save button confirmation alert
   return (
     <Card centered margin>
       <Form onSubmit={handleSubmit}>

@@ -32,7 +32,6 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User updateUserData, Principal principal) {
         String userName = principal.getName();
@@ -41,6 +40,15 @@ public class UserController {
         userRepository.save(updateUserData);
         return ResponseEntity.ok(updateUserData);
 
+    }
+
+    @PutMapping("/{name}/follow")
+    public ResponseEntity<User> updateFollowers(@RequestBody User updateUserData, @PathVariable String name) {
+
+        User user = userService.findUserByName(name);
+        user = userService.addFollower(updateUserData, user);
+        userRepository.save(user);
+        return ResponseEntity.ok(updateUserData);
     }
 
     @DeleteMapping
@@ -52,12 +60,13 @@ public class UserController {
     }
 
     // @PutMapping("/follow")
-    // public ResponseEntity<User> followUser(@RequestBody User user, Principal principal){
-    //     String userName = principal.getName();
-    //     User wantToFollow = userService.findUserByEmail(userName);
-    //     User toBeFollowed = userService.findUserByEmail(user.getEmail());
-    //     toBeFollowed.addFollower(wantToFollow);
-    //     return ResponseEntity.ok(toBeFollowed);
+    // public ResponseEntity<User> followUser(@RequestBody User user, Principal
+    // principal){
+    // String userName = principal.getName();
+    // User wantToFollow = userService.findUserByEmail(userName);
+    // User toBeFollowed = userService.findUserByEmail(user.getEmail());
+    // toBeFollowed.addFollower(wantToFollow);
+    // return ResponseEntity.ok(toBeFollowed);
 
     // }
 

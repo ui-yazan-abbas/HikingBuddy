@@ -16,7 +16,7 @@ import {
   Button,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 //  Importing the buttons to be used for react share
 import {
   FacebookShareButton,
@@ -27,12 +27,7 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-export default function PostCard({
-  post,
-  onDeleteClick,
-  onUpdateClick,
-  userData,
-}) {
+export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
 
@@ -80,9 +75,7 @@ export default function PostCard({
   }
 
   useEffect(() => {
-    CommentsApi.getComments(post.id)
-      .then(({ data }) => setComments(data))
-      .catch((err) => console.error(err));
+    CommentsApi.getComments(post.id).then(({ data }) => setComments(data));
   }, [setComments]);
 
   // Components
@@ -97,19 +90,16 @@ export default function PostCard({
         <Segment>
           <Header as="h3" dividing content="" textAlign="center"></Header>
           <Comment.Group>
-            <Header
+            {/* <Header
               as="h3"
               dividing
               content="Stackable Vertically Divided Grid"
               textAlign="center"
             >
               Posts
-            </Header>
+            </Header> */}
             <Comment>
-              <Comment.Avatar
-                as="a"
-                src="https://react.semantic-ui.com/images/avatar/small/steve.jpg"
-              />
+              <Comment.Avatar as="a" src={user.imageUrl} />
               <Comment.Content>
                 <p></p>
 
@@ -140,14 +130,19 @@ export default function PostCard({
                   <Comment.Actions>
                     <Comment.Action active>Reply</Comment.Action>
 
-                    <Comment.Action active onClick={() => setIsUpdating(true)}>
-                      Edit Post
-                    </Comment.Action>
-                    {post.user == post.user && (
-                      <Comment.Action onClick={onDeleteClick} active>
-                        {" "}
-                        Delete post
-                      </Comment.Action>
+                    {post.user == user.name && (
+                      <>
+                        <Comment.Action onClick={onDeleteClick} active>
+                          {" "}
+                          Delete post
+                        </Comment.Action>
+                        <Comment.Action
+                          active
+                          onClick={() => setIsUpdating(true)}
+                        >
+                          Edit Post
+                        </Comment.Action>
+                      </>
                     )}
                   </Comment.Actions>
                 </div>
@@ -192,6 +187,7 @@ export default function PostCard({
                         key={post.id}
                         comment={comment}
                         onDeleteClick={() => deleteComment(comment)}
+                        user={user}
                       />
                     ))}
                 </div>

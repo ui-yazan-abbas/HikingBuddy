@@ -2,8 +2,12 @@ import Api from "./Api";
 
 class UserApi {
 
-    updateUser(userData) {
-        return Api.put('/user', userData);
+    addFollower(name, currentUser){
+        return Api.put(`user/${name}/follow`, currentUser);
+    }
+
+    updateUser(currentUser) {
+        return Api.put('/user', currentUser);
     }
     getUser() {
         return Api.get("/user");
