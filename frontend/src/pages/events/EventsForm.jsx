@@ -9,7 +9,10 @@ import {
   Select,
   TextArea,
   Message,
+  Icon, Image, Modal, Header, Card
 } from "semantic-ui-react";
+
+
 
 export default function EventsForm({ onSubmit }) {
   const [trailName, setTrailName] = React.useState("");
@@ -20,6 +23,10 @@ export default function EventsForm({ onSubmit }) {
   const [meetPoint, setMeetPoint] = React.useState("");
   const [trailHyperlink, setTrailHyperlink] = React.useState("");
   const [body, setBody] = React.useState("");
+
+  //Modal
+  const [open, setOpen] = React.useState(false)
+
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
@@ -46,12 +53,24 @@ export default function EventsForm({ onSubmit }) {
   };
 
   return (
-    <div className="card">
-      <div className="card-body">
   
-        <h2 className="card-title">Create a hiking event</h2>
-        <Form>
-          <Form.Group widths="equal">
+      <Card centered margin>
+    
+   
+    <Modal
+    open={open}
+    onClose={() => setOpen(false)}
+    onOpen={() => setOpen(true)}
+    trigger={<Button basic color='green'>Create a Hiking Event</Button>}
+  >
+
+    <Modal.Header>Your Hiking Event</Modal.Header>
+    <Modal.Content image scrolling>
+      <Image size='medium' src='https://images.unsplash.com/photo-1464198016405-33fd4527b89d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1292&q=80' wrapped />
+
+      <Modal.Description>
+      <Form>
+    <Form.Group widths="equal">
             <Form.Field
               required
               control={Input}
@@ -110,15 +129,15 @@ export default function EventsForm({ onSubmit }) {
             <Form.Field
               required
               control={Input}
-              label="Meeting point and time"
-              placeholder="Central station, Stockholm"
+              label="Meeting details"
+              placeholder="Central station, Stockholm, 14:05"
               value={meetPoint}
               onChange={(e) => setMeetPoint(e.target.value)}
             />
 
             <Form.Field
               control={Input}
-              label="Website link to location or trail"
+              label="Website link to location"
               placeholder="https://www.hogakusten.com/en"
               type="url"
               name="url"
@@ -134,18 +153,29 @@ export default function EventsForm({ onSubmit }) {
             value={body}
             onChange={(e) => setBody(e.target.value)}
           />
-
-          <Button
-            as="a"
+        <Button as="a"
             inverted
             color="blue"
             onClick={handleSubmit}
-            type="submit"
-          >
-            Create event
-          </Button>
+            type="submit">
+         Create event<Icon name='chevron right' />
+      </Button>
         </Form>
-      </div>
-    </div>
+
+      </Modal.Description>
+    </Modal.Content>
+
+    <Modal.Actions>
+        <Button onClick={() => setOpen(false)} primary>
+          See events <Icon name='chevron right' />
+        </Button>
+      </Modal.Actions>
+  </Modal>
+
+  </Card>
+
+
+  
+
   );
 }

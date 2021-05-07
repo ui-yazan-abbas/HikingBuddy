@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Like from "../posts/Like";
-
+import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
@@ -128,7 +127,7 @@ export default function EventsCard({ event, onDeleteClick }) {
   );
 
   return (
-    <Container centered>
+    <Card centered margin>
       <Comment.Group>
         <Comment>
           <Comment.Avatar
@@ -147,8 +146,8 @@ export default function EventsCard({ event, onDeleteClick }) {
 
           <br></br>
 
-          <Card  margin color="olive" >
-            <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"/>
+          <Card margin color="olive">
+            <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance" />
             <Card.Content>
               <Card.Header>Trail Name: {isNewTrailName}</Card.Header>
               <Card.Content extra>
@@ -171,8 +170,7 @@ export default function EventsCard({ event, onDeleteClick }) {
               </Card.Meta>
             </Card.Content>
           </Card>
-       
-
+         <div className="AvatarWrap">
           <Comment.Actions>
             <Comment.Action active onClick={() => setIsUpdating(true)}>
               Edit event
@@ -189,8 +187,8 @@ export default function EventsCard({ event, onDeleteClick }) {
             <br></br>
 
             {/* Buttons for share to social media and like button */}
-            <Button.Group  size="small">
-            <Like />
+            <Button.Group size="small">
+              <JoinButton />
               <FacebookShareButton
                 url={window.location.href} //share the actual link of the post
                 title={event.user} //the user who wrote the post
@@ -218,7 +216,7 @@ export default function EventsCard({ event, onDeleteClick }) {
             </Button.Group>
             {/* Buttons for share to social media finish here  */}
           </Comment.Actions>
-
+          </div>
           <div className="comments-container">
             {eventComments &&
               filteredEventCommentList.map((eventComment) => (
@@ -229,7 +227,6 @@ export default function EventsCard({ event, onDeleteClick }) {
                 />
               ))}
           </div>
-
           {isUpdating && (
             <UpdateEvent
               onUpdateClick={(eventData) => updateEvent(eventData)}
@@ -241,9 +238,8 @@ export default function EventsCard({ event, onDeleteClick }) {
           <div className="comments-form">
             <EventCommentForm id={event.id} onSubmit={createEventComment} />
           </div>
-
-        </Comment>      
-      </Comment.Group>    
-      </Container>
+        </Comment>
+      </Comment.Group>
+    </Card>
   );
 }
