@@ -124,9 +124,11 @@ export default function PostCard({
                     </div>
                   </Comment.Metadata>
 
-                  <Comment.Text>Location: {postTitle}</Comment.Text>
-                  <Comment.Text>Distance: {postKm}</Comment.Text>
-                  <Comment.Text>Why recommending: {postBody}</Comment.Text>
+                 
+                  <Comment.Text><b>Location:</b> {postTitle}</Comment.Text>
+                  <Comment.Text><b>Distance:</b>{postKm}</Comment.Text>
+                  <Comment.Text><b>Why recommending:</b>{postBody}</Comment.Text>
+              
 
                   <Header
                     as="h3"
