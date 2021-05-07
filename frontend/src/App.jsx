@@ -66,7 +66,7 @@ export default function App() {
             <PostsPage user={currentUser} />
           </Route>
           <Route exact path="/events">
-            <EventsPage />
+            <EventsPage user={currentUser} />
           </Route>
 
           <Route path="/join" component={ChatPage} />

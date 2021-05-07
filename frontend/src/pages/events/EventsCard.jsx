@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Like from "../posts/Like";
 
 import EventsApi from "../../api/EventsApi";
@@ -17,6 +18,7 @@ import {
   Segment,
   Container,
   Image,
+  CommentAuthor,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
@@ -34,9 +36,10 @@ import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
 import EventCommentForm from "../eventComments/EventCommentForm";
 
-export default function EventsCard({ event, onDeleteClick }) {
+export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
+  console.log("useerrrrrr", user);
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -131,13 +134,10 @@ export default function EventsCard({ event, onDeleteClick }) {
     <Container centered>
       <Comment.Group>
         <Comment>
-          <Comment.Avatar
-            as="a"
-            src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg"
-          />
+          <Comment.Avatar as="a" src={user.imageUrl} />
 
           <Comment.Content>
-            <Comment.Author> Created by {event.user}</Comment.Author>
+           <Link to={`/${event.user}/profile`}> <CommentAuthor>{event.user}</CommentAuthor></Link>
             <Comment.Metadata>
               <div>
                 {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
@@ -147,8 +147,8 @@ export default function EventsCard({ event, onDeleteClick }) {
 
           <br></br>
 
-          <Card  margin color="olive" >
-            <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"/>
+          <Card margin color="olive">
+            <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance" />
             <Card.Content>
               <Card.Header>Trail Name: {isNewTrailName}</Card.Header>
               <Card.Content extra>
@@ -171,17 +171,18 @@ export default function EventsCard({ event, onDeleteClick }) {
               </Card.Meta>
             </Card.Content>
           </Card>
-       
 
           <Comment.Actions>
-            <Comment.Action active onClick={() => setIsUpdating(true)}>
-              Edit event
-            </Comment.Action>
-            {event.user == event.user && (
-              <Comment.Action onClick={onDeleteClick} active>
-                {" "}
-                Delete event
-              </Comment.Action>
+            {event.user == user.name && (
+              <>
+                <Comment.Action active onClick={() => setIsUpdating(true)}>
+                  Edit event
+                </Comment.Action>
+                <Comment.Action onClick={onDeleteClick} active>
+                  {" "}
+                  Delete event
+                </Comment.Action>
+              </>
             )}
             {/* Buttons for share to social media  */}
 
@@ -189,8 +190,8 @@ export default function EventsCard({ event, onDeleteClick }) {
             <br></br>
 
             {/* Buttons for share to social media and like button */}
-            <Button.Group  size="small">
-            <Like />
+            <Button.Group size="small">
+              <Like />
               <FacebookShareButton
                 url={window.location.href} //share the actual link of the post
                 title={event.user} //the user who wrote the post
@@ -226,6 +227,7 @@ export default function EventsCard({ event, onDeleteClick }) {
                   key={event.id}
                   eventComment={eventComment}
                   onDeleteClick={() => deleteEventComment(eventComment)}
+                  user={user}
                 />
               ))}
           </div>
@@ -241,9 +243,8 @@ export default function EventsCard({ event, onDeleteClick }) {
           <div className="comments-form">
             <EventCommentForm id={event.id} onSubmit={createEventComment} />
           </div>
-
-        </Comment>      
-      </Comment.Group>    
-      </Container>
+        </Comment>
+      </Comment.Group>
+    </Container>
   );
 }
