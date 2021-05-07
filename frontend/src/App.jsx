@@ -68,13 +68,9 @@ export default function App() {
           <Route exact path="/events">
             <EventsPage />
           </Route>
-          <Route exact path="/chat">
-            <ChatPage />
-          </Route>
-          <Route path="/chat">
-            <Route exact path="/join" exact component={ChatPage} />
-            <Route path="/chat" component={Chat} />
-          </Route>
+
+          <Route path="/join" component={ChatPage} />
+          <Route path="/chat" component={Chat} />
           <Route
             exact
             path="/:name/profile"
