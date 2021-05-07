@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, Input } from "semantic-ui-react";
+import { Button, Form, Grid, Segment, Container } from "semantic-ui-react";
 
 export default function PostForm({ onSubmit }) {
   const [postLocation, setPostLocation] = React.useState("");
@@ -21,56 +21,54 @@ export default function PostForm({ onSubmit }) {
   };
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h2>Enjoyed a hike? Share and recommend!</h2>
-        {/* <h4 className="card-title">Make a new post</h4> */}
-        <div>
-          <div className="form-group">
-            <Form>
-              <p>Location/Trail name</p>
+    <Container>
+      <Grid.Column only="widescreen" widescreen={10}>
+        <Segment inverted color="blue">
+          <h2>Enjoyed a hike? Share and recommend!</h2>
+          {/* <h4 className="card-title">Make a new post</h4> */}
+          <Form inverted>
+            <Form.Group widths="equal">
               <Form.Field>
-                <input
-                  className="form-control"
+                <Form.Input
+                  fluid
+                  label="Location/Trail name"
                   placeholder="Håga Trail"
                   value={postLocation}
                   onChange={(e) => setPostLocation(e.target.value)}
                 />
               </Form.Field>
-
-              <p>Distance in km</p>
               <Form.Field>
-                <Input
+                <Form.Input
+                  fluid
+                  label="Distance KM"
                   placeholder="35"
-                  label={{ basic: true, content: "km" }}
-                  labelPosition="right"
                   value={postDistance}
                   onChange={(e) => setPostDistance(e.target.value)}
                 />
               </Form.Field>
+            </Form.Group>
+            <Form.Field>
+              <Form.Input
+                fluid
+                label="Recommended hiking"
+                placeholder="I recommend because..."
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              />
+            </Form.Field>
 
-              <Form.Field>
-                <input
-                  className="form-control"
-                  placeholder="I recommend because..."
-                  value={body}
-                  onChange={(e) => setBody(e.target.value)}
-                />
-              </Form.Field>
-
-              <Button
-                as="a"
-                inverted
-                color="blue"
-                onClick={handleSubmit}
-                type="submit"
-              >
-                Post
-              </Button>
-            </Form>
-          </div>
-        </div>
-      </div>
-    </div>
+            <Button
+              as="a"
+              inverted
+              color="blue"
+              onClick={handleSubmit}
+              type="submit"
+            >
+              Post
+            </Button>
+          </Form>
+        </Segment>
+      </Grid.Column>
+    </Container>
   );
 }
