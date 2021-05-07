@@ -127,7 +127,9 @@ export default function EventsCard({ event, onDeleteClick }) {
   );
 
   return (
-    <Container centered>
+
+    <Card centered margin>
+
       <Comment.Group>
         <Comment>
           <Comment.Avatar
@@ -166,7 +168,17 @@ export default function EventsCard({ event, onDeleteClick }) {
 
             <Card.Content extra>
               <Card.Meta>
-                <span className="date">{extra}</span>
+                <span className="date">{extra} </span>
+
+                <Button
+            as="a"
+            inverted
+            color="olive"
+            type="submit"
+          >
+            More details
+          </Button>
+
               </Card.Meta>
             </Card.Content>
           </Card>
@@ -182,8 +194,8 @@ export default function EventsCard({ event, onDeleteClick }) {
                 Delete event
               </Comment.Action>
             )}
+            {eventComments.length} comment(s)
             {/* Buttons for share to social media  */}
-
             <br></br>
             <br></br>
 
@@ -243,6 +255,6 @@ export default function EventsCard({ event, onDeleteClick }) {
 
         </Comment>      
       </Comment.Group>    
-      </Container>
+      </Card>
   );
 }

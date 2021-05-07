@@ -11,14 +11,13 @@ import PostsPage from "./pages/posts/PostsPage";
 import EventsPage from "./pages/events/EventsPage";
 import SignUp from "./pages/auth/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
-
 import Chat from "./components/ChatComponents/Chat/Chat";
 import ChatPage from "./components/ChatComponents/Join/Join";
+import UserApi from "./api/UserApi";
 
 //Styling
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
-import UserApi from "./api/UserApi";
 
 export default function App() {
   // State
