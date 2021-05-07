@@ -48,6 +48,7 @@ export default function EventsForm({ onSubmit }) {
   return (
     <div className="card">
       <div className="card-body">
+  
         <h2 className="card-title">Create a hiking event</h2>
         <Form>
           <Form.Group widths="equal">

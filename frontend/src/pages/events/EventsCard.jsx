@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Like from "../posts/Like";
 
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
@@ -14,6 +15,8 @@ import {
   Icon,
   Responsive,
   Segment,
+  Container,
+  Image,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
@@ -117,8 +120,15 @@ export default function EventsCard({ event, onDeleteClick }) {
     </a>
   );
 
+  const icon = (
+    <a>
+      <Icon name="calendar" />
+      {isNewMaxNum}
+    </a>
+  );
+
   return (
-    <div className="postcard">
+    <Container centered>
       <Comment.Group>
         <Comment>
           <Comment.Avatar
@@ -137,14 +147,31 @@ export default function EventsCard({ event, onDeleteClick }) {
 
           <br></br>
 
-          <Card
-            color="olive"
-            image=<img src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"></img>
-            header={isNewTrailName}
-            meta={isNewEventDistance}
-            description={isNewHyperlink}
-            extra={extra}
-          />
+          <Card  margin color="olive" >
+            <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"/>
+            <Card.Content>
+              <Card.Header>Trail Name: {isNewTrailName}</Card.Header>
+              <Card.Content extra>
+                <br></br>
+                <a>
+                  <Icon name="chart area" />
+                  {isNewEventDistance} km
+                </a>
+              </Card.Content>
+              <br></br>
+              <a>
+                <Icon name="fire" />
+                Difficulty: {isNewEventDifficulty}
+              </a>
+            </Card.Content>
+
+            <Card.Content extra>
+              <Card.Meta>
+                <span className="date">{extra}</span>
+              </Card.Meta>
+            </Card.Content>
+          </Card>
+       
 
           <Comment.Actions>
             <Comment.Action active onClick={() => setIsUpdating(true)}>
@@ -162,34 +189,34 @@ export default function EventsCard({ event, onDeleteClick }) {
             <br></br>
 
             {/* Buttons for share to social media and like button */}
-            <Button.Group size="small">
-                    <Button color="red" icon="heart" size="small" />
-                    <FacebookShareButton
-                      url={window.location.href} //share the actual link of the post
-                      title={event.user} //the user who wrote the post
-                      description={isNewTrailName} //the comment written in the post is shared
-                      quote="link"
-                    >
-                      <FacebookIcon className="mx-3" size={35} />
-                    </FacebookShareButton>
-                    <TwitterShareButton
-                      url={window.location.href}
-                      title={isNewTrailName} //the comment written in the post is shared
-                      quote="link"
-                      hashtag="hiking"
-                    >
-                      <TwitterIcon className="mx-3" size={35} />
-                    </TwitterShareButton>
-                    <WhatsappShareButton
-                      url={window.location.href}
-                      separator=""
-                      title={isNewTrailName} //the comment written in the post is shared
-                      quote="link"
-                    >
-                      <WhatsappIcon size={35} />
-                    </WhatsappShareButton>  
-                  </Button.Group>
-                      {/* Buttons for share to social media finish here  */}
+            <Button.Group  size="small">
+            <Like />
+              <FacebookShareButton
+                url={window.location.href} //share the actual link of the post
+                title={event.user} //the user who wrote the post
+                description={isNewTrailName} //the comment written in the post is shared
+                quote="link"
+              >
+                <FacebookIcon className="mx-3" size={35} />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={window.location.href}
+                title={isNewTrailName} //the comment written in the post is shared
+                quote="link"
+                hashtag="hiking"
+              >
+                <TwitterIcon className="mx-3" size={35} />
+              </TwitterShareButton>
+              <WhatsappShareButton
+                url={window.location.href}
+                separator=""
+                title={isNewTrailName} //the comment written in the post is shared
+                quote="link"
+              >
+                <WhatsappIcon size={35} />
+              </WhatsappShareButton>
+            </Button.Group>
+            {/* Buttons for share to social media finish here  */}
           </Comment.Actions>
 
           <div className="comments-container">
@@ -214,8 +241,9 @@ export default function EventsCard({ event, onDeleteClick }) {
           <div className="comments-form">
             <EventCommentForm id={event.id} onSubmit={createEventComment} />
           </div>
-        </Comment>
-      </Comment.Group>
-    </div>
+
+        </Comment>      
+      </Comment.Group>    
+      </Container>
   );
 }
