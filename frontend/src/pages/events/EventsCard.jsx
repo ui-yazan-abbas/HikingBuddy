@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import JoinButton from "./JoinButton";
 import { Link } from "react-router-dom";
 import Like from "../posts/Like";
-
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
@@ -131,7 +131,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   );
 
   return (
-    <Container centered>
+
+    <Card centered margin>
+
       <Comment.Group>
         <Comment>
           <Comment.Avatar as="a" src={user.imageUrl} />
@@ -167,7 +169,17 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
             <Card.Content extra>
               <Card.Meta>
-                <span className="date">{extra}</span>
+                <span className="date">{extra} </span>
+
+                <Button
+            as="a"
+            inverted
+            color="olive"
+            type="submit"
+          >
+            More details
+          </Button>
+
               </Card.Meta>
             </Card.Content>
           </Card>
@@ -184,14 +196,14 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 </Comment.Action>
               </>
             )}
+            {eventComments.length} comment(s)
             {/* Buttons for share to social media  */}
-
             <br></br>
             <br></br>
 
             {/* Buttons for share to social media and like button */}
-            <Button.Group size="small">
-              <Like />
+            <Button.Group  size="small">
+            <JoinButton />
               <FacebookShareButton
                 url={window.location.href} //share the actual link of the post
                 title={event.user} //the user who wrote the post
@@ -243,8 +255,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
           <div className="comments-form">
             <EventCommentForm id={event.id} onSubmit={createEventComment} />
           </div>
-        </Comment>
-      </Comment.Group>
-    </Container>
+
+        </Comment>      
+      </Comment.Group>    
+      </Card>
   );
 }

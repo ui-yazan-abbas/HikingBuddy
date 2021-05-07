@@ -27,7 +27,7 @@ const HomepageHeading = ({ mobile }) => (
   <Container text>
     <Header
       as="h1"
-      content="Let's explore together"
+      content="Hiking tips and events in one place"
       inverted
       style={{
         fontSize: mobile ? "2em" : "4em",
@@ -38,7 +38,7 @@ const HomepageHeading = ({ mobile }) => (
     />
     <Header
       as="h2"
-      content="Do you like nature and sports?"
+      content="Do you like nature and hiking?"
       inverted
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",
@@ -47,7 +47,7 @@ const HomepageHeading = ({ mobile }) => (
       }}
     />
     <Button as="a" color="green" size="huge">
-      <a href="/signup"> Start Exploring!</a>
+      <a href="/signup">Find hiking buddies and join a hike</a>
       <Icon name="right arrow" />
     </Button>
   </Container>
@@ -69,16 +69,15 @@ const HomepageLayout = () => (
               Connect and share
             </Header>
             <p style={{ fontSize: "1.33em" }}>
-              The place made to connect people who love nature and outdoor
-              activities in order to share their experiences, recommendations,
-              learn from each other and share the best moments together.
+              The place made to connect people who love hiking and staying outdoors. Share your experiences, recommend a dream hike,
+              create and join hiking events and share the best moments together!
             </p>
             <Header as="h3" style={{ fontSize: "2em" }}>
               Do you love nature as we love?
             </Header>
             <p style={{ fontSize: "1.33em" }}>
-              Let's organise hiking routes and enjoy together amazing moments in
-              nature. For all those passionate about nature and sport this is
+              Let's organise hiking routes and enjoy amazing moments in
+              nature. For all those passionate about nature and hiking, this is
               the place to be!
             </p>
           </Grid.Column>
@@ -94,7 +93,7 @@ const HomepageLayout = () => (
         <Grid.Row>
           <Grid.Column textAlign="center">
             <Button inverted color="green" size="huge">
-              <a href="/signup"> Start connecting with others!</a>
+              <a href="/signup">Find your next hiking adventure</a>
             </Button>
           </Grid.Column>
         </Grid.Row>

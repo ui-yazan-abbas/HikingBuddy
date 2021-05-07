@@ -30,6 +30,8 @@ import {
 export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
+
+
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
@@ -112,9 +114,11 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     </div>
                   </Comment.Metadata>
 
-                  <Comment.Text>Location: {postTitle}</Comment.Text>
-                  <Comment.Text>Distance: {postKm}</Comment.Text>
-                  <Comment.Text>Why recommending: {postBody}</Comment.Text>
+                 
+                  <Comment.Text><b>Location:</b> {postTitle}</Comment.Text>
+                  <Comment.Text><b>Distance:</b>{postKm}</Comment.Text>
+                  <Comment.Text><b>Why recommending:</b>{postBody}</Comment.Text>
+              
 
                   <Header
                     as="h3"
