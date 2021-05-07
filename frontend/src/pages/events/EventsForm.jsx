@@ -8,6 +8,7 @@ import {
   Radio,
   Select,
   TextArea,
+  Message,
 } from "semantic-ui-react";
 
 export default function EventsForm({ onSubmit }) {
@@ -51,6 +52,7 @@ export default function EventsForm({ onSubmit }) {
         <Form>
           <Form.Group widths="equal">
             <Form.Field
+              required
               control={Input}
               label="Location/Trail name"
               placeholder="Höga Kusten"
@@ -59,6 +61,7 @@ export default function EventsForm({ onSubmit }) {
             />
 
             <Form.Field
+              required
               control={Input}
               label="Difficulty"
               placeholder="Easy/Medium/Expert"
@@ -69,6 +72,7 @@ export default function EventsForm({ onSubmit }) {
 
           <Form.Group widths="equal">
             <Form.Field
+              required
               control={Input}
               label="Duration in days"
               placeholder="3"
@@ -77,7 +81,9 @@ export default function EventsForm({ onSubmit }) {
               onChange={(e) => setEventDuration(e.target.value)}
             />
 
+            {/* For distance */}
             <Form.Field
+              required
               control={Input}
               label="Distance in km"
               placeholder="83"
@@ -86,9 +92,12 @@ export default function EventsForm({ onSubmit }) {
               onChange={(e) => setEventDistance(e.target.value)}
             />
 
+            {/* For calendar */}
             <Form.Field
+              required
               control={Input}
-              label="Max participants"
+              type="date"
+              label="Date"
               placeholder="7"
               width={4}
               value={maxNum}
@@ -98,6 +107,7 @@ export default function EventsForm({ onSubmit }) {
 
           <Form.Group widths="equal">
             <Form.Field
+              required
               control={Input}
               label="Meeting point and time"
               placeholder="Central station, Stockholm"
@@ -109,11 +119,14 @@ export default function EventsForm({ onSubmit }) {
               control={Input}
               label="Website link to location or trail"
               placeholder="https://www.hogakusten.com/en"
+              type="url"
+              name="url"
               value={trailHyperlink}
               onChange={(e) => setTrailHyperlink(e.target.value)}
             />
           </Form.Group>
           <Form.Field
+            required
             control={TextArea}
             label="About event"
             placeholder="It´s an easy trail I took before and now..."

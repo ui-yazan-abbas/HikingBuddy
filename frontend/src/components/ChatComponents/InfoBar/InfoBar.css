@@ -1,4 +1,4 @@
-.infoBar {
+ .infoBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,3 +26,4 @@
 .onlineIcon {
   margin-right: 5%;
 }
+ 
