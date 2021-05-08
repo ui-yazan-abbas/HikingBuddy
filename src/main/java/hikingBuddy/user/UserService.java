@@ -11,7 +11,6 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
@@ -20,12 +19,18 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
-    public User updateUser (User user, User updateUserData) {
+    public User updateUser(User user, User updateUserData) {
         updateUserData = user.setUpdateUser(updateUserData);
         updateUserData.setId(user.getId());
         updateUserData.setComments(user.getComments());
         updateUserData.setPosts(user.getPosts());
+        updateUserData.setFollowersList(user.getFollowersList());
         return updateUserData;
+    }
+
+    public User addFollower(User updateUserData, User user) {
+        user.addFollower(updateUserData);
+        return user;
     }
 
     public void register(User user) {
@@ -33,6 +38,5 @@ public class UserService {
         user.setPassword(encryptedPass);
         userRepository.save(user);
     }
-
 
 }

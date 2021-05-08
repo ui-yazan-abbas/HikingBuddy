@@ -4,6 +4,8 @@ import EventsApi from "../../api/EventsApi";
 import {
   Button,
   Checkbox,
+  Grid,
+  Segment,
   Form,
   Input,
   Radio,
@@ -41,8 +43,8 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
   };
 
   return (
-    <div className="card mt-3">
-      <div className="card-body">
+    <Grid.Column only="widescreen" widescreen={10}>
+    <Segment>
         <Form>
           <Form.Group widths="equal">
             <Form.Field
@@ -83,7 +85,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
 
             <Form.Field
               control={Input}
-              label="Max participants"
+              label="Date"
               placeholder="7"
               width={4}
               value={maxNum}
@@ -126,7 +128,8 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
             Submit event changes
           </Button>
         </Form>
-      </div>
-    </div>
+   
+        </Segment>
+        </Grid.Column>
   );
 }

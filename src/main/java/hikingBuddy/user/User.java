@@ -9,6 +9,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -183,4 +185,5 @@ public class User {
     public void addFollower(User follower) {
         this.followersList.add(follower);
     }
+    
 }
