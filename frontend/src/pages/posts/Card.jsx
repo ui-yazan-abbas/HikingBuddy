@@ -199,28 +199,6 @@ export default function PostCard({
                     }}
                     post={post}
                   />
-<<<<<<< HEAD
-                ))}
-            </div>
-
-            {isUpdating && (
-              <UpdateCard
-                onUpdateClick={(postData) => {
-                  updatePost(postData);
-                  setIsUpdating(false);
-                }}
-                post={post}
-              />
-            )}
-
-            <div className="comments-form">
-              <CommentForm id={post.id} onSubmit={createComment} />
-            </div>
-          </Comment.Content>
-        </Comment>
-      </Comment.Group>
-    </div>
-=======
                 )}
 
                 <div className="comments-form">
@@ -232,6 +210,5 @@ export default function PostCard({
         </Segment>
       </Grid.Column>
     </Container>
->>>>>>> main
   );
 }
