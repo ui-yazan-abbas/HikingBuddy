@@ -1,6 +1,7 @@
 // NPM Packages
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Auth from "../../services/Auth";
 //Styling
 import {
   Button,
@@ -12,9 +13,18 @@ import {
   Segment,
 } from "semantic-ui-react";
 
-export default function AuthPage({ onSubmit }) {
+export default function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let history = useHistory()
+  const login = async(loginData) => {
+    const loginSuccess = await Auth.login(loginData);
+    if (!loginSuccess) {
+      alert("Invalid credentials");
+    }
+    history.push("/posts")
+  }
+
 
   return (
     <div className="login">
@@ -54,7 +64,7 @@ export default function AuthPage({ onSubmit }) {
                 as="a"
                 inverted
                 color="green"
-                onClick={() => onSubmit({ email, password })}
+                onClick={() => login({ email, password })}
               >
                 <a href="/login">Login</a>
               </Button>

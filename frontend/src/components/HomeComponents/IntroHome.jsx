@@ -15,7 +15,7 @@ export default function IntroHome(mobile) {
       <Container text textAlign="center">
         <Header
           as="h1"
-          content="Let's explore together"
+          content="Hiking tips and events in one place"
           inverted
           style={{
             fontSize: mobile ? "2em" : "4em",
@@ -26,7 +26,7 @@ export default function IntroHome(mobile) {
         />
         <Header
           as="h2"
-          content="Do you like nature and sports?"
+          content="Do you love nature and hiking?"
           inverted
           style={{
             fontSize: mobile ? "1.5em" : "1.7em",
@@ -35,7 +35,7 @@ export default function IntroHome(mobile) {
           }}
         />
         <Button as="a" color="green" size="huge">
-          <a href="/signup"> Start Exploring!</a>
+          <a href="/signup"> Find hiking buddies and join a hike</a>
           <Icon name="right arrow" />
         </Button>
       </Container>

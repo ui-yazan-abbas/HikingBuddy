@@ -10,6 +10,11 @@ import {
   Select,
   TextArea,
   Message,
+  Icon,
+  Image,
+  Modal,
+  Header,
+  Card,
 } from "semantic-ui-react";
 
 export default function EventsForm({ onSubmit }) {
@@ -21,6 +26,9 @@ export default function EventsForm({ onSubmit }) {
   const [meetPoint, setMeetPoint] = React.useState("");
   const [trailHyperlink, setTrailHyperlink] = React.useState("");
   const [body, setBody] = React.useState("");
+
+  //Modal
+  const [open, setOpen] = React.useState(false);
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
@@ -47,107 +55,130 @@ export default function EventsForm({ onSubmit }) {
   };
 
   return (
-    <div className="card">
-      <div className="card-body">
-        {/* <h2 className="card-title">Create a hiking event</h2> */}
-        <Form>
-          <EventSearch />
-
-          <Form.Group widths="equal">
-            <Form.Field
-              required
-              control={Input}
-              label="Location/Trail name"
-              placeholder="Höga Kusten"
-              value={trailName}
-              onChange={(e) => setTrailName(e.target.value)}
-            />
-
-            <Form.Field
-              required
-              control={Input}
-              label="Difficulty"
-              placeholder="Easy/Medium/Expert"
-              value={eventDifficulty}
-              onChange={(e) => setEventDifficulty(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group widths="equal">
-            <Form.Field
-              required
-              control={Input}
-              label="Duration in days"
-              placeholder="3"
-              width={4}
-              value={eventDuration}
-              onChange={(e) => setEventDuration(e.target.value)}
-            />
-
-            {/* For distance */}
-            <Form.Field
-              required
-              control={Input}
-              label="Distance in km"
-              placeholder="83"
-              width={4}
-              value={eventDistance}
-              onChange={(e) => setEventDistance(e.target.value)}
-            />
-
-            {/* For calendar */}
-            <Form.Field
-              required
-              control={Input}
-              type="date"
-              label="Date"
-              placeholder="7"
-              width={4}
-              value={maxNum}
-              onChange={(e) => setMaxNum(e.target.value)}
-            />
-          </Form.Group>
-
-          <Form.Group widths="equal">
-            <Form.Field
-              required
-              control={Input}
-              label="Meeting point and time"
-              placeholder="Central station, Stockholm"
-              value={meetPoint}
-              onChange={(e) => setMeetPoint(e.target.value)}
-            />
-
-            <Form.Field
-              control={Input}
-              label="Website link to location or trail"
-              placeholder="https://www.hogakusten.com/en"
-              type="url"
-              name="url"
-              value={trailHyperlink}
-              onChange={(e) => setTrailHyperlink(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Field
-            required
-            control={TextArea}
-            label="About event"
-            placeholder="It´s an easy trail I took before and now..."
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
+    <Card centered margin>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        trigger={
+          <Button basic color="green">
+            Create a Hiking Event
+          </Button>
+        }
+      >
+        <Modal.Header>Your Hiking Event</Modal.Header>
+        <Modal.Content image scrolling>
+          <Image
+            size="medium"
+            src="https://images.unsplash.com/photo-1464198016405-33fd4527b89d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1292&q=80"
+            wrapped
           />
 
-          <Button
-            as="a"
-            inverted
-            color="blue"
-            onClick={handleSubmit}
-            type="submit"
-          >
-            Create event
+          <Modal.Description>
+            <Form>
+              <Form.Group widths="equal">
+                <Form.Field
+                  required
+                  control={Input}
+                  label="Location/Trail name"
+                  placeholder="Höga Kusten"
+                  value={trailName}
+                  onChange={(e) => setTrailName(e.target.value)}
+                />
+
+                <Form.Field
+                  required
+                  control={Input}
+                  label="Difficulty"
+                  placeholder="Easy/Medium/Expert"
+                  value={eventDifficulty}
+                  onChange={(e) => setEventDifficulty(e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group widths="equal">
+                <Form.Field
+                  required
+                  control={Input}
+                  label="Duration in days"
+                  placeholder="3"
+                  width={4}
+                  value={eventDuration}
+                  onChange={(e) => setEventDuration(e.target.value)}
+                />
+
+                {/* For distance */}
+                <Form.Field
+                  required
+                  control={Input}
+                  label="Distance in km"
+                  placeholder="83"
+                  width={4}
+                  value={eventDistance}
+                  onChange={(e) => setEventDistance(e.target.value)}
+                />
+
+                {/* For calendar */}
+                <Form.Field
+                  required
+                  control={Input}
+                  type="date"
+                  label="Date"
+                  placeholder="7"
+                  width={4}
+                  value={maxNum}
+                  onChange={(e) => setMaxNum(e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group widths="equal">
+                <Form.Field
+                  required
+                  control={Input}
+                  label="Meeting details"
+                  placeholder="Central station, Stockholm, 14:05"
+                  value={meetPoint}
+                  onChange={(e) => setMeetPoint(e.target.value)}
+                />
+
+                <Form.Field
+                  control={Input}
+                  label="Website link to location"
+                  placeholder="https://www.hogakusten.com/en"
+                  type="url"
+                  name="url"
+                  value={trailHyperlink}
+                  onChange={(e) => setTrailHyperlink(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Field
+                required
+                control={TextArea}
+                label="About event"
+                placeholder="It´s an easy trail I took before and now..."
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              />
+              <Button
+                as="a"
+                inverted
+                color="blue"
+                onClick={handleSubmit}
+                type="submit"
+              >
+                Create event
+                <Icon name="chevron right" />
+              </Button>
+            </Form>
+          </Modal.Description>
+        </Modal.Content>
+
+        <Modal.Actions>
+          <Button onClick={() => setOpen(false)} primary>
+            See events <Icon name="chevron right" />
           </Button>
-        </Form>
-      </div>
-    </div>
+        </Modal.Actions>
+      </Modal>
+    </Card>
   );
 }
