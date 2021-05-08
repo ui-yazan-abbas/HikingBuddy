@@ -6,7 +6,6 @@ import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
 import Like from "../posts/Like";
 import moment from "moment";
-import Like from "../posts/Like";
 
 import {
   Grid,
@@ -31,7 +30,6 @@ import {
 export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
-
 
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
@@ -114,11 +112,17 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     </div>
                   </Comment.Metadata>
 
-                 
-                  <Comment.Text><b>Location:</b> {postTitle}</Comment.Text>
-                  <Comment.Text><b>Distance:</b>{postKm}</Comment.Text>
-                  <Comment.Text><b>Why recommending:</b>{postBody}</Comment.Text>
-              
+                  <Comment.Text>
+                    <b>Location:</b> {postTitle}
+                  </Comment.Text>
+                  <Comment.Text>
+                    <b>Distance:</b>
+                    {postKm}
+                  </Comment.Text>
+                  <Comment.Text>
+                    <b>Why recommending:</b>
+                    {postBody}
+                  </Comment.Text>
 
                   <Header
                     as="h3"
@@ -150,8 +154,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                 <br></br>
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small">
-                    <Like />
-                    <br></br>
+                  <Like />
+                  <br></br>
                   <FacebookShareButton
                     url={window.location.href} //share the actual link of the post
                     title={post.user} //the user who wrote the post
