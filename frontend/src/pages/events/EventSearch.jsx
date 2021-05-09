@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../events/EventSearch.css";
 
-class Search extends Component {
+class EventSearch extends Component {
   state = {
     searchValue: "",
     meals: [],
@@ -55,4 +55,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default EventSearch;
