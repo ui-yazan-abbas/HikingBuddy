@@ -44,7 +44,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
 
   return (
     <Grid.Column only="widescreen" widescreen={10}>
-    <Segment>
+      <Segment>
         <Form>
           <Form.Group widths="equal">
             <Form.Field
@@ -64,52 +64,49 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
             />
           </Form.Group>
 
+          <Form.Field
+            control={Input}
+            type="date"
+            label="Starting Date"
+            placeholder="7"
+            value={maxNum}
+            onChange={(e) => setMaxNum(e.target.value)}
+          />
+
           <Form.Group widths="equal">
             <Form.Field
               control={Input}
-              label="Duration in days"
+              label="Duration (days)"
               placeholder="3"
-              width={4}
               value={eventDuration}
               onChange={(e) => setEventDuration(e.target.value)}
             />
 
             <Form.Field
               control={Input}
-              label="Distance in km"
+              label="Distance (km)"
               placeholder="83"
-              width={4}
               value={eventDistance}
               onChange={(e) => setEventDistance(e.target.value)}
             />
-
-            <Form.Field
-              control={Input}
-              label="Starting Date"
-              placeholder="7"
-              width={4}
-              value={maxNum}
-              onChange={(e) => setMaxNum(e.target.value)}
-            />
           </Form.Group>
 
-          <Form.Group widths="equal">
-            <Form.Field
-              control={Input}
-              label="Meeting point and time"
-              placeholder="Central station, Stockholm"
-              value={meetPoint}
-              onChange={(e) => setMeetPoint(e.target.value)}
-            />
+          <Form.Field
+            control={Input}
+            label="Meeting point and time"
+            placeholder="Central station, Stockholm"
+            value={meetPoint}
+            onChange={(e) => setMeetPoint(e.target.value)}
+          />
 
-            <Form.Field
-              control={Input}
-              label="Website link to location or trail"
-              placeholder="https://www.hogakusten.com/en"
-              value={trailHyperlink}
-              onChange={(e) => setTrailHyperlink(e.target.value)}
-            />
-          </Form.Group>
+          <Form.Field
+            control={Input}
+            label="External link to trail (optional)"
+            placeholder="https://www.hogakusten.com/en"
+            value={trailHyperlink}
+            onChange={(e) => setTrailHyperlink(e.target.value)}
+          />
+
           <Form.Field
             control={TextArea}
             label="About event"
@@ -128,8 +125,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
             Submit event changes
           </Button>
         </Form>
-   
-        </Segment>
-        </Grid.Column>
+      </Segment>
+    </Grid.Column>
   );
 }
