@@ -52,7 +52,6 @@ const Chat = ({ location }) => {
       setUsers(users);
     });
 }, []);
-
   const sendMessage = (event) => {
     event.preventDefault();
 
