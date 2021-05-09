@@ -95,6 +95,7 @@ export default function EventsForm({ onSubmit }) {
                 />
               </Form.Group>
 
+              {/* For calendar */}
               <Form.Field
                 required
                 control={Input}
@@ -128,7 +129,7 @@ export default function EventsForm({ onSubmit }) {
                 />
               </Form.Group>
 
-              {/* For calendar */}
+             
 
               <Form.Field
                 required

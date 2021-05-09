@@ -11,6 +11,7 @@ import {
   Radio,
   Select,
   TextArea,
+  Container
 } from "semantic-ui-react";
 
 export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
@@ -46,7 +47,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
     <Grid.Column only="widescreen" widescreen={10}>
       <Segment>
         <Form>
-          <Form.Group widths="equal">
+          
             <Form.Field
               control={Input}
               label="Location/Trail name"
@@ -62,7 +63,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
               value={eventDifficulty}
               onChange={(e) => setEventDifficulty(e.target.value)}
             />
-          </Form.Group>
+         
 
           <Form.Field
             control={Input}
@@ -73,7 +74,6 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
             onChange={(e) => setMaxNum(e.target.value)}
           />
 
-          <Form.Group widths="equal">
             <Form.Field
               control={Input}
               label="Duration (days)"
@@ -89,7 +89,6 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
               value={eventDistance}
               onChange={(e) => setEventDistance(e.target.value)}
             />
-          </Form.Group>
 
           <Form.Field
             control={Input}
@@ -127,5 +126,6 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
         </Form>
       </Segment>
     </Grid.Column>
+   
   );
 }
