@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import "../events/EventSearch.css";
 
 class EventSearch extends Component {
   state = {
     searchValue: "",
-    meals: [],
+    eventDestinations: [],
   };
 
   handleOnChange = (event) => {
@@ -15,14 +14,14 @@ class EventSearch extends Component {
     this.makeApiCall(this.state.searchValue);
   };
 
-  makeApiCall = (searchInput) => {
-    var searchUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`;
+  makeApiCall = () => {
+    var searchUrl = `http://localhost:8080/events`;
     fetch(searchUrl)
       .then((response) => {
         return response.json();
       })
       .then((jsonData) => {
-        this.setState({ meals: jsonData.meals });
+        this.setState({ eventDestinations: jsonData.eventDestinations });
       });
   };
 
@@ -38,17 +37,19 @@ class EventSearch extends Component {
           value={this.state.searchValue}
         />
         <button onClick={this.handleSearch}>Search</button>
-        {this.state.meals ? (
-          <div id="meals-container">
-            {this.state.meals.map((meal, index) => (
-              <div class="single-meal" key={index}>
-                <h2>{meal.strMeal}</h2>
-                <img src={meal.strMealThumb} alt="meal-thumbnail" />
+        {this.state.eventDestinations ? (
+          <div id="">
+            {this.state.eventDestinations.map((trailName, index) => (
+              <div class="" key={index}>
+                <h2>{trailName}</h2>
               </div>
             ))}
           </div>
         ) : (
-          <p>Try searching for a event</p>
+          <p>
+            Event not found! Yet, you can create your own event and other will
+            join you.{" "}
+          </p>
         )}
       </div>
     );

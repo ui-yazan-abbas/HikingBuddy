@@ -78,6 +78,8 @@ export default function EventsForm({ onSubmit }) {
 
           <Modal.Description>
             <Form>
+              <EventSearch />
+
               <Form.Group widths="equal">
                 <Form.Field
                   required
