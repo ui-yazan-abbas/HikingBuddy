@@ -29,3 +29,8 @@
   }
 }
 
+@media (min-width: 480px) and (max-width: 1200px) {
+  .containerc2 {
+    width: 70%;
+  }
+}

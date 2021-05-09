@@ -5,7 +5,6 @@
   color: white;
   display: inline-block;
   max-width: 80%;
-  text-align: left;
 }
 
 .messageText {
@@ -22,7 +21,7 @@
 
 .messageContainer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 0 5%;
   margin-top: 3px;
 }
@@ -33,29 +32,18 @@
   font-family: Helvetica;
   color: #828282;
   letter-spacing: 0.3px;
-}
 
-.pl-10 {
-  padding-left: 10px;
 }
 
 .pr-10 {
-  padding-right: 10px;
+  padding-left: 10px;
+  color: gray;
 }
-
 .justifyStart {
   justify-content: flex-start;
 }
 
-.justifyEnd {
-  justify-content: flex-end;
-}
-
 .colorWhite {
-  color: white;
-}
-
-.colorDark {
   color: white;
 }
 
@@ -63,6 +51,6 @@
   background: #2979FF;
 }
 
-.backgroundLight {
+.backgroundGreen {
   background: green;
 }
