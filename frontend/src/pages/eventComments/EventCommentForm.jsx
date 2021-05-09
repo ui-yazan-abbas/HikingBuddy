@@ -20,20 +20,20 @@ export default function EventCommentForm({ id, onSubmit }) {
             <Form>
               <Form.Field>
                 <input
-                  placeholder="Reply...."
+                  placeholder="Comment...."
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
                 />
               </Form.Field>
               <Button
-                s="a"
+              s="a"
                 inverted
                 color="blue"
                 onClick={handleSubmit}
-                type="submit"
-              >
-                Add Comment
-              </Button>
+                labelPosition="left"
+                icon="edit"
+                content="Add Comment"
+              />
             </Form>
           </div>
         </div>
