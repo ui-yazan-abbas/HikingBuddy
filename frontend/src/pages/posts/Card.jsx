@@ -116,8 +116,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
                  
                   <Comment.Text><b>Location:</b> {postTitle}</Comment.Text>
-                  <Comment.Text><b>Distance:</b>{postKm}</Comment.Text>
-                  <Comment.Text><b>Why recommending:</b>{postBody}</Comment.Text>
+                  <Comment.Text><b>Distance:</b> {postKm} km</Comment.Text>
+                  <Comment.Text><b>Why recommended:</b> {postBody}</Comment.Text>
               
 
                   <Header
@@ -128,7 +128,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   ></Header>
 
                   <Comment.Actions>
-                    <Comment.Action active>Reply</Comment.Action>
 
                     {post.user == user.name && (
                       <>

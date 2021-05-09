@@ -85,7 +85,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
 
             <Form.Field
               control={Input}
-              label="Date"
+              label="Starting Date"
               placeholder="7"
               width={4}
               value={maxNum}

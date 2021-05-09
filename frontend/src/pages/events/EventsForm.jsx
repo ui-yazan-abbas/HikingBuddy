@@ -117,7 +117,7 @@ export default function EventsForm({ onSubmit }) {
               required
               control={Input}
               type="date"
-              label="Date"
+              label="Starting date"
               placeholder="7"
               width={4}
               value={maxNum}
@@ -129,7 +129,7 @@ export default function EventsForm({ onSubmit }) {
             <Form.Field
               required
               control={Input}
-              label="Meeting details"
+              label="Meeting point and time"
               placeholder="Central station, Stockholm, 14:05"
               value={meetPoint}
               onChange={(e) => setMeetPoint(e.target.value)}
