@@ -30,10 +30,12 @@ export default function CommentForm({ id, onSubmit }) {
                 inverted
                 color="blue"
                 onClick={handleSubmit}
-                type="submit"
-              >
-                Add Comment
-              </Button>
+               
+                labelPosition="left"
+                icon="edit"
+                content="Add Comment"
+              />
+                
             </Form>
           </div>
         </div>
