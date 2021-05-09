@@ -5,6 +5,7 @@
   color: white;
   display: inline-block;
   max-width: 80%;
+  text-align: left;
 }
 
 .messageText {
@@ -55,7 +56,7 @@
 }
 
 .colorDark {
-  color: #353535;
+  color: white;
 }
 
 .backgroundBlue {
@@ -63,5 +64,5 @@
 }
 
 .backgroundLight {
-  background: #F3F3F3;
+  background: green;
 }

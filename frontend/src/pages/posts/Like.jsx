@@ -14,12 +14,6 @@ const btnStyle1 = {
   background: "#3387FF",
 };
 
-const btnStyle2 = {
-  margin: "1px",
-  //   border: "5px solid pink",
-  background: "red",
-};
-
 const btnDefault = {};
 class Like extends Component {
   constructor(props) {
