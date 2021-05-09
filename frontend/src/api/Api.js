@@ -3,9 +3,6 @@ import Auth from "../services/Auth";
 
 const BASE_URL = "http://localhost:8080";
 
-// to convert BASE_URL to JSON type file
-console.log(BASE_URL);
-
 const Api = axios.create({
   baseURL: BASE_URL,
 });
