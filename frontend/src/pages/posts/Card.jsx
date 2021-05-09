@@ -31,7 +31,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
 
-
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
@@ -114,11 +113,15 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     </div>
                   </Comment.Metadata>
 
-                 
-                  <Comment.Text><b>Location:</b> {postTitle}</Comment.Text>
-                  <Comment.Text><b>Distance:</b>{postKm}</Comment.Text>
-                  <Comment.Text><b>Why recommending:</b>{postBody}</Comment.Text>
-              
+                  <Comment.Text>
+                    <b>Location:</b> {postTitle}
+                  </Comment.Text>
+                  <Comment.Text>
+                    <b>Distance:</b> {postKm} km
+                  </Comment.Text>
+                  <Comment.Text>
+                    <b>Why recommended:</b> {postBody}
+                  </Comment.Text>
 
                   <Header
                     as="h3"
@@ -128,19 +131,15 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   ></Header>
 
                   <Comment.Actions>
-                    <Comment.Action active>Reply</Comment.Action>
+                    <Comment.Action active onClick={() => setIsUpdating(true)}>
+                      Edit Post
+                    </Comment.Action>
 
                     {post.user == user.name && (
                       <>
                         <Comment.Action onClick={onDeleteClick} active>
                           {" "}
                           Delete post
-                        </Comment.Action>
-                        <Comment.Action
-                          active
-                          onClick={() => setIsUpdating(true)}
-                        >
-                          Edit Post
                         </Comment.Action>
                       </>
                     )}
@@ -150,8 +149,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                 <br></br>
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small">
-                    <Like />
-                    <br></br>
+                  <Like />
+                  <br></br>
                   <FacebookShareButton
                     url={window.location.href} //share the actual link of the post
                     title={post.user} //the user who wrote the post
