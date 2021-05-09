@@ -154,7 +154,7 @@ export default function EventsCard({ event, onDeleteClick }) {
                 <br></br>
                 <a>
                   <Icon name="chart area" />
-                  {isNewEventDistance} km
+                  Distance: {isNewEventDistance} km
                 </a>
               </Card.Content>
               <br></br>
@@ -167,55 +167,60 @@ export default function EventsCard({ event, onDeleteClick }) {
             <Card.Content extra>
               <Card.Meta>
                 <span className="date">{extra}</span>
+
+                <Button as="a" inverted color="olive" type="submit">
+                  See details
+                  <Icon name="chevron right" />
+                </Button>
               </Card.Meta>
             </Card.Content>
           </Card>
-         <div className="AvatarWrap">
-          <Comment.Actions>
-            <Comment.Action active onClick={() => setIsUpdating(true)}>
-              Edit event
-            </Comment.Action>
-            {event.user == event.user && (
-              <Comment.Action onClick={onDeleteClick} active>
-                {" "}
-                Delete event
+          <div className="AvatarWrap">
+            <Comment.Actions>
+              <Comment.Action active onClick={() => setIsUpdating(true)}>
+                Edit event
               </Comment.Action>
-            )}
-            {/* Buttons for share to social media  */}
+              {event.user == event.user && (
+                <Comment.Action onClick={onDeleteClick} active>
+                  {" "}
+                  Delete event
+                </Comment.Action>
+              )}
+              {/* Buttons for share to social media  */}
 
-            <br></br>
-            <br></br>
+              <br></br>
+              <br></br>
 
-            {/* Buttons for share to social media and like button */}
-            <Button.Group size="small">
-              <JoinButton />
-              <FacebookShareButton
-                url={window.location.href} //share the actual link of the post
-                title={event.user} //the user who wrote the post
-                description={isNewTrailName} //the comment written in the post is shared
-                quote="link"
-              >
-                <FacebookIcon className="mx-3" size={35} />
-              </FacebookShareButton>
-              <TwitterShareButton
-                url={window.location.href}
-                title={isNewTrailName} //the comment written in the post is shared
-                quote="link"
-                hashtag="hiking"
-              >
-                <TwitterIcon className="mx-3" size={35} />
-              </TwitterShareButton>
-              <WhatsappShareButton
-                url={window.location.href}
-                separator=""
-                title={isNewTrailName} //the comment written in the post is shared
-                quote="link"
-              >
-                <WhatsappIcon size={35} />
-              </WhatsappShareButton>
-            </Button.Group>
-            {/* Buttons for share to social media finish here  */}
-          </Comment.Actions>
+              {/* Buttons for share to social media and like button */}
+              <Button.Group size="small">
+                <JoinButton />
+                <FacebookShareButton
+                  url={window.location.href} //share the actual link of the post
+                  title={event.user} //the user who wrote the post
+                  description={isNewTrailName} //the comment written in the post is shared
+                  quote="link"
+                >
+                  <FacebookIcon className="mx-3" size={35} />
+                </FacebookShareButton>
+                <TwitterShareButton
+                  url={window.location.href}
+                  title={isNewTrailName} //the comment written in the post is shared
+                  quote="link"
+                  hashtag="hiking"
+                >
+                  <TwitterIcon className="mx-3" size={35} />
+                </TwitterShareButton>
+                <WhatsappShareButton
+                  url={window.location.href}
+                  separator=""
+                  title={isNewTrailName} //the comment written in the post is shared
+                  quote="link"
+                >
+                  <WhatsappIcon size={35} />
+                </WhatsappShareButton>
+              </Button.Group>
+              {/* Buttons for share to social media finish here  */}
+            </Comment.Actions>
           </div>
           <div className="comments-container">
             {eventComments &&

@@ -66,7 +66,9 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
-        <Modal.Header>Your Hiking Event</Modal.Header>
+        <Modal.Header style={{ color: "#5db556" }}>
+          Create Your Hiking Event
+        </Modal.Header>
         <Modal.Content image scrolling>
           <Image
             size="medium"
@@ -96,11 +98,22 @@ export default function EventsForm({ onSubmit }) {
                 />
               </Form.Group>
 
+              {/* For calendar */}
+              <Form.Field
+                required
+                control={Input}
+                type="date"
+                label="Starting Date"
+                placeholder="7"
+                value={maxNum}
+                onChange={(e) => setMaxNum(e.target.value)}
+              />
+
               <Form.Group widths="equal">
                 <Form.Field
                   required
                   control={Input}
-                  label="Duration in days"
+                  label="Duration (days)"
                   placeholder="3"
                   width={4}
                   value={eventDuration}
@@ -111,46 +124,33 @@ export default function EventsForm({ onSubmit }) {
                 <Form.Field
                   required
                   control={Input}
-                  label="Distance in km"
+                  label="Distance (km)"
                   placeholder="83"
                   width={4}
                   value={eventDistance}
                   onChange={(e) => setEventDistance(e.target.value)}
                 />
-
-                {/* For calendar */}
-                <Form.Field
-                  required
-                  control={Input}
-                  type="date"
-                  label="Date"
-                  placeholder="7"
-                  width={4}
-                  value={maxNum}
-                  onChange={(e) => setMaxNum(e.target.value)}
-                />
               </Form.Group>
 
-              <Form.Group widths="equal">
-                <Form.Field
-                  required
-                  control={Input}
-                  label="Meeting details"
-                  placeholder="Central station, Stockholm, 14:05"
-                  value={meetPoint}
-                  onChange={(e) => setMeetPoint(e.target.value)}
-                />
+              <Form.Field
+                required
+                control={Input}
+                label="Meeting point and time"
+                placeholder="Central station, Stockholm, 14:05"
+                value={meetPoint}
+                onChange={(e) => setMeetPoint(e.target.value)}
+              />
 
-                <Form.Field
-                  control={Input}
-                  label="Website link to location"
-                  placeholder="https://www.hogakusten.com/en"
-                  type="url"
-                  name="url"
-                  value={trailHyperlink}
-                  onChange={(e) => setTrailHyperlink(e.target.value)}
-                />
-              </Form.Group>
+              <Form.Field
+                control={Input}
+                label="External link to trail (optional)"
+                placeholder="https://www.hogakusten.com/en"
+                type="url"
+                name="url"
+                value={trailHyperlink}
+                onChange={(e) => setTrailHyperlink(e.target.value)}
+              />
+
               <Form.Field
                 required
                 control={TextArea}

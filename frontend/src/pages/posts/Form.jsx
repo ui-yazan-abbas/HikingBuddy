@@ -26,7 +26,7 @@ export default function PostForm({ onSubmit }) {
         <Segment style={{ background: "#d6fbe0" }}>
           <h2 style={{ color: "#4185ca" }}>Enjoyed a hike? Share and recommend!</h2>
           {/* <h4 className="card-title">Make a new post</h4> */}
-          <Form inverted>
+          <Form inverted size>
             <Form.Group widths="equal">
               <Form.Field>
               <label style={{ color: "#5db556" }}>Location/Trail name</label>
@@ -38,7 +38,7 @@ export default function PostForm({ onSubmit }) {
                 />
               </Form.Field>
               <Form.Field>
-              <label style={{ color: "#5db556" }}>Distance Km</label>
+              <label style={{ color: "#5db556" }}>Distance in km</label>
                 <Form.Input
                   placeholder="35"
                   value={postDistance}

@@ -116,12 +116,10 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     <b>Location:</b> {postTitle}
                   </Comment.Text>
                   <Comment.Text>
-                    <b>Distance:</b>
-                    {postKm}
+                    <b>Distance:</b> {postKm} km
                   </Comment.Text>
                   <Comment.Text>
-                    <b>Why recommending:</b>
-                    {postBody}
+                    <b>Why recommended:</b> {postBody}
                   </Comment.Text>
 
                   <Header
@@ -132,19 +130,15 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   ></Header>
 
                   <Comment.Actions>
-                    <Comment.Action active>Reply</Comment.Action>
+                    <Comment.Action active onClick={() => setIsUpdating(true)}>
+                      Edit Post
+                    </Comment.Action>
 
                     {post.user == user.name && (
                       <>
                         <Comment.Action onClick={onDeleteClick} active>
                           {" "}
                           Delete post
-                        </Comment.Action>
-                        <Comment.Action
-                          active
-                          onClick={() => setIsUpdating(true)}
-                        >
-                          Edit Post
                         </Comment.Action>
                       </>
                     )}

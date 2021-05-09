@@ -14,7 +14,6 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
       body: body,
       postDistance: postDistance,
     });
-
   };
   return (
     <div className="card mt-3">
@@ -47,6 +46,8 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
             />
           </Form.Field>
         </Form>
+
+        <br></br>
 
         <Button
           as="a"
