@@ -16,6 +16,7 @@ import {
   Segment,
   Container,
   Image,
+  Grid,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { Link } from "react-router-dom";
@@ -37,6 +38,7 @@ import EventCommentForm from "../eventComments/EventCommentForm";
 export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
+  const [readMore, setReadMore] = useState(false);
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -113,6 +115,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     (item) => item.commentedEvent == event.id
   );
 
+  /* Style variables */
   const extra = (
     <a>
       <Icon name="calendar" />
@@ -127,21 +130,38 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     </a>
   );
 
+  /* Variables for See more-see less details */
+  const extraContent = (
+    <div className="see-more">
+      <span>{isNewTrailName}</span>
+      <span>{isNewEventDifficulty}</span>
+      <span>{isNewMaxNum}</span>
+      <span>{isNewEventDuration}</span>
+      <span>{isNewEventDistance}</span>
+      <span>{isNewMeetPoint}</span>
+      <span>{isNewHyperlink}</span>
+      <span>{isRefreshingBody}</span>
+    </div>
+  );
+
+  const linkName = readMore ? "Hide Details << " : "See Details >> ";
+
   return (
     <Card centered margin>
       <Comment.Group>
         <Comment>
-          <Link to = {`/${event.user}/profile`}>
-          <Comment.Avatar
-            as="a"
-            src={user.imageUrl}
-          />
+          <br></br>
+          <Link to={`/${event.user}/profile`}>
+            <Comment.Avatar as="a" src={user.imageUrl} />
           </Link>
 
           <Comment.Content>
             <Link to={`/${event.user}/profile`}>
               {" "}
-              <Comment.Author> Created by {event.user}</Comment.Author>{" "}
+              <Comment.Author as="a">
+                {" "}
+                Created by {event.user}
+              </Comment.Author>{" "}
             </Link>
 
             <Comment.Metadata>
@@ -175,10 +195,20 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <Card.Meta>
                 <span className="date">{extra}</span>
 
-                <Button as="a" inverted color="olive" type="submit">
-                  See details
-                  <Icon name="chevron right" />
-                </Button>
+                
+                  <Button
+                    as="a"
+                    inverted
+                    color="olive"
+                    type="submit"
+                    onClick={() => {
+                      setReadMore(!readMore);
+                    }}
+                  >
+                    {linkName}
+                  </Button>
+                  {readMore && extraContent}
+                
               </Card.Meta>
             </Card.Content>
           </Card>
@@ -186,12 +216,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             <Comment.Actions>
               {event.user == user.name && (
                 <>
+                  <Comment.Action active onClick={() => setIsUpdating(true)}>
+                    Edit event
+                  </Comment.Action>
                   <Comment.Action onClick={onDeleteClick} active>
                     {" "}
                     Delete event
-                  </Comment.Action>
-                  <Comment.Action active onClick={() => setIsUpdating(true)}>
-                    Edit event
                   </Comment.Action>
                 </>
               )}

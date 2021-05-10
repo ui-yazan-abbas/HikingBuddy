@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Header } from "semantic-ui-react";
 
 export default function EventCommentForm({ id, onSubmit }) {
   const [body, setBody] = React.useState("");
@@ -34,7 +34,11 @@ export default function EventCommentForm({ id, onSubmit }) {
                 icon="edit"
                 content="Add Comment"
               />
+
+
             </Form>
+
+          
           </div>
         </div>
       </div>

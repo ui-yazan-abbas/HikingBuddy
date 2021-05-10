@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import EventSearch from "../events/EventSearch";
 
 import {
@@ -15,6 +15,7 @@ import {
   Modal,
   Header,
   Card,
+  Grid,
 } from "semantic-ui-react";
 
 export default function EventsForm({ onSubmit }) {
@@ -55,14 +56,9 @@ export default function EventsForm({ onSubmit }) {
   };
 
   return (
-
-   
-    
-    
-
     <Card centered margin>
-
-<EventSearch />
+      <EventSearch />
+      <br></br>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -73,14 +69,9 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
-
-
-
         <Modal.Header style={{ color: "#5db556" }}>
           Create Your Hiking Event
         </Modal.Header>
-
-        
 
         <Modal.Content image scrolling>
           <Image
@@ -88,8 +79,6 @@ export default function EventsForm({ onSubmit }) {
             src="https://images.unsplash.com/photo-1464198016405-33fd4527b89d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1292&q=80"
             wrapped
           />
-
-          
 
           <Modal.Description>
             <Form>

@@ -101,14 +101,14 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               <Link to={`/${post.user}/profile`}>
                 <Comment.Avatar as="a" src={user.imageUrl} />
               </Link>
-              <Comment.Content>
-                <p></p>
 
+              <Comment.Content>
                 <div className="container">
                   <Comment.Author as="a">
                     {" "}
                     <Link to={`/${post.user}/profile`}>{post.user}</Link>
                   </Comment.Author>
+                  
                   <Comment.Metadata>
                     <div>
                       {moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}
@@ -135,15 +135,15 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   <Comment.Actions>
                     {post.user == user.name && (
                       <>
-                        <Comment.Action onClick={onDeleteClick} active>
-                          {" "}
-                          Delete post
-                        </Comment.Action>
                         <Comment.Action
                           active
                           onClick={() => setIsUpdating(true)}
                         >
                           Edit Post
+                        </Comment.Action>
+                        <Comment.Action onClick={onDeleteClick} active>
+                          {" "}
+                          Delete post
                         </Comment.Action>
                       </>
                     )}

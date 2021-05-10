@@ -1,5 +1,23 @@
 import React, { Component } from "react";
 
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  Radio,
+  Select,
+  TextArea,
+  Message,
+  Icon,
+  Image,
+  Modal,
+  Header,
+  Card,
+  Search,
+  Grid
+} from "semantic-ui-react";
+
 class EventSearch extends Component {
   state = {
     searchValue: "",
@@ -27,15 +45,14 @@ class EventSearch extends Component {
 
   render() {
     return (
-      <div id="main">
-        <input
-          name="text"
-          type="text"
+      <Grid>
+       
+        <Search
           placeholder="Search by user name, location or date"
           onChange={(event) => this.handleOnChange(event)}
           value={this.state.searchValue}
         />
-        <button onClick={this.handleSearch}>Search</button>
+       {/*  <Button basic color="blue" onClick={this.handleSearch}> Search</Button> */}
         {this.state.eventDestinations ? (
           <div id="">
             {this.state.eventDestinations.map((trailName, index) => (
@@ -46,11 +63,12 @@ class EventSearch extends Component {
           </div>
         ) : (
           <p>
-            Event not found! Yet, you can create your own event and other will
+            Event not found! Yet, you can create your own event and others will
             join you.{" "}
           </p>
         )}
-      </div>
+        
+      </Grid>
     );
   }
 }
