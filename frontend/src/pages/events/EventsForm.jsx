@@ -1,4 +1,5 @@
 import React from "react";
+import EventSearch from "../events/EventSearch";
 
 import {
   Button,
@@ -65,7 +66,9 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
-        <Modal.Header style={{ color: "#5db556" }}>Create Your Hiking Event</Modal.Header>
+        <Modal.Header style={{ color: "#5db556" }}>
+          Create Your Hiking Event
+        </Modal.Header>
         <Modal.Content image scrolling>
           <Image
             size="medium"
@@ -75,6 +78,8 @@ export default function EventsForm({ onSubmit }) {
 
           <Modal.Description>
             <Form>
+              <EventSearch />
+
               <Form.Group widths="equal">
                 <Form.Field
                   required
@@ -128,8 +133,6 @@ export default function EventsForm({ onSubmit }) {
                   onChange={(e) => setEventDistance(e.target.value)}
                 />
               </Form.Group>
-
-             
 
               <Form.Field
                 required

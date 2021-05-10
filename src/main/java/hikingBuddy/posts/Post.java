@@ -3,6 +3,7 @@ package hikingBuddy.posts;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import hikingBuddy.comments.Comment;
 import hikingBuddy.user.User;
 

@@ -28,6 +28,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'com.auth0:java-jwt:3.15.0'
     runtimeOnly 'org.postgresql:postgresql'
+
 }
 
 test {

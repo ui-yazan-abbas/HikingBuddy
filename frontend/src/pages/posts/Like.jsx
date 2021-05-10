@@ -1,10 +1,6 @@
 import { Component } from "react";
 import React from "react";
-import {
-Label,
-    Button,
-    Icon
-  } from "semantic-ui-react";
+import { Label, Button, Icon } from "semantic-ui-react";
 
 const likes = 0;
 const dislikes = 0;
@@ -40,22 +36,23 @@ class Like extends Component {
       <div>
         <div>{this.props.headerProp}</div>
 
-        <Button as='div' labelPosition='right'>
-      <Button color='red'
-         color="red"
-         size="small"
-        style={this.state.likeCount !== likes ? btnStyle1 : btnDefault}
-        onClick={this.likeHandler}
-      >
-        <Icon name='heart' />
-        Like
-      </Button>
-      <Label as='a' basic color='red' pointing='left'>
-      {this.state.likeCount}
-      </Label>
-    </Button>
+        <Button as="div" labelPosition="right">
+          <Button
+            color="red"
+            color="red"
+            size="small"
+            style={this.state.likeCount !== likes ? btnStyle1 : btnDefault}
+            onClick={this.likeHandler}
+          >
+            <Icon name="heart" />
+            Like
+          </Button>
+          <Label as="a" basic color="red" pointing="left">
+            {this.state.likeCount}
+          </Label>
+        </Button>
 
-          {/* <span>
+        {/* <span>
             <button
               style={
                 this.state.dislikeCount !== dislikes ? btnStyle2 : btnDefault
@@ -66,7 +63,6 @@ class Like extends Component {
             </button>
             {""}| {this.state.dislikeCount}
           </span> */}
-     
       </div>
     );
   }
