@@ -16,7 +16,9 @@ export default function EventCommentCard({
     <div className="ccontainerr">
       <Comment.Group>
         <Comment>
-          <Comment.Avatar src={user.imageUrl} />
+          <Link to={`/${eventComment.user}/profile`}>
+            <Comment.Avatar src={user.imageUrl} />
+          </Link>
           <Comment.Content>
             <Link to={`/${eventComment.user}/profile`}>
               {" "}

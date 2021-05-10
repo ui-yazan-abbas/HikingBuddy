@@ -98,7 +98,9 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               Posts
             </Header> */}
             <Comment>
-              <Comment.Avatar as="a" src={user.imageUrl} />
+              <Link to={`/${post.user}/profile`}>
+                <Comment.Avatar as="a" src={user.imageUrl} />
+              </Link>
               <Comment.Content>
                 <p></p>
 
@@ -131,15 +133,17 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   ></Header>
 
                   <Comment.Actions>
-                    <Comment.Action active onClick={() => setIsUpdating(true)}>
-                      Edit Post
-                    </Comment.Action>
-
                     {post.user == user.name && (
                       <>
                         <Comment.Action onClick={onDeleteClick} active>
                           {" "}
                           Delete post
+                        </Comment.Action>
+                        <Comment.Action
+                          active
+                          onClick={() => setIsUpdating(true)}
+                        >
+                          Edit Post
                         </Comment.Action>
                       </>
                     )}
