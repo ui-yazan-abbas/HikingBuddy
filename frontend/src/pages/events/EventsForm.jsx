@@ -55,7 +55,14 @@ export default function EventsForm({ onSubmit }) {
   };
 
   return (
+
+   
+    
+    
+
     <Card centered margin>
+
+<EventSearch />
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -66,9 +73,15 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
+
+
+
         <Modal.Header style={{ color: "#5db556" }}>
           Create Your Hiking Event
         </Modal.Header>
+
+        
+
         <Modal.Content image scrolling>
           <Image
             size="medium"
@@ -76,10 +89,10 @@ export default function EventsForm({ onSubmit }) {
             wrapped
           />
 
+          
+
           <Modal.Description>
             <Form>
-              <EventSearch />
-
               <Form.Group widths="equal">
                 <Form.Field
                   required

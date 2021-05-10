@@ -28,11 +28,10 @@ class EventSearch extends Component {
   render() {
     return (
       <div id="main">
-        <h1>Find existing hiking event or create your own event</h1>
         <input
           name="text"
           type="text"
-          placeholder="Search for existing event"
+          placeholder="Search by user name, location or date"
           onChange={(event) => this.handleOnChange(event)}
           value={this.state.searchValue}
         />
