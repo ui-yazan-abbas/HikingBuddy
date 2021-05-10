@@ -4,8 +4,8 @@ import CommentForm from "../comments/CommentForm";
 import CommentsApi from "../../api/CommentsApi";
 import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
-import Like from "../posts/Like";
 import moment from "moment";
+import Like from "../posts/Like";
 
 import {
   Grid,
@@ -82,6 +82,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   let filteredCommentList = comments.filter(
     (item) => item.commentedPost == post.id
   );
+
   return (
     <Container>
       <Grid.Column only="widescreen" widescreen={10}>
