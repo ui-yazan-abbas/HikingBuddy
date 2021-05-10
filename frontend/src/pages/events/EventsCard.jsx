@@ -184,7 +184,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
           </Card>
           <div className="AvatarWrap">
             <Comment.Actions>
-              {event.user == event.user && (
+              {event.user == user.name && (
                 <>
                   <Comment.Action onClick={onDeleteClick} active>
                     {" "}
