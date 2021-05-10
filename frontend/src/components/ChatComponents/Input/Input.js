@@ -5,7 +5,7 @@ import './Input.css';
 const Input = ({ setMessage, sendMessage, message }) => (
   <form2 className="form">
     <input
-      className="input2"
+      className="inputp2"
       type="text"
       placeholder="Type a message..."
       value={message}
