@@ -52,7 +52,6 @@ const Chat = ({ location }) => {
       setUsers(users);
     });
   }, []);
-
   const sendMessage = (event) => {
     event.preventDefault();
 
@@ -62,8 +61,8 @@ const Chat = ({ location }) => {
   };
 
   return (
-    <div className="outerContainer2">
-      <div className="container2">
+    <div className="outerContainerc2">
+      <div className="containerc2">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
         <Input

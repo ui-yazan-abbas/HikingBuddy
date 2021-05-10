@@ -3,11 +3,12 @@
   border-top: 2px solid #D3D3D3;
 }
 
-  .input2 {
+  .inputp2 {
   border: none;
   border-radius: 0;
   padding: 5%;
   width: 80%;
+    height: 5%;
   font-size: 1.2em;
 }
 
@@ -20,8 +21,9 @@ input:focus, textarea:focus, select:focus{
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
+  text-align: center;
   background: cornflowerblue;
-  padding: 20px;
+  padding: 25px;
   display: inline-block;
   border: none;
   width: 20%;

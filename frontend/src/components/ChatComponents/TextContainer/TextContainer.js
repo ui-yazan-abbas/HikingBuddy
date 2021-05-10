@@ -10,7 +10,9 @@ const TextContainer = ({ users }) => (
       users
         ? (
           <div>
-            <h1>People in Chat:</h1>
+            <div className="bar2">
+            <h1>Users Online:</h1>
+            </div>
             <div className="activeContainer2">
               <h2>
                 {users.map(({name}) => (
