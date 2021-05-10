@@ -13,7 +13,9 @@ export default function CommentCard({ comment, onDeleteClick, user }) {
     <div className="ccontainerr">
       <Comment.Group>
         <Comment>
+        <Link to={`/${comment.user}/profile`}>
           <Comment.Avatar src={user.imageUrl} />
+          </Link>
           <Comment.Content>
             <Link to={`/${comment.user}/profile`}>
               <Comment.Author>{comment.user}</Comment.Author>
