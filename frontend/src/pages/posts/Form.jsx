@@ -1,5 +1,13 @@
 import React from "react";
-import { Button, Form, Grid, Segment, Container } from "semantic-ui-react";
+import {
+  Button,
+  Form,
+  Segment,
+  Header,
+  Modal,
+  Icon,
+  Card,
+} from "semantic-ui-react";
 
 export default function PostForm({ onSubmit }) {
   const [postLocation, setPostLocation] = React.useState("");
@@ -20,13 +28,29 @@ export default function PostForm({ onSubmit }) {
     setPostDistance("");
   };
 
+  //modal
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <Container>
-      <Grid.Column only="widescreen" widescreen={10}>
-        <Segment style={{ background: "#d6fbe0" }}>
+    <Card centered margin>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        trigger={
+          <Button basic color="green">
+            Recommend a Hike!
+          </Button>
+        }
+      >
+        <Header as="h3" dividing>
           <h2 style={{ color: "#e9896a" }}>
             Enjoyed a hike? Share and recommend!
           </h2>
+        </Header>
+
+        <Segment style={{ background: "#d6fbe0" }}>
+          <Modal.Header style={{ color: "#e9896a" }}></Modal.Header>
           {/* <h4 className="card-title">Make a new post</h4> */}
           <Form inverted size>
             <Form.Group widths="equal">
@@ -69,7 +93,13 @@ export default function PostForm({ onSubmit }) {
             </Button>
           </Form>
         </Segment>
-      </Grid.Column>
-    </Container>
+
+        <Modal.Actions>
+          <Button onClick={() => setOpen(false)} basic color="green">
+            See feed <Icon name="chevron right" />
+          </Button>
+        </Modal.Actions>
+      </Modal>
+    </Card>
   );
 }
