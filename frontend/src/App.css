@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
 .AvatarWrap {
   display: flex;
   flex-direction: row;
@@ -9,13 +11,22 @@
   height: 5rem;
   padding: 1rem 0;
 }
+.nav-link:hover {
+  color: #e9896a;
+}
 
 .navbar-brand {
   display: flex;
   align-items: center;
+  height: 2rem;
 }
 .navbar-brand > img {
   padding: 7px 14px;
+}
+
+.nav-link {
+  color: #f9f4fc;
+  font-family: Anton;
 }
 
 body,
@@ -140,6 +151,7 @@ li {
   float: left;
   list-style-type: none;
   padding: 1rem;
+  
 }
 
 .logout {
