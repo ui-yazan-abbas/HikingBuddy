@@ -1,10 +1,16 @@
 import React from "react";
 import { Button, Form, Grid, Segment, Container } from "semantic-ui-react";
+import ImgUpload from "./ImgUpload";
 
 export default function PostForm({ onSubmit }) {
   const [postLocation, setPostLocation] = React.useState("");
   const [body, setBody] = React.useState("");
   const [postDistance, setPostDistance] = React.useState("");
+  const [postImageUrl, setImageUrl] = React.useState("");
+
+  const change = ({ target: { value } }) => {
+    setImageUrl(value);
+  };
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
@@ -12,6 +18,7 @@ export default function PostForm({ onSubmit }) {
       postLocation: postLocation,
       body: body,
       postDistance: postDistance,
+      imageUrl: postImageUrl,
     });
 
     // Clear the input field
@@ -56,6 +63,10 @@ export default function PostForm({ onSubmit }) {
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
               />
+            </Form.Field>
+            <Form.Field>
+              <label style={{ color: "#e9896a" }}>Upload image or video</label>
+              <ImgUpload className="profile" uploadImg={change} />
             </Form.Field>
 
             <Button

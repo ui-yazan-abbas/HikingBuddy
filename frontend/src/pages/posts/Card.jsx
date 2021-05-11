@@ -14,6 +14,7 @@ import {
   Header,
   Segment,
   Button,
+  Image,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { Link } from "react-router-dom";
@@ -92,7 +93,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
           <Comment.Group>
             <Comment>
               <Link to={`/${post.user}/profile`}>
-                <Comment.Avatar as="a" src={post.user.imageUrl} />
+                <Comment.Avatar as="a" src={user.imageUrl || null} />
               </Link>
               <Comment.Content>
                 <p></p>
@@ -117,6 +118,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   <Comment.Text>
                     <b>Why recommended:</b> {postBody}
                   </Comment.Text>
+                  <Image src={post.imageUrl} alt="" />
 
                   <Header
                     as="h3"

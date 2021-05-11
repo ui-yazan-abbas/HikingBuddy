@@ -38,7 +38,7 @@ public class Post {
 
     @ManyToOne
     @JsonIdentityReference(alwaysAsId = true)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "body")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     private User user;
 
     // bring another field with property
@@ -90,6 +90,14 @@ public class Post {
 
     public void setUser(User userPosts) {
         this.user = userPosts;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<Comment> getCommentList() {

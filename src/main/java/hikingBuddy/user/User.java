@@ -185,5 +185,5 @@ public class User {
     public void addFollower(User follower) {
         this.followersList.add(follower);
     }
-    
+
 }
