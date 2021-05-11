@@ -133,14 +133,14 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   /* Variables for See more-see less details */
   const extraContent = (
     <div className="see-more">
-      <span>{isNewTrailName}</span>
-      <span>{isNewEventDifficulty}</span>
-      <span>{isNewMaxNum}</span>
-      <span>{isNewEventDuration}</span>
-      <span>{isNewEventDistance}</span>
-      <span>{isNewMeetPoint}</span>
-      <span>{isNewHyperlink}</span>
-      <span>{isRefreshingBody}</span>
+      <p>Location/Trail Name: {isNewTrailName}</p>
+      <p>Difficulty: {isNewEventDifficulty}</p>
+      <p>Starting Date: {isNewMaxNum}</p>
+      <p>Duration (days): {isNewEventDuration}</p>
+      <p>Distance (km): {isNewEventDistance}</p>
+      <p>Meeting point and time: {isNewMeetPoint}</p>
+      <p>External link to trail: {isNewHyperlink}</p>
+      <p>About event: {isRefreshingBody}</p>
     </div>
   );
 
@@ -195,20 +195,18 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <Card.Meta>
                 <span className="date">{extra}</span>
 
-                
-                  <Button
-                    as="a"
-                    inverted
-                    color="olive"
-                    type="submit"
-                    onClick={() => {
-                      setReadMore(!readMore);
-                    }}
-                  >
-                    {linkName}
-                  </Button>
-                  {readMore && extraContent}
-                
+                <Button
+                  as="a"
+                  inverted
+                  color="olive"
+                  type="submit"
+                  onClick={() => {
+                    setReadMore(!readMore);
+                  }}
+                >
+                  {linkName}
+                </Button>
+                {readMore && extraContent}
               </Card.Meta>
             </Card.Content>
           </Card>
