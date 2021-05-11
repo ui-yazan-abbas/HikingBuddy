@@ -137,6 +137,10 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                           {" "}
                           Delete post
                         </Comment.Action>
+
+                        <Comment.Action active>
+                      {comments.length} comment(s)
+                      </Comment.Action>
                       </>
                     )}
                   </Comment.Actions>
