@@ -16,15 +16,14 @@ import {
 export default function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let history = useHistory()
-  const login = async(loginData) => {
+  let history = useHistory();
+  const login = async (loginData) => {
     const loginSuccess = await Auth.login(loginData);
     if (!loginSuccess) {
       alert("Invalid credentials");
     }
-    history.push("/posts")
-  }
-
+    history.push("/feed");
+  };
 
   return (
     <div className="login">

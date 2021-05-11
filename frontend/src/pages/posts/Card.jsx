@@ -87,16 +87,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     <Container>
       <Grid.Column only="widescreen" widescreen={10}>
         <Segment>
-          <Header as="h3" dividing content="" textAlign="center"></Header>
+         
           <Comment.Group>
-            {/* <Header
-              as="h3"
-              dividing
-              content="Stackable Vertically Divided Grid"
-              textAlign="center"
-            >
-              Posts
-            </Header> */}
             <Comment>
               <Link to={`/${post.user}/profile`}>
                 <Comment.Avatar as="a" src={user.imageUrl} />
