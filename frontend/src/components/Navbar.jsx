@@ -70,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Navbar({ onLogout, currentUser }) {
-
   // Consts
   const history = useHistory();
 
@@ -110,7 +109,7 @@ export default function Navbar({ onLogout, currentUser }) {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/posts" className="nav-link">
+          <Link to="/feed" className="nav-link">
             Feed
           </Link>
         </li>

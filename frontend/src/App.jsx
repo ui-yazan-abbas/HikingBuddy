@@ -61,7 +61,7 @@ export default function App() {
               </Route>
             </>
           )}
-          <Route exact path="/posts">
+          <Route exact path="/feed">
             <PostsPage user={currentUser} />
           </Route>
           <Route exact path="/events">
