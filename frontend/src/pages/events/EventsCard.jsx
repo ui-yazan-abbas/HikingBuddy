@@ -230,6 +230,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         {" "}
                         Delete event
                       </Comment.Action>
+                      <Comment.Action active>
+                      {eventComments.length} comment(s)
+                      </Comment.Action>
                     </>
                   )}
                 </Comment.Actions>
