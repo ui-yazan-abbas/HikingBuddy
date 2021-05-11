@@ -9,6 +9,7 @@ Our goal is to connect people who love hiking and nature and want to share their
 on your Terminal:
 
 - cd Server
+- npm install
 - npm start
 - cd frontend
 - npm start

@@ -11,7 +11,7 @@ import {
   Radio,
   Select,
   TextArea,
-  Container
+  Container,
 } from "semantic-ui-react";
 
 export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
@@ -46,24 +46,24 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
   return (
     <Grid.Column only="widescreen" widescreen={10}>
       <Segment>
+        
         <Form>
-          
-            <Form.Field
-              control={Input}
-              label="Location/Trail name"
-              placeholder="Höga Kusten"
-              value={trailName}
-              onChange={(e) => setTrailName(e.target.value)}
-            />
+          <Form.Field
+   
+            control={Input}
+            label="Location/Trail name"
+            placeholder="Höga Kusten"
+            value={trailName}
+            onChange={(e) => setTrailName(e.target.value)}
+          />
 
-            <Form.Field
-              control={Input}
-              label="Difficulty"
-              placeholder="Easy/Medium/Expert"
-              value={eventDifficulty}
-              onChange={(e) => setEventDifficulty(e.target.value)}
-            />
-         
+          <Form.Field
+            control={Input}
+            label="Difficulty"
+            placeholder="Easy/Medium/Expert"
+            value={eventDifficulty}
+            onChange={(e) => setEventDifficulty(e.target.value)}
+          />
 
           <Form.Field
             control={Input}
@@ -74,21 +74,21 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
             onChange={(e) => setMaxNum(e.target.value)}
           />
 
-            <Form.Field
-              control={Input}
-              label="Duration (days)"
-              placeholder="3"
-              value={eventDuration}
-              onChange={(e) => setEventDuration(e.target.value)}
-            />
+          <Form.Field
+            control={Input}
+            label="Duration (days)"
+            placeholder="3"
+            value={eventDuration}
+            onChange={(e) => setEventDuration(e.target.value)}
+          />
 
-            <Form.Field
-              control={Input}
-              label="Distance (km)"
-              placeholder="83"
-              value={eventDistance}
-              onChange={(e) => setEventDistance(e.target.value)}
-            />
+          <Form.Field
+            control={Input}
+            label="Distance (km)"
+            placeholder="83"
+            value={eventDistance}
+            onChange={(e) => setEventDistance(e.target.value)}
+          />
 
           <Form.Field
             control={Input}
@@ -126,6 +126,5 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
         </Form>
       </Segment>
     </Grid.Column>
-   
   );
 }

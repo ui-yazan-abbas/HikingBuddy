@@ -16,6 +16,7 @@ import {
   Segment,
   Container,
   Image,
+  Grid,
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { Link } from "react-router-dom";
@@ -37,6 +38,7 @@ import EventCommentForm from "../eventComments/EventCommentForm";
 export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
+  const [readMore, setReadMore] = useState(false);
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -113,6 +115,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     (item) => item.commentedEvent == event.id
   );
 
+  /* Style variables */
   const extra = (
     <a>
       <Icon name="calendar" />
@@ -120,141 +123,184 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     </a>
   );
 
-  const icon = (
-    <a>
-      <Icon name="calendar" />
-      {isNewMaxNum}
-    </a>
+  /* Variables for See more-see less details */
+  const extraContent = (
+    <div className="see-more">
+      <p><b>Trail Location:</b> {isNewTrailName}</p>
+      <p><b>Difficulty:</b> {isNewEventDifficulty}</p>
+      <p><b>Starting Date:</b> {isNewMaxNum}</p>
+      <p><b>Duration (days):</b> {isNewEventDuration}</p>
+      <p><b>Distance (km):</b> {isNewEventDistance}</p>
+      <p><b>Meeting point and time:</b> {isNewMeetPoint}</p>
+      <p><b>External link to trail:</b> {isNewHyperlink}</p>
+      <p><b>About event:</b> {isRefreshingBody}</p>
+    </div>
   );
 
-  return (
-    <Card centered margin>
-      <Comment.Group>
-        <Comment>
-          <Link to = {`/${event.user}/profile`}>
-          <Comment.Avatar
-            as="a"
-            src={user.imageUrl}
-          />
-          </Link>
+  const linkName = readMore ? "Hide Details << " : "See Details >> ";
 
-          <Comment.Content>
+  return (
+    <Container>
+      {/*    <Grid container columns={3}> */}
+
+      <Grid.Column mobile={16} tablet={8} computer={4}>
+        <Comment.Group>
+          <Comment>
+            <br></br>
             <Link to={`/${event.user}/profile`}>
-              {" "}
-              <Comment.Author> Created by {event.user}</Comment.Author>{" "}
+              <Comment.Avatar as="a" src={user.imageUrl} />
             </Link>
 
-            <Comment.Metadata>
-              <div>
-                {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
-              </div>
-            </Comment.Metadata>
-          </Comment.Content>
+            <Comment.Content>
+              <Link to={`/${event.user}/profile`}>
+                {" "}
+                <Comment.Author as="a">
+                  {" "}
+                  Created by {event.user}
+                </Comment.Author>{" "}
+              </Link>
 
-          <br></br>
+              <Comment.Metadata>
+                <div>
+                  {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
+                </div>
+              </Comment.Metadata>
 
-          <Card margin color="olive">
-            <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance" />
-            <Card.Content>
-              <Card.Header>Trail Name: {isNewTrailName}</Card.Header>
-              <Card.Content extra>
+              <br></br>
+              <br></br>
+              <br></br>
+              <Segment textAlign="center">
+                <Comment.Text> <h4><b>Trail Location:</b> {isNewTrailName}</h4></Comment.Text>
+
+                <Comment.Metadata>
+                  <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance" />
+                </Comment.Metadata>
+
                 <br></br>
-                <a>
-                  <Icon name="chart area" />
-                  Distance: {isNewEventDistance} km
-                </a>
-              </Card.Content>
-              <br></br>
-              <a>
-                <Icon name="fire" />
-                Difficulty: {isNewEventDifficulty}
-              </a>
-            </Card.Content>
+                
 
-            <Card.Content extra>
-              <Card.Meta>
-                <span className="date">{extra}</span>
+                <Comment.Text>
+                  <a>
+                    <Icon name="chart area" />
+                    Distance: {isNewEventDistance} km
+                  </a>
+                </Comment.Text>
 
-                <Button as="a" inverted color="olive" type="submit">
-                  See details
-                  <Icon name="chevron right" />
+                <Comment.Text>
+                  <a>
+                    <Icon name="fire" />
+                    Difficulty: {isNewEventDifficulty}
+                  </a>
+                </Comment.Text>
+
+                <Comment.Text>
+                  <a>
+                    <Icon name="calendar" />
+                    {isNewMaxNum}
+                  </a>
+                </Comment.Text>
+
+                <Button
+                  basic
+                  color="green"
+                  type="submit"
+                  onClick={() => {
+                    setReadMore(!readMore);
+                  }}
+                >
+                  {linkName}
                 </Button>
-              </Card.Meta>
-            </Card.Content>
-          </Card>
-          <div className="AvatarWrap">
-            <Comment.Actions>
-              {event.user == user.name && (
-                <>
-                  <Comment.Action onClick={onDeleteClick} active>
-                    {" "}
-                    Delete event
-                  </Comment.Action>
-                  <Comment.Action active onClick={() => setIsUpdating(true)}>
-                    Edit event
-                  </Comment.Action>
-                </>
-              )}
-              {/* Buttons for share to social media  */}
+                <br></br>
+                <br></br>
 
-              <br></br>
-              <br></br>
+                {readMore && extraContent}
 
-              {/* Buttons for share to social media and like button */}
-              <Button.Group size="small">
-                <JoinButton />
-                <FacebookShareButton
-                  url={window.location.href} //share the actual link of the post
-                  title={event.user} //the user who wrote the post
-                  description={isNewTrailName} //the comment written in the post is shared
-                  quote="link"
-                >
-                  <FacebookIcon className="mx-3" size={35} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                  url={window.location.href}
-                  title={isNewTrailName} //the comment written in the post is shared
-                  quote="link"
-                  hashtag="hiking"
-                >
-                  <TwitterIcon className="mx-3" size={35} />
-                </TwitterShareButton>
-                <WhatsappShareButton
-                  url={window.location.href}
-                  separator=""
-                  title={isNewTrailName} //the comment written in the post is shared
-                  quote="link"
-                >
-                  <WhatsappIcon size={35} />
-                </WhatsappShareButton>
-              </Button.Group>
-              {/* Buttons for share to social media finish here  */}
-            </Comment.Actions>
-          </div>
-          <div className="comments-container">
-            {eventComments &&
-              filteredEventCommentList.map((eventComment) => (
-                <EventCommentCard
-                  key={event.id}
-                  eventComment={eventComment}
-                  onDeleteClick={() => deleteEventComment(eventComment)}
-                  user={user}
+                <Header as="h3" dividing content="" textAlign="center"></Header>
+
+                <Comment.Actions>
+                  {event.user == user.name && (
+                    <>
+                      <Comment.Action
+                        active
+                        onClick={() => setIsUpdating(true)}
+                      >
+                        Edit event
+                      </Comment.Action>
+                      <Comment.Action onClick={onDeleteClick} active>
+                        {" "}
+                        Delete event
+                      </Comment.Action>
+                      <Comment.Action active>
+                      {eventComments.length} comment(s)
+                      </Comment.Action>
+                    </>
+                  )}
+                </Comment.Actions>
+
+                <br></br>
+                <br></br>
+
+                {/* Buttons for share to social media and like button */}
+                <Button.Group size="small">
+                  <JoinButton />
+                  <FacebookShareButton
+                    url={window.location.href} //share the actual link of the event
+                    title={event.user} //the user who created the event
+                    description={isNewTrailName} //the title written in the event is shared
+                    quote="link"
+                  >
+                    <FacebookIcon className="mx-3" size={35} />
+                  </FacebookShareButton>
+                  <TwitterShareButton
+                    url={window.location.href}
+                    title={isNewTrailName} //the title written in the event is shared
+                    quote="link"
+                    hashtag="hiking"
+                  >
+                    <TwitterIcon className="mx-3" size={35} />
+                  </TwitterShareButton>
+                  <WhatsappShareButton
+                    url={window.location.href}
+                    separator=""
+                    title={isNewTrailName} //the title written in the event is shared
+                    quote="link"
+                  >
+                    <WhatsappIcon size={35} />
+                  </WhatsappShareButton>
+                </Button.Group>
+                {/* Buttons for share to social media finish here  */}
+              </Segment>
+
+              {/* <Header as="h3" dividing content="" textAlign="center"></Header> */}
+
+              <div className="comments-container">
+                {eventComments &&
+                  filteredEventCommentList.map((eventComment) => (
+                    <EventCommentCard
+                      key={event.id}
+                      eventComment={eventComment}
+                      onDeleteClick={() => deleteEventComment(eventComment)}
+                      user={user}
+                    />
+                  ))}
+              </div>
+              {isUpdating && (
+                <UpdateEvent
+                  onUpdateClick={(eventData) => updateEvent(eventData)}
+                  event={event}
+                  onSubmite={() => setIsUpdating(false)}
                 />
-              ))}
-          </div>
-          {isUpdating && (
-            <UpdateEvent
-              onUpdateClick={(eventData) => updateEvent(eventData)}
-              event={event}
-              onSubmite={() => setIsUpdating(false)}
-            />
-          )}
+              )}
 
-          <div className="comments-form">
-            <EventCommentForm id={event.id} onSubmit={createEventComment} />
-          </div>
-        </Comment>
-      </Comment.Group>
-    </Card>
+              <div className="comments-form">
+                <EventCommentForm id={event.id} onSubmit={createEventComment} />
+              </div>
+            </Comment.Content>
+          </Comment>
+        </Comment.Group>
+      </Grid.Column>
+
+      {/* </Grid>  */}
+    </Container>
   );
 }
