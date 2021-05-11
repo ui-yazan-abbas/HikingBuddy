@@ -70,18 +70,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Navbar({ onLogout, currentUser }) {
-  // State
-  const [query, setQuery] = useState("");
 
   // Consts
   const history = useHistory();
 
   // Get the correct url
-  function onSearch(event) {
-    event.preventDefault();
-
-    history.push(`/parcels/${query}`);
-  }
 
   const handleLogout = () => {
     onLogout();
@@ -93,7 +86,7 @@ export default function Navbar({ onLogout, currentUser }) {
   return (
     <AppBar
       className="color-nav"
-      style={{ background: "#5db556" }}
+      style={{ background: "#387c6d" }}
       position="static"
     >
       <Toolbar>
@@ -104,7 +97,7 @@ export default function Navbar({ onLogout, currentUser }) {
               height="auto"
               text="align"
               className="img-responsive"
-              src="https://www.linkpicture.com/q/logo5_5.png"
+              src="https://www.linkpicture.com/q/1_453.jpg"
               alt="logo"
             />
           </Link>
@@ -113,12 +106,12 @@ export default function Navbar({ onLogout, currentUser }) {
         </IconButton>
         <li className="nav-item">
           <Link to={`/${currentUser.name}/profile`} className="nav-link">
-            My Profile
+            My ProFile
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/posts" className="nav-link">
-            Posts
+            Feed
           </Link>
         </li>
         <li className="nav-item">
@@ -131,7 +124,7 @@ export default function Navbar({ onLogout, currentUser }) {
             Chat
           </Link>
         </li>
-        <Button basic color="blue" id="navbarColor01" onClick={handleLogout}>
+        <Button basic color="white" id="navbarColor01" onClick={handleLogout}>
           Logout
         </Button>
 
