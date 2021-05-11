@@ -64,7 +64,11 @@ export default function EventsForm({ onSubmit }) {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         trigger={
-          <Button basic color="green">
+          <Button as="a"
+          inverted
+          color="green"
+          type="submit"
+          >
             Create a Hiking Event
           </Button>
         }
@@ -178,7 +182,10 @@ export default function EventsForm({ onSubmit }) {
         </Modal.Content>
 
         <Modal.Actions>
-          <Button onClick={() => setOpen(false)} primary>
+          <Button onClick={() => setOpen(false)} as="a"
+          inverted
+          color="green"
+          type="submit">
             See events <Icon name="chevron right" />
           </Button>
         </Modal.Actions>

@@ -173,7 +173,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
           <br></br>
 
-          <Card margin color="olive">
+          <Card margin color="green">
             <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance" />
             <Card.Content>
               <Card.Header>Trail Name: {isNewTrailName}</Card.Header>
@@ -193,23 +193,29 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
             <Card.Content extra>
               <Card.Meta>
-                <span className="date">{extra}</span>
+                <span>{extra}</span>
+               
+                
 
-                <Button
-                  as="a"
+                <a
                   inverted
-                  color="olive"
+                  color="green"
                   type="submit"
                   onClick={() => {
                     setReadMore(!readMore);
                   }}
                 >
+                  
                   {linkName}
-                </Button>
+                  </a>
+                <br></br>
+                <br></br>
                 {readMore && extraContent}
+                
               </Card.Meta>
             </Card.Content>
           </Card>
+          
           <div className="AvatarWrap">
             <Comment.Actions>
               {event.user == user.name && (
