@@ -65,7 +65,7 @@ export default function AuthPage() {
                 color="green"
                 onClick={() => login({ email, password })}
               >
-                <a href="/login">Login</a>
+                Login bitch
               </Button>
             </Segment>
           </Form>

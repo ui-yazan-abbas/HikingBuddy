@@ -83,15 +83,16 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     (item) => item.commentedPost == post.id
   );
 
+  console.log("ss", post);
+
   return (
     <Container>
       <Grid.Column only="widescreen" widescreen={10}>
         <Segment>
-         
           <Comment.Group>
             <Comment>
               <Link to={`/${post.user}/profile`}>
-                <Comment.Avatar as="a" src={user.imageUrl} />
+                <Comment.Avatar as="a" src={post.user.imageUrl} />
               </Link>
               <Comment.Content>
                 <p></p>

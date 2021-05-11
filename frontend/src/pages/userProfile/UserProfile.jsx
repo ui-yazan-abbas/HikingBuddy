@@ -27,6 +27,8 @@ export default function UserProfile({ currentUser, match }) {
     }
   };
 
+  console.log(currentUser);
+
   const followUser = () => {
     setUser({ ...user, followersList: [...user.followersList, currentUser] });
     updateUser();
@@ -36,7 +38,10 @@ export default function UserProfile({ currentUser, match }) {
     <Card centered margin>
       {!toggler && (
         <>
-          <Image src={user.imageUrl} alt="" />
+          <Image
+            src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
+            alt=""
+          />
           <Card.Content>
             <Card.Header> {user.name}</Card.Header>
             <Card.Meta>
@@ -53,7 +58,8 @@ export default function UserProfile({ currentUser, match }) {
               </Button>
             )}
             {currentUser.name !== user.name &&
-              !user.followersList?.includes(currentUser) && (
+              user.followersList?.filter((u) => u.name == currentUser.name)
+                .length === 0 && (
                 <Button inverted color="green" onClick={followUser}>
                   Follow
                 </Button>
@@ -65,6 +71,10 @@ export default function UserProfile({ currentUser, match }) {
       <h3>{user.name}'s Followers:</h3>
       {user.followersList?.map((i) => (
         <>
+          <img
+            src={i.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
+            alt="follwer-profile"
+          />
           <li id={i.id}>{i.name}</li>
         </>
       ))}
