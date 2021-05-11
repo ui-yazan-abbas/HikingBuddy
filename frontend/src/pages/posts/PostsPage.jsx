@@ -11,9 +11,8 @@ export default function PostsPage({ user }) {
   const [posts, setPosts] = useState([]);
 
   // Methods
- 
+
   // Components
-  
 
   async function createPost(postData) {
     try {
