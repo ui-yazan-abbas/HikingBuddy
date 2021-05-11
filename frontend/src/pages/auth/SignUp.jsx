@@ -1,6 +1,6 @@
 // NPM Packages
 import React, { useState } from "react";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import Auth from "../../services/Auth";
 //Styling
 import {
@@ -17,16 +17,15 @@ export default function SignUp({ onSubmit }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let history = useHistory()
-
+  let history = useHistory();
 
   const register = async (registrationData) => {
     const registerSuccess = await Auth.register(registrationData);
     if (!registerSuccess) {
       alert("Couldn't register check credentials and try again");
     }
-    history.push("/posts")
-  }
+    history.push("/feed");
+  };
   return (
     <div className="signup">
       <Grid

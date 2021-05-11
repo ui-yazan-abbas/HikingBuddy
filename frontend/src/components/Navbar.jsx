@@ -90,7 +90,7 @@ export default function Navbar({ onLogout, currentUser }) {
     >
       <Toolbar>
         <IconButton>
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/feed">
             <img
               width="120px"
               height="auto"
