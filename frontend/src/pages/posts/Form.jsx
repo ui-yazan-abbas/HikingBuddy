@@ -1,8 +1,15 @@
 import React from "react";
-import { Button, Form, Grid, Segment, Container } from "semantic-ui-react";
+import {
+  Button,
+  Form,
+  Grid,
+  Segment,
+  Container,
+  Image,
+} from "semantic-ui-react";
 import ImgUpload from "./ImgUpload";
 
-export default function PostForm({ onSubmit }) {
+export default function PostForm({ onSubmit, post }) {
   const [postLocation, setPostLocation] = React.useState("");
   const [body, setBody] = React.useState("");
   const [postDistance, setPostDistance] = React.useState("");
@@ -66,6 +73,7 @@ export default function PostForm({ onSubmit }) {
             </Form.Field>
             <Form.Field>
               <label style={{ color: "#e9896a" }}>Upload image or video</label>
+              <Image src={postImageUrl} />
               <ImgUpload className="profile" uploadImg={change} />
             </Form.Field>
 
