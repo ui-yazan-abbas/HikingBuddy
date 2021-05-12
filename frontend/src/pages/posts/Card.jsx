@@ -145,8 +145,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   ></Header>
                         <Divider hidden />
                   
-                
-   <Grid columns={4}>
+                        <Container text>
+   <Grid  margin= '4em'columns={4}>
                  
                     {post.user == user.name && (
                       <>
@@ -173,6 +173,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     )}
   
                   </Grid>
+                  </Container>
       
                 <br></br>
                 <br></br>
