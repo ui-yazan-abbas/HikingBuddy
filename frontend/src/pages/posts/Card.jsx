@@ -9,6 +9,8 @@ import Like from "../posts/Like";
 
 import {
   Grid,
+  Feed,
+  Card,
   Comment,
   Container,
   Header,
@@ -94,7 +96,10 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
           <Comment.Group>
             <Comment>
               <Link to={`/${post.user}/profile`}>
-                <Comment.Avatar as="a" src={user.imageUrl || null} />
+              <Image
+          floated='left'
+          size='mini'
+          as="a" src={user.imageUrl || null} />
               </Link>
 
               <Comment.Content>
@@ -110,16 +115,24 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     </div>
                   </Comment.Metadata>
 
-                  <Comment.Text>
+
+                  <Comment>
+        <div className='ui two buttons'>
+        <b>Location:</b> {postTitle}
+        <b>Distance:</b> {postKm} km
+        </div>
+  
+
+                <Comment.Text>
                     <b>Location:</b> {postTitle}
                   </Comment.Text>
-                  <Comment.Text>
+                  <Feed.Extra text>
                     <b>Distance:</b> {postKm} km
-                  </Comment.Text>
+                    </Feed.Extra> 
 
                   <Image src={post.imageUrl} alt="" />
                   <Comment.Text>{postBody}</Comment.Text>
-
+                  </Comment>
                   <Header
                     as="h3"
                     dividing
@@ -144,7 +157,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                         <Comment.Action active>
                           {comments.length} comment(s)
                         </Comment.Action>
-                        <Comment.Action active>
+                        <Comment.Action>
                         <Like />
                         </Comment.Action>
                       </>
