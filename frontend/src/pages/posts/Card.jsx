@@ -177,7 +177,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                 <br></br>
                 <br></br>
                 {/* Buttons for share to social media and like button */}
-                <Button.Group size="small">
+                <Button.Group size="small" className="AvatarWrap">
                   <br></br>
                   <FacebookShareButton
                     url={window.location.href} //share the actual link of the post
