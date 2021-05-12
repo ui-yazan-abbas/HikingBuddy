@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EventSearch from "../events/EventSearch";
+/* import EventSearch from "../events/EventSearch"; */
 
 import {
   Button,
@@ -57,8 +57,8 @@ export default function EventsForm({ onSubmit }) {
 
   return (
     <Card centered margin>
-      <EventSearch />
-      <br></br>
+      {/*  <EventSearch /> */}
+
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -84,7 +84,6 @@ export default function EventsForm({ onSubmit }) {
             <Form success>
               <Form.Group widths="equal">
                 <Form.Field
-               
                   required
                   control={Input}
                   label="Trail location"
@@ -202,7 +201,7 @@ export default function EventsForm({ onSubmit }) {
                 success
                 header="Event Created"
                 content="Nice! Now you can go back and see all events"
-              /> 
+              />
 
               <Button
                 as="a"

@@ -48,7 +48,7 @@ export default function PostForm({ onSubmit, post }) {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         trigger={
-          <Button basic color="green">
+          <Button as="a" inverted color="green" type="submit">
             Recommend a Hike
           </Button>
         }
