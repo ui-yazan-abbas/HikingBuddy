@@ -87,7 +87,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     <Container>
       <Grid.Column only="widescreen" widescreen={10}>
         <Segment>
-         
           <Comment.Group>
             <Comment>
               <Link to={`/${post.user}/profile`}>
@@ -100,7 +99,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     {" "}
                     <Link to={`/${post.user}/profile`}>{post.user}</Link>
                   </Comment.Author>
-                  
+
                   <Comment.Metadata>
                     <div>
                       {moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}
@@ -139,8 +138,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                         </Comment.Action>
 
                         <Comment.Action active>
-                      {comments.length} comment(s)
-                      </Comment.Action>
+                          {comments.length} comment(s)
+                        </Comment.Action>
                       </>
                     )}
                   </Comment.Actions>
