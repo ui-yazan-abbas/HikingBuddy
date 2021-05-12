@@ -85,6 +85,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   );
 
   console.log("ss", post);
+  console.log("ssss", post.user);
 
   return (
     <Container>
@@ -93,7 +94,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
           <Comment.Group>
             <Comment>
               <Link to={`/${post.user}/profile`}>
-                <Comment.Avatar as="a" src={user.imageUrl || null} />
+                <Comment.Avatar as="a" src={post.user || null} />
               </Link>
 
               <Comment.Content>
@@ -102,7 +103,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     {" "}
                     <Link to={`/${post.user}/profile`}>{post.user}</Link>
                   </Comment.Author>
-                  
+
                   <Comment.Metadata>
                     <div>
                       {moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}
@@ -115,11 +116,9 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   <Comment.Text>
                     <b>Distance:</b> {postKm} km
                   </Comment.Text>
-                  
+
                   <Image src={post.imageUrl} alt="" />
-                  <Comment.Text>
-                    {postBody}
-                  </Comment.Text>
+                  <Comment.Text>{postBody}</Comment.Text>
 
                   <Header
                     as="h3"
@@ -143,8 +142,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                         </Comment.Action>
 
                         <Comment.Action active>
-                      {comments.length} comment(s)
-                      </Comment.Action>
+                          {comments.length} comment(s)
+                        </Comment.Action>
                       </>
                     )}
                   </Comment.Actions>
