@@ -6,7 +6,6 @@ import EventsForm from "./EventsForm";
 import EventsCard from "./EventsCard";
 import EventsApi from "../../api/EventsApi";
 
-
 export default function EventsPage({ event, onDeleteClick, user }) {
   // Local state
   const [events, setEvents] = useState([]);

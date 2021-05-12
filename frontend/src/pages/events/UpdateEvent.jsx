@@ -46,12 +46,10 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
   return (
     <Grid.Column only="widescreen" widescreen={10}>
       <Segment>
-        
         <Form>
           <Form.Field
-   
             control={Input}
-            label="Location/Trail name"
+            label="Trail location"
             placeholder="Höga Kusten"
             value={trailName}
             onChange={(e) => setTrailName(e.target.value)}
@@ -60,7 +58,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
           <Form.Field
             control={Input}
             label="Difficulty"
-            placeholder="Easy/Medium/Expert"
+            placeholder="Easy/Moderate/Hard"
             value={eventDifficulty}
             onChange={(e) => setEventDifficulty(e.target.value)}
           />
@@ -90,6 +88,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
             onChange={(e) => setEventDistance(e.target.value)}
           />
 
+        
           <Form.Field
             control={Input}
             label="Meeting point and time"
@@ -100,8 +99,8 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
 
           <Form.Field
             control={Input}
-            label="External link to trail (optional)"
-            placeholder="https://www.hogakusten.com/en"
+            label="Event chat room name"
+            placeholder="Höga team"
             value={trailHyperlink}
             onChange={(e) => setTrailHyperlink(e.target.value)}
           />
