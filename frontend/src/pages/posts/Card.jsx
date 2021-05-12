@@ -144,12 +144,14 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                         <Comment.Action active>
                           {comments.length} comment(s)
                         </Comment.Action>
+                        <Comment.Action active>
+                        <Like />
+                        </Comment.Action>
                       </>
                     )}
                   </Comment.Actions>
                 </div>
                 <br></br>
-                    <Like />
                 <br></br>
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small">
