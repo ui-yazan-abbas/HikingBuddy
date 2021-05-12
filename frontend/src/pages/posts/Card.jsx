@@ -88,8 +88,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   console.log("ssss", post.user);
 
   return (
-    <Container>
-      <Grid.Column only="widescreen" widescreen={10}>
+    <Container >
+    <Grid centered columns={1}>
         <Segment>
           <Comment.Group>
             <Comment>
@@ -149,10 +149,10 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   </Comment.Actions>
                 </div>
                 <br></br>
+                    <Like />
                 <br></br>
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small">
-                  <Like />
                   <br></br>
                   <FacebookShareButton
                     url={window.location.href} //share the actual link of the post
@@ -211,7 +211,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
             </Comment>
           </Comment.Group>
         </Segment>
-      </Grid.Column>
+      </Grid>
     </Container>
   );
 }

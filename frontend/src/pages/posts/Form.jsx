@@ -48,24 +48,22 @@ export default function PostForm({ onSubmit, post }) {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         trigger={
-          <Button basic color="green">
+          <Button inverted color="green">
             Recommend a Hike!
           </Button>
         }
       >
-        <Header as="h3" dividing>
-          <h2 style={{ color: "#e9896a" }}>
-            Enjoyed a hike? Share and recommend!
-          </h2>
+        <Header as="h3" dividing basic color="green">
+          <h2>Enjoyed a hike? Share and recommend!</h2>
         </Header>
 
-        <Segment style={{ background: "#d6fbe0" }}>
-          <Modal.Header style={{ color: "#e9896a" }}></Modal.Header>
+        <Segment>
+          <Modal.Header></Modal.Header>
           {/* <h4 className="card-title">Make a new post</h4> */}
-          <Form inverted size>
+          <Form success>
             <Form.Group widths="equal">
               <Form.Field>
-                <label style={{ color: "#e9896a" }}>Location/Trail name</label>
+                <label>Location/Trail name</label>
                 <Form.Input
                   fluid
                   placeholder="Håga Trail"
@@ -74,7 +72,7 @@ export default function PostForm({ onSubmit, post }) {
                 />
               </Form.Field>
               <Form.Field>
-                <label style={{ color: "#e9896a" }}>Distance in km</label>
+                <label>Distance in km</label>
                 <Form.Input
                   placeholder="35"
                   value={postDistance}
@@ -83,7 +81,7 @@ export default function PostForm({ onSubmit, post }) {
               </Form.Field>
             </Form.Group>
             <Form.Field>
-              <label style={{ color: "#e9896a" }}>Recommended hiking</label>
+              <label>Recommended hiking</label>
               <Form.Input
                 fluid
                 placeholder="I recommend because..."
@@ -92,7 +90,7 @@ export default function PostForm({ onSubmit, post }) {
               />
             </Form.Field>
             <Form.Field>
-              <label style={{ color: "#e9896a" }}>Upload image or video</label>
+              <label>Upload image or video</label>
               <Image src={postImageUrl} />
 
               <ImgUpload className="profile" uploadImg={change} />
@@ -110,7 +108,7 @@ export default function PostForm({ onSubmit, post }) {
           </Form>
         </Segment>
 
-        <Modal.Actions>
+        <Modal.Actions basic color="green">
           <Button onClick={() => setOpen(false)} basic color="green">
             See feed <Icon name="chevron right" />
           </Button>
