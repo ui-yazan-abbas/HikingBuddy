@@ -156,10 +156,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const linkName = readMore ? "Hide Details << " : "See Details >> ";
 
   return (
-    <Container>
-      {/*    <Grid container columns={3}> */}
+    <Container >
+       <Grid centered columns={1}> 
 
-      <Grid.Column mobile={16} tablet={8} computer={4}>
+     {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
         <Comment.Group>
           <Comment>
             <br></br>
@@ -236,7 +236,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 {readMore && extraContent}
 
                 <Header as="h3" dividing content="" textAlign="center"></Header>
-
+                <Grid.Column></Grid.Column>
                 <Comment.Actions>
                   {event.user == user.name && (
                     <>
@@ -320,9 +320,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             </Comment.Content>
           </Comment>
         </Comment.Group>
-      </Grid.Column>
+      {/* </Grid.Column> */}
 
-      {/* </Grid>  */}
+      </Grid>  
     </Container>
   );
 }
