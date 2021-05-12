@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import EventSearch from "../events/EventSearch";
-
 import {
   Button,
   Checkbox,
@@ -57,18 +55,13 @@ export default function EventsForm({ onSubmit }) {
 
   return (
     <Card centered margin>
-      <EventSearch />
       <br></br>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         trigger={
-          <Button as="a"
-          inverted
-          color="green"
-          type="submit"
-          >
+          <Button as="a" inverted color="green" type="submit">
             Create a Hiking Event
           </Button>
         }
@@ -182,10 +175,13 @@ export default function EventsForm({ onSubmit }) {
         </Modal.Content>
 
         <Modal.Actions>
-          <Button onClick={() => setOpen(false)} as="a"
-          inverted
-          color="green"
-          type="submit">
+          <Button
+            onClick={() => setOpen(false)}
+            as="a"
+            inverted
+            color="green"
+            type="submit"
+          >
             See events <Icon name="chevron right" />
           </Button>
         </Modal.Actions>

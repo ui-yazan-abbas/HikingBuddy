@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import EventsForm from "./EventsForm";
 import EventsCard from "./EventsCard";
 import EventsApi from "../../api/EventsApi";
-
+import EventSearch from "../events/EventSearch";
 
 export default function EventsPage({ event, onDeleteClick, user }) {
   // Local state
@@ -54,7 +54,7 @@ export default function EventsPage({ event, onDeleteClick, user }) {
   return (
     <div>
       <EventsForm onSubmit={(eventData) => createEvent(eventData)} />
-
+      <EventSearch />
       {CardsArray1}
     </div>
   );
