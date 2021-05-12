@@ -36,22 +36,23 @@ export default function UserProfile({ currentUser, match }) {
   };
   console.log("user", user);
   return (
-    <Card centered margin>
+    <>
       {!toggler && (
         <>
-          <Image
-            src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
-            alt=""
-          />
-          <Card.Content>
-            <Card.Header> {user.name}</Card.Header>
-            <Card.Meta>
-              <span className="date">
-                Joined in {moment(user.createAt).format("YYYY")}
-              </span>
-            </Card.Meta>
-            <Card.Description>{user.bio} </Card.Description>
-          </Card.Content>
+          <div className="introduction">
+            <Image
+              className="profile-img"
+              src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
+              alt=""
+            />
+            <h1> {user.name} </h1>
+            <span className="date">
+              Joined in {moment(user.createAt).format("YYYY")}
+            </span>
+
+            
+          </div>
+          <div className="column-right"> <h3>{user.bio}</h3></div>
           <Card.Content extra>
             {currentUser.name === user.name && (
               <Button inverted color="blue" onClick={() => setToggler(true)}>
@@ -100,6 +101,6 @@ export default function UserProfile({ currentUser, match }) {
           <PostCard post={post} user={user} />
         </>
       ))}
-    </Card>
+    </>
   );
 }
