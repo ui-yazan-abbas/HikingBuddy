@@ -94,7 +94,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     <Container>
       <Segment.Group>
         <Segment >
-            <Comment>
+    
               <Link to={`/${post.user}/profile`}>
                 <Image
                   floated="left"
@@ -143,33 +143,36 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     content=""
                     textAlign="center"
                   ></Header>
-    <Comment.Group>   
-                  <Comment.Actions>
+                        <Divider hidden />
+                  
+                
+   <Grid columns={4}>
+                 
                     {post.user == user.name && (
                       <>
-                        <Comment.Action
+                        <Grid.Column
                           active
                           onClick={() => setIsUpdating(true)}
                         >
 
                           Edit Post 
-                        </Comment.Action>{' '} 
+                        </Grid.Column>{' '} 
                         
-                        <Comment.Action onClick={onDeleteClick} active>
+                        <Grid.Column onClick={onDeleteClick} active>
                           {" "}
                           Delete post 
-                        </Comment.Action>{' '} 
+                        </Grid.Column>{' '} 
 
-                        <Comment.Action active>
+                        <Grid.Column active>
                           {comments.length} comment(s) 
-                        </Comment.Action>{' '} 
-                        <Comment.Action>
+                        </Grid.Column>{' '} 
+                        <Grid.Column>
                           <Like />
-                        </Comment.Action>
+                        </Grid.Column>
                       </>
                     )}
-                  </Comment.Actions>
-                  </Comment.Group>
+  
+                  </Grid>
       
                 <br></br>
                 <br></br>
@@ -230,7 +233,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   <CommentForm id={post.id} onSubmit={createComment} />
                 </div>
              
-            </Comment>
+
             
         </Segment>
         
