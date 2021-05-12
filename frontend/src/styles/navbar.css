@@ -16,3 +16,9 @@
   color: #f9f4fc;
   font-family: Anton;
 }
+.color-nav {
+  background-color: #5db556;
+  font-family: "Lato", sans-serif;
+  color: white;
+  margin-bottom: 2rem;
+}

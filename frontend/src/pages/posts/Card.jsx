@@ -94,7 +94,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
           <Comment.Group>
             <Comment>
               <Link to={`/${post.user}/profile`}>
-                <Comment.Avatar as="a" src={post.user || null} />
+                <Comment.Avatar as="a" src={user.imageUrl || null} />
               </Link>
 
               <Comment.Content>
