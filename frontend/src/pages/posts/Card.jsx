@@ -88,8 +88,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   console.log("ssss", post.user);
 
   return (
-    <Container >
-    <Grid centered columns={1}>
+    <Container>
+    <Segment.Group>
         <Segment>
           <Comment.Group>
             <Comment>
@@ -211,7 +211,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
             </Comment>
           </Comment.Group>
         </Segment>
-      </Grid>
+        </Segment.Group>
     </Container>
   );
 }
