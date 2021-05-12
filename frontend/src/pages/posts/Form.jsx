@@ -8,12 +8,16 @@ import {
   Image,
 } from "semantic-ui-react";
 import ImgUpload from "./ImgUpload";
+import ReactPlayer from "react-player";
+import Nature from "../../assets/nature.mp4";
+import VideoPlayer from "react-video-js-player";
 
 export default function PostForm({ onSubmit, post }) {
   const [postLocation, setPostLocation] = React.useState("");
   const [body, setBody] = React.useState("");
   const [postDistance, setPostDistance] = React.useState("");
   const [postImageUrl, setImageUrl] = React.useState("");
+  const videoSrc = Nature;
 
   const change = ({ target: { value } }) => {
     setImageUrl(value);
@@ -74,6 +78,7 @@ export default function PostForm({ onSubmit, post }) {
             <Form.Field>
               <label style={{ color: "#e9896a" }}>Upload image or video</label>
               <Image src={postImageUrl} />
+
               <ImgUpload className="profile" uploadImg={change} />
             </Form.Field>
 

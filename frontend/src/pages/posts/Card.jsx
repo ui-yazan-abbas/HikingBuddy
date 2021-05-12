@@ -115,10 +115,11 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   <Comment.Text>
                     <b>Distance:</b> {postKm} km
                   </Comment.Text>
-                  <Comment.Text>
-                    <b>Why recommended:</b> {postBody}
-                  </Comment.Text>
+                  
                   <Image src={post.imageUrl} alt="" />
+                  <Comment.Text>
+                    {postBody}
+                  </Comment.Text>
 
                   <Header
                     as="h3"
