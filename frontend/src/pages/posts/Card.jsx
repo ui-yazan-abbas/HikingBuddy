@@ -9,6 +9,7 @@ import Like from "../posts/Like";
 
 import {
   Grid,
+  Divider,
   Feed,
   Card,
   Comment,
@@ -116,23 +117,27 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   </Comment.Metadata>
 
 
-                  <Comment>
-        <div className='ui two buttons'>
+                  <Divider hidden />           
+                  <Grid columns={2} stackable>
+                  <Grid.Column>
         <b>Location:</b> {postTitle}
+        </Grid.Column>
+        <Grid.Column>
         <b>Distance:</b> {postKm} km
-        </div>
-  
+        </Grid.Column>
+      
 
                 <Comment.Text>
-                    <b>Location:</b> {postTitle}
+               
                   </Comment.Text>
                   <Feed.Extra text>
-                    <b>Distance:</b> {postKm} km
-                    </Feed.Extra> 
-
-                  <Image src={post.imageUrl} alt="" />
+                  
+                    </Feed.Extra>
+                    <Divider hidden />
+                  <Image src={post.imageUrl}  ssize='medium' rounded/>
+                  <Divider hidden />
                   <Comment.Text>{postBody}</Comment.Text>
-                  </Comment>
+                  </Grid>
                   <Header
                     as="h3"
                     dividing
