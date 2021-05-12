@@ -95,6 +95,7 @@ export default function PostForm({ onSubmit, post }) {
 
               <ImgUpload className="profile" uploadImg={change} />
             </Form.Field>
+            
 
             <Button
               as="a"

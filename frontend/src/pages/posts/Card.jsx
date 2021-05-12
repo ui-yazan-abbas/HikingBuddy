@@ -93,8 +93,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   return (
     <Container>
       <Segment.Group>
-        <Segment>
-          <Comment.Group>
+        <Segment >
             <Comment>
               <Link to={`/${post.user}/profile`}>
                 <Image
@@ -105,8 +104,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                 />
               </Link>
 
-              <Comment.Content>
-                <div className="container">
+         
+    
                   <Comment.Author as="a">
                     {" "}
                     <Link to={`/${post.user}/profile`}>{post.user}</Link>
@@ -126,23 +125,25 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     <Grid.Column>
                       <b>Distance:</b> {postKm} km
                     </Grid.Column>
-
-                    <Comment.Text></Comment.Text>
-                    <Feed.Extra text></Feed.Extra>
+                    </Grid>
+                    <Grid centered columns={1}>
+                    <Feed.Extra center>
                     <Divider hidden />
-                    <Image src={post.imageUrl} fluid rounded />{' '} 
+                    <Image src={post.imageUrl} className="shadow" />{' '} 
                     <Divider hidden />
                     <Feed.Meta>
                     <Comment.Text>{postBody}</Comment.Text>
                     </Feed.Meta>
+                    </Feed.Extra>
                   </Grid>
+                 
                   <Header
                     as="h3"
                     dividing
                     content=""
                     textAlign="center"
                   ></Header>
-
+    <Comment.Group>   
                   <Comment.Actions>
                     {post.user == user.name && (
                       <>
@@ -150,23 +151,26 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                           active
                           onClick={() => setIsUpdating(true)}
                         >
-                          Edit Post
-                        </Comment.Action>
+
+                          Edit Post 
+                        </Comment.Action>{' '} 
+                        
                         <Comment.Action onClick={onDeleteClick} active>
                           {" "}
-                          Delete post
-                        </Comment.Action>
+                          Delete post 
+                        </Comment.Action>{' '} 
 
                         <Comment.Action active>
-                          {comments.length} comment(s)
-                        </Comment.Action>
+                          {comments.length} comment(s) 
+                        </Comment.Action>{' '} 
                         <Comment.Action>
                           <Like />
                         </Comment.Action>
                       </>
                     )}
                   </Comment.Actions>
-                </div>
+                  </Comment.Group>
+      
                 <br></br>
                 <br></br>
                 {/* Buttons for share to social media and like button */}
@@ -225,10 +229,11 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                 <div className="comments-form">
                   <CommentForm id={post.id} onSubmit={createComment} />
                 </div>
-              </Comment.Content>
+             
             </Comment>
-          </Comment.Group>
+            
         </Segment>
+        
       </Segment.Group>
     </Container>
   );
