@@ -1,0 +1,24 @@
+.containerr {
+  background-color: rgba(242, 242, 242, 0.66);
+  border-radius: 5px;
+}
+.ccontainerr {
+  background-color: rgba(242, 242, 242, 0.66);
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.post {
+  /*background: url();*/
+  background-color: rgba(242, 242, 242, 0.66);
+}
+
+.card {
+  padding: 50px;
+  /*background: #f4f3f5;*/
+}
+
+.postcard {
+  padding: 2rem;
+}

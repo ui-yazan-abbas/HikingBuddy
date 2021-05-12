@@ -7,14 +7,10 @@ import {
   Modal,
   Icon,
   Card,
-  Grid,
-  Container,
   Image,
 } from "semantic-ui-react";
 import ImgUpload from "./ImgUpload";
-import ReactPlayer from "react-player";
 import Nature from "../../assets/nature.mp4";
-import VideoPlayer from "react-video-js-player";
 
 export default function PostForm({ onSubmit, post }) {
   const [postLocation, setPostLocation] = React.useState("");
