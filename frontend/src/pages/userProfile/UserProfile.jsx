@@ -4,6 +4,7 @@ import { Button, Card, Image } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
 import moment from "moment";
 import PostCard from "../posts/Card";
+import { Link } from "react-router-dom";
 
 export default function UserProfile({ currentUser, match }) {
   const [user, setUser] = useState({});
@@ -71,11 +72,17 @@ export default function UserProfile({ currentUser, match }) {
       <h3>{user.name}'s Followers:</h3>
       {user.followersList?.map((i) => (
         <>
-          <img
-            src={i.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
-            alt="follwer-profile"
-          />
-          <li id={i.id}>{i.name}</li>
+          <Link to={`/${i.name}/profile`}>
+            {" "}
+            <img
+              className="img"
+              src={i.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
+              alt="follwer-profile"
+            />{" "}
+          </Link>
+          <Link to={`/${i.name}/profile`}>
+            <li id={i.id}>{i.name}</li>
+          </Link>
         </>
       ))}
       {toggler && (
