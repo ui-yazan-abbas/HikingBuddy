@@ -92,15 +92,17 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
   return (
     <Container>
-    <Segment.Group>
+      <Segment.Group>
         <Segment>
           <Comment.Group>
             <Comment>
               <Link to={`/${post.user}/profile`}>
-              <Image
-          floated='left'
-          size='mini'
-          as="a" src={user.imageUrl || null} />
+                <Image
+                  floated="left"
+                  size="mini"
+                  as="a"
+                  src={user.imageUrl || null}
+                />
               </Link>
 
               <Comment.Content>
@@ -110,33 +112,29 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     <Link to={`/${post.user}/profile`}>{post.user}</Link>
                   </Comment.Author>
 
-                  <Comment.Metadata>
-                    <div>
-                      {moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}
-                    </div>
-                  </Comment.Metadata>
+                  <Feed.Summary>
+                  <Feed.Date>
+                      {moment(post.createAt).format("MMMM Do, YYYY HH:mm")}
+                   </Feed.Date>
+                   </Feed.Summary>
 
-
-                  <Divider hidden />           
-                  <Grid columns={2} stackable>
-                  <Grid.Column>
-        <b>Location:</b> {postTitle}
-        </Grid.Column>
-        <Grid.Column>
-        <b>Distance:</b> {postKm} km
-        </Grid.Column>
-      
-
-                <Comment.Text>
-               
-                  </Comment.Text>
-                  <Feed.Extra text>
-                  
-                    </Feed.Extra>
-                    <Divider hidden />
-                  <Image src={post.imageUrl}  ssize='medium' rounded/>
                   <Divider hidden />
-                  <Comment.Text>{postBody}</Comment.Text>
+                  <Grid columns={2} stackable>
+                    <Grid.Column>
+                      <b>Location:</b> {postTitle}
+                    </Grid.Column>
+                    <Grid.Column>
+                      <b>Distance:</b> {postKm} km
+                    </Grid.Column>
+
+                    <Comment.Text></Comment.Text>
+                    <Feed.Extra text></Feed.Extra>
+                    <Divider hidden />
+                    <Image src={post.imageUrl} fluid rounded />{' '} 
+                    <Divider hidden />
+                    <Feed.Meta>
+                    <Comment.Text>{postBody}</Comment.Text>
+                    </Feed.Meta>
                   </Grid>
                   <Header
                     as="h3"
@@ -163,7 +161,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                           {comments.length} comment(s)
                         </Comment.Action>
                         <Comment.Action>
-                        <Like />
+                          <Like />
                         </Comment.Action>
                       </>
                     )}
@@ -231,7 +229,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
             </Comment>
           </Comment.Group>
         </Segment>
-        </Segment.Group>
+      </Segment.Group>
     </Container>
   );
 }
