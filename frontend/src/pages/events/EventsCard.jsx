@@ -126,14 +126,30 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   /* Variables for See more-see less details */
   const extraContent = (
     <div className="see-more">
-      <p><b>Trail Location:</b> {isNewTrailName}</p>
-      <p><b>Difficulty:</b> {isNewEventDifficulty}</p>
-      <p><b>Starting Date:</b> {isNewMaxNum}</p>
-      <p><b>Duration (days):</b> {isNewEventDuration}</p>
-      <p><b>Distance (km):</b> {isNewEventDistance}</p>
-      <p><b>Meeting point and time:</b> {isNewMeetPoint}</p>
-      <p><b>External link to trail:</b> {isNewHyperlink}</p>
-      <p><b>About event:</b> {isRefreshingBody}</p>
+      <p>
+        <b>Trail Location:</b> {isNewTrailName}
+      </p>
+      <p>
+        <b>Difficulty:</b> {isNewEventDifficulty}
+      </p>
+      <p>
+        <b>Starting Date:</b> {isNewMaxNum}
+      </p>
+      <p>
+        <b>Duration (days):</b> {isNewEventDuration}
+      </p>
+      <p>
+        <b>Distance (km):</b> {isNewEventDistance}
+      </p>
+      <p>
+        <b>Meeting point and time:</b> {isNewMeetPoint}
+      </p>
+      <p>
+        <b>External link to trail:</b> {isNewHyperlink}
+      </p>
+      <p>
+        <b>About event:</b> {isRefreshingBody}
+      </p>
     </div>
   );
 
@@ -170,14 +186,18 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <br></br>
               <br></br>
               <Segment textAlign="center">
-                <Comment.Text> <h4><b>Trail Location:</b> {isNewTrailName}</h4></Comment.Text>
+                <Comment.Text>
+                  {" "}
+                  <h4>
+                    <b>Trail Location:</b> {isNewTrailName}
+                  </h4>
+                </Comment.Text>
 
                 <Comment.Metadata>
                   <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance" />
                 </Comment.Metadata>
 
                 <br></br>
-                
 
                 <Comment.Text>
                   <a>
@@ -230,11 +250,13 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         {" "}
                         Delete event
                       </Comment.Action>
-                      <Comment.Action active>
-                      {eventComments.length} comment(s)
-                      </Comment.Action>
+                      
                     </>
                   )}
+
+<Comment.Action active>
+                        {eventComments.length} comment(s)
+                      </Comment.Action>
                 </Comment.Actions>
 
                 <br></br>

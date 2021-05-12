@@ -88,7 +88,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
   return (
     <Container>
-      <Grid.Column only="widescreen" widescreen={10}>
+      <Grid.Column mobile={16} tablet={8} computer={4}>
         <Segment>
           <Comment.Group>
             <Comment>
@@ -142,11 +142,12 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                           Delete post
                         </Comment.Action>
 
-                        <Comment.Action active>
-                          {comments.length} comment(s)
-                        </Comment.Action>
+                       
                       </>
                     )}
+                     <Comment.Action active>
+                          {comments.length} comment(s)
+                        </Comment.Action>
                   </Comment.Actions>
                 </div>
                 <br></br>

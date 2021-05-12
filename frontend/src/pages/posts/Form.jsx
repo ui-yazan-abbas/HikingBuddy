@@ -53,7 +53,7 @@ export default function PostForm({ onSubmit, post }) {
         onOpen={() => setOpen(true)}
         trigger={
           <Button basic color="green">
-            Recommend a Hike!
+            Recommend a Hike
           </Button>
         }
       >
@@ -66,7 +66,7 @@ export default function PostForm({ onSubmit, post }) {
         <Segment style={{ background: "#d6fbe0" }}>
           <Modal.Header style={{ color: "#e9896a" }}></Modal.Header>
           {/* <h4 className="card-title">Make a new post</h4> */}
-          <Form inverted size>
+          <Form>
             <Form.Group widths="equal">
               <Form.Field>
                 <label style={{ color: "#e9896a" }}>Location/Trail name</label>

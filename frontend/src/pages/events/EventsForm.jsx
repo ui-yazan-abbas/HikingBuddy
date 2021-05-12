@@ -81,17 +81,18 @@ export default function EventsForm({ onSubmit }) {
           />
 
           <Modal.Description>
-            <Form /* success */>
+            <Form success>
               <Form.Group widths="equal">
                 <Form.Field
+               
                   required
                   control={Input}
                   label="Trail location"
                   placeholder="Höga Kusten"
-                  error={{
+                  /* error={{
                     content: "Please enter a valid email address",
                     pointing: "below",
-                  }}
+                  }} */
                   value={trailName}
                   onChange={(e) => setTrailName(e.target.value)}
                 />
@@ -188,19 +189,20 @@ export default function EventsForm({ onSubmit }) {
                 control={TextArea}
                 label="About event"
                 placeholder="It´s an easy trail I took before and now..."
-                error={{
+                success={{
                   content: "Please enter a valid email address",
                   pointing: "below",
+                  color: "blue",
                 }}
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
               />
 
-              {/* <Message
+              <Message
                 success
                 header="Event Created"
                 content="Nice! Now you can go back and see all events"
-              /> */}
+              /> 
 
               <Button
                 as="a"
