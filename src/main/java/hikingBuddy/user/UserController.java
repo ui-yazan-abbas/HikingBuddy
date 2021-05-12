@@ -58,7 +58,7 @@ public class UserController {
         User user = userService.findUserByEmail(userName);
         userRepository.delete(user);
     }
-
+/*
     // @PutMapping("/follow")
     // public ResponseEntity<User> followUser(@RequestBody User user, Principal
     // principal){
@@ -68,6 +68,6 @@ public class UserController {
     // toBeFollowed.addFollower(wantToFollow);
     // return ResponseEntity.ok(toBeFollowed);
 
-    // }
+    // }*/
 
 }

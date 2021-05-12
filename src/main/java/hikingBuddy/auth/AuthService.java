@@ -21,10 +21,10 @@ public class AuthService {
     @Autowired
     private JWTEncoderDecoder jwtEncoderDecoder;
 
-    private static final Logger logger = LoggerFactory.getLogger("AuthService");
+    //private static final Logger logger = LoggerFactory.getLogger("AuthService");
 
     public String getLoggedInUserEmail() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+         SecurityContextHolder.getContext().getAuthentication();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             return ((UserDetails) principal).getUsername();
@@ -39,7 +39,7 @@ public class AuthService {
     }
 
     public String authenticate(String email, String password) throws AuthenticationException {
-        Authentication authentication = authenticationManager.authenticate(
+        authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email, password)
         );
 

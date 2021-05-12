@@ -27,7 +27,6 @@ public class UserService {
         updateUserData.setFollowersList(user.getFollowersList());
         return updateUserData;
     }
-
     public User addFollower(User updateUserData, User user) {
         user.addFollower(updateUserData);
         return user;

@@ -7,6 +7,9 @@ import Footer from "../../components/HomeComponents/Footer";
 import SwedenTrails from "../../components/HomeComponents/SwedenTrails";
 import IntroHome from "../../components/HomeComponents/IntroHome";
 import NavHome from "../../components/HomeComponents/NavHome";
+import VideoPlayer from "react-video-js-player";
+import Nature from "../../assets/nature.mp4";
+
 //Styling
 import { createMedia } from "@artsy/fresnel";
 import PropTypes from "prop-types";
@@ -23,8 +26,10 @@ import {
 
 /* Styiling for the home page component
  */
+const videoSrc = Nature;
 const HomepageHeading = ({ mobile }) => (
   <Container text>
+    
     <Header
       as="h1"
       content="Hiking tips and events in one place"
@@ -36,6 +41,7 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? "1.5em" : "3em",
       }}
     />
+   
     <Header
       as="h2"
       content="Do you like nature and hiking?"
@@ -61,10 +67,18 @@ const HomepageLayout = () => (
   <Segment>
     <NavHome />
     <IntroHome />
+    <VideoPlayer className="video"
+                src={videoSrc}
+                autoplay={true}
+                height="420"
+                width="720"
+              />
     <Segment style={{ padding: "8em 0em" }} vertical>
+    
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column width={8}>
+         
             <Header as="h3" style={{ fontSize: "2em" }}>
               Connect and share
             </Header>

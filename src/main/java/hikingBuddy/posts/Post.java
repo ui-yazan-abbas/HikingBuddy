@@ -30,7 +30,6 @@ public class Post {
     @NotEmpty
     private String postDistance;
 
-
     @Column(name = "image_url")
     private String imageUrl;
 
@@ -42,7 +41,7 @@ public class Post {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     private User user;
 
-    //bring another field with property
+    // bring another field with property
 
     public Post() {
     }
@@ -77,7 +76,7 @@ public class Post {
         this.postLocation = postLocation;
     }
 
-      public String getPostDistance() {
+    public String getPostDistance() {
         return postDistance;
     }
 
@@ -91,6 +90,14 @@ public class Post {
 
     public void setUser(User userPosts) {
         this.user = userPosts;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<Comment> getCommentList() {
