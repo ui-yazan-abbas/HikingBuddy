@@ -59,8 +59,8 @@ public class User {
     // @OneToMany(mappedBy = "user")
     // private List<User> followersList;
 
-    @OneToMany
-    private List<User> followersList;
+    @ManyToMany
+    private Collection<User> followersList;
 
     // Hibernate needs a default constructor to function
     public User() {
@@ -158,11 +158,11 @@ public class User {
         this.eventComments = eventComments;
     }
 
-    public List<User> getFollowersList() {
+    public Collection<User> getFollowersList() {
         return followersList;
     }
 
-    public void setFollowersList(List<User> followersList) {
+    public void setFollowersList(Collection<User> followersList) {
         this.followersList = followersList;
     }
 
@@ -185,5 +185,5 @@ public class User {
     public void addFollower(User follower) {
         this.followersList.add(follower);
     }
-    
+
 }

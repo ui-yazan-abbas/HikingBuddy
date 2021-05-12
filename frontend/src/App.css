@@ -14,7 +14,13 @@
 .nav-link:hover {
   color: #e9896a;
 }
-
+.video {
+  margin-top: 4rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+}
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -151,7 +157,6 @@ li {
   float: left;
   list-style-type: none;
   padding: 1rem;
-  
 }
 
 .logout {

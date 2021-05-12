@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 // Project files
 import PostsApi from "../../api/PostsApi";
-import Form from "./Form";
+import PostForm from "./Form";
 import Card from "./Card";
 
 export default function PostsPage({ user }) {
@@ -11,9 +11,8 @@ export default function PostsPage({ user }) {
   const [posts, setPosts] = useState([]);
 
   // Methods
- 
+
   // Components
-  
 
   async function createPost(postData) {
     try {
@@ -56,7 +55,7 @@ export default function PostsPage({ user }) {
   return (
     <div className="post">
       <div>
-        <Form onSubmit={(postData) => createPost(postData)} />
+        <PostForm onSubmit={(postData) => createPost(postData)} />
 
         {CardsArray}
       </div>
