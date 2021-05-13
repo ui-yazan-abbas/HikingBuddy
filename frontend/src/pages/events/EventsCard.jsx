@@ -147,7 +147,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
         <b>Meeting point and time:</b> {isNewMeetPoint}
       </p>
       <p>
-        <b>See on Google Map: </b> <Linkify>{isNewHyperlink}</Linkify>
+        <Link href={isNewHyperlink} target="_blank">
+          See on Google Map
+        </Link>
       </p>
       <p>
         <b>About event:</b> {isRefreshingBody}
@@ -206,7 +208,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 </Comment.Metadata>
 
                 <br></br>
-
 
                 <Comment.Text>
                   <a>
