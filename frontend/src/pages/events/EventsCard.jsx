@@ -236,30 +236,34 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 {readMore && extraContent}
 
                 <Header as="h3" dividing content="" textAlign="center"></Header>
-                <Grid.Column></Grid.Column>
-                <Comment.Actions>
-                  {event.user == user.name && (
-                    <>
-                      <Comment.Action
-                        active
-                        onClick={() => setIsUpdating(true)}
-                      >
-                        Edit event
-                      </Comment.Action>
-                      <Comment.Action onClick={onDeleteClick} active>
-                        {" "}
-                        Delete event
-                      </Comment.Action>
-                    </>
-                  )}
 
-                  <Comment.Action active>
-                    {eventComments.length} comment(s)
-                  </Comment.Action>
-                  <Comment.Action active>
-                    <JoinButton />
-                  </Comment.Action>
-                </Comment.Actions>
+                <Comment.Group size="large">
+                <Comment >
+                  <Comment.Actions>
+                    {event.user == user.name && (
+                      <>
+                        <Comment.Action
+                          active
+                          onClick={() => setIsUpdating(true)}
+                        >
+                          Edit event
+                        </Comment.Action>
+                        <Comment.Action onClick={onDeleteClick} active>
+                          {" "}
+                          Delete event
+                        </Comment.Action>
+                      </>
+                    )}
+
+                    <Comment.Action active>
+                      {eventComments.length} comment(s)
+                    </Comment.Action>
+                    <Comment.Action active>
+                      <JoinButton />
+                    </Comment.Action>
+                  </Comment.Actions>
+                </Comment>
+                </Comment.Group>
 
                 <br></br>
                 <br></br>
