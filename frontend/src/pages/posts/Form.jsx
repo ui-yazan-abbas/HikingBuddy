@@ -63,7 +63,7 @@ export default function PostForm({ onSubmit, post }) {
           <Form success>
             <Form.Group widths="equal">
               <Form.Field>
-                <label>Location/Trail name</label>
+                <label>Location or Trail</label>
                 <Form.Input
                   fluid
                   placeholder="Håga Trail"
