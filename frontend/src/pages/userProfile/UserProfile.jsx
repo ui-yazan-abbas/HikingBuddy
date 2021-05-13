@@ -40,20 +40,26 @@ export default function UserProfile({ currentUser, match }) {
       {!toggler && (
         <>
           <div className="introduction">
-            <Image
-              className="profile-img"
-              src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
-              alt=""
-            />
-            <h1> {user.name} </h1>
-            <span className="date">
-              Joined in {moment(user.createAt).format("YYYY")}
-            </span>
-
-            
+            <div className="column-left">
+              <Image
+                className="profile-img"
+                src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
+                alt=""
+              />
+            </div>
+            <div className="column-right">
+              <h1 className="name"> {user.name} </h1>
+              <span className="date">
+                Joined in {moment(user.createAt).format("YYYY")}
+              </span>
+              <div className="bio">
+                {" "}
+                <h3>{user.bio}</h3>
+              </div>
+            </div>
           </div>
-          <div className="column-right"> <h3>{user.bio}</h3></div>
-          <Card.Content extra>
+
+          <div className="btn-position">
             {currentUser.name === user.name && (
               <Button inverted color="blue" onClick={() => setToggler(true)}>
                 Edit Profile
@@ -66,10 +72,18 @@ export default function UserProfile({ currentUser, match }) {
                   Follow
                 </Button>
               )}
-          </Card.Content>
+          </div>
+          <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'London')">
+              Posts
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')">
+              Followers
+            </button>
+          </div>
         </>
       )}
-      <h3 className="h3">Number of followers: {user.followersList?.length}</h3>
+      <h3 className="h3">Followers: {user.followersList?.length}</h3>
       <h3>{user.name}'s Followers:</h3>
       {user.followersList?.map((i) => (
         <>
