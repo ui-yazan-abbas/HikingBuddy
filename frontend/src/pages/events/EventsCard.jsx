@@ -3,6 +3,7 @@ import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
+import Linkify from "react-linkify";
 
 import {
   Button,
@@ -130,6 +131,13 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>Trail Location:</b> {isNewTrailName}
       </p>
+
+      <p>
+        <Linkify target="_blank">
+          <b>GoogleMap/other link:</b> {isNewHyperlink}
+        </Linkify>
+      </p>
+
       <p>
         <b>Difficulty:</b> {isNewEventDifficulty}
       </p>
@@ -145,9 +153,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>Meeting point and time:</b> {isNewMeetPoint}
       </p>
-      <p>
-        <b>External link to trail:</b> {isNewHyperlink}
-      </p>
+
       <p>
         <b>About event:</b> {isRefreshingBody}
       </p>
@@ -162,34 +168,41 @@ export default function EventsCard({ event, onDeleteClick, user }) {
         {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
         <Comment.Group>
           <Comment>
+          <Comment.Content>
+          
             <br></br>
-            <Link to={`/${event.user}/profile`}>
+            {/* <Link to={`/${event.user}/profile`}>
               <Comment.Avatar as="a" src={user.imageUrl} />
-            </Link>
+            </Link> */}
 
-            <Comment.Content>
+            
               <Link to={`/${event.user}/profile`}>
-                {" "}
-                <Comment.Author as="a">
-                  {" "}
-                  Created by {event.user}
-                </Comment.Author>{" "}
+                <Image
+                  floated="left"
+                  size="mini"
+                  as="a"
+                  src={user.imageUrl || null}
+                />
+                <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
               </Link>
 
               <Comment.Metadata>
                 <div>
-                  {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
+                {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
                 </div>
               </Comment.Metadata>
 
+             
               <br></br>
-              <br></br>
-              <br></br>
+              {/* <br></br>
+              <br></br> */}
               <Segment textAlign="center">
                 <Comment.Text>
                   {" "}
                   <h4>
                     <b>Trail Location:</b> {isNewTrailName}
+                    <br></br>
+                    <b>Check out:</b> <Linkify>{isNewHyperlink}</Linkify>
                   </h4>
                 </Comment.Text>
 
@@ -238,31 +251,31 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 <Header as="h3" dividing content="" textAlign="center"></Header>
 
                 <Comment.Group size="large">
-                <Comment >
-                  <Comment.Actions>
-                    {event.user == user.name && (
-                      <>
-                        <Comment.Action
-                          active
-                          onClick={() => setIsUpdating(true)}
-                        >
-                          Edit event
-                        </Comment.Action>
-                        <Comment.Action onClick={onDeleteClick} active>
-                          {" "}
-                          Delete event
-                        </Comment.Action>
-                      </>
-                    )}
+                  <Comment>
+                    <Comment.Actions>
+                      {event.user == user.name && (
+                        <>
+                          <Comment.Action
+                            active
+                            onClick={() => setIsUpdating(true)}
+                          >
+                            Edit event
+                          </Comment.Action>
+                          <Comment.Action onClick={onDeleteClick} active>
+                            {" "}
+                            Delete event
+                          </Comment.Action>
+                        </>
+                      )}
 
-                    <Comment.Action active>
-                      {eventComments.length} comment(s)
-                    </Comment.Action>
-                    <Comment.Action active>
-                      <JoinButton />
-                    </Comment.Action>
-                  </Comment.Actions>
-                </Comment>
+                      <Comment.Action active>
+                        {eventComments.length} comment(s)
+                      </Comment.Action>
+                      <Comment.Action active>
+                        <JoinButton />
+                      </Comment.Action>
+                    </Comment.Actions>
+                  </Comment>
                 </Comment.Group>
 
                 <br></br>

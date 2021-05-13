@@ -45,85 +45,84 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
 
   return (
     <Grid.Column only="widescreen" widescreen={10}>
-      <Segment>
-        <Form>
-          <Form.Field
-            control={Input}
-            label="Trail location"
-            placeholder="Höga Kusten"
-            value={trailName}
-            onChange={(e) => setTrailName(e.target.value)}
-          />
+      {/* <Segment> */}
+      <Form>
+        <Form.Field
+          control={Input}
+          label="Trail location"
+          placeholder="Höga Kusten"
+          value={trailName}
+          onChange={(e) => setTrailName(e.target.value)}
+        />
 
-          <Form.Field
-            control={Input}
-            label="Difficulty"
-            placeholder="Easy/Moderate/Hard"
-            value={eventDifficulty}
-            onChange={(e) => setEventDifficulty(e.target.value)}
-          />
+        <Form.Field
+          control={Input}
+          label="Difficulty"
+          placeholder="Easy/Moderate/Hard"
+          value={eventDifficulty}
+          onChange={(e) => setEventDifficulty(e.target.value)}
+        />
 
-          <Form.Field
-            control={Input}
-            type="date"
-            label="Starting Date"
-            placeholder="7"
-            value={maxNum}
-            onChange={(e) => setMaxNum(e.target.value)}
-          />
+        <Form.Field
+          control={Input}
+          type="date"
+          label="Starting Date"
+          placeholder="7"
+          value={maxNum}
+          onChange={(e) => setMaxNum(e.target.value)}
+        />
 
-          <Form.Field
-            control={Input}
-            label="Duration (days)"
-            placeholder="3"
-            value={eventDuration}
-            onChange={(e) => setEventDuration(e.target.value)}
-          />
+        <Form.Field
+          control={Input}
+          label="Duration (days)"
+          placeholder="3"
+          value={eventDuration}
+          onChange={(e) => setEventDuration(e.target.value)}
+        />
 
-          <Form.Field
-            control={Input}
-            label="Distance (km)"
-            placeholder="83"
-            value={eventDistance}
-            onChange={(e) => setEventDistance(e.target.value)}
-          />
+        <Form.Field
+          control={Input}
+          label="Distance (km)"
+          placeholder="83"
+          value={eventDistance}
+          onChange={(e) => setEventDistance(e.target.value)}
+        />
 
-        
-          <Form.Field
-            control={Input}
-            label="Meeting point and time"
-            placeholder="Central station, Stockholm"
-            value={meetPoint}
-            onChange={(e) => setMeetPoint(e.target.value)}
-          />
+        <Form.Field
+          control={Input}
+          label="Meeting point and time"
+          placeholder="Central station, Stockholm"
+          value={meetPoint}
+          onChange={(e) => setMeetPoint(e.target.value)}
+        />
 
-          <Form.Field
-            control={Input}
-            label="Event chat room name"
-            placeholder="Höga team"
-            value={trailHyperlink}
-            onChange={(e) => setTrailHyperlink(e.target.value)}
-          />
+        <Form.Field
+          control={Input}
+          label="GoogleMap/other link"
+          placeholder="https://goo.gl/maps/T3dWA3q3bGjQxePk9"
+          value={trailHyperlink}
+          onChange={(e) => setTrailHyperlink(e.target.value)}
+        />
 
-          <Form.Field
-            control={TextArea}
-            label="About event"
-            placeholder="It´s an easy trail I took before and now..."
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
+        <Form.Field
+          control={TextArea}
+          label="About event"
+          placeholder="It´s an easy trail I took before and now..."
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
 
-          <Button
-            as="a"
-            inverted
-            color="blue"
-            onClick={handleUpdate}
-            type="submit"
-          >
-            Submit event changes
-          </Button>
-        </Form>
-      </Segment>
+        <Button
+          as="a"
+          inverted
+          color="blue"
+          onClick={handleUpdate}
+          type="submit"
+        >
+          Submit event changes
+        </Button>
+      </Form>
+      {/* </Segment> */}
     </Grid.Column>
   );
 }
