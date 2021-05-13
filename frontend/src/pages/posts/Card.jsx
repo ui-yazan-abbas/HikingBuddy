@@ -93,151 +93,137 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   return (
     <Container>
       <Segment.Group>
-        <Segment >
-    
-              <Link to={`/${post.user}/profile`}>
-                <Image
-                  floated="left"
-                  size="mini"
-                  as="a"
-                  src={user.imageUrl || null}
-                />
-              </Link>
+        <Segment>
+          <Link to={`/${post.user}/profile`}>
+            <Image
+              floated="left"
+              size="mini"
+              as="a"
+              src={user.imageUrl || null}
+            />
+          </Link>
 
-         
-    
-                  <Comment.Author as="a">
+          <Comment.Author as="a">
+            {" "}
+            <Link to={`/${post.user}/profile`}>{post.user}</Link>
+          </Comment.Author>
+
+          <Feed.Summary>
+            <Feed.Date>
+              {moment(post.createAt).format("MMMM Do, YYYY HH:mm")}
+            </Feed.Date>
+          </Feed.Summary>
+
+          <Divider hidden />
+          <Grid columns={2} stackable>
+            <Grid.Column>
+              <b>Location:</b> {postTitle}
+            </Grid.Column>
+            <Grid.Column>
+              <b>Distance:</b> {postKm} km
+            </Grid.Column>
+          </Grid>
+          <Grid centered columns={1}>
+            <Feed.Extra center>
+              <Divider hidden />
+              <Image src={post.imageUrl} className="shadow" />{" "}
+              <Divider hidden />
+              <Feed.Meta>
+                <Comment.Text>{postBody}</Comment.Text>
+              </Feed.Meta>
+            </Feed.Extra>
+          </Grid>
+
+          <Header as="h3" dividing content="" textAlign="center"></Header>
+          {/* <Divider hidden /> */}
+
+          <Comment.Group size="large">
+          <Comment >
+          
+          <Comment.Actions textAlign="center">
+              {post.user == user.name && (
+                <>
+                  <Comment.Action active onClick={() => setIsUpdating(true)}>
+                    Edit Post
+                    </Comment.Action>
+                  <Comment.Action onClick={onDeleteClick} active>
                     {" "}
-                    <Link to={`/${post.user}/profile`}>{post.user}</Link>
-                  </Comment.Author>
+                    Delete post
+                    </Comment.Action>
+                </>
+              )}
+              <Comment.Action active>
+                {comments.length} comment(s)
+                </Comment.Action>
+              <Comment.Action active>
+                <Like />
+                </Comment.Action>
+              </Comment.Actions>
 
-                  <Feed.Summary>
-                  <Feed.Date>
-                      {moment(post.createAt).format("MMMM Do, YYYY HH:mm")}
-                   </Feed.Date>
-                   </Feed.Summary>
-
-                  <Divider hidden />
-                  <Grid columns={2} stackable>
-                    <Grid.Column>
-                      <b>Location:</b> {postTitle}
-                    </Grid.Column>
-                    <Grid.Column>
-                      <b>Distance:</b> {postKm} km
-                    </Grid.Column>
-                    </Grid>
-                    <Grid centered columns={1}>
-                    <Feed.Extra center>
-                    <Divider hidden />
-                    <Image src={post.imageUrl} className="shadow" />{' '} 
-                    <Divider hidden />
-                    <Feed.Meta>
-                    <Comment.Text>{postBody}</Comment.Text>
-                    </Feed.Meta>
-                    </Feed.Extra>
-                  </Grid>
-                 
-                  <Header
-                    as="h3"
-                    dividing
-                    content=""
-                    textAlign="center"
-                  ></Header>
-                        <Divider hidden />
-                  
-                        <Container text>
-   <Grid  margin= '4em'columns={4}>
-                 
-                    {post.user == user.name && (
-                      <>
-                        <Grid.Column
-                          active
-                          onClick={() => setIsUpdating(true)}
-                        >
-
-                          Edit Post 
-                        </Grid.Column>{' '} 
-                        
-                        <Grid.Column onClick={onDeleteClick} active>
-                          {" "}
-                          Delete post 
-                        </Grid.Column>{' '} 
-
-                        <Grid.Column active>
-                          {comments.length} comment(s) 
-                        </Grid.Column>{' '} 
-                        <Grid.Column>
-                          <Like />
-                        </Grid.Column>
-                      </>
-                    )}
-  
-                  </Grid>
-                  </Container>
-      
-                <br></br>
-                <br></br>
-                {/* Buttons for share to social media and like button */}
-                <Button.Group size="small" className="AvatarWrap">
-                  <br></br>
-                  <FacebookShareButton
-                    url={window.location.href} //share the actual link of the post
-                    title={post.user} //the user who wrote the post
-                    description={postTitle} //the comment written in the post is shared
-                    quote="link"
-                  >
-                    <FacebookIcon className="mx-3" size={35} />
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    url={window.location.href}
-                    title={postTitle} //the comment written in the post is shared
-                    quote="link"
-                    hashtag="hiking"
-                  >
-                    <TwitterIcon className="mx-3" size={35} />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={window.location.href}
-                    separator=""
-                    title={postTitle} //the comment written in the post is shared
-                    quote="link"
-                  >
-                    <WhatsappIcon size={35} />
-                  </WhatsappShareButton>
-                </Button.Group>
-                {/* Buttons for share to social media finish here  */}
-                <Header as="h3" dividing content="" textAlign="center"></Header>
-
-                <div className="comments-container">
-                  {comments &&
-                    filteredCommentList.map((comment) => (
-                      <CommentCard
-                        key={post.id}
-                        comment={comment}
-                        onDeleteClick={() => deleteComment(comment)}
-                        user={user}
-                      />
-                    ))}
-                </div>
-
-                {isUpdating && (
-                  <UpdateCard
-                    onUpdateClick={(postData) => {
-                      updatePost(postData);
-                      setIsUpdating(false);
-                    }}
-                    post={post}
-                  />
-                )}
-
-                <div className="comments-form">
-                  <CommentForm id={post.id} onSubmit={createComment} />
-                </div>
              
-
-            
-        </Segment>
+              </Comment>
+              </Comment.Group>
         
+
+          <br></br>
+          <br></br>
+          {/* Buttons for share to social media and like button */}
+          <Button.Group size="small" className="AvatarWrap">
+            <br></br>
+            <FacebookShareButton
+              url={window.location.href} //share the actual link of the post
+              title={post.user} //the user who wrote the post
+              description={postTitle} //the comment written in the post is shared
+              quote="link"
+            >
+              <FacebookIcon className="mx-3" size={35} />
+            </FacebookShareButton>
+            <TwitterShareButton
+              url={window.location.href}
+              title={postTitle} //the comment written in the post is shared
+              quote="link"
+              hashtag="hiking"
+            >
+              <TwitterIcon className="mx-3" size={35} />
+            </TwitterShareButton>
+            <WhatsappShareButton
+              url={window.location.href}
+              separator=""
+              title={postTitle} //the comment written in the post is shared
+              quote="link"
+            >
+              <WhatsappIcon size={35} />
+            </WhatsappShareButton>
+          </Button.Group>
+          {/* Buttons for share to social media finish here  */}
+          <Header as="h3" dividing content="" textAlign="center"></Header>
+
+          <div className="comments-container">
+            {comments &&
+              filteredCommentList.map((comment) => (
+                <CommentCard
+                  key={post.id}
+                  comment={comment}
+                  onDeleteClick={() => deleteComment(comment)}
+                  user={user}
+                />
+              ))}
+          </div>
+
+          {isUpdating && (
+            <UpdateCard
+              onUpdateClick={(postData) => {
+                updatePost(postData);
+                setIsUpdating(false);
+              }}
+              post={post}
+            />
+          )}
+
+          <div className="comments-form">
+            <CommentForm id={post.id} onSubmit={createComment} />
+          </div>
+        </Segment>
       </Segment.Group>
     </Container>
   );
