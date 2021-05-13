@@ -89,9 +89,9 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
   return (
     <Container>
-      <Grid centered columns={1}> 
+     
       <Grid.Column mobile={16} tablet={8} computer={4}>
-        <Segment>
+        <Segment> 
           <Comment.Group>
             <Comment>
               <Link to={`/${post.user}/profile`}>
@@ -212,9 +212,9 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               </Comment.Content>
             </Comment>
           </Comment.Group>
-        </Segment>
+        </Segment> 
       </Grid.Column>
-      </Grid>
+    
     </Container>
   );
 }

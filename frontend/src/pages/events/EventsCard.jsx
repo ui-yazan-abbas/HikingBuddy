@@ -157,7 +157,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
   return (
     <Container >
-       <Grid centered columns={1}> 
+       
 
      {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
         <Comment.Group>
@@ -181,6 +181,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                   {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
                 </div>
               </Comment.Metadata>
+
+              <Grid centered columns={1}> 
 
               <br></br>
               <br></br>
@@ -317,12 +319,14 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <div className="comments-form">
                 <EventCommentForm id={event.id} onSubmit={createEventComment} />
               </div>
+              </Grid> 
             </Comment.Content>
+           
           </Comment>
         </Comment.Group>
       {/* </Grid.Column> */}
 
-      </Grid>  
+       
     </Container>
   );
 }
