@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Auth from "../../services/Auth";
-import SgnupWithGoogle from "../../components/sgnupwithGoogle"
+import SgnupWithGoogle from "../../components/sgnupwithGoogle";
+import LogoutButton from "../../components/Logout";
 //Styling
 import {
   Button,
@@ -77,7 +78,6 @@ export default function SignUp({ onSubmit }) {
               >
                 Join us now!
               </Button>
-              <SgnupWithGoogle/>
             </Segment>
           </Form>
           <Message>

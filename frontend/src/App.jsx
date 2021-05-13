@@ -15,12 +15,16 @@ import UserProfile from "./pages/userProfile/UserProfile";
 import Chat from "./components/ChatComponents/Chat/Chat";
 import ChatPage from "./components/ChatComponents/Join/Join";
 import UserApi from "./api/UserApi";
+import { useAuth0 } from "@auth0/auth0-react";
 
 //Styling
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
+import FollowerList from "./pages/userProfile/FollowerList";
+import UsersPosts from "./pages/userProfile/usersPosts";
 
 export default function App() {
+  const { user, isAuthenticated } = useAuth0();
   // State
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [currentUser, setcurrentUser] = useState({});

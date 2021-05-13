@@ -131,13 +131,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>Trail Location:</b> {isNewTrailName}
       </p>
-
-      <p>
-        <Linkify target="_blank">
-          <b>GoogleMap/other link:</b> {isNewHyperlink}
-        </Linkify>
-      </p>
-
       <p>
         <b>Difficulty:</b> {isNewEventDifficulty}
       </p>
@@ -153,6 +146,14 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>Meeting point and time:</b> {isNewMeetPoint}
       </p>
+<<<<<<< HEAD
+=======
+      <p>
+        <a href={isNewHyperlink} target="_blank">
+          See on Google Map
+        </a>
+      </p>
+>>>>>>> origin/main
       <p>
         <b>About event:</b> {isRefreshingBody}
       </p>
@@ -198,12 +199,15 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                   <h4>
                     <b>Trail Location:</b> {isNewTrailName}
                     <br></br>
-                    <b>Check out:</b> <Linkify>{isNewHyperlink}</Linkify>
                   </h4>
                 </Comment.Text>
 
                 <Comment.Metadata>
-                  <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance" />
+                  <Image
+                    href={isNewHyperlink}
+                    target="_blank"
+                    src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"
+                  />
                 </Comment.Metadata>
 
                 <br></br>
