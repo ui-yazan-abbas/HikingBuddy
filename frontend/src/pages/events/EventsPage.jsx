@@ -53,7 +53,6 @@ export default function EventsPage({ event, onDeleteClick, user }) {
   return (
     <div>
       <EventsForm onSubmit={(eventData) => createEvent(eventData)} />
-      <EventSearch />
       {CardsArray1}
     </div>
   );
