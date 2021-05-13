@@ -21,13 +21,13 @@ export default function FollowerList({ match }) {
           <Link to={`/${i.name}/profile`}>
             {" "}
             <img
-              className="img"
+              className="list-img"
               src={i.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
               alt="follwer-profile"
             />{" "}
           </Link>
           <Link to={`/${i.name}/profile`}>
-            <li id={i.id}>{i.name}</li>
+            <li className="list-name"id={i.id}>{i.name}</li>
           </Link>
         </>
       ))}

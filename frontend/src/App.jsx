@@ -23,7 +23,7 @@ import FollowerList from "./pages/userProfile/FollowerList";
 import UsersPosts from "./pages/userProfile/usersPosts";
 
 export default function App() {
-  const {user, isAuthenticated} = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   // State
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [currentUser, setcurrentUser] = useState({});
@@ -81,8 +81,6 @@ export default function App() {
               <UserProfile match={props.match} currentUser={currentUser} />
             )}
           />
-          <Route path="/:name/profile/followersList" component={FollowerList}/>
-          <Route path="/:name/profile/posts" component={UsersPosts}/>
         </Switch>
       </BrowserRouter>
     </div>
