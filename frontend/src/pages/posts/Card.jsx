@@ -124,14 +124,21 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
             </Grid.Column>
           </Grid>
           <Grid centered columns={1}>
-            <Feed.Extra center>
+            <Feed.Extra center> 
+           
               <Divider hidden />
               <Image src={post.imageUrl} className="shadow" />{" "}
               <Divider hidden />
-              <Feed.Meta>
+              {/* <Feed.Meta> */}
+              {/* <Comment.Group> 
+              <Comment>
+              <Comment.Content> */}
                 <Comment.Text>{postBody}</Comment.Text>
-              </Feed.Meta>
-            </Feed.Extra>
+                {/* </Comment.Content>
+                </Comment>
+              </Comment.Group>  */}
+              {/* </Feed.Meta> */}
+             </Feed.Extra> 
           </Grid>
 
           <Header as="h3" dividing content="" textAlign="center"></Header>

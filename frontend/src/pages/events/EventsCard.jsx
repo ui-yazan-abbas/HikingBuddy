@@ -127,7 +127,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
   /* Variables for See more-see less details */
   const extraContent = (
-    <div className="see-more">
+    // <Comment>
+    //       <Comment.Content>
+    <Comment.Text>
+      {/* <Segment textAlign="left"> */}
       <p>
         <b>Trail Location:</b> {isNewTrailName}
       </p>
@@ -157,7 +160,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>About event:</b> {isRefreshingBody}
       </p>
-    </div>
+      {/* </Segment> */}
+    </Comment.Text>
+    // </Comment.Content>
+    // </Comment>
   );
 
   const linkName = readMore ? "Hide Details << " : "See Details >> ";
@@ -168,14 +174,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
         {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
         <Comment.Group>
           <Comment>
-          <Comment.Content>
-          
-            <br></br>
-            {/* <Link to={`/${event.user}/profile`}>
+            <Comment.Content>
+              <br></br>
+              {/* <Link to={`/${event.user}/profile`}>
               <Comment.Avatar as="a" src={user.imageUrl} />
             </Link> */}
 
-            
               <Link to={`/${event.user}/profile`}>
                 <Image
                   floated="left"
@@ -188,11 +192,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
               <Comment.Metadata>
                 <div>
-                {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
+                  {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
                 </div>
               </Comment.Metadata>
 
-             
               <br></br>
               {/* <br></br>
               <br></br> */}
