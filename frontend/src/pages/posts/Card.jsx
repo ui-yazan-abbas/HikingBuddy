@@ -92,7 +92,10 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
   return (
     <Container>
+      <br></br>
       <Segment.Group>
+
+      
         <Segment>
           <Link to={`/${post.user}/profile`}>
             <Image
@@ -172,11 +175,10 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               </Comment.Group>
         
 
-          <br></br>
-          <br></br>
+       
           {/* Buttons for share to social media and like button */}
           <Button.Group size="small" className="AvatarWrap">
-            <br></br>
+            
             <FacebookShareButton
               url={window.location.href} //share the actual link of the post
               title={post.user} //the user who wrote the post
@@ -202,6 +204,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               <WhatsappIcon size={35} />
             </WhatsappShareButton>
           </Button.Group>
+
+          
           {/* Buttons for share to social media finish here  */}
           <Header as="h3" dividing content="" textAlign="center"></Header>
 
