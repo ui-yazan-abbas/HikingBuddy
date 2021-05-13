@@ -20,6 +20,7 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
       <div className="card-body">
         <Form>
           <Form.Field>
+          <label>Location or Trail</label>
             <input
               className="form-control"
               placeholder="Håga Trail"
@@ -29,6 +30,7 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
           </Form.Field>
 
           <Form.Field>
+          <label>Distance in km</label>
             <input
               className="form-control"
               placeholder="35"
@@ -38,6 +40,7 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
           </Form.Field>
 
           <Form.Field>
+          <label>Recommended hiking</label>
             <input
               className="form-control"
               placeholder="I recommend because..."
