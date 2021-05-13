@@ -125,17 +125,22 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
             </Grid.Column>
           </Grid>
 
-          <Grid centered columns={1}>
+
             <Feed.Extra center>
               <Divider hidden />
               <Image src={post.imageUrl} className="shadow" />{" "}
               <Divider hidden />
-              <Feed.Meta>
-                <Comment.Text>{postBody}</Comment.Text>
-              </Feed.Meta>
-            </Feed.Extra>
-          </Grid>
+             
+   </Feed.Extra>
+  
+              <Feed.Summary className="margin-left">
+            <Comment.Metadata>
+              <Comment.Text>{postBody}</Comment.Text>
+            </Comment.Metadata>
+          </Feed.Summary>
 
+      
+          
           <Header as="h3" dividing content="" textAlign="center"></Header>
           <br></br>
 
@@ -146,12 +151,13 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   {post.user == user.name && (
                     <>
                       <Comment.Action
+                       as="a"
                         active
                         onClick={() => setIsUpdating(true)}
                       >
                         Edit post
                       </Comment.Action>
-                      <Comment.Action onClick={onDeleteClick} active>
+                      <Comment.Action  as="a" onClick={onDeleteClick} active>
                         {" "}
                         Delete post
                       </Comment.Action>
