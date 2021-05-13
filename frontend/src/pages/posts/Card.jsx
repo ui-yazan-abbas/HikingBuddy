@@ -122,7 +122,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                    </Feed.Summary>
 
                   <Divider hidden />
-                  <Grid columns={2} stackable>
+                  <Grid columns={2} container divided='vertically' stackable>
                     <Grid.Column>
                       <b>Location:</b> {postTitle}
                     </Grid.Column>
