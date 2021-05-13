@@ -65,7 +65,7 @@ export default function AuthPage() {
                 color="green"
                 onClick={() => login({ email, password })}
               >
-                Login bitch
+                Login
               </Button>
             </Segment>
           </Form>
