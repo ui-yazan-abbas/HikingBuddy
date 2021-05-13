@@ -1,9 +1,21 @@
 .outerContainerc2 {
   display: flex;
   justify-content: center;
+  text-align: center;
+  position: fixed;
+  top: 6rem;
+  left: 0;
+  padding-bottom: 3rem;
+  width: 100%;
+  height: 100%;
   align-items: center;
-  height: 102vh;
-  background-color: darkseagreen;
+  background-size: cover;
+  background: url(../icons/HikingChatBackround.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  box-sizing: content-box;
 }
 
 .containerc2 {
@@ -14,8 +26,6 @@
   border-radius: 0px;
   height: 60%;
   width: 50%;
-
-  
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
