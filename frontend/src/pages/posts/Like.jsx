@@ -1,16 +1,18 @@
 import { Component } from "react";
 import React from "react";
-import { Label, Button, Icon } from "semantic-ui-react";
+import { Label, Button, Icon, Feed } from "semantic-ui-react";
 
 const likes = 0;
 const dislikes = 0;
 const btnStyle1 = {
   margin: "1px",
-  //   border: "5px solid pink",
-  background: "#3387FF",
+  color: "red"
+};
+const btnDefault = {
+  margin: "1px",
+  color: "green"
 };
 
-const btnDefault = {};
 class Like extends Component {
   constructor(props) {
     super(props);
@@ -25,12 +27,19 @@ class Like extends Component {
     };
   }
 
+ 
+
   render() {
     return (
       <div>
         <div>{this.props.headerProp}</div>
 
-        <Button as="div" labelPosition="right">
+        <Feed.Like>
+            <Icon name='like'   onClick={this.likeHandler}  style={this.state.likeCount !== likes ? btnStyle1 : btnDefault}/>
+            {this.state.likeCount}
+          </Feed.Like>
+
+        {/* <Button as="div" labelPosition="right">
           <Button
             color="red"
             color="red"
@@ -44,7 +53,7 @@ class Like extends Component {
           <Label as="a" basic color="red" pointing="left">
             {this.state.likeCount}
           </Label>
-        </Button>
+        </Button> */}
 
         {/* <span>
             <button
