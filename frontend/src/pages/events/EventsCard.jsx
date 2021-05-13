@@ -207,6 +207,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
                 <br></br>
 
+
                 <Comment.Text>
                   <a>
                     <Icon name="chart area" />
