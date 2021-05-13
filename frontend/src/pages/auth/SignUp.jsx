@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Auth from "../../services/Auth";
 import SgnupWithGoogle from "../../components/sgnupwithGoogle";
+import LogoutButton from "../../components/Logout";
 //Styling
 import {
   Button,
@@ -13,7 +14,6 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
-import LogoutButton from "../../components/Logout";
 
 export default function SignUp({ onSubmit }) {
   const [name, setName] = useState("");
@@ -78,8 +78,6 @@ export default function SignUp({ onSubmit }) {
               >
                 Join us now!
               </Button>
-              <SgnupWithGoogle />
-              <LogoutButton />
             </Segment>
           </Form>
           <Message>

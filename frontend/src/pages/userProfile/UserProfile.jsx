@@ -41,7 +41,7 @@ export default function UserProfile({ currentUser, match }) {
   console.log("user", user);
 
   const handleView = (e) => {
-    console.log("name",e.target.name)
+    console.log("name", e.target.name);
     switch (e.target.name) {
       case "posts":
         setPostsState(true);
@@ -111,17 +111,12 @@ export default function UserProfile({ currentUser, match }) {
         </button>
 
         <button name="followes" class="tablinks" onClick={handleView}>
-          Followers: {user.followersList?.length}
+          Followers: {user.followersList?.length} 
         </button>
-      </div>
-        {followerState &&
+      </div>  
 
-      <FollowerList match={match} />
-        }
-  {
-    postsState &&
-    <UsersPosts match={match} />
-  }
+      {followerState && <FollowerList match={match} />}
+      {postsState && <UsersPosts match={match} />}
     </>
   );
 }
