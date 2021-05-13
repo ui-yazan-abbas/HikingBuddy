@@ -147,39 +147,37 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     content=""
                     textAlign="center"
                   ></Header>
-                        <Divider hidden />
-                  
-                        <Container text>
-   <Grid  margin= '4em'columns={4}>
-                 
-                    {post.user == user.name && (
-                      <>
-                        <Grid.Column
-                          active
-                          onClick={() => setIsUpdating(true)}
-                        >
+                        <div className= "AvatarWrap">
+                        <Comment.Group size="large">
+                  <Comment>
+                    <Comment.Actions>
+                      {post.user == user.name && (
+                        <>
+                          <Comment.Action
+                            active
+                            onClick={() => setIsUpdating(true)}
+                          >
+                            Edit post
+                          </Comment.Action>
+                          <Comment.Action onClick={onDeleteClick} active>
+                            {" "}
+                            Delete post
+                          </Comment.Action>
+                        </>
+                      )}
 
-                          Edit Post 
-                        </Grid.Column>{' '} 
-                        
-                        <Grid.Column onClick={onDeleteClick} active>
-                          {" "}
-                          Delete post 
-                        </Grid.Column>{' '} 
+                      <Comment.Action active>
+                        {comments.length} comment(s)
+                      </Comment.Action>
+                      <Comment.Action active>
+                      <Like />
+                      </Comment.Action>
+                    </Comment.Actions>
+                  </Comment>
+                </Comment.Group>
+                </div>
+                    
 
-                        <Grid.Column active>
-                          {comments.length} comment(s) 
-                        </Grid.Column>{' '} 
-                        <Grid.Column>
-                          <Like />
-                        </Grid.Column>
-                      </>
-                    )}
-  
-                  </Grid>
-                  </Container>
-      
-                <br></br>
                 <br></br>
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small" className="AvatarWrap">
