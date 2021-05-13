@@ -69,9 +69,9 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
-        <Modal.Header style={{ color: "green" }}>
+        <Header as="h2" dividing basic color="green">
           Create Your Hiking Event
-        </Modal.Header>
+        </Header>
 
         <Modal.Content image scrolling>
           <Image
@@ -101,7 +101,6 @@ export default function EventsForm({ onSubmit }) {
                   control={Input}
                   label="Difficulty"
                   placeholder="Easy/Moderate/Hard"
-                 
                   value={eventDifficulty}
                   onChange={(e) => setEventDifficulty(e.target.value)}
                 />
@@ -114,7 +113,6 @@ export default function EventsForm({ onSubmit }) {
                 type="date"
                 label="Starting Date"
                 placeholder="7"
-                
                 value={maxNum}
                 onChange={(e) => setMaxNum(e.target.value)}
               />
@@ -125,7 +123,6 @@ export default function EventsForm({ onSubmit }) {
                   control={Input}
                   label="Duration (days)"
                   placeholder="3"
-                 
                   width={4}
                   value={eventDuration}
                   onChange={(e) => setEventDuration(e.target.value)}
@@ -137,7 +134,6 @@ export default function EventsForm({ onSubmit }) {
                   control={Input}
                   label="Distance (km)"
                   placeholder="83"
-                  
                   width={4}
                   value={eventDistance}
                   onChange={(e) => setEventDistance(e.target.value)}
@@ -150,7 +146,6 @@ export default function EventsForm({ onSubmit }) {
                   control={Input}
                   label="Meeting point & time"
                   placeholder="Central station, Stockholm, 14:05"
-                 
                   value={meetPoint}
                   onChange={(e) => setMeetPoint(e.target.value)}
                 />
@@ -159,7 +154,6 @@ export default function EventsForm({ onSubmit }) {
                   control={Input}
                   label="GoogleMap/other link"
                   placeholder="https://goo.gl/maps/T3dWA3q3bGjQxePk9"
-                  
                   value={trailHyperlink}
                   onChange={(e) => setTrailHyperlink(e.target.value)}
                 />
@@ -170,12 +164,11 @@ export default function EventsForm({ onSubmit }) {
                 control={TextArea}
                 label="About event"
                 placeholder="It´s an easy trail I took before and now..."
-               
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
               />
 
-            {/*   <Message
+              {/*   <Message
                 success
                 header="Event Created"
                 content="Nice! Now you can go back and see all events"
