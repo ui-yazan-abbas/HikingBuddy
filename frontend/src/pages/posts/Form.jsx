@@ -10,14 +10,12 @@ import {
   Image,
 } from "semantic-ui-react";
 import ImgUpload from "./ImgUpload";
-import Nature from "../../assets/nature.mp4";
 
 export default function PostForm({ onSubmit, post }) {
   const [postLocation, setPostLocation] = React.useState("");
   const [body, setBody] = React.useState("");
   const [postDistance, setPostDistance] = React.useState("");
   const [postImageUrl, setImageUrl] = React.useState("");
-  const videoSrc = Nature;
 
   const change = ({ target: { value } }) => {
     setImageUrl(value);
