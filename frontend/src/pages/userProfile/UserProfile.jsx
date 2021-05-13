@@ -5,11 +5,15 @@ import EditUserProfile from "./editUserProfile";
 import moment from "moment";
 import PostCard from "../posts/Card";
 import { Link } from "react-router-dom";
+import FollowerList from "./FollowerList";
+import UsersPosts from "./usersPosts";
 
 export default function UserProfile({ currentUser, match }) {
   const [user, setUser] = useState({});
   const [toggler, setToggler] = useState(false);
   const info = match.params.name.replace(/\s/g, "%20");
+  const [postsState, setPostsState] = useState(true);
+  const [followerState, setFollowerState] = useState(false);
 
   useEffect(() => {
     try {
@@ -35,6 +39,25 @@ export default function UserProfile({ currentUser, match }) {
     updateUser();
   };
   console.log("user", user);
+
+  const handleView = (e) => {
+    console.log("name",e.target.name)
+    switch (e.target.name) {
+      case "posts":
+        setPostsState(true);
+        setFollowerState(false);
+        break;
+      case "followes":
+        setFollowerState(true);
+        setPostsState(false);
+        break;
+
+      default:
+        setPostsState(true);
+        setFollowerState(false);
+        break;
+    }
+  };
   return (
     <>
       {!toggler && (
@@ -73,33 +96,8 @@ export default function UserProfile({ currentUser, match }) {
                 </Button>
               )}
           </div>
-          <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'London')">
-              Posts
-            </button>
-            <button class="tablinks" onclick="openCity(event, 'Paris')">
-              Followers
-            </button>
-          </div>
         </>
       )}
-      <h3 className="h3">Followers: {user.followersList?.length}</h3>
-      <h3>{user.name}'s Followers:</h3>
-      {user.followersList?.map((i) => (
-        <>
-          <Link to={`/${i.name}/profile`}>
-            {" "}
-            <img
-              className="img"
-              src={i.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
-              alt="follwer-profile"
-            />{" "}
-          </Link>
-          <Link to={`/${i.name}/profile`}>
-            <li id={i.id}>{i.name}</li>
-          </Link>
-        </>
-      ))}
       {toggler && (
         <EditUserProfile
           currentUser={currentUser}
@@ -107,14 +105,23 @@ export default function UserProfile({ currentUser, match }) {
           setUser={setUser}
         />
       )}
+      <div class="tab">
+        <button name="posts" class="tablinks" onClick={handleView}>
+          Posts
+        </button>
 
-      <hr />
-      <h3>Your Posts:</h3>
-      {user.posts?.map((post) => (
-        <>
-          <PostCard post={post} user={user} />
-        </>
-      ))}
+        <button name="followes" class="tablinks" onClick={handleView}>
+          Followers: {user.followersList?.length}
+        </button>
+      </div>
+        {followerState &&
+
+      <FollowerList match={match} />
+        }
+  {
+    postsState &&
+    <UsersPosts match={match} />
+  }
     </>
   );
 }
