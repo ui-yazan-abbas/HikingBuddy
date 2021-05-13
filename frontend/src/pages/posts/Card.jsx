@@ -89,6 +89,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
   return (
     <Container>
+      <Grid centered columns={1}> 
       <Grid.Column mobile={16} tablet={8} computer={4}>
         <Segment>
           <Comment.Group>
@@ -213,6 +214,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
           </Comment.Group>
         </Segment>
       </Grid.Column>
+      </Grid>
     </Container>
   );
 }
