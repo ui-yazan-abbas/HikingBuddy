@@ -22,7 +22,7 @@ export default function CommentCard({ comment, onDeleteClick, user }) {
             </Link>
             <Comment.Metadata>
               <div>
-                {moment(comment.createAt).format("DD/MM/YYYY hh:mm:ss A")}
+              {moment(comment.createAt).format("MMMM Do, YYYY HH:mm")}
               </div>
             </Comment.Metadata>
             <Comment.Text>{comment.body}</Comment.Text>

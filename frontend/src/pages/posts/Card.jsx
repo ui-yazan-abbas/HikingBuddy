@@ -9,6 +9,9 @@ import Like from "../posts/Like";
 
 import {
   Grid,
+  Divider,
+  Feed,
+  Card,
   Comment,
   Container,
   Header,
@@ -89,70 +92,93 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
   return (
     <Container>
-      <Grid.Column only="widescreen" widescreen={10}>
-        <Segment>
-          <Comment.Group>
-            <Comment>
+      <Segment.Group>
+        <Segment >
+    
               <Link to={`/${post.user}/profile`}>
-                <Comment.Avatar as="a" src={user.imageUrl || null} />
+                <Image
+                  floated="left"
+                  size="mini"
+                  as="a"
+                  src={user.imageUrl || null}
+                />
               </Link>
 
-              <Comment.Content>
-                <div className="container">
+         
+    
                   <Comment.Author as="a">
                     {" "}
                     <Link to={`/${post.user}/profile`}>{post.user}</Link>
                   </Comment.Author>
 
-                  <Comment.Metadata>
-                    <div>
-                      {moment(post.createAt).format("DD/MM/YYYY hh:mm:ss A")}
-                    </div>
-                  </Comment.Metadata>
+                  <Feed.Summary>
+                  <Feed.Date>
+                      {moment(post.createAt).format("MMMM Do, YYYY HH:mm")}
+                   </Feed.Date>
+                   </Feed.Summary>
 
-                  <Comment.Text>
-                    <b>Location:</b> {postTitle}
-                  </Comment.Text>
-                  <Comment.Text>
-                    <b>Distance:</b> {postKm} km
-                  </Comment.Text>
-
-                  <Image src={post.imageUrl} alt="" />
-                  <Comment.Text>{postBody}</Comment.Text>
-
+                  <Divider hidden />
+                  <Grid columns={2} stackable>
+                    <Grid.Column>
+                      <b>Location:</b> {postTitle}
+                    </Grid.Column>
+                    <Grid.Column>
+                      <b>Distance:</b> {postKm} km
+                    </Grid.Column>
+                    </Grid>
+                    <Grid centered columns={1}>
+                    <Feed.Extra center>
+                    <Divider hidden />
+                    <Image src={post.imageUrl} className="shadow" />{' '} 
+                    <Divider hidden />
+                    <Feed.Meta>
+                    <Comment.Text>{postBody}</Comment.Text>
+                    </Feed.Meta>
+                    </Feed.Extra>
+                  </Grid>
+                 
                   <Header
                     as="h3"
                     dividing
                     content=""
                     textAlign="center"
                   ></Header>
-
-                  <Comment.Actions>
+                        <Divider hidden />
+                  
+                        <Container text>
+   <Grid  margin= '4em'columns={4}>
+                 
                     {post.user == user.name && (
                       <>
-                        <Comment.Action
+                        <Grid.Column
                           active
                           onClick={() => setIsUpdating(true)}
                         >
-                          Edit Post
-                        </Comment.Action>
-                        <Comment.Action onClick={onDeleteClick} active>
-                          {" "}
-                          Delete post
-                        </Comment.Action>
 
-                        <Comment.Action active>
-                          {comments.length} comment(s)
-                        </Comment.Action>
+                          Edit Post 
+                        </Grid.Column>{' '} 
+                        
+                        <Grid.Column onClick={onDeleteClick} active>
+                          {" "}
+                          Delete post 
+                        </Grid.Column>{' '} 
+
+                        <Grid.Column active>
+                          {comments.length} comment(s) 
+                        </Grid.Column>{' '} 
+                        <Grid.Column>
+                          <Like />
+                        </Grid.Column>
                       </>
                     )}
-                  </Comment.Actions>
-                </div>
+  
+                  </Grid>
+                  </Container>
+      
                 <br></br>
                 <br></br>
                 {/* Buttons for share to social media and like button */}
-                <Button.Group size="small">
-                  <Like />
+                <Button.Group size="small" className="AvatarWrap">
                   <br></br>
                   <FacebookShareButton
                     url={window.location.href} //share the actual link of the post
@@ -207,11 +233,12 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                 <div className="comments-form">
                   <CommentForm id={post.id} onSubmit={createComment} />
                 </div>
-              </Comment.Content>
-            </Comment>
-          </Comment.Group>
+             
+
+            
         </Segment>
-      </Grid.Column>
+        
+      </Segment.Group>
     </Container>
   );
 }
