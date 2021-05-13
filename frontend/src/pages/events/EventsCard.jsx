@@ -3,6 +3,7 @@ import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
+
 import {
   Button,
   Comment,
@@ -156,11 +157,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const linkName = readMore ? "Hide Details << " : "See Details >> ";
 
   return (
-    <Container >
+    <Container>
       <Grid centered columns={1}>
-       
-
-     {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
+        {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
         <Comment.Group>
           <Comment>
             <br></br>
@@ -182,8 +181,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                   {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
                 </div>
               </Comment.Metadata>
-
-            
 
               <br></br>
               <br></br>
@@ -253,13 +250,15 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         {" "}
                         Delete event
                       </Comment.Action>
-                      
                     </>
                   )}
 
-<Comment.Action active>
-                        {eventComments.length} comment(s)
-                      </Comment.Action>
+                  <Comment.Action active>
+                    {eventComments.length} comment(s)
+                  </Comment.Action>
+                  <Comment.Action active>
+                    <JoinButton />
+                  </Comment.Action>
                 </Comment.Actions>
 
                 <br></br>
@@ -267,7 +266,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small">
-                  <JoinButton />
+                  {/* <JoinButton /> */}
                   <FacebookShareButton
                     url={window.location.href} //share the actual link of the event
                     title={event.user} //the user who created the event
@@ -320,13 +319,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <div className="comments-form">
                 <EventCommentForm id={event.id} onSubmit={createEventComment} />
               </div>
-             
             </Comment.Content>
-           
           </Comment>
         </Comment.Group>
-      {/* </Grid.Column> */}
-
+        {/* </Grid.Column> */}
       </Grid>
     </Container>
   );
