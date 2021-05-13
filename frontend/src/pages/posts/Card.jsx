@@ -120,9 +120,10 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               </Comment.Metadata>
      
                    </Feed.Summary>
-
+               
                   <Divider hidden />
-                  <Grid columns={2} container divided='vertically' stackable>
+                  
+                  <Grid columns={2} textAlign='center'   stackable>
                     <Grid.Column>
                       <b>Location:</b> {postTitle}
                     </Grid.Column>
@@ -130,6 +131,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                       <b>Distance:</b> {postKm} km
                     </Grid.Column>
                     </Grid>
+              
                     <Grid centered columns={1}>
                     <Feed.Extra center>
                     <Divider hidden />
@@ -141,13 +143,15 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     </Feed.Extra>
                   </Grid>
                  
+                 
                   <Header
                     as="h3"
                     dividing
                     content=""
                     textAlign="center"
                   ></Header>
-                        <div className= "AvatarWrap">
+                        
+                  <Grid columns={2} textAlign='center'   stackable>
                         <Comment.Group size="large">
                   <Comment>
                     <Comment.Actions>
@@ -175,7 +179,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     </Comment.Actions>
                   </Comment>
                 </Comment.Group>
-                </div>
+                </Grid>
                     
 
                 <br></br>
