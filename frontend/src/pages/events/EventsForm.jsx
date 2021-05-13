@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EventSearch from "../events/EventSearch";
+/* import EventSearch from "../events/EventSearch"; */
 
 import {
   Button,
@@ -57,23 +57,19 @@ export default function EventsForm({ onSubmit }) {
 
   return (
     <Card centered margin>
-      <EventSearch />
-      <br></br>
+      {/*  <EventSearch /> */}
+
       <Modal
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         trigger={
-          <Button as="a"
-          inverted
-          color="green"
-          type="submit"
-          >
+          <Button as="a" inverted color="green" type="submit">
             Create a Hiking Event
           </Button>
         }
       >
-        <Modal.Header style={{ color: "#e9896a" }}>
+        <Modal.Header style={{ color: "green" }}>
           Create Your Hiking Event
         </Modal.Header>
 
@@ -85,13 +81,17 @@ export default function EventsForm({ onSubmit }) {
           />
 
           <Modal.Description>
-            <Form>
+            <Form success>
               <Form.Group widths="equal">
                 <Form.Field
                   required
                   control={Input}
-                  label="Location/Trail name"
+                  label="Trail location"
                   placeholder="Höga Kusten"
+                  /* error={{
+                    content: "Please enter a valid email address",
+                    pointing: "below",
+                  }} */
                   value={trailName}
                   onChange={(e) => setTrailName(e.target.value)}
                 />
@@ -100,7 +100,8 @@ export default function EventsForm({ onSubmit }) {
                   required
                   control={Input}
                   label="Difficulty"
-                  placeholder="Easy/Medium/Expert"
+                  placeholder="Easy/Moderate/Hard"
+                 
                   value={eventDifficulty}
                   onChange={(e) => setEventDifficulty(e.target.value)}
                 />
@@ -113,6 +114,7 @@ export default function EventsForm({ onSubmit }) {
                 type="date"
                 label="Starting Date"
                 placeholder="7"
+                
                 value={maxNum}
                 onChange={(e) => setMaxNum(e.target.value)}
               />
@@ -123,6 +125,7 @@ export default function EventsForm({ onSubmit }) {
                   control={Input}
                   label="Duration (days)"
                   placeholder="3"
+                 
                   width={4}
                   value={eventDuration}
                   onChange={(e) => setEventDuration(e.target.value)}
@@ -134,39 +137,50 @@ export default function EventsForm({ onSubmit }) {
                   control={Input}
                   label="Distance (km)"
                   placeholder="83"
+                  
                   width={4}
                   value={eventDistance}
                   onChange={(e) => setEventDistance(e.target.value)}
                 />
               </Form.Group>
 
-              <Form.Field
-                required
-                control={Input}
-                label="Meeting point and time"
-                placeholder="Central station, Stockholm, 14:05"
-                value={meetPoint}
-                onChange={(e) => setMeetPoint(e.target.value)}
-              />
+              <Form.Group widths="equal">
+                <Form.Field
+                  required
+                  control={Input}
+                  label="Meeting point & time"
+                  placeholder="Central station, Stockholm, 14:05"
+                 
+                  value={meetPoint}
+                  onChange={(e) => setMeetPoint(e.target.value)}
+                />
 
-              <Form.Field
-                control={Input}
-                label="External link to trail (optional)"
-                placeholder="https://www.hogakusten.com/en"
-                type="url"
-                name="url"
-                value={trailHyperlink}
-                onChange={(e) => setTrailHyperlink(e.target.value)}
-              />
+                <Form.Field
+                  control={Input}
+                  label="GoogleMap/other link"
+                  placeholder="https://goo.gl/maps/T3dWA3q3bGjQxePk9"
+                  
+                  value={trailHyperlink}
+                  onChange={(e) => setTrailHyperlink(e.target.value)}
+                />
+              </Form.Group>
 
               <Form.Field
                 required
                 control={TextArea}
                 label="About event"
                 placeholder="It´s an easy trail I took before and now..."
+               
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
               />
+
+            {/*   <Message
+                success
+                header="Event Created"
+                content="Nice! Now you can go back and see all events"
+              /> */}
+
               <Button
                 as="a"
                 inverted
@@ -182,10 +196,13 @@ export default function EventsForm({ onSubmit }) {
         </Modal.Content>
 
         <Modal.Actions>
-          <Button onClick={() => setOpen(false)} as="a"
-          inverted
-          color="green"
-          type="submit">
+          <Button
+            onClick={() => setOpen(false)}
+            as="a"
+            inverted
+            color="green"
+            type="submit"
+          >
             See events <Icon name="chevron right" />
           </Button>
         </Modal.Actions>

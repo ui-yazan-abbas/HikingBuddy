@@ -1,6 +1,6 @@
 import { Component } from "react";
 import React from "react";
-import { Label, Button, Icon } from "semantic-ui-react";
+import { Label, Button, Icon, Feed } from "semantic-ui-react";
 
 const joins = 0;
 const disjoins = 0;
@@ -36,7 +36,12 @@ class join extends Component {
       <div>
         <div>{this.props.headerProp}</div>
 
-        <Button as="div" color="green" labelPosition="right">
+        <Feed.Label>
+            <Icon name='group'   onClick={this.joinHandler}  style={this.state.joinCount !== joins ? btnStyle1 : btnDefault}/>
+            {this.state.joinCount}
+          </Feed.Label>
+
+     {/*    <Button as="div" color="green" labelPosition="right">
           <Button
             color="blue"
             size="small"
@@ -49,7 +54,7 @@ class join extends Component {
           <Label as="a" basic color="green" pointing="left">
             {this.state.joinCount}
           </Label>
-        </Button>
+        </Button> */}
       </div>
     );
   }
