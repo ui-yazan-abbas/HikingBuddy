@@ -170,8 +170,20 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const linkName = readMore ? "Hide Details << " : "See Details >> ";
 
   return (
+
+
+
+
     <Container>
       <Grid centered columns={1}>
+
+
+      
+            
+            
+       
+
+
         {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
         <Comment.Group>
           <Comment>
@@ -197,6 +209,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 </div>
               </Comment.Metadata>
 
+             
+
               <br></br>
               {/* <br></br>
               <br></br> */}
@@ -217,6 +231,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                     src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"
                   />
                 </Comment.Metadata>
+
+                
 
                 <br></br>
 
