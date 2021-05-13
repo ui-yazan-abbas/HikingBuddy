@@ -131,6 +131,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     //       <Comment.Content>
     <Comment.Text>
       {/* <Segment textAlign="left"> */}
+
+      
       <p>
         <b>Trail Location:</b> {isNewTrailName}
       </p>
@@ -157,8 +159,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>About event:</b> {isRefreshingBody}
       </p>
-      {/* </Segment> */}
-    </Comment.Text>
+
+    
+     {/* </Segment> */}
+    </Comment.Text> 
     // </Comment.Content>
     // </Comment>
   );
