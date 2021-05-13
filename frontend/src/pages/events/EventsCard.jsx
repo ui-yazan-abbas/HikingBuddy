@@ -3,6 +3,8 @@ import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
+import Linkify from "react-linkify";
+
 import {
   Button,
   Comment,
@@ -126,14 +128,35 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   /* Variables for See more-see less details */
   const extraContent = (
     <div className="see-more">
-      <p><b>Trail Location:</b> {isNewTrailName}</p>
-      <p><b>Difficulty:</b> {isNewEventDifficulty}</p>
-      <p><b>Starting Date:</b> {isNewMaxNum}</p>
-      <p><b>Duration (days):</b> {isNewEventDuration}</p>
-      <p><b>Distance (km):</b> {isNewEventDistance}</p>
-      <p><b>Meeting point and time:</b> {isNewMeetPoint}</p>
-      <p><b>External link to trail:</b> {isNewHyperlink}</p>
-      <p><b>About event:</b> {isRefreshingBody}</p>
+      <p>
+        <b>Trail Location:</b> {isNewTrailName}
+      </p>
+
+      <p>
+        <Linkify target="_blank">
+          <b>GoogleMap/other link:</b> {isNewHyperlink}
+        </Linkify>
+      </p>
+
+      <p>
+        <b>Difficulty:</b> {isNewEventDifficulty}
+      </p>
+      <p>
+        <b>Starting Date:</b> {isNewMaxNum}
+      </p>
+      <p>
+        <b>Duration (days):</b> {isNewEventDuration}
+      </p>
+      <p>
+        <b>Distance (km):</b> {isNewEventDistance}
+      </p>
+      <p>
+        <b>Meeting point and time:</b> {isNewMeetPoint}
+      </p>
+
+      <p>
+        <b>About event:</b> {isRefreshingBody}
+      </p>
     </div>
   );
 
@@ -141,43 +164,53 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
   return (
     <Container>
-      {/*    <Grid container columns={3}> */}
-
-      <Grid.Column mobile={16} tablet={8} computer={4}>
+      <Grid centered columns={1}>
+        {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
         <Comment.Group>
           <Comment>
+          <Comment.Content>
+          
             <br></br>
-            <Link to={`/${event.user}/profile`}>
+            {/* <Link to={`/${event.user}/profile`}>
               <Comment.Avatar as="a" src={user.imageUrl} />
-            </Link>
+            </Link> */}
 
-            <Comment.Content>
+            
               <Link to={`/${event.user}/profile`}>
-                {" "}
-                <Comment.Author as="a">
-                  {" "}
-                  Created by {event.user}
-                </Comment.Author>{" "}
+                <Image
+                  floated="left"
+                  size="mini"
+                  as="a"
+                  src={user.imageUrl || null}
+                />
+                <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
               </Link>
 
               <Comment.Metadata>
                 <div>
-                  {moment(event.createAt).format("DD/MM/YYYY hh:mm:ss A")}
+                {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
                 </div>
               </Comment.Metadata>
 
+             
               <br></br>
-              <br></br>
-              <br></br>
+              {/* <br></br>
+              <br></br> */}
               <Segment textAlign="center">
-                <Comment.Text> <h4><b>Trail Location:</b> {isNewTrailName}</h4></Comment.Text>
+                <Comment.Text>
+                  {" "}
+                  <h4>
+                    <b>Trail Location:</b> {isNewTrailName}
+                    <br></br>
+                    <b>Check out:</b> <Linkify>{isNewHyperlink}</Linkify>
+                  </h4>
+                </Comment.Text>
 
                 <Comment.Metadata>
                   <Image src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance" />
                 </Comment.Metadata>
 
                 <br></br>
-                
 
                 <Comment.Text>
                   <a>
@@ -217,32 +250,40 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
                 <Header as="h3" dividing content="" textAlign="center"></Header>
 
-                <Comment.Actions>
-                  {event.user == user.name && (
-                    <>
-                      <Comment.Action
-                        active
-                        onClick={() => setIsUpdating(true)}
-                      >
-                        Edit event
-                      </Comment.Action>
-                      <Comment.Action onClick={onDeleteClick} active>
-                        {" "}
-                        Delete event
+                <Comment.Group size="large">
+                  <Comment>
+                    <Comment.Actions>
+                      {event.user == user.name && (
+                        <>
+                          <Comment.Action
+                            active
+                            onClick={() => setIsUpdating(true)}
+                          >
+                            Edit event
+                          </Comment.Action>
+                          <Comment.Action onClick={onDeleteClick} active>
+                            {" "}
+                            Delete event
+                          </Comment.Action>
+                        </>
+                      )}
+
+                      <Comment.Action active>
+                        {eventComments.length} comment(s)
                       </Comment.Action>
                       <Comment.Action active>
-                      {eventComments.length} comment(s)
+                        <JoinButton />
                       </Comment.Action>
-                    </>
-                  )}
-                </Comment.Actions>
+                    </Comment.Actions>
+                  </Comment>
+                </Comment.Group>
 
                 <br></br>
                 <br></br>
 
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small">
-                  <JoinButton />
+                  {/* <JoinButton /> */}
                   <FacebookShareButton
                     url={window.location.href} //share the actual link of the event
                     title={event.user} //the user who created the event
@@ -298,9 +339,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             </Comment.Content>
           </Comment>
         </Comment.Group>
-      </Grid.Column>
-
-      {/* </Grid>  */}
+        {/* </Grid.Column> */}
+      </Grid>
     </Container>
   );
 }
