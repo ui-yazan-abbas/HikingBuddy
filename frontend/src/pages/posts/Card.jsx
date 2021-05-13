@@ -163,14 +163,16 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                           Delete post 
                         </Grid.Column>{' '} 
 
-                        <Grid.Column active>
+                       
+                      </>
+                    )}
+
+<Grid.Column active>
                           {comments.length} comment(s) 
                         </Grid.Column>{' '} 
                         <Grid.Column>
                           <Like />
                         </Grid.Column>
-                      </>
-                    )}
   
                   </Grid>
                   </Container>
