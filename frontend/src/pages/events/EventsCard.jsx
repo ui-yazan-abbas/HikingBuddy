@@ -147,9 +147,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
         <b>Meeting point and time:</b> {isNewMeetPoint}
       </p>
       <p>
-        <Link href={isNewHyperlink} target="_blank">
+        <a href={isNewHyperlink} target="_blank">
           See on Google Map
-        </Link>
+        </a>
       </p>
       <p>
         <b>About event:</b> {isRefreshingBody}
