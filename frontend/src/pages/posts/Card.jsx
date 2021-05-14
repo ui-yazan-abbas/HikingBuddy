@@ -11,7 +11,7 @@ import {
   Grid,
   Divider,
   Feed,
-  Card,
+  Icon,
   Comment,
   Container,
   Header,
@@ -112,70 +112,75 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
           </Comment.Author>
 
           <Feed.Summary>
-            <Feed.Date>
-              {moment(post.createAt).format("MMMM Do, YYYY HH:mm")}
-            </Feed.Date>
+            <Comment.Metadata>
+              <div>{moment(post.createAt).format("MMMM Do, YYYY HH:mm")}</div>
+            </Comment.Metadata>
           </Feed.Summary>
 
           <Divider hidden />
-          <Grid columns={2} stackable>
+
+          <Grid columns={2} textAlign="center" stackable>
             <Grid.Column>
+            <Icon name="location arrow" />
               <b>Location:</b> {postTitle}
             </Grid.Column>
             <Grid.Column>
+            <Icon name="chart area" />
               <b>Distance:</b> {postKm} km
             </Grid.Column>
           </Grid>
-          <Grid centered columns={1}>
-            <Feed.Extra center> 
-           
+
+
+            <Feed.Extra center>
               <Divider hidden />
               <Image src={post.imageUrl} className="shadow" />{" "}
               <Divider hidden />
-              {/* <Feed.Meta> */}
-              {/* <Comment.Group> 
+             
+   </Feed.Extra>
+  
+              <Feed.Summary className="margin-left">
+            <Comment.Metadata>
+              <Comment.Text>{postBody}</Comment.Text>
+            </Comment.Metadata>
+          </Feed.Summary>
+
+      
+          
+          <Header as="h3" dividing content="" textAlign="center"></Header>
+          <br></br>
+
+          <Grid columns={2} textAlign="center" stackable>
+            <Comment.Group size="large">
               <Comment>
-              <Comment.Content> */}
-                <Comment.Text>{postBody}</Comment.Text>
-                {/* </Comment.Content>
-                </Comment>
-              </Comment.Group>  */}
-              {/* </Feed.Meta> */}
-             </Feed.Extra> 
+                <Comment.Actions>
+                  {post.user == user.name && (
+                    <>
+                      <Comment.Action
+                       as="a"
+                        active
+                        onClick={() => setIsUpdating(true)}
+                      >
+                        Edit post
+                      </Comment.Action>
+                      <Comment.Action  as="a" onClick={onDeleteClick} active>
+                        {" "}
+                        Delete post
+                      </Comment.Action>
+                    </>
+                  )}
+
+                  <Comment.Action active>
+                    {comments.length} comment(s)
+                  </Comment.Action>
+                  <Comment.Action active>
+                    <Like />
+                  </Comment.Action>
+                </Comment.Actions>
+              </Comment>
+            </Comment.Group>
           </Grid>
 
-          <Header as="h3" dividing content="" textAlign="center"></Header>
-          {/* <Divider hidden /> */}
-
-          <Comment.Group size="large">
-          <Comment >
-          
-          <Comment.Actions textAlign="center">
-              {post.user == user.name && (
-                <>
-                  <Comment.Action active onClick={() => setIsUpdating(true)}>
-                    Edit Post
-                    </Comment.Action>
-                  <Comment.Action onClick={onDeleteClick} active>
-                    {" "}
-                    Delete post
-                    </Comment.Action>
-                </>
-              )}
-              <Comment.Action active>
-                {comments.length} comment(s)
-                </Comment.Action>
-              <Comment.Action active>
-                <Like />
-                </Comment.Action>
-              </Comment.Actions>
-
-             
-              </Comment>
-              </Comment.Group>
-        
-
-       
+          <br></br>
           {/* Buttons for share to social media and like button */}
           <Button.Group size="small" className="AvatarWrap">
             

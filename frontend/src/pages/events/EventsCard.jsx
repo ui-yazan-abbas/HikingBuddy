@@ -129,7 +129,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
 
   /* const seeComments = (
-
   ); */
 
   /* Variables for See more-see less details */
