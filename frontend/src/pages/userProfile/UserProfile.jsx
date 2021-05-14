@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserApi from "../../api/UserApi";
-import { Button, Card, Image } from "semantic-ui-react";
+import { Button, Card, Image, Icon } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
 import moment from "moment";
 import PostCard from "../posts/Card";
@@ -32,6 +32,13 @@ export default function UserProfile({ currentUser, match }) {
     }
   };
 
+  const extra = (
+    <a>
+      <Icon name="user" />
+      16 Friends
+    </a>
+  );
+
   console.log(currentUser);
 
   const followUser = () => {
@@ -62,25 +69,30 @@ export default function UserProfile({ currentUser, match }) {
     <>
       {!toggler && (
         <>
-          <div className="introduction">
-            <div className="column-left">
-              <Image
-                className="profile-img"
-                src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
-                alt=""
-              />
-            </div>
-            <div className="column-right">
-              <h1 className="name"> {user.name} </h1>
-              <span className="date">
+          <Card centered>
+            <Image
+              src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
+              alt=""
+              wrapped
+              ui={false}
+            />
+            <Card.Content>
+              <Card.Header>{user.name} </Card.Header>
+              <Card.Meta>
                 Joined in {moment(user.createAt).format("YYYY")}
-              </span>
-              <div className="bio">
-                {" "}
-                <h3>{user.bio}</h3>
-              </div>
-            </div>
-          </div>
+              </Card.Meta>
+              <Card.Description>
+                 {user.bio}
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              <a>
+                <Icon name="user" />
+            {user.followersList?.length} Followers
+              </a>
+            </Card.Content>
+          </Card>
+      
 
           <div className="btn-position">
             {currentUser.name === user.name && (
@@ -111,9 +123,9 @@ export default function UserProfile({ currentUser, match }) {
         </button>
 
         <button name="followes" class="tablinks" onClick={handleView}>
-          Followers: {user.followersList?.length} 
+          Followers: {user.followersList?.length}
         </button>
-      </div>  
+      </div>
 
       {followerState && <FollowerList match={match} />}
       {postsState && <UsersPosts match={match} />}
