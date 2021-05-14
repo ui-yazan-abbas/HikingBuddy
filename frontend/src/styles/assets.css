@@ -42,3 +42,12 @@
   height: 4.7rem;
   border-radius: 8px;
 }
+
+.modal.show {
+  z-index: 100000!important;
+}
+
+.modal{
+  top: 50px;
+  
+}

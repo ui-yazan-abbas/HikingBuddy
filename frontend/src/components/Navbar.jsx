@@ -30,8 +30,10 @@ const drawerWidth = 240;
 
 
 const useStyles = makeStyles((theme) => ({
+  offset: theme.mixins.toolbar,
   root: {
     display: "flex",
+    
  
   },
   appBar: {
@@ -118,7 +120,7 @@ export default function Navbar({ onLogout, currentUser }) {
       <CssBaseline />
       <AppBar
         position="fixed"
-        
+       
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -145,6 +147,7 @@ export default function Navbar({ onLogout, currentUser }) {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <Toolbar />
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,
