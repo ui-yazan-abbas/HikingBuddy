@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserApi from "../../api/UserApi";
-import { Button, Card, Image, Icon, Comment } from "semantic-ui-react";
+import { Button, Card, Image, Icon, Comment, Menu, Segment, Grid, Header } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
 import moment from "moment";
 import PostCard from "../posts/Card";
@@ -76,8 +76,12 @@ export default function UserProfile({ currentUser, match }) {
   };
   return (
     <>
+    
       {!toggler && (
         <>
+        
+        
+
           <Card centered color='green'> 
             <Image
               src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
@@ -142,7 +146,29 @@ export default function UserProfile({ currentUser, match }) {
           setUser={setUser}
         />
       )}
-      <div class="tab">
+
+
+
+<Button.Group attached='top' widths={2}>
+          <Button name="posts" class="tablinks" onClick={handleView}> Posts</Button>
+          <Button name="followes" class="tablinks" onClick={handleView}>Followers</Button>
+        </Button.Group>
+
+        <Segment style={{ padding: '0em' }} vertical>
+      <Grid celled='internally' columns='equal' stackable>
+        <Grid.Row textAlign='center'>
+          <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+          {postsState && <UsersPosts match={match} />}
+          
+          </Grid.Column>
+          <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
+          {followerState && <FollowerList match={match} />}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Segment>
+
+      {/* <div class="tab">
         <button name="posts" class="tablinks" onClick={handleView}>
           Posts
         </button>
@@ -150,10 +176,10 @@ export default function UserProfile({ currentUser, match }) {
         <button name="followes" class="tablinks" onClick={handleView}>
           Followers: {user.followersList?.length}
         </button>
-      </div>
+      </div> */}
 
-      {followerState && <FollowerList match={match} />}
-      {postsState && <UsersPosts match={match} />}
+
+     
     </>
   );
 }
