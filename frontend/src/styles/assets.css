@@ -31,3 +31,23 @@
     margin: 0 auto;
 
 }
+
+.margin-left {
+  margin-left: 20px;
+}
+
+.Avatar {
+  display: inline-block;
+  width: 6.2rem;
+  height: 4.7rem;
+  border-radius: 8px;
+}
+
+.modal.show {
+  z-index: 100000!important;
+}
+
+.modal{
+  top: 50px;
+  
+}

@@ -98,7 +98,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
 
         <Form.Field
           control={Input}
-          label="GoogleMap/other link"
+          label="Your GoogleMap link"
           placeholder="https://goo.gl/maps/T3dWA3q3bGjQxePk9"
           value={trailHyperlink}
           onChange={(e) => setTrailHyperlink(e.target.value)}

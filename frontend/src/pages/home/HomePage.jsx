@@ -79,6 +79,7 @@ const HomepageLayout = () => (
             <Header as="h3" style={{ fontSize: "2em" }}>
               Do you love nature as we love?
             </Header>
+
             <p style={{ fontSize: "1.33em" }}>
               Let's organise hiking routes and enjoy amazing moments in nature.
               For all those passionate about nature and hiking, this is the

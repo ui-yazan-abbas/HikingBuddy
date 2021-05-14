@@ -42,12 +42,13 @@ export default function PostForm({ onSubmit, post }) {
   return (
     <Card centered margin>
       <Modal
+        className= "modal"
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         trigger={
           <Button inverted color="green">
-            Recommend a Hike!
+            Recommend a Hike
           </Button>
         }
       >
@@ -55,7 +56,7 @@ export default function PostForm({ onSubmit, post }) {
           <h2>Enjoyed a hike? Share and recommend!</h2>
         </Header>
 
-        <Segment>
+        <Segment >
           <Modal.Header></Modal.Header>
           {/* <h4 className="card-title">Make a new post</h4> */}
           <Form success>
@@ -79,9 +80,10 @@ export default function PostForm({ onSubmit, post }) {
               </Form.Field>
             </Form.Group>
             <Form.Field>
-              <label>Recommended hiking</label>
+              <label>About this hike (250 characters max)</label>
               <Form.Input
                 fluid
+                maxLength="250"
                 placeholder="I recommend because..."
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
@@ -93,7 +95,6 @@ export default function PostForm({ onSubmit, post }) {
 
               <ImgUpload className="profile" uploadImg={change} />
             </Form.Field>
-            
 
             <Button
               as="a"
