@@ -5,6 +5,10 @@ import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
 import Linkify from "react-linkify";
 
+import EventCommentsApi from "../../api/EventCommentsApi";
+import EventCommentCard from "../eventComments/EventCommentCard";
+import EventCommentForm from "../eventComments/EventCommentForm";
+
 import {
   Button,
   Comment,
@@ -33,9 +37,7 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-import EventCommentsApi from "../../api/EventCommentsApi";
-import EventCommentCard from "../eventComments/EventCommentCard";
-import EventCommentForm from "../eventComments/EventCommentForm";
+
 
 export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -125,9 +127,18 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     </a>
   );
 
+
+  /* const seeComments = (
+
+  ); */
+
   /* Variables for See more-see less details */
   const extraContent = (
-    <div className="see-more">
+    // <Comment>
+    //       <Comment.Content>
+    <Comment.Text>
+      {/* <Segment textAlign="left"> */}
+
       <p>
         <b>Trail Location:</b> {isNewTrailName}
       </p>
@@ -154,7 +165,11 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>About event:</b> {isRefreshingBody}
       </p>
-    </div>
+
+      {/* </Segment> */}
+    </Comment.Text>
+    // </Comment.Content>
+    // </Comment>
   );
 
   const linkName = readMore ? "Hide Details << " : "See Details >> ";
@@ -162,40 +177,50 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   return (
     <Container>
       <Grid centered columns={1}>
-        {/*  <Grid.Column mobile={16} tablet={8} computer={4}> */}
+        
+        {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
         <Comment.Group>
           <Comment>
-            <Comment.Content>
-              <br></br>
-              {/* <Link to={`/${event.user}/profile`}>
+            
+              
+                {/* <Comment.Content> */}
+                <br></br>
+                <br></br>
+                {/* <Link to={`/${event.user}/profile`}>
               <Comment.Avatar as="a" src={user.imageUrl} />
             </Link> */}
 
-              <Link to={`/${event.user}/profile`}>
-                <Image
-                  floated="left"
-                  size="mini"
-                  as="a"
-                  src={user.imageUrl || null}
-                />
-                <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
-              </Link>
+                <Link to={`/${event.user}/profile`}>
+                  <Image
+                    floated="left"
+                    size="mini"
+                    as="a"
+                    src={user.imageUrl || null}
+                  />
+                  <Comment.Author as="a">
+                    {" "}
+                    Created by {event.user}
+                  </Comment.Author>{" "}
+                </Link>
 
-              <Comment.Metadata>
-                <div>
-                  {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
-                </div>
-              </Comment.Metadata>
+                <Comment.Metadata>
+                  <div>
+                    {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
+                  </div>
+                </Comment.Metadata>
+         
 
-              <br></br>
-              {/* <br></br>
+            <br></br>
+            {/* <br></br>
               <br></br> */}
+            <Segment.Group>
               <Segment textAlign="center">
                 <Comment.Text>
                   {" "}
                   <h4>
                     <b>Trail Location:</b> {isNewTrailName}
                     <br></br>
+                    {/* <b>Check out:</b> <Linkify>{isNewHyperlink}</Linkify> */}
                   </h4>
                 </Comment.Text>
 
@@ -275,9 +300,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                   </Comment>
                 </Comment.Group>
 
-                <br></br>
-                <br></br>
-
                 {/* Buttons for share to social media and like button */}
                 <Button.Group size="small">
                   {/* <JoinButton /> */}
@@ -309,34 +331,47 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 {/* Buttons for share to social media finish here  */}
               </Segment>
 
-              {/* <Header as="h3" dividing content="" textAlign="center"></Header> */}
+              <br></br>
 
-              <div className="comments-container">
-                {eventComments &&
-                  filteredEventCommentList.map((eventComment) => (
-                    <EventCommentCard
-                      key={event.id}
-                      eventComment={eventComment}
-                      onDeleteClick={() => deleteEventComment(eventComment)}
-                      user={user}
-                    />
-                  ))}
-              </div>
-              {isUpdating && (
-                <UpdateEvent
-                  onUpdateClick={(eventData) => updateEvent(eventData)}
-                  event={event}
-                  onSubmite={() => setIsUpdating(false)}
-                />
-              )}
+              <Segment textAlign="left">
+                {/*  <Header
+                    as="h3"
+                    dividing
+                    content=""
+                    textAlign="center"
+                  ></Header> */}
 
-              <div className="comments-form">
-                <EventCommentForm id={event.id} onSubmit={createEventComment} />
-              </div>
-            </Comment.Content>
+                <div className="comments-container">
+                  {eventComments &&
+                    filteredEventCommentList.map((eventComment) => (
+                      <EventCommentCard
+                        key={event.id}
+                        eventComment={eventComment}
+                        onDeleteClick={() => deleteEventComment(eventComment)}
+                        user={user}
+                      />
+                    ))}
+                </div>
+                {isUpdating && (
+                  <UpdateEvent
+                    onUpdateClick={(eventData) => updateEvent(eventData)}
+                    event={event}
+                    onSubmite={() => setIsUpdating(false)}
+                  />
+                )}
+
+                <div className="comments-form">
+                  <EventCommentForm
+                    id={event.id}
+                    onSubmit={createEventComment}
+                  />
+                </div>
+              </Segment>
+            </Segment.Group>
+            {/* </Comment.Content> */}
           </Comment>
         </Comment.Group>
-        {/* </Grid.Column> */}
+        {/* </Grid.Column>  */}
       </Grid>
     </Container>
   );

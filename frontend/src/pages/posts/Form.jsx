@@ -47,7 +47,7 @@ export default function PostForm({ onSubmit, post }) {
         onOpen={() => setOpen(true)}
         trigger={
           <Button inverted color="green">
-            Recommend a Hike!
+            Recommend a Hike
           </Button>
         }
       >
@@ -79,9 +79,10 @@ export default function PostForm({ onSubmit, post }) {
               </Form.Field>
             </Form.Group>
             <Form.Field>
-              <label>Recommended hiking</label>
+              <label>About this hike (250 characters max)</label>
               <Form.Input
                 fluid
+                maxLength="250"
                 placeholder="I recommend because..."
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
@@ -93,7 +94,6 @@ export default function PostForm({ onSubmit, post }) {
 
               <ImgUpload className="profile" uploadImg={change} />
             </Form.Field>
-            
 
             <Button
               as="a"
