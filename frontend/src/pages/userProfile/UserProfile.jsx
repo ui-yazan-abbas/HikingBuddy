@@ -113,27 +113,18 @@ export default function UserProfile({ currentUser, match }) {
                 Edit Profile
                 </Comment.Action>
             )}
+            <br></br>
             {currentUser.name !== user.name &&
               user.followersList?.filter((u) => u.name == currentUser.name)
                 .length === 0 && (
+
                 <Button inverted color="green" onClick={followUser}>
                   Follow
                 </Button>
               )}
             </Card.Content>
           </Card>
-          {/* <Comment.Action
-                       as="a"
-                        active
-                        onClick={() => setIsUpdating(true)}
-                      >
-                        Edit post
-                      </Comment.Action>
-                      <Comment.Action  as="a" onClick={onDeleteClick} active>
-                        {" "}
-                        Delete post
-                      </Comment.Action> */}
-
+         
           <div className="btn-position">
            
           </div>
@@ -150,8 +141,9 @@ export default function UserProfile({ currentUser, match }) {
 
 
 <Button.Group attached='top' widths={2}>
-          <Button name="posts" class="tablinks" onClick={handleView}> Posts</Button>
-          <Button name="followes" class="tablinks" onClick={handleView}>Followers</Button>
+          <Button   name="posts" class="tablinks" onClick={handleView}> Posts</Button>
+          <Button.Or />
+          <Button  name="followes" class="tablinks" onClick={handleView}>Followers</Button>
         </Button.Group>
 
         <Segment style={{ padding: '0em' }} vertical>
@@ -168,15 +160,7 @@ export default function UserProfile({ currentUser, match }) {
       </Grid>
     </Segment>
 
-      {/* <div class="tab">
-        <button name="posts" class="tablinks" onClick={handleView}>
-          Posts
-        </button>
-
-        <button name="followes" class="tablinks" onClick={handleView}>
-          Followers: {user.followersList?.length}
-        </button>
-      </div> */}
+  
 
 
      

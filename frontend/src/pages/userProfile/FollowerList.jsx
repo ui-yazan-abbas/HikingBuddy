@@ -19,7 +19,7 @@ export default function FollowerList({ match }) {
   return (
     <Card color='green' centered>
     <Card.Content>
-      <Card.Header  color="green">{user.name}'s Followers:</Card.Header>
+      <Card.Header  color="green">{user.name}'s Followers</Card.Header>
     </Card.Content>
     <Card.Content>
       <Feed>

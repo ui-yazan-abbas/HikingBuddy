@@ -20,11 +20,12 @@ console.log("here")
         <Card.Content>
       <Card.Header  color="green">{user.name}'s Posts</Card.Header>
     </Card.Content>
+    
       {user.posts?.map((post) => (
         
           <PostCard post={post} user={user} />
         
       ))}
-    </Card>
+   </Card>
   );
 }
