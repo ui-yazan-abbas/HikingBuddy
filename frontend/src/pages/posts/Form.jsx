@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   Form,
@@ -34,7 +35,16 @@ export default function PostForm({ onSubmit, post }) {
     setPostLocation("");
     setBody("");
     setPostDistance("");
+    setImageUrl("");
   };
+  // to direct to feed after post submitted
+  const history = useHistory();
+  const redirect = () => {
+    history.push("/feed");
+  };
+
+  // to close a Recommed hiking form
+  const closeForm = () => setOpen(false);
 
   //modal
   const [open, setOpen] = React.useState(false);
@@ -42,7 +52,7 @@ export default function PostForm({ onSubmit, post }) {
   return (
     <Card centered margin>
       <Modal
-        className= "modal"
+        className="modal"
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
@@ -56,7 +66,7 @@ export default function PostForm({ onSubmit, post }) {
           <h2>Enjoyed a hike? Share and recommend!</h2>
         </Header>
 
-        <Segment >
+        <Segment>
           <Modal.Header></Modal.Header>
           {/* <h4 className="card-title">Make a new post</h4> */}
           <Form success>
@@ -100,19 +110,17 @@ export default function PostForm({ onSubmit, post }) {
               as="a"
               inverted
               color="blue"
-              onClick={handleSubmit}
+              onClick={() => {
+                handleSubmit();
+                closeForm();
+                redirect();
+              }}
               type="submit"
             >
               Post
             </Button>
           </Form>
         </Segment>
-
-        <Modal.Actions basic color="green">
-          <Button onClick={() => setOpen(false)} basic color="green">
-            See feed <Icon name="chevron right" />
-          </Button>
-        </Modal.Actions>
       </Modal>
     </Card>
   );
