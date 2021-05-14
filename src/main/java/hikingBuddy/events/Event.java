@@ -48,6 +48,8 @@ public class Event{
     
     private String trailHyperlink;
 
+    private String roomName;
+
     @OneToMany(mappedBy = "commentedEvent", cascade = CascadeType.ALL)
 
     private List<EventComment> eventCommentList;
@@ -61,7 +63,7 @@ public class Event{
     }
 
     public Event(@NotEmpty String body, @NotEmpty String trailName, @NotEmpty String eventDuration,
-     @NotEmpty String eventDistance, @NotEmpty String maxNum, @NotEmpty String eventDifficulty, @NotEmpty String meetPoint, String trailHyperlink) {
+     @NotEmpty String eventDistance, @NotEmpty String maxNum, @NotEmpty String eventDifficulty, @NotEmpty String meetPoint, String trailHyperlink, String roomName) {
 
         this.body = body;
         this.trailName = trailName;
@@ -71,6 +73,7 @@ public class Event{
         this.eventDifficulty = eventDifficulty;
         this.meetPoint = meetPoint;
         this.trailHyperlink = trailHyperlink;
+        this.roomName = roomName;
     }
 
     public Long getId() {
@@ -143,6 +146,14 @@ public class Event{
 
     public void setTrailHyperlink(String trailHyperlink) {
         this.trailHyperlink = trailHyperlink;
+    }
+
+     public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
 

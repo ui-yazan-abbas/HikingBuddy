@@ -20,7 +20,6 @@ export default function EventsPage({ event, onDeleteClick, user }) {
       setEvents(newEvents);
     } catch (e) {
       console.error(e);
-      
     }
   }
 

@@ -23,9 +23,9 @@ public class EventService {
         existingEvent.setEventDifficulty(eventParam.getEventDifficulty());
         existingEvent.setMeetPoint(eventParam.getMeetPoint());
         existingEvent.setTrailHyperlink(eventParam.getTrailHyperlink());
+        existingEvent.setRoomName(eventParam.getRoomName());
         
-       /* existingEvent.setEventMustBring(eventParam.getEventMustBring());
-        */
+      
         Event event = eventRepository.save(existingEvent);
         return event;
     }

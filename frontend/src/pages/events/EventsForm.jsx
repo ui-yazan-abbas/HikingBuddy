@@ -27,6 +27,7 @@ export default function EventsForm({ onSubmit }) {
   const [meetPoint, setMeetPoint] = React.useState("");
   const [trailHyperlink, setTrailHyperlink] = React.useState("");
   const [body, setBody] = React.useState("");
+  const [roomName, setRoomName] = React.useState("");
 
   //Modal
   const [open, setOpen] = React.useState(false);
@@ -42,6 +43,7 @@ export default function EventsForm({ onSubmit }) {
       meetPoint: meetPoint,
       trailHyperlink: trailHyperlink,
       body: body,
+      roomName: roomName
     });
 
     // Clear the input field
@@ -53,6 +55,7 @@ export default function EventsForm({ onSubmit }) {
     setMeetPoint("");
     setTrailHyperlink("");
     setBody("");
+    setRoomName("");
   };
 
   return (
@@ -161,6 +164,16 @@ export default function EventsForm({ onSubmit }) {
                   onChange={(e) => setTrailHyperlink(e.target.value)}
                 />
               </Form.Group>
+
+              <Form.Field
+                required
+                
+                control={Input}
+                label="Event chat name"
+                placeholder="Hikers unite"
+                value={roomName}
+                onChange={(e) => setRoomName(e.target.value)}
+              />
 
               <Form.Field
                 required
