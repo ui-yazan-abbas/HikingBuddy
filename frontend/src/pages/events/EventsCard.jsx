@@ -223,9 +223,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <Segment textAlign="center">
                 <Comment.Text>
                   {" "}
-                  <a href={isNewHyperlink}>Trail Location: {isNewTrailName} 
-                    <br></br>
-                  </a>
+                 
+                  <a href={isNewHyperlink}> Click to see Trail Location: {isNewTrailName}
+                    </a>
                 </Comment.Text>
 
                 <Comment.Metadata>
