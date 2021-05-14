@@ -11,7 +11,7 @@ import {
   Grid,
   Divider,
   Feed,
-  Card,
+  Icon,
   Comment,
   Container,
   Header,
@@ -121,9 +121,11 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
           <Grid columns={2} textAlign="center" stackable>
             <Grid.Column>
+            <Icon name="location arrow" />
               <b>Location:</b> {postTitle}
             </Grid.Column>
             <Grid.Column>
+            <Icon name="chart area" />
               <b>Distance:</b> {postKm} km
             </Grid.Column>
           </Grid>
