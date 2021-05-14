@@ -42,6 +42,7 @@ export default function PostForm({ onSubmit, post }) {
   return (
     <Card centered margin>
       <Modal
+        className= "modal"
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
@@ -55,7 +56,7 @@ export default function PostForm({ onSubmit, post }) {
           <h2>Enjoyed a hike? Share and recommend!</h2>
         </Header>
 
-        <Segment>
+        <Segment >
           <Modal.Header></Modal.Header>
           {/* <h4 className="card-title">Make a new post</h4> */}
           <Form success>

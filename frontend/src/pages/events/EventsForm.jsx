@@ -60,6 +60,8 @@ export default function EventsForm({ onSubmit }) {
       {/*  <EventSearch /> */}
 
       <Modal
+
+        className= "modal"
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
@@ -69,9 +71,10 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
-        <Modal.Header style={{ color: "green" }}>
-          Create Your Hiking Event
-        </Modal.Header>
+         <Header as="h3" dividing basic color="green">
+          <h2> Create Your Hiking Event</h2>
+        </Header>
+ 
 
         <Modal.Content image scrolling>
           <Image

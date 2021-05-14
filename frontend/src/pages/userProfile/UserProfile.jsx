@@ -79,8 +79,7 @@ export default function UserProfile({ currentUser, match }) {
     
       {!toggler && (
         <>
-        
-        
+      
 
           <Card centered color='green'> 
             <Image
