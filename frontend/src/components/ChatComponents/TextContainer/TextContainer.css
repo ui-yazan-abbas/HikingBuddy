@@ -1,53 +1,48 @@
-.textContainer2{
-    width:300px;
-    height:480px;
-    background:whitesmoke;
-    margin-left: 50px;
-    font-size:0;
-    border-radius:5px;
-    overflow:hidden;
-
+.textContainer2 {
+  width: 250px;
+  height: 480px;
+  background: whitesmoke;
+  margin-left: 10px;
+  font-size: 0;
+  border-radius: 5px;
+  overflow: hidden;
 }
-.activeContainer2{
-    width:300px;
-    height:480px;
-    background-color:whitesmoke;
-    display:inline-block;
-    font-size:15px;
-    vertical-align:top;
+.activeContainer2 {
+  width: 250px;
+  height: 480px;
+  background-color: whitesmoke;
+  display: inline-block;
+  font-size: 15px;
+  vertical-align: top;
 }
 
-.activeContainer2{
-    font-size:14px;
-    font-weight:normal;
-    color:royalblue;
+.activeContainer2 {
+  font-size: 14px;
+  font-weight: normal;
+  color: royalblue;
 }
 
 .bar2 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #2979FF;
-    height: 60px;
-    width: 100%;
-    color: #F3F3F3;
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color: #599bb3;
 }
 
 .activeItem2 {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .activeContainer2 img {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .textContainer h1 {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 @media (min-width: 320px) and (max-width: 1200px) {
-    .textContainer2 {
-        display: none;
-    }
+  .textContainer2 {
+    display: none;
+  }
 }

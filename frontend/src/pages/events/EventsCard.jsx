@@ -37,8 +37,6 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-
-
 export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
@@ -129,7 +127,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     </a>
   );
 
-
   /* const seeComments = (
   ); */
 
@@ -158,7 +155,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>Meeting point and time:</b> {isNewMeetPoint}
       </p>
-      
+
       <p>
         <a href={isNewHyperlink} target="_blank">
           See on Google Map
@@ -183,38 +180,29 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   return (
     <Container>
       <Grid centered columns={1}>
-        
         {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
         <Comment.Group>
           <Comment>
-            
-              
-                {/* <Comment.Content> */}
-                <br></br>
-                <br></br>
-                {/* <Link to={`/${event.user}/profile`}>
+            {/* <Comment.Content> */}
+            <br></br>
+            <br></br>
+            {/* <Link to={`/${event.user}/profile`}>
               <Comment.Avatar as="a" src={user.imageUrl} />
             </Link> */}
 
-                <Link to={`/${event.user}/profile`}>
-                  <Image
-                    floated="left"
-                    size="mini"
-                    as="a"
-                    src={user.imageUrl || null}
-                  />
-                  <Comment.Author as="a">
-                    {" "}
-                    Created by {event.user}
-                  </Comment.Author>{" "}
-                </Link>
+            <Link to={`/${event.user}/profile`}>
+              <Image
+                floated="left"
+                size="mini"
+                as="a"
+                src={user.imageUrl || null}
+              />
+              <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
+            </Link>
 
-                <Comment.Metadata>
-                  <div>
-                    {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
-                  </div>
-                </Comment.Metadata>
-         
+            <Comment.Metadata>
+              <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
+            </Comment.Metadata>
 
           <br></br>
             {/* <br></br>
