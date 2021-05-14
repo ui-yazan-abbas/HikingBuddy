@@ -27,6 +27,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
     event.trailHyperlink
   );
   const [body, setBody] = React.useState(event.body);
+  const [roomName, setRoomName] = React.useState(event.roomName);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -39,6 +40,7 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
       meetPoint: meetPoint,
       trailHyperlink: trailHyperlink,
       body: body,
+      roomName: roomName,
     });
     onSubmite();
   };
@@ -104,6 +106,14 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
           onChange={(e) => setTrailHyperlink(e.target.value)}
         />
 
+        <Form.Field
+          
+          control={Input}
+          label="Event chat name"
+          placeholder="Hikers unite"
+          value={roomName}
+          onChange={(e) => setRoomName(e.target.value)}
+        />
         <Form.Field
           control={TextArea}
           label="About event"
