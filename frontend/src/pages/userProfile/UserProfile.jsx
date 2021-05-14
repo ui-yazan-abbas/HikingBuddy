@@ -86,7 +86,7 @@ export default function UserProfile({ currentUser, match }) {
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <a>
+              <a name="followes" class="tablinks" onClick={handleView}>
                 <Icon name="user" />
             {user.followersList?.length} Followers
               </a>
