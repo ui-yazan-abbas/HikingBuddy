@@ -2,7 +2,7 @@
 import React from "react";
 // Project styiling from semantic ui
 import { Segment, Container, Header, Button, Card } from "semantic-ui-react";
-import Intro from "../../assets/intro4.mp4";
+import Intro from "../../assets/video-2.mp4";
 
 export default function IntroHome(mobile) {
   const introVid = Intro;

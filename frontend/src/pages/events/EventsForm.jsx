@@ -69,9 +69,9 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
-        <Header as="h2" dividing basic color="green">
+        <Modal.Header style={{ color: "green" }}>
           Create Your Hiking Event
-        </Header>
+        </Modal.Header>
 
         <Modal.Content image scrolling>
           <Image
