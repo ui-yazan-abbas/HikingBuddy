@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import './Join.css';
+import "./Join.css";
 
 export default function SignIn() {
   const [name, setName] = useState("");
@@ -13,7 +13,7 @@ export default function SignIn() {
         <h1 className="heading2">HIKING BUDDY CHAT</h1>
         <div>
           <input
-            placeholder="NickName"
+            placeholder="Name or NickName"
             className="joinInput2"
             type="text"
             onChange={(event) => setName(event.target.value)}
@@ -22,7 +22,7 @@ export default function SignIn() {
         {
           <div>
             <input
-              placeholder="Room Name"
+              placeholder="Event Name"
               className="joinInput2"
               type="text"
               onChange={(event) => setRoom(event.target.value)}
