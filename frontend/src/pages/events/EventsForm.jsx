@@ -60,6 +60,8 @@ export default function EventsForm({ onSubmit }) {
       {/*  <EventSearch /> */}
 
       <Modal
+
+        className= "modal"
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
@@ -69,9 +71,10 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
-        <Modal.Header style={{ color: "green" }}>
-          Create Your Hiking Event
-        </Modal.Header>
+         <Header as="h3" dividing basic color="green">
+          <h2> Create Your Hiking Event</h2>
+        </Header>
+ 
 
         <Modal.Content image scrolling>
           <Image
@@ -152,7 +155,7 @@ export default function EventsForm({ onSubmit }) {
 
                 <Form.Field
                   control={Input}
-                  label="GoogleMap/other link"
+                  label="Your GoogleMap link"
                   placeholder="https://goo.gl/maps/T3dWA3q3bGjQxePk9"
                   value={trailHyperlink}
                   onChange={(e) => setTrailHyperlink(e.target.value)}
@@ -161,8 +164,9 @@ export default function EventsForm({ onSubmit }) {
 
               <Form.Field
                 required
+                maxLength="250"
                 control={TextArea}
-                label="About event"
+                label="About event (250 characters max)"
                 placeholder="It´s an easy trail I took before and now..."
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
