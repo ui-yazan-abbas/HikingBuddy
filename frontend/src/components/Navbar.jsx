@@ -23,14 +23,19 @@ import ChevronLeftIcon from "@material-ui/icons/AccountCircle";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ForumIcon from "@material-ui/icons/Forum";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import green from '@material-ui/core/colors/green';
 
 const drawerWidth = 240;
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+ 
   },
   appBar: {
+    background : '#387c6d',
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -106,18 +111,28 @@ export default function Navbar({ onLogout, currentUser }) {
     setOpen(false);
   };
 
+  const mycolor = green[600]; // #387c6d
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
+        
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
+        <Link to={`/`}>
+            <img
+              className="Avatar"
+              src="https://www.linkpicture.com/q/1_453.jpg"
+              alt=""
+            />
+            </Link>
           <Typography variant="h6" noWrap className={classes.title}>
-            HikingBuddy
+    
           </Typography>
           <IconButton
             color="inherit"
@@ -156,7 +171,7 @@ export default function Navbar({ onLogout, currentUser }) {
           <Link to={`/${currentUser.name}/profile`}>
             <ListItem button>
               <ListItemIcon>
-                <AccountCircleIcon />
+                <AccountCircleIcon color="mycolor" />
               </ListItemIcon>
               <ListItemText primary="User Profile" />
             </ListItem>
