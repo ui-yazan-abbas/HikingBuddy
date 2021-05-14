@@ -3,7 +3,7 @@ import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
-import Linkify from "react-linkify";
+import map from "../../assets/map.png"
 
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
@@ -216,25 +216,23 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 </Comment.Metadata>
          
 
-            <br></br>
+          <br></br>
             {/* <br></br>
               <br></br> */}
             <Segment.Group>
               <Segment textAlign="center">
                 <Comment.Text>
                   {" "}
-                  <h4>
-                    <b>Trail Location:</b> {isNewTrailName}
+                  <a href={isNewHyperlink}>Trail Location: {isNewTrailName} 
                     <br></br>
-                    {/* <b>Check out:</b> <Linkify>{isNewHyperlink}</Linkify> */}
-                  </h4>
+                  </a>
                 </Comment.Text>
 
                 <Comment.Metadata>
                   <Image
                     href={isNewHyperlink}
                     target="_blank"
-                    src="https://stfturist-en.imgix.net/app/uploads/sites/2/2017/05/stf-vandringsleder-hogakustenleden.jpg?auto=format%2Cenhance"
+                    src={map}
                   />
                 </Comment.Metadata>
 
