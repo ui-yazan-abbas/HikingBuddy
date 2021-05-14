@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserApi from "../../api/UserApi";
-import { Button, Card, Image, Icon } from "semantic-ui-react";
+import { Button, Card, Image, Icon, Comment } from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
 import moment from "moment";
 import PostCard from "../posts/Card";
@@ -90,15 +90,15 @@ export default function UserProfile({ currentUser, match }) {
                 <Icon name="user" />
             {user.followersList?.length} Followers
               </a>
-            </Card.Content>
-          </Card>
-      
-
-          <div className="btn-position">
-            {currentUser.name === user.name && (
-              <Button inverted color="blue" onClick={() => setToggler(true)}>
+              <br></br>
+              {currentUser.name === user.name && (
+                
+               <Comment.Action
+               
+               as="a" onClick={() => setToggler(true)}>
+                  <Icon name="edit" />
                 Edit Profile
-              </Button>
+                </Comment.Action>
             )}
             {currentUser.name !== user.name &&
               user.followersList?.filter((u) => u.name == currentUser.name)
@@ -107,6 +107,22 @@ export default function UserProfile({ currentUser, match }) {
                   Follow
                 </Button>
               )}
+            </Card.Content>
+          </Card>
+          {/* <Comment.Action
+                       as="a"
+                        active
+                        onClick={() => setIsUpdating(true)}
+                      >
+                        Edit post
+                      </Comment.Action>
+                      <Comment.Action  as="a" onClick={onDeleteClick} active>
+                        {" "}
+                        Delete post
+                      </Comment.Action> */}
+
+          <div className="btn-position">
+           
           </div>
         </>
       )}
