@@ -152,7 +152,7 @@ export default function EventsForm({ onSubmit }) {
 
                 <Form.Field
                   control={Input}
-                  label="GoogleMap/other link"
+                  label="Your GoogleMap link"
                   placeholder="https://goo.gl/maps/T3dWA3q3bGjQxePk9"
                   value={trailHyperlink}
                   onChange={(e) => setTrailHyperlink(e.target.value)}
@@ -161,8 +161,9 @@ export default function EventsForm({ onSubmit }) {
 
               <Form.Field
                 required
+                maxLength="250"
                 control={TextArea}
-                label="About event"
+                label="About event (250 characters max)"
                 placeholder="It´s an easy trail I took before and now..."
                 value={body}
                 onChange={(e) => setBody(e.target.value)}

@@ -6,14 +6,12 @@ const joins = 0;
 const disjoins = 0;
 const btnStyle1 = {
   margin: "1px",
-  //   border: "5px solid pink",
-  background: "#3387FF",
+  color: "red",
 };
 
 const btnStyle2 = {
   margin: "1px",
-  //   border: "5px solid pink",
-  background: "red",
+  color: "green",
 };
 
 const btnDefault = {};
@@ -37,11 +35,15 @@ class join extends Component {
         <div>{this.props.headerProp}</div>
 
         <Feed.Label>
-            <Icon name='group'   onClick={this.joinHandler}  style={this.state.joinCount !== joins ? btnStyle1 : btnDefault}/>
-            {this.state.joinCount}
-          </Feed.Label>
+          <Icon
+            name="group"
+            onClick={this.joinHandler}
+            style={this.state.joinCount !== joins ? btnStyle1 : btnStyle2}
+          />
+          {this.state.joinCount}
+        </Feed.Label>
 
-     {/*    <Button as="div" color="green" labelPosition="right">
+        {/*    <Button as="div" color="green" labelPosition="right">
           <Button
             color="blue"
             size="small"

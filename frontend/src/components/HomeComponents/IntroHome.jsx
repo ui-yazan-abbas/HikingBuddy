@@ -18,7 +18,6 @@ export default function IntroHome(mobile) {
           <source src={introVid} typer="video/mp4" />
         </video>
         <Container text textAlign="center">
-
           <Header
             as="h1"
             content="Hiking tips and events in one place"
