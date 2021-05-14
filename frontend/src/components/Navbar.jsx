@@ -124,7 +124,7 @@ export default function Navbar({ onLogout, currentUser }) {
         })}
       >
         <Toolbar>
-        <Link to={`/`}>
+        <Link className="navbar-brand" to="/feed">
             <img
               className="Avatar"
               src="https://www.linkpicture.com/q/1_453.jpg"
