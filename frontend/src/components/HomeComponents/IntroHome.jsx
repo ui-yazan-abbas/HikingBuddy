@@ -20,7 +20,7 @@ export default function IntroHome(mobile) {
         <Container text textAlign="center">
           <Header
             as="h1"
-            content="Hiking tips and events in one place"
+            content="Where hikers share and meet"
             inverted
             style={{
               fontSize: mobile ? "2em" : "4em",
@@ -45,7 +45,7 @@ export default function IntroHome(mobile) {
               color="green"
               centered
               as="h2"
-              content="Find hiking buddies"
+              content="Join HikingBuddy"
               style={{
                 fontSize: mobile ? "1.5em" : "1.7em",
                 fontWeight: "normal",
