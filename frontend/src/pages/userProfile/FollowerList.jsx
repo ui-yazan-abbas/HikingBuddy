@@ -17,24 +17,26 @@ export default function FollowerList({ match }) {
   }, [info]);
 
   return (
-    <Card centered>
+    <Card color='green' centered>
     <Card.Content>
-      <Card.Header basic color="green">{user.name}'s Followers:</Card.Header>
+      <Card.Header  color="green">{user.name}'s Followers:</Card.Header>
     </Card.Content>
     <Card.Content>
       <Feed>
-      
+      {user.followersList?.map((i) => (
+        <>
         <Feed.Event>
           <Feed.Label image='/images/avatar/small/molly.png' />
           <Feed.Content>
             <Feed.Date content= {moment('Thu May 13 2021 17:30:03 GMT+0300').fromNow(true)}  /> 
             <Feed.Summary>
-               <a>Molly Malone</a> started to follow you.
+               <a>{i.name}</a> started to follow you.
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>
 
-      
+        </>
+      ))}
       </Feed>
     </Card.Content>
     
