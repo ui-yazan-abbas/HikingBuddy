@@ -1,7 +1,7 @@
 // NPM Packages
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Project files
 import Auth from "./services/Auth";
@@ -47,26 +47,6 @@ export default function App() {
 
   return (
     <div className="container">
-      {/* <nav>
-        <ul>
-          <li>
-            <NavLink exact activeClassName="current" to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact activeClassName="current" to="/about">
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact activeClassName="current" to="/feed">
-              <PostsPage user={currentUser} />
-            </NavLink>
-          </li>
-        </ul>
-      </nav> */}
-
       <BrowserRouter>
         {loggedIn && (
           <Navbar onLogout={() => Auth.logout()} currentUser={currentUser} />
