@@ -14,10 +14,11 @@ export default function IntroHome(mobile) {
         style={{ minHeight: 400, padding: "1em 0em" }}
         vertical
       >
+        <video autoPlay loop muted className="video">
+          <source src={introVid} typer="video/mp4" />
+        </video>
         <Container text textAlign="center">
-          <video autoPlay loop muted className="video">
-            <source src={introVid} typer="video/mp4" />
-          </video>
+
           <Header
             as="h1"
             content="Hiking tips and events in one place"
@@ -40,7 +41,6 @@ export default function IntroHome(mobile) {
               marginTop: mobile ? "0.5em" : "1.5em",
             }}
           />
-
           <a href="/signup">
             <Card
               color="green"
