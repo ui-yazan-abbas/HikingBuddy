@@ -1,5 +1,6 @@
 // NPM Packages
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Project files
