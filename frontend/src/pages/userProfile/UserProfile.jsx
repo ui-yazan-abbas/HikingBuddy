@@ -38,6 +38,15 @@ export default function UserProfile({ currentUser, match }) {
       16 Friends
     </a>
   );
+  const btnStyle1 = {
+    margin: "1px",
+    color: "red"
+  };
+  const btnDefault = {
+    margin: "1px",
+    color: "green"
+  };
+  
 
   console.log(currentUser);
 
@@ -69,7 +78,7 @@ export default function UserProfile({ currentUser, match }) {
     <>
       {!toggler && (
         <>
-          <Card centered>
+          <Card centered color='green'> 
             <Image
               src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
               alt=""
@@ -87,7 +96,7 @@ export default function UserProfile({ currentUser, match }) {
             </Card.Content>
             <Card.Content extra>
               <a name="followes" class="tablinks" onClick={handleView}>
-                <Icon name="user" />
+                <Icon name='user' style={ btnDefault}/>
             {user.followersList?.length} Followers
               </a>
               <br></br>
@@ -96,7 +105,7 @@ export default function UserProfile({ currentUser, match }) {
                <Comment.Action
                
                as="a" onClick={() => setToggler(true)}>
-                  <Icon name="edit" />
+                  <Icon name="edit" style={ btnDefault} />
                 Edit Profile
                 </Comment.Action>
             )}
