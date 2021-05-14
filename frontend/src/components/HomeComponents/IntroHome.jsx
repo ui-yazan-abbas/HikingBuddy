@@ -1,8 +1,8 @@
 // NPM Packages
 import React from "react";
 // Project styiling from semantic ui
-import { Segment, Container, Header, Button, Icon } from "semantic-ui-react";
-import Intro from "../../assets/intro6.mp4";
+import { Segment, Container, Header, Button, Card } from "semantic-ui-react";
+import Intro from "../../assets/intro4.mp4";
 
 export default function IntroHome(mobile) {
   const introVid = Intro;
@@ -14,10 +14,10 @@ export default function IntroHome(mobile) {
         style={{ minHeight: 400, padding: "1em 0em" }}
         vertical
       >
-        <video autoPlay loop muted className="video">
-          <source src={introVid} typer="video/mp4" />
-        </video>
         <Container text textAlign="center">
+          <video autoPlay loop muted className="video">
+            <source src={introVid} typer="video/mp4" />
+          </video>
           <Header
             as="h1"
             content="Hiking tips and events in one place"
@@ -40,10 +40,20 @@ export default function IntroHome(mobile) {
               marginTop: mobile ? "0.5em" : "1.5em",
             }}
           />
-          <Button as="a" color="green" size="huge">
-            <a href="/signup"> Find hiking buddies and join a hike</a>
-            <Icon name="right arrow" />
-          </Button>
+
+          <a href="/signup">
+            <Card
+              color="green"
+              centered
+              as="h2"
+              content="Find hiking buddies"
+              style={{
+                fontSize: mobile ? "1.5em" : "1.7em",
+                fontWeight: "normal",
+                marginTop: mobile ? "0.5em" : "1.5em",
+              }}
+            />
+          </a>
         </Container>
       </Segment>
     </>
