@@ -26,7 +26,12 @@ export default function FollowerList({ match }) {
       {user.followersList?.map((i) => (
         <>
         <Feed.Event>
-          <Feed.Label image='/images/avatar/small/molly.png' />
+          <Feed.Label><img
+              className="list-img"
+              src={i.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
+              alt="follwer-profile"
+            /></Feed.Label>
+          
           <Feed.Content>
             <Feed.Date content= {moment('Thu May 13 2021 17:30:03 GMT+0300').fromNow(true)}  /> 
             <Feed.Summary>
