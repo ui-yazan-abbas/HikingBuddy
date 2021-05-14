@@ -166,7 +166,7 @@ export default function EventsForm({ onSubmit }) {
               </Form.Group>
 
               <Form.Field
-                required
+                
                 
                 control={Input}
                 label="Event chat name"
