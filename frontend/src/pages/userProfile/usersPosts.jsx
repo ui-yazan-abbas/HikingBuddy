@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import UserApi from "../../api/UserApi";
 import PostCard from "../posts/Card";
+import { Card } from 'semantic-ui-react'
 
 export default function UsersPosts({ match }) {
   const [user, setUser] = useState({});
@@ -15,13 +16,15 @@ export default function UsersPosts({ match }) {
   }, [info]);
 console.log("here")
   return (
-    <div>
-      <h3>{user.name}'s Posts:</h3>
+    <Card color='green' centered>
+        <Card.Content>
+      <Card.Header  color="green">{user.name}'s Posts</Card.Header>
+    </Card.Content>
       {user.posts?.map((post) => (
-        <>
+        
           <PostCard post={post} user={user} />
-        </>
+        
       ))}
-    </div>
+    </Card>
   );
 }
