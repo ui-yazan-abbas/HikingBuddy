@@ -53,11 +53,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<EventComment> eventComments;
 
-    // @ManyToOne
-    // private User userFollowed;
+    @OneToMany(mappedBy = "likedUser", cascade = CascadeType.ALL)
+    List<PostLike> likedPosts;
 
-    // @OneToMany(mappedBy = "user")
-    // private List<User> followersList;
+    @OneToMany(mappedBy = "joinUser", cascade = CascadeType.ALL)
+    List<JoinEvent> joinEvent;
 
     @ManyToMany
     private Collection<User> followersList;
@@ -180,6 +180,22 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public List<PostLike> getLikedPosts() {
+        return likedPosts;
+    }
+
+    public void setLikedPosts(List<PostLike> likedPosts) {
+        this.likedPosts = likedPosts;
+    }
+
+    public List<JoinEvent> getJoinEvent() {
+        return joinEvent;
+    }
+
+    public void setJoinEvent(List<JoinEvent> joinEvent) {
+        this.joinEvent = joinEvent;
     }
 
     public void addFollower(User follower) {

@@ -41,6 +41,9 @@ public class Post {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     private User user;
 
+    @OneToMany(mappedBy = "likedPost", cascade = CascadeType.ALL)
+    private List<PostLike> listOfPostLikes;
+
     // bring another field with property
 
     public Post() {
@@ -106,5 +109,13 @@ public class Post {
 
     public void setCommentList(List<Comment> commentList) {
         this.commentList = commentList;
+    }
+
+    public List<PostLike> getListOfLikes() {
+        return listOfPostLikes;
+    }
+
+    public void setListOfLikes(List<PostLike> listOfPostLikes) {
+        this.listOfPostLikes = listOfPostLikes;
     }
 }
