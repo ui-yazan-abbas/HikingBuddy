@@ -7,7 +7,7 @@ import hikingBuddy.auth.AuthService;
 import hikingBuddy.exceptions.ForbiddenException;
 import hikingBuddy.exceptions.ResourceNotFoundException;
 import hikingBuddy.events.Event;
-import hikingBuddy.joinevents.JoinEvent;
+import hikingBuddy.joinEvents.JoinEvent;
 import hikingBuddy.events.EventController;
 import hikingBuddy.events.EventRepository;
 import hikingBuddy.user.User;

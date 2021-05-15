@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import hikingBuddy.comments.Comment;
 import hikingBuddy.user.User;
-import hikingBuddy.postlikes.PostLike;
+import hikingBuddy.postLikes.PostLike;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

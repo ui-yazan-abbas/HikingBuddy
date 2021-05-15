@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import hikingBuddy.comments.Comment;
 import hikingBuddy.eventComments.EventComment;
 import hikingBuddy.user.User;
-import hikingBuddy.joinevents.JoinEvent;
+import hikingBuddy.joinEvents.JoinEvent;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -166,6 +166,14 @@ public class Event {
 
     public void setUser(User userEvents) {
         this.user = userEvents;
+    }
+
+    public List<JoinEvent> getListOfJoin() {
+        return listOfJoinEvent;
+    }
+
+    public void setListOfJoin(List<JoinEvent> listOfJoinEvent) {
+        this.listOfJoinEvent = listOfJoinEvent;
     }
 
     public List<EventComment> getEventCommentList() {

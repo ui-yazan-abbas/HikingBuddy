@@ -3,9 +3,9 @@ package hikingBuddy.user;
 import hikingBuddy.comments.Comment;
 import hikingBuddy.eventComments.EventComment;
 import hikingBuddy.events.Event;
-import hikingBuddy.joinevents.JoinEvent;
+import hikingBuddy.joinEvents.JoinEvent;
 import hikingBuddy.posts.Post;
-import hikingBuddy.postlikes.PostLike;
+import hikingBuddy.postLikes.PostLike;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -59,7 +59,7 @@ public class User {
     List<PostLike> likedPosts;
 
     @OneToMany(mappedBy = "joinUser", cascade = CascadeType.ALL)
-    List<JoinEvent> joinEvent;
+     List<JoinEvent> joinEvent;
 
     @ManyToMany
     private Collection<User> followersList;
