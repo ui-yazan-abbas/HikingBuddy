@@ -7,6 +7,7 @@ import hikingBuddy.user.User;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@Entity
 public class JoinEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +22,10 @@ public class JoinEvent {
     private Event joinEvent;
 
     @ManyToOne
-    @JsonIgnoreProperties({ "event", "joinEvent" })
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
+    @JsonIdentityReference(alwaysAsId = true)
     @JoinColumn(nullable = false)
+    @NotNull
     private User joinUser;
 
     public JoinEvent() {

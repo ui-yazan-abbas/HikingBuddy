@@ -55,10 +55,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<EventComment> eventComments;
 
-    @OneToMany(mappedBy = "likedUser", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "likedUser")
     List<PostLike> likedPosts;
 
-    @OneToMany(mappedBy = "joinUser", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "joinUser")
      List<JoinEvent> joinEvent;
 
     @ManyToMany

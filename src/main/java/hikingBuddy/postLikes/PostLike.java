@@ -21,8 +21,10 @@ public class PostLike {
     private Post likedPost;
 
     @ManyToOne
-    @JsonIgnoreProperties({ "posts", "likedPosts" })
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
+    @JsonIdentityReference(alwaysAsId = true)
     @JoinColumn(nullable = false)
+    @NotNull
     private User likedUser;
 
     public PostLike() {
