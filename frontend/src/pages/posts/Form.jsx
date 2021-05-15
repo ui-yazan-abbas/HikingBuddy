@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+
 import {
   Button,
   Form,
@@ -44,9 +45,10 @@ export default function PostForm({ onSubmit, post }) {
   };
 
   // to close a Recommed hiking form
-  const closeForm = () => setOpen(false);
+  const closeForm = () => {
+    setOpen(false);
+  };
 
-  //modal
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -114,6 +116,7 @@ export default function PostForm({ onSubmit, post }) {
                 handleSubmit();
                 closeForm();
                 redirect();
+                // showNotification();
               }}
               type="submit"
             >

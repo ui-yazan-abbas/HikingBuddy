@@ -18,7 +18,7 @@ export default function PostsPage({ user }) {
     try {
       const response = await PostsApi.createPost(postData);
       const post = response.data;
-      const newPosts = posts.concat(post);
+      const newPosts = posts.concat(post).reverse();
       setPosts(newPosts);
     } catch (e) {
       console.error(e);
