@@ -25,7 +25,7 @@ class EventsApi {
   }
 
   undoJoinEvent(eventId) {
-    return Api.delete(`/events/join/${likeId}`);
+    return Api.delete(`/events/join/${eventId}`);
   }
 }
 
