@@ -21,9 +21,13 @@ public class JoinEvent {
     private Event joinEvent;
 
     @ManyToOne
-    @JsonIgnoreProperties({"event", "joinEvent"})
+    @JsonIgnoreProperties({ "event", "joinEvent" })
     @JoinColumn(nullable = false)
     private User joinUser;
+
+    public JoinEvent() {
+
+    }
 
     public Long getId() {
         return id;
@@ -32,6 +36,7 @@ public class JoinEvent {
     public void setId(Long id) {
         this.id = id;
     }
+
     public Event getJoinEvent() {
         return joinEvent;
     }

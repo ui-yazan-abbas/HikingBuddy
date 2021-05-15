@@ -3,7 +3,9 @@ package hikingBuddy.user;
 import hikingBuddy.comments.Comment;
 import hikingBuddy.eventComments.EventComment;
 import hikingBuddy.events.Event;
+import hikingBuddy.joinevents.JoinEvent;
 import hikingBuddy.posts.Post;
+import hikingBuddy.postlikes.PostLike;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

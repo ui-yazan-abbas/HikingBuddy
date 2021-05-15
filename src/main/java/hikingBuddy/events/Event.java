@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import hikingBuddy.comments.Comment;
 import hikingBuddy.eventComments.EventComment;
 import hikingBuddy.user.User;
+import hikingBuddy.joinevents.JoinEvent;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

@@ -25,6 +25,9 @@ public class PostLike {
     @JoinColumn(nullable = false)
     private User likedUser;
 
+    public PostLike() {
+    }
+
     public Long getId() {
         return id;
     }
