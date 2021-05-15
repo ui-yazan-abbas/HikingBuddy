@@ -1,4 +1,4 @@
-package hikingBuddy.postlikes;
+package hikingBuddy.postLikes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ public class PostLikeController {
         return ResponseEntity.ok(postLikeService.getAllLikes(postId));
     }
 
-    @DeleteMapping("/{postId}/likes")
+    @DeleteMapping("/likes/{postId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeLike(@PathVariable Long postId) {
         postLikeService.removeLike(postId);

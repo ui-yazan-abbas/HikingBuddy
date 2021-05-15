@@ -1,4 +1,4 @@
-package hikingBuddy.joinevents;
+package hikingBuddy.joinEvents;
 
 import com.fasterxml.jackson.annotation.*;
 import hikingBuddy.events.Event;

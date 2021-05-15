@@ -1,4 +1,4 @@
-package hikingBuddy.joinevents;
+package hikingBuddy.joinEvents;
 
 import hikingBuddy.joinevents.JoinEvent;
 import org.springframework.data.jpa.repository.JpaRepository;

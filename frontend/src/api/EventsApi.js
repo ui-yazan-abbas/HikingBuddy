@@ -21,11 +21,11 @@ class EventsApi {
     return Api.delete("/events/" + id);
   }
   joinEvent(eventId) {
-    return Api.post(`/posts/${eventId}/likes`, { eventJoin: "join" });
+    return Api.post(`/events/${eventId}/join`, { eventJoin: "join" });
   }
 
-  undoJoinEvent(likeId) {
-    return Api.delete(`/posts/likes/${likeId}`);
+  undoJoinEvent(eventId) {
+    return Api.delete(`/events/join/${likeId}`);
   }
 }
 

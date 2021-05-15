@@ -1,4 +1,4 @@
-package hikingBuddy.joinevents;
+package hikingBuddy.joinEvents;
 
 import hikingBuddy.joinevents.JoinEventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class JoinEventController {
         return ResponseEntity.ok(JoinEventService.getAllJoin(eventId));
     }
 
-    @DeleteMapping("/{eventId}/join")
+    @DeleteMapping("/join/{eventId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeJoin(@PathVariable Long eventId) {
         joinEventService.removeJoin(eventId);

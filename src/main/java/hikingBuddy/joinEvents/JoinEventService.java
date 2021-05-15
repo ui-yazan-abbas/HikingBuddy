@@ -1,4 +1,4 @@
-package hikingBuddy.joinevents;
+package hikingBuddy.joinEvents;
 
 import com.sun.java.accessibility.util.EventID;
 import org.springframework.beans.factory.annotation.Autowired;

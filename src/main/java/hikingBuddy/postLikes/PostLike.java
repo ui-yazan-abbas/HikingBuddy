@@ -1,4 +1,4 @@
-package hikingBuddy.postlikes;
+package hikingBuddy.postLikes;
 
 import com.fasterxml.jackson.annotation.*;
 import hikingBuddy.posts.Post;
