@@ -20,6 +20,13 @@ class EventsApi {
   deleteEvent(id) {
     return Api.delete("/events/" + id);
   }
+  joinEvent(eventId) {
+    return Api.post(`/posts/${eventId}/likes`, { eventJoin: "join" });
+  }
+
+  undoJoinEvent(likeId) {
+    return Api.delete(`/posts/likes/${likeId}`);
+  }
 }
 
 export default new EventsApi();
