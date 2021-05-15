@@ -40,6 +40,8 @@ import {
 export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
+  const [joinToggler, setJoinToggler] = useState();
+  const [joinsCount, setJoinsCount] = useState(eventJoins?.length | 0);
   const [readMore, setReadMore] = useState(false);
 
   //Hooks for Event fields
@@ -106,6 +108,36 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       console.error(e);
     }
   }
+
+  //=====================================
+  const handleJoin = () => {
+    if (joinToggler) {
+      setJoinsCount(joinsCount - 1);
+      undoJoinEvent();
+      setJoinToggler(false);
+    } else {
+      joinEvent();
+      setJoinsCount(joinsCount + 1);
+      setLikeToggler(true);
+    }
+  };
+
+  const joinEvent = async () => {
+    try {
+      await EventsApi.joinEvent(id).then(({ data }) => setJoinToggler(data));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const undoJoinEvent = async () => {
+    try {
+      await EventsApi.undoJoinEvent(joinToggler.id);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  //=====================================
 
   useEffect(() => {
     EventCommentsApi.getEventComments(event.id)
@@ -283,7 +315,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         {eventComments.length} comment(s)
                       </Comment.Action>
                       <Comment.Action active>
-                        <JoinButton />
+                        <JoinButton onClick={handleJoin} />
                       </Comment.Action>
                     </Comment.Actions>
                   </Comment>
