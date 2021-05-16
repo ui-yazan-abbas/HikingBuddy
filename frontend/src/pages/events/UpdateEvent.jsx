@@ -12,6 +12,7 @@ import {
   Select,
   TextArea,
   Container,
+  Icon
 } from "semantic-ui-react";
 
 export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
@@ -129,7 +130,17 @@ export default function UpdateEvent({ onUpdateClick, onSubmite, event }) {
           onClick={handleUpdate}
           type="submit"
         >
-          Submit event changes
+          Submit changes <Icon name="chevron right" />
+        </Button>
+
+        <Button
+          as="a"
+          inverted
+          color="red"
+          onClick={handleUpdate}
+          type="submit"
+        >
+          Cancel <Icon name="remove" />
         </Button>
       </Form>
       {/* </Segment> */}

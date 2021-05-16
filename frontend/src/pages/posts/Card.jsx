@@ -38,7 +38,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
-  console.log("listOf", post.listOfLikes.length);
+  
   async function createComment(commentData) {
     try {
       const response = await CommentsApi.createComment(post.id, commentData);
@@ -76,7 +76,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
       console.error(e);
     }
   }
-  //=====================================
+  //Like button handling
   const handleLike = (e) => {
     console.log("here");
     if (likeToggler) {
@@ -112,7 +112,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     color: "green",
   };
 
-  //=====================================
+  // end of Like button handling
 
   useEffect(() => {
     CommentsApi.getComments(post.id).then(({ data }) => setComments(data));
@@ -131,13 +131,23 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     <Container>
       <br></br>
       <Segment.Group>
+
+      
+      {/* Avatars from Semantic UI
+      https://gist.github.com/tuur29/2daf51872917b6143f439c01f922364b */}
+
         <Segment>
           <Link to={`/${post.user}/profile`}>
             <Image
               floated="left"
               size="mini"
               as="a"
-              src={user.imageUrl || null}
+              
+
+              src="https://i.imgur.com/G5UIwnL.png"
+              // src="https://i.imgur.com/6OUVDLi.png"
+              
+              // src={user.imageUrl}
             />
           </Link>
 
@@ -200,7 +210,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   )}
 
                   <Comment.Action active>
-                    {comments.length} comment(s)
+                    {/* {comments.length} comment(s) */}
                   </Comment.Action>
                   <Comment.Action active>
                     <Feed.Like>
@@ -272,6 +282,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               post={post}
             />
           )}
+
+
 
           <div className="comments-form">
             <CommentForm id={post.id} onSubmit={createComment} />

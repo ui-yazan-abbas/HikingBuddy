@@ -25,13 +25,13 @@ body {
   width: 100%;
   height: 100%;
   align-items: center;
-  background-size: cover;
+  background-size:cover;
   background: url("https://images.unsplash.com/photo-1564591167348-6a45f42dc223?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   overflow: hidden;
-  box-sizing: content-box;
+  box-sizing:content-box;
 }
 
 .joinInnerContainer2 {
@@ -42,14 +42,14 @@ body {
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
   background-color: #ffffff;
-  border-radius: 1px;
+  border-radius: 15px;
   /* border: 2px solid #dcdcdc; */
   display: inline-block;
   cursor: pointer;
   color: #666666;
   font-family: Arial;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: light;
   padding: 15px 24px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #ffffff;
@@ -58,18 +58,18 @@ body {
 }
 
 .heading2 {
-  color: cornflowerblue;
+  color: #2786e9;
   font-size: 2em;
-  padding-bottom: 10px;
-  border-bottom: 2px solid white;
+  padding-bottom: 50px; 
+  /* border-bottom: 2px solid white; */
 }
 
 .button2 {
-  box-shadow: inset 0px 1px 0px 0px #a4e271;
-  background: linear-gradient(to bottom, #89c403 5%, #77a809 100%);
-  background-color: #89c403;
+  box-shadow: inset 0px 1px 0px 0px #2ecc40;
+  background: linear-gradient(to bottom, #2ecc40 5%, #2ecc40 100%);
+  background-color: #c1d98c;
   border-radius: 6px;
-  border: 1px solid #74b807;
+  border: 1px solid #2ecc40;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -78,7 +78,7 @@ body {
   font-weight: bold;
   padding: 15px 35px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #528009;
+  text-shadow: 0px 1px 0px #2f6627;
 }
 
 .mt-20 {

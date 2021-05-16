@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PostsApi from "../../api/PostsApi";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Icon } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 
 export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
   const [postLocation, setPostLocation] = React.useState(post.postLocation);
@@ -9,12 +10,17 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
 
   const handleUpdate = (e) => {
     e.preventDefault();
+
     onUpdateClick({
       postLocation: postLocation,
       body: body,
       postDistance: postDistance,
     });
   };
+
+
+
+
   return (
     <div className="card mt-3">
       <div className="card-body">
@@ -59,8 +65,21 @@ export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
           onClick={handleUpdate}
           type="submit"
         >
-          Submit change
+          Submit changes <Icon name="chevron right" />
         </Button>
+
+        <Button
+          as="a"
+          inverted
+          color="red"
+          onClick={handleUpdate}
+          type="submit"
+        >
+          Cancel <Icon name="remove" />
+        </Button>
+
+      
+
       </div>
     </div>
   );
