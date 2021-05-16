@@ -1,33 +1,31 @@
 import React, {Component, useState} from "react";
+import { useHistory } from "react-router-dom";
 
 import "./Input.css";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
+import events from "../../../pages/events/EventsCard";
 
 
 const Input = ({message, setMessage, sendMessage}) => {
     const [text, setText] = useState('');
     const [showEmoji, setShowEmoji] = useState(false);
 
-    //state = {
-    //    text: "",
-    //    showEmoji: false
-    //};
-
-   const showEmojii = () => {
+    const showEmojii = () => {
         if (showEmoji) {
             return (
                 <Picker
-                    title="Escolha o emoji"
+                    title="Emoji"
                     onSelect={addEmoji}
-                    style2={{position: "absolute", bottom: "80px", left: "20px"}}
+                    style={{ position: 'absolute', bottom: '20px', right: '20px' }}
+                    i18n={{ search: 'Search', categories: { search: 'Search Results', recent: 'Recents' } }}
+
                 />
             );
         }
     }
 
     const onChange = (e) => {
-        //this.setState({text: e.target.value});
         setText(e.target.value);
     }
 
@@ -42,11 +40,12 @@ const Input = ({message, setMessage, sendMessage}) => {
    }
 
     const addEmoji = (emoji) => {
-        console.log(emoji.native);
-        //this.setState({
-        //    text: this.state.text + emoji.native
-        //});
-        setText(text + emoji.native)
+        console.log("ADD EMOJII", message + emoji.native);
+
+        setText(message + emoji.native)
+        setMessage(message + emoji.native)
+        //sendMessage(text + emoji.native)
+        setShowEmoji(false)
     };
 
     const onClickEmoji = (e) => {
@@ -60,10 +59,18 @@ const Input = ({message, setMessage, sendMessage}) => {
             setShowEmoji(true)
         }
     }
-    //const Input = ({setMessage, sendMessage, message}) => (
-    return (
+
+
+        const history = useHistory();
+
+        const changeRoute = () =>{
+            history.push('events');
+        }
+
+
+        return (
         <form2 className="form" onSubmit={() => onSubmit()}>
-            {showEmojii}
+            {showEmojii()}
             <input
                 className="inputp2"
                 type="text"
@@ -71,19 +78,27 @@ const Input = ({message, setMessage, sendMessage}) => {
                 value={message}
                 onChange={({target: {value}}) => setMessage(value)}
                 onKeyPress={(event) =>
-                    event.key === "Enter" ? sendMessage(event) : null
+                    event.key === "Enter" ? sendMessage(text) : null
                 }
 
             />
-            <button2
-                style={{backgroundColor: "blue"}}
-                onClick={e => onClickEmoji(e)}
+            <button
+                className="sendButton"
+                onClick={() => onClickEmoji()}
             >
-            </button2>
-            <button2 className="sendButton" onClick={(e) => sendMessage(e)}>
+                Emoji
+            </button>
+            <button className="sendButton" onClick={() => sendMessage(text)}>
                 SEND
-            </button2>
+            </button>
+
+
+    <button type="button" className='sendButton' onClick= {changeRoute}>
+        Leave Chat
+    </button>
+
         </form2>
+
 
     );
 }

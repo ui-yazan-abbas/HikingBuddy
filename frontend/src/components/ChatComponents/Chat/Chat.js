@@ -7,6 +7,7 @@ import Messages from "../Messages/Messages";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 
+
 import "./Chat.css";
 
 const ENDPOINT = "http://localhost:5000/";
@@ -53,7 +54,7 @@ const Chat = ({ location }) => {
     });
   }, []);
   const sendMessage = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
 
     if (message) {
       socket.emit("sendMessage", message, () => setMessage(""));

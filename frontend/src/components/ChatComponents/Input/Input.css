@@ -31,7 +31,7 @@
   text-shadow: 0px 1px 0px #ffffff;
 }
 
-input:focus,
+inputp2:focus,
 textarea:focus,
 select:focus {
   outline: none;
@@ -50,7 +50,7 @@ select:focus {
   text-decoration: none;
   text-shadow: 0px 1px 0px #2f6627;
 }
-/* .form {
+.form2 {
   box-shadow: 0px 10px 14px -7px #276873;
   background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
   background-color: #599bb3;
@@ -65,4 +65,4 @@ select:focus {
   text-decoration: none;
   text-shadow: 0px 1px 0px #3d768a;
 }
- */
+
