@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-/* import EventSearch from "../events/EventSearch"; */
-
+import { useHistory } from "react-router-dom";
 import {
   Button,
   Checkbox,
@@ -43,7 +42,7 @@ export default function EventsForm({ onSubmit }) {
       meetPoint: meetPoint,
       trailHyperlink: trailHyperlink,
       body: body,
-      roomName: roomName
+      roomName: roomName,
     });
 
     // Clear the input field
@@ -57,14 +56,20 @@ export default function EventsForm({ onSubmit }) {
     setBody("");
     setRoomName("");
   };
+  // to direct to feed after post submitted
+  const history = useHistory();
+  const redirect = () => {
+    history.push("/events");
+  };
+  // to close a Recommed hiking form
+  const closeForm = () => setOpen(false);
 
   return (
     <Card centered margin>
       {/*  <EventSearch /> */}
 
       <Modal
-
-        className= "modal"
+        className="modal"
         open={open}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
@@ -74,10 +79,9 @@ export default function EventsForm({ onSubmit }) {
           </Button>
         }
       >
-         <Header as="h3" dividing basic color="green">
+        <Header as="h3" dividing basic color="green">
           <h2> Create Your Hiking Event</h2>
         </Header>
- 
 
         <Modal.Content image scrolling>
           <Image
@@ -195,7 +199,11 @@ export default function EventsForm({ onSubmit }) {
                 as="a"
                 inverted
                 color="blue"
-                onClick={handleSubmit}
+                onClick={() => {
+                  handleSubmit();
+                  closeForm();
+                  redirect();
+                }}
                 type="submit"
               >
                 Create event
@@ -204,18 +212,6 @@ export default function EventsForm({ onSubmit }) {
             </Form>
           </Modal.Description>
         </Modal.Content>
-
-        <Modal.Actions>
-          <Button
-            onClick={() => setOpen(false)}
-            as="a"
-            inverted
-            color="green"
-            type="submit"
-          >
-            See events <Icon name="chevron right" />
-          </Button>
-        </Modal.Actions>
       </Modal>
     </Card>
   );

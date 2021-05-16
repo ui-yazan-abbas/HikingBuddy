@@ -3,7 +3,7 @@ import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
-import map from "../../assets/map.png"
+import map from "../../assets/map.png";
 
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
@@ -204,24 +204,21 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
             </Comment.Metadata>
 
-          <br></br>
+            <br></br>
             {/* <br></br>
               <br></br> */}
             <Segment.Group>
               <Segment textAlign="center">
                 <Comment.Text>
                   {" "}
-                 
-                  <a href={isNewHyperlink}> Click to see Trail Location: {isNewTrailName}
-                    </a>
+                  <a href={isNewHyperlink} target="_blank">
+                    {" "}
+                    Click to see Trail Location: {isNewTrailName}
+                  </a>
                 </Comment.Text>
 
                 <Comment.Metadata>
-                  <Image
-                    href={isNewHyperlink}
-                    target="_blank"
-                    src={map}
-                  />
+                  <Image href={isNewHyperlink} target="_blank" src={map} />
                 </Comment.Metadata>
 
                 <br></br>
