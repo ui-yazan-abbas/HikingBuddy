@@ -57,14 +57,12 @@ export default function PostsPage({ user }) {
   return (
     <div className="post">
       <div>
-        
         <PostForm onSubmit={(postData) => createPost(postData)} />
 
         {CardsArray}
-        <div className="empty-state">
+        {/* <div className="empty-state">
         <img src={imgSrc} alt="empty-state" />
-        </div>
-       
+        </div> */}
       </div>
     </div>
   );
