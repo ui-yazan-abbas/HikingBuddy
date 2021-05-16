@@ -40,7 +40,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const [joinToggler, setJoinToggler] = useState();
   const [joinsCount, setJoinsCount] = useState(event.listOfJoin?.length | 0);
   const [readMore, setReadMore] = useState(false);
-  console.log("eventssss", event);
+
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -107,7 +107,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     }
   }
 
-  //=====================================
+  // Join button handling
+
   const handleJoin = () => {
     console.log("here");
     if (joinToggler) {
@@ -136,7 +137,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       console.error(e);
     }
   };
-  //=====================================
+  // end of Join button handling
 
   useEffect(() => {
     EventCommentsApi.getEventComments(event.id)
@@ -286,6 +287,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                     {isNewMaxNum}
                   </a>
                 </Comment.Text>
+
+                <br></br>
 
                 <Button
                   basic

@@ -6,8 +6,6 @@ import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
 import moment from "moment";
 
-
-
 import {
   Grid,
   Divider,
@@ -40,7 +38,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
-  console.log("listOf", post.listOfLikes?.length);
+  
   async function createComment(commentData) {
     try {
       const response = await CommentsApi.createComment(post.id, commentData);
@@ -78,7 +76,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
       console.error(e);
     }
   }
-  //=====================================
+  //Like button handling
   const handleLike = (e) => {
     console.log("here");
     if (likeToggler) {
@@ -114,7 +112,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     color: "green",
   };
 
-  //=====================================
+  // end of Like button handling
 
   useEffect(() => {
     CommentsApi.getComments(post.id).then(({ data }) => setComments(data));
