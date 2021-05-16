@@ -66,8 +66,6 @@ export default function EventsForm({ onSubmit }) {
 
   return (
     <Card centered margin>
-      {/*  <EventSearch /> */}
-
       <Modal
         className="modal"
         open={open}
@@ -170,8 +168,6 @@ export default function EventsForm({ onSubmit }) {
               </Form.Group>
 
               <Form.Field
-                
-                
                 control={Input}
                 label="Event chat name"
                 placeholder="Hikers unite"
@@ -194,24 +190,36 @@ export default function EventsForm({ onSubmit }) {
                 header="Event Created"
                 content="Nice! Now you can go back and see all events"
               /> */}
-
-              <Button
-                as="a"
-                inverted
-                color="blue"
-                onClick={() => {
-                  handleSubmit();
-                  closeForm();
-                  redirect();
-                }}
-                type="submit"
-              >
-                Create event
-                <Icon name="chevron right" />
-              </Button>
             </Form>
           </Modal.Description>
         </Modal.Content>
+
+        <Modal.Actions>
+          <Button
+            onClick={() => setOpen(false)}
+            as="a"
+            inverted
+            color="red"
+            type="submit"
+          >
+            Cancel <Icon name="remove" />
+          </Button>
+
+          <Button
+            as="a"
+            inverted
+            color="blue"
+            onClick={() => {
+              handleSubmit();
+              closeForm();
+              redirect();
+            }}
+            type="submit"
+          >
+            Create event
+            <Icon name="chevron right" />
+          </Button>
+        </Modal.Actions>
       </Modal>
     </Card>
   );

@@ -66,61 +66,75 @@ export default function PostForm({ onSubmit, post }) {
           <h2>Enjoyed a hike? Share and recommend!</h2>
         </Header>
 
-        <Segment>
-          <Modal.Header></Modal.Header>
-          {/* <h4 className="card-title">Make a new post</h4> */}
-          <Form success>
-            <Form.Group widths="equal">
+        {/* <h4 className="card-title">Make a new post</h4> */}
+
+        <Modal.Content>
+          <Modal.Description>
+            <Form success>
+              <Form.Group widths="equal">
+                <Form.Field>
+                  <label>Location or Trail</label>
+                  <Form.Input
+                    fluid
+                    placeholder="Håga Trail"
+                    value={postLocation}
+                    onChange={(e) => setPostLocation(e.target.value)}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Distance in km</label>
+                  <Form.Input
+                    placeholder="35"
+                    value={postDistance}
+                    onChange={(e) => setPostDistance(e.target.value)}
+                  />
+                </Form.Field>
+              </Form.Group>
               <Form.Field>
-                <label>Location or Trail</label>
+                <label>About my hike (250 characters max)</label>
                 <Form.Input
                   fluid
-                  placeholder="Håga Trail"
-                  value={postLocation}
-                  onChange={(e) => setPostLocation(e.target.value)}
+                  maxLength="250"
+                  placeholder="I recommend because..."
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
                 />
               </Form.Field>
               <Form.Field>
-                <label>Distance in km</label>
-                <Form.Input
-                  placeholder="35"
-                  value={postDistance}
-                  onChange={(e) => setPostDistance(e.target.value)}
-                />
+                <label>Upload image</label>
+                <Image src={postImageUrl} />
+
+                <ImgUpload className="profile" uploadImg={change} />
               </Form.Field>
-            </Form.Group>
-            <Form.Field>
-              <label>About this hike (250 characters max)</label>
-              <Form.Input
-                fluid
-                maxLength="250"
-                placeholder="I recommend because..."
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Upload image or video</label>
-              <Image src={postImageUrl} />
+            </Form>
+          </Modal.Description>
+        </Modal.Content>
 
-              <ImgUpload className="profile" uploadImg={change} />
-            </Form.Field>
+        <Modal.Actions>
+          <Button
+            onClick={() => setOpen(false)}
+            as="a"
+            inverted
+            color="red"
+            type="submit"
+          >
+            Cancel <Icon name="remove" />
+          </Button>
 
-            <Button
-              as="a"
-              inverted
-              color="blue"
-              onClick={() => {
-                handleSubmit();
-                closeForm();
-                redirect();
-              }}
-              type="submit"
-            >
-              Post
-            </Button>
-          </Form>
-        </Segment>
+          <Button
+            as="a"
+            inverted
+            color="blue"
+            onClick={() => {
+              handleSubmit();
+              closeForm();
+              redirect();
+            }}
+            type="submit"
+          >
+            Post
+          </Button>
+        </Modal.Actions>
       </Modal>
     </Card>
   );
