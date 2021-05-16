@@ -5,10 +5,12 @@ import React, { useEffect, useState } from "react";
 import PostsApi from "../../api/PostsApi";
 import PostForm from "./Form";
 import Card from "./Card";
+import emptyStateImg from "../../assets/empstate.jpg";
 
 export default function PostsPage({ user }) {
   // Local state
   const [posts, setPosts] = useState([]);
+  const imgSrc = emptyStateImg;
 
   // Methods
 
@@ -58,6 +60,9 @@ export default function PostsPage({ user }) {
         <PostForm onSubmit={(postData) => createPost(postData)} />
 
         {CardsArray}
+        {/* <div className="empty-state">
+        <img src={imgSrc} alt="empty-state" />
+        </div> */}
       </div>
     </div>
   );

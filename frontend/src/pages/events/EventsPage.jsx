@@ -5,10 +5,12 @@ import React, { useEffect, useState } from "react";
 import EventsForm from "./EventsForm";
 import EventsCard from "./EventsCard";
 import EventsApi from "../../api/EventsApi";
+import emptyStateImg from "../../assets/em-state-events.jpeg";
 
 export default function EventsPage({ event, onDeleteClick, user }) {
   // Local state
   const [events, setEvents] = useState([]);
+  const imgSrc = emptyStateImg;
 
   // Methods
   async function createEvent(eventData) {
@@ -51,9 +53,12 @@ export default function EventsPage({ event, onDeleteClick, user }) {
   ));
 
   return (
-    <div>
+    <div className="empty-state">
       <EventsForm onSubmit={(eventData) => createEvent(eventData)} />
       {CardsArray1}
+      {/* <div className="empty-state">
+        <img src={imgSrc}></img>
+      </div> */}
     </div>
   );
 }
