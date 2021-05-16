@@ -60,8 +60,8 @@ body {
 .heading2 {
   color: #2786e9;
   font-size: 2em;
-  padding-bottom: 10px;
-  border-bottom: 2px solid white;
+  padding-bottom: 50px; 
+  /* border-bottom: 2px solid white; */
 }
 
 .button2 {
