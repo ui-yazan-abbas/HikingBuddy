@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
@@ -12,13 +11,9 @@ import EventCommentForm from "../eventComments/EventCommentForm";
 import {
   Button,
   Comment,
-  Form,
+  Feed,
   Header,
-  Input,
-  TextArea,
-  Card,
   Icon,
-  Responsive,
   Segment,
   Container,
   Image,
@@ -40,7 +35,10 @@ import {
 export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
+  const [joinToggler, setJoinToggler] = useState();
+  const [joinsCount, setJoinsCount] = useState(event.listOfJoin?.length | 0);
   const [readMore, setReadMore] = useState(false);
+  console.log("eventssss", event);
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -106,6 +104,37 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       console.error(e);
     }
   }
+
+  //=====================================
+  const handleJoin = () => {
+    console.log("here");
+    if (joinToggler) {
+      setJoinsCount(joinsCount - 1);
+      undoJoinEvent();
+      setJoinToggler(false);
+    } else {
+      joinEvent();
+      setJoinsCount(joinsCount + 1);
+      setJoinToggler(true);
+    }
+  };
+
+  const joinEvent = async () => {
+    try {
+      await EventsApi.joinEvent(event.id).then(setJoinToggler(true));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const undoJoinEvent = async () => {
+    try {
+      await EventsApi.undoJoinEvent(joinToggler.id);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  //=====================================
 
   useEffect(() => {
     EventCommentsApi.getEventComments(event.id)
@@ -283,7 +312,21 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         {eventComments.length} comment(s)
                       </Comment.Action>
                       <Comment.Action active>
-                        <JoinButton />
+                        <Feed.Meta>
+                          <Feed.Label>
+                            <Icon
+                              name="group"
+                              onClick={handleJoin}
+                              inverted
+                              color="green"
+                            />
+                            {joinsCount}
+                          </Feed.Label>
+                        </Feed.Meta>
+                        {/* <Button onClick={handleJoin}>
+                        <JoinButton  />
+                        {joinsCount}
+                        </Button> */}
                       </Comment.Action>
                     </Comment.Actions>
                   </Comment>

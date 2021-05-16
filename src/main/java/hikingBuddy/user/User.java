@@ -3,7 +3,9 @@ package hikingBuddy.user;
 import hikingBuddy.comments.Comment;
 import hikingBuddy.eventComments.EventComment;
 import hikingBuddy.events.Event;
+import hikingBuddy.joinEvents.JoinEvent;
 import hikingBuddy.posts.Post;
+import hikingBuddy.postLikes.PostLike;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -53,11 +55,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<EventComment> eventComments;
 
-    // @ManyToOne
-    // private User userFollowed;
+    @OneToMany(mappedBy = "likedUser")
+    List<PostLike> likedPosts;
 
-    // @OneToMany(mappedBy = "user")
-    // private List<User> followersList;
+    @OneToMany(mappedBy = "joinUser")
+     List<JoinEvent> joinEvent;
 
     @ManyToMany
     private Collection<User> followersList;
@@ -180,6 +182,22 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public List<PostLike> getLikedPosts() {
+        return likedPosts;
+    }
+
+    public void setLikedPosts(List<PostLike> likedPosts) {
+        this.likedPosts = likedPosts;
+    }
+
+    public List<JoinEvent> getJoinEvent() {
+        return joinEvent;
+    }
+
+    public void setJoinEvent(List<JoinEvent> joinEvent) {
+        this.joinEvent = joinEvent;
     }
 
     public void addFollower(User follower) {
