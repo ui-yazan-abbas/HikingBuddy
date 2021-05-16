@@ -5,7 +5,6 @@ import CommentsApi from "../../api/CommentsApi";
 import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
 import moment from "moment";
-import Like from "../posts/Like";
 
 
 
@@ -36,11 +35,12 @@ import {
 export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
-
+  const [likeToggler, setLikeToggler] = useState();
+  const [likesCount, setLikesCount] = useState(post.listOfLikes?.length | 0);
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
-
+  console.log("listOf", post.listOfLikes.length);
   async function createComment(commentData) {
     try {
       const response = await CommentsApi.createComment(post.id, commentData);
@@ -78,6 +78,43 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
       console.error(e);
     }
   }
+  //=====================================
+  const handleLike = (e) => {
+    console.log("here");
+    if (likeToggler) {
+      setLikesCount(likesCount - 1);
+      undoLikePost();
+      setLikeToggler(false);
+    } else {
+      likePost();
+      setLikesCount(likesCount + 1);
+      setLikeToggler(true);
+    }
+  };
+  const likePost = async () => {
+    try {
+      await PostsApi.likePost(post.id).then(setLikeToggler(true));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  const undoLikePost = async () => {
+    try {
+      await PostsApi.undoLikePost(post.id).then(setLikeToggler(false));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  const btnStyle1 = {
+    margin: "1px",
+    color: "red",
+  };
+  const btnDefault = {
+    margin: "1px",
+    color: "green",
+  };
+
+  //=====================================
 
   useEffect(() => {
     CommentsApi.getComments(post.id).then(({ data }) => setComments(data));
@@ -131,31 +168,26 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
           <Grid columns={2} textAlign="center" stackable>
             <Grid.Column>
-            <Icon name="location arrow" />
+              <Icon name="location arrow" />
               <b>Location:</b> {postTitle}
             </Grid.Column>
             <Grid.Column>
-            <Icon name="chart area" />
+              <Icon name="chart area" />
               <b>Distance:</b> {postKm} km
             </Grid.Column>
           </Grid>
 
+          <Feed.Extra center>
+            <Divider hidden />
+            <Image src={post.imageUrl} className="shadow" /> <Divider hidden />
+          </Feed.Extra>
 
-            <Feed.Extra center>
-              <Divider hidden />
-              <Image src={post.imageUrl} className="shadow" />{" "}
-              <Divider hidden />
-             
-   </Feed.Extra>
-  
-              <Feed.Summary className="margin-left">
+          <Feed.Summary className="margin-left">
             <Comment.Metadata>
               <Comment.Text>{postBody}</Comment.Text>
             </Comment.Metadata>
           </Feed.Summary>
 
-      
-          
           <Header as="h3" dividing content="" textAlign="center"></Header>
           <br></br>
 
@@ -166,13 +198,13 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   {post.user == user.name && (
                     <>
                       <Comment.Action
-                       as="a"
+                        as="a"
                         active
                         onClick={() => setIsUpdating(true)}
                       >
                         Edit post
                       </Comment.Action>
-                      <Comment.Action  as="a" onClick={onDeleteClick} active>
+                      <Comment.Action as="a" onClick={onDeleteClick} active>
                         {" "}
                         Delete post
                       </Comment.Action>
@@ -183,7 +215,16 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     {comments.length} comment(s)
                   </Comment.Action>
                   <Comment.Action active>
-                    <Like />
+                    <Feed.Like>
+                      <Icon
+                        name="like"
+                        inverted
+                        color="red"
+                        onClick={handleLike}
+                      />
+
+                      {likesCount}
+                    </Feed.Like>
                   </Comment.Action>
                 </Comment.Actions>
               </Comment>
@@ -193,7 +234,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
           <br></br>
           {/* Buttons for share to social media and like button */}
           <Button.Group size="small" className="AvatarWrap">
-            
             <FacebookShareButton
               url={window.location.href} //share the actual link of the post
               title={post.user} //the user who wrote the post
@@ -220,7 +260,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
             </WhatsappShareButton>
           </Button.Group>
 
-          
           {/* Buttons for share to social media finish here  */}
           <Header as="h3" dividing content="" textAlign="center"></Header>
 

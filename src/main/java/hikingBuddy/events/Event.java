@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import hikingBuddy.comments.Comment;
 import hikingBuddy.eventComments.EventComment;
 import hikingBuddy.user.User;
+import hikingBuddy.joinEvents.JoinEvent;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -13,7 +14,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-public class Event{
+public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,7 +46,7 @@ public class Event{
     @Column(nullable = false)
     @NotEmpty
     private String body;
-    
+
     private String trailHyperlink;
 
     private String roomName;
@@ -58,12 +59,15 @@ public class Event{
     @JsonIdentityReference(alwaysAsId = true)
     private User user;
 
+    @OneToMany(mappedBy = "joinEvent", cascade = CascadeType.ALL)
+    private List<JoinEvent> listOfJoinEvent;
 
     public Event() {
     }
 
     public Event(@NotEmpty String body, @NotEmpty String trailName, @NotEmpty String eventDuration,
-     @NotEmpty String eventDistance, @NotEmpty String maxNum, @NotEmpty String eventDifficulty, @NotEmpty String meetPoint, String trailHyperlink, String roomName) {
+            @NotEmpty String eventDistance, @NotEmpty String maxNum, @NotEmpty String eventDifficulty,
+            @NotEmpty String meetPoint, String trailHyperlink, String roomName) {
 
         this.body = body;
         this.trailName = trailName;
@@ -100,7 +104,7 @@ public class Event{
         this.trailName = trailName;
     }
 
-      public String getEventDuration() {
+    public String getEventDuration() {
         return eventDuration;
     }
 
@@ -108,7 +112,7 @@ public class Event{
         this.eventDuration = eventDuration;
     }
 
-     public String getEventDistance() {
+    public String getEventDistance() {
         return eventDistance;
     }
 
@@ -116,7 +120,7 @@ public class Event{
         this.eventDistance = eventDistance;
     }
 
-     public String getMaxNum() {
+    public String getMaxNum() {
         return maxNum;
     }
 
@@ -148,7 +152,7 @@ public class Event{
         this.trailHyperlink = trailHyperlink;
     }
 
-     public String getRoomName() {
+    public String getRoomName() {
         return roomName;
     }
 
@@ -156,14 +160,20 @@ public class Event{
         this.roomName = roomName;
     }
 
-
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User userEvents) {
         this.user = userEvents;
+    }
+
+    public List<JoinEvent> getListOfJoin() {
+        return listOfJoinEvent;
+    }
+
+    public void setListOfJoin(List<JoinEvent> listOfJoinEvent) {
+        this.listOfJoinEvent = listOfJoinEvent;
     }
 
     public List<EventComment> getEventCommentList() {
