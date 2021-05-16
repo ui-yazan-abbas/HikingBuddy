@@ -36,7 +36,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
   const [joinToggler, setJoinToggler] = useState();
-  const [joinsCount, setJoinsCount] = useState(event.listOfJoin.length | 0);
+  const [joinsCount, setJoinsCount] = useState(event.listOfJoin?.length | 0);
   const [readMore, setReadMore] = useState(false);
   console.log("eventssss", event);
 

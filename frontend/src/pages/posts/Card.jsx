@@ -34,7 +34,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
   const [likeToggler, setLikeToggler] = useState();
-  const [likesCount, setLikesCount] = useState(post.listOfLikes.length | 0);
+  const [likesCount, setLikesCount] = useState(post.listOfLikes?.length | 0);
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
