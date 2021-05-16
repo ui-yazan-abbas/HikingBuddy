@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import JoinButton from "./JoinButton";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
