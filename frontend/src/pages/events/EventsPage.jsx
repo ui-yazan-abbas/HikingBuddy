@@ -53,12 +53,15 @@ export default function EventsPage({ event, onDeleteClick, user }) {
   ));
 
   return (
-    <div className="empty-state">
+    <div className="cent">
       <EventsForm onSubmit={(eventData) => createEvent(eventData)} />
-      {CardsArray1}
-      {/* <div className="empty-state">
-        <img src={imgSrc}></img>
-      </div> */}
+      {events?.length !== 0 ? (
+        <div>{CardsArray1}</div>
+      ) : (
+        <div className="empty-state">
+          <img className="empty-img" src={imgSrc} />
+        </div>
+      )}
     </div>
   );
 }
