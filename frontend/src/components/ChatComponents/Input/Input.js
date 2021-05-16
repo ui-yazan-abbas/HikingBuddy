@@ -1,5 +1,5 @@
 import React, {Component, useState} from "react";
-import { useHistory } from "react-router-dom";
+
 
 import "./Input.css";
 import "emoji-mart/css/emoji-mart.css";
@@ -60,14 +60,6 @@ const Input = ({message, setMessage, sendMessage}) => {
         }
     }
 
-
-        const history = useHistory();
-
-        const changeRoute = () =>{
-            history.push('events');
-        }
-
-
         return (
         <form2 className="form" onSubmit={() => onSubmit()}>
             {showEmojii()}
@@ -91,11 +83,6 @@ const Input = ({message, setMessage, sendMessage}) => {
             <button className="sendButton" onClick={() => sendMessage(text)}>
                 SEND
             </button>
-
-
-    <button type="button" className='sendButton' onClick= {changeRoute}>
-        Leave Chat
-    </button>
 
         </form2>
 

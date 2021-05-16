@@ -6,6 +6,8 @@ import TextContainer from "../TextContainer/TextContainer";
 import Messages from "../Messages/Messages";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
+import events from "../../../pages/events/EventsCard";
+import { useHistory } from "react-router-dom";
 
 
 import "./Chat.css";
