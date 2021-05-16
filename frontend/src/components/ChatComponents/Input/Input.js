@@ -48,9 +48,7 @@ const Input = ({message, setMessage, sendMessage}) => {
         setShowEmoji(false)
     };
 
-    const onClickEmoji = (e) => {
-        e.preventDefault();
-        console.log("teste");
+    const onClickEmoji = () => {
         if (showEmoji) {
             //this.setState({showEmoji: false});
             setShowEmoji(false)

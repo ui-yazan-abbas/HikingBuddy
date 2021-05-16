@@ -63,6 +63,21 @@ const Chat = ({ location }) => {
     }
   };
 
+  const history = useHistory();
+
+  const changeRoute = () =>{
+    history.push('events');
+  }
+
+  const disconnectSocket = (socket) => {
+    try {
+      socket && socket.emit("sign-out");
+      changeRoute()
+    } catch(e) {
+      console.error(e)
+    }
+  }
+
   return (
     <div className="outerContainerc2">
       <div className="containerc2">
@@ -74,6 +89,9 @@ const Chat = ({ location }) => {
           sendMessage={sendMessage}
         />
       </div>
+      <button className='sendButton' type={"button"} onClick={() => disconnectSocket(socket) }>
+        Leave Chat
+      </button>
       <TextContainer users={users} />
     </div>
   );
