@@ -35,11 +35,11 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [comments, setComments] = useState([]);
   const [likeToggler, setLikeToggler] = useState();
-  const [likesCount, setLikesCount] = useState(postLikes?.length | 0);
+  const [likesCount, setLikesCount] = useState(post?.listOfLikes.length);
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
-
+console.log("listOf", post.listOfLikes.length)
   async function createComment(commentData) {
     try {
       const response = await CommentsApi.createComment(post.id, commentData);
@@ -78,7 +78,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     }
   }
   //=====================================
-  const handleLike = () => {
+  const handleLike = (e) => {
+    console.log("here");
     if (likeToggler) {
       setLikesCount(likesCount - 1);
       undoLikePost();
@@ -91,14 +92,14 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   };
   const likePost = async () => {
     try {
-      await PostsApi.likePost(id).then(({ data }) => setLikeToggler(data));
+      await PostsApi.likePost(post.id).then(setLikeToggler(true));
     } catch (e) {
       console.error(e);
     }
   };
   const undoLikePost = async () => {
     try {
-      await PostsApi.undoLikePost(likeToggler.id);
+      await PostsApi.undoLikePost(post.id).then(setLikeToggler(false));
     } catch (e) {
       console.error(e);
     }
@@ -194,7 +195,13 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     {comments.length} comment(s)
                   </Comment.Action>
                   <Comment.Action active>
-                    <Like onClick={handleLike} />
+                    <Button onClick={handleLike}>
+                      <Like />
+                      <label>
+                      {likesCount}
+                      </label>
+                     
+                    </Button>
                   </Comment.Action>
                 </Comment.Actions>
               </Comment>

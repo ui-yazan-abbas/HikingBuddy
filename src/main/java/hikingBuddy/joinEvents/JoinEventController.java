@@ -20,8 +20,8 @@ public class JoinEventController {
     }
 
     @PostMapping("/{eventId}/join")
-    public ResponseEntity<JoinEvent> addJoin(@PathVariable Long EventId) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(joinEventService.addJoin(EventId));
+    public ResponseEntity<JoinEvent> addJoin(@PathVariable Long eventId) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(joinEventService.addJoin(eventId));
     }
 
     @GetMapping("/{eventId}/join")

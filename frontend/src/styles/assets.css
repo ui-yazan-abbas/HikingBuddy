@@ -26,10 +26,9 @@
 
 .shadow {
   max-width: 100%;
-    height: auto;
-    display: table;
-    margin: 0 auto;
-
+  height: auto;
+  display: table;
+  margin: 0 auto;
 }
 
 .margin-left {
@@ -44,10 +43,20 @@
 }
 
 .modal.show {
-  z-index: 100000!important;
+  z-index: 100000 !important;
 }
 
-.modal{
+.modal {
   top: 50px;
-  
 }
+
+.empty-State{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+}
+

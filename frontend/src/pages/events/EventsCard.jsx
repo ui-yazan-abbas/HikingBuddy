@@ -41,8 +41,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [eventComments, setEventComments] = useState([]);
   const [joinToggler, setJoinToggler] = useState();
-  const [joinsCount, setJoinsCount] = useState(eventJoins?.length | 0);
+  const [joinsCount, setJoinsCount] = useState(event.listOfJoin.length);
   const [readMore, setReadMore] = useState(false);
+  console.log("eventssss", event)
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -111,6 +112,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
   //=====================================
   const handleJoin = () => {
+    console.log("here")
     if (joinToggler) {
       setJoinsCount(joinsCount - 1);
       undoJoinEvent();
@@ -118,13 +120,13 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     } else {
       joinEvent();
       setJoinsCount(joinsCount + 1);
-      setLikeToggler(true);
+      setJoinToggler(true);
     }
   };
 
   const joinEvent = async () => {
     try {
-      await EventsApi.joinEvent(id).then(({ data }) => setJoinToggler(data));
+      await EventsApi.joinEvent(event.id).then(setJoinToggler(true));
     } catch (e) {
       console.error(e);
     }
@@ -315,7 +317,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         {eventComments.length} comment(s)
                       </Comment.Action>
                       <Comment.Action active>
-                        <JoinButton onClick={handleJoin} />
+                        <Button onClick={handleJoin}>
+                        <JoinButton  />
+                        {joinsCount}
+                        </Button>
                       </Comment.Action>
                     </Comment.Actions>
                   </Comment>
