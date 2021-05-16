@@ -14,7 +14,6 @@ import {
   Button,
   Feed,
   Comment,
-  Feed,
   Header,
   Icon,
   Segment,
@@ -324,7 +323,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                       )}
 
                       <Comment.Action active>
-                        {eventComments.length} comment(s)
+                        {/* {eventComments.length} comment(s) */}
                       </Comment.Action>
                       <Comment.Action active>
                         <Feed.Meta>
