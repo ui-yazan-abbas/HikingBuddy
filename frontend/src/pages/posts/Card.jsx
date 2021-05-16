@@ -5,7 +5,6 @@ import CommentsApi from "../../api/CommentsApi";
 import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
 import moment from "moment";
-import Like from "../posts/Like";
 
 import {
   Grid,
@@ -39,7 +38,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
-console.log("listOf", post.listOfLikes.length)
+  console.log("listOf", post.listOfLikes.length);
   async function createComment(commentData) {
     try {
       const response = await CommentsApi.createComment(post.id, commentData);
@@ -104,6 +103,15 @@ console.log("listOf", post.listOfLikes.length)
       console.error(e);
     }
   };
+  const btnStyle1 = {
+    margin: "1px",
+    color: "red",
+  };
+  const btnDefault = {
+    margin: "1px",
+    color: "green",
+  };
+
   //=====================================
 
   useEffect(() => {
@@ -195,13 +203,16 @@ console.log("listOf", post.listOfLikes.length)
                     {comments.length} comment(s)
                   </Comment.Action>
                   <Comment.Action active>
-                    <Button onClick={handleLike}>
-                      <Like />
-                     
-                      <label>
+                    <Feed.Like>
+                      <Icon
+                        name="like"
+                        inverted
+                        color="red"
+                        onClick={handleLike}
+                      />
+
                       {likesCount}
-                      </label>
-                    </Button>
+                    </Feed.Like>
                   </Comment.Action>
                 </Comment.Actions>
               </Comment>
