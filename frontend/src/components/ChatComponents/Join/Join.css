@@ -42,7 +42,7 @@ body {
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
   background-color: #ffffff;
-  border-radius: 1px;
+  border-radius: 15px;
   /* border: 2px solid #dcdcdc; */
   display: inline-block;
   cursor: pointer;
@@ -58,18 +58,18 @@ body {
 }
 
 .heading2 {
-  color: cornflowerblue;
+  color: #2786e9;
   font-size: 2em;
   padding-bottom: 10px;
   border-bottom: 2px solid white;
 }
 
 .button2 {
-  box-shadow: inset 0px 1px 0px 0px #a4e271;
-  background: linear-gradient(to bottom, #89c403 5%, #77a809 100%);
-  background-color: #89c403;
+  box-shadow: inset 0px 1px 0px 0px #2ecc40;
+  background: linear-gradient(to bottom, #2ecc40 5%, #2ecc40 100%);
+  background-color: #c1d98c;
   border-radius: 6px;
-  border: 1px solid #74b807;
+  border: 1px solid #2ecc40;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -78,7 +78,7 @@ body {
   font-weight: bold;
   padding: 15px 35px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #528009;
+  text-shadow: 0px 1px 0px #2f6627;
 }
 
 .mt-20 {
