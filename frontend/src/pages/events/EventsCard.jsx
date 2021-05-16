@@ -4,6 +4,8 @@ import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
 import map from "../../assets/map.png";
+import Nice_map2 from "../../assets/Nice_map2.jpg";
+
 
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
@@ -11,6 +13,7 @@ import EventCommentForm from "../eventComments/EventCommentForm";
 
 import {
   Button,
+  Feed,
   Comment,
   Form,
   Header,
@@ -158,7 +161,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
       <p>
         <a href={isNewHyperlink} target="_blank">
-          See on Google Map
+          View in GoogleMaps
         </a>
       </p>
 
@@ -179,9 +182,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
   return (
     <Container>
-      <Grid centered columns={1}>
+      <Segment.Group>
+      <Segment>
+
+      
         {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
-        <Comment.Group>
+        <Comment.Group textAlign="left">
           <Comment>
             {/* <Comment.Content> */}
             <br></br>
@@ -189,6 +195,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             {/* <Link to={`/${event.user}/profile`}>
               <Comment.Avatar as="a" src={user.imageUrl} />
             </Link> */}
+
+
 
             <Link to={`/${event.user}/profile`}>
               <Image
@@ -201,17 +209,21 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
             </Link>
 
+            <Feed.Summary>
             <Comment.Metadata>
               <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
             </Comment.Metadata>
+            </Feed.Summary>
 
-            <br></br>
-            {/* <br></br>
-              <br></br> */}
+           
+            </Comment>
+            </Comment.Group>
+             
+            <Grid centered columns={1}>
             <Segment.Group>
               <Segment textAlign="center">
                 <Comment.Text>
-                  {" "}
+                {" "}
                   <a href={isNewHyperlink} target="_blank">
                     {" "}
                     <h3>
@@ -221,7 +233,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 </Comment.Text>
 
                 <Comment.Metadata>
-                  <Image href={isNewHyperlink} target="_blank" src={map} />
+                  <Image rounded href={isNewHyperlink} target="_blank" src={Nice_map2} />
                 </Comment.Metadata>
 
                 <br></br>
@@ -361,10 +373,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               </Segment>
             </Segment.Group>
             {/* </Comment.Content> */}
-          </Comment>
-        </Comment.Group>
+         
         {/* </Grid.Column>  */}
       </Grid>
+
+      </Segment>
+      </Segment.Group>
     </Container>
   );
 }
