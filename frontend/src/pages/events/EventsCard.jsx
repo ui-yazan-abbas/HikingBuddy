@@ -12,13 +12,9 @@ import EventCommentForm from "../eventComments/EventCommentForm";
 import {
   Button,
   Comment,
-  Form,
+  Feed,
   Header,
-  Input,
-  TextArea,
-  Card,
   Icon,
-  Responsive,
   Segment,
   Container,
   Image,
@@ -43,7 +39,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const [joinToggler, setJoinToggler] = useState();
   const [joinsCount, setJoinsCount] = useState(event.listOfJoin.length | 0);
   const [readMore, setReadMore] = useState(false);
-  console.log("eventssss", event)
+  console.log("eventssss", event);
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -112,7 +108,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
   //=====================================
   const handleJoin = () => {
-    console.log("here")
+    console.log("here");
     if (joinToggler) {
       setJoinsCount(joinsCount - 1);
       undoJoinEvent();
@@ -317,10 +313,21 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         {eventComments.length} comment(s)
                       </Comment.Action>
                       <Comment.Action active>
-                        <Button onClick={handleJoin}>
+                        <Feed.Meta>
+                          <Feed.Label>
+                            <Icon
+                              name="group"
+                              onClick={handleJoin}
+                              inverted
+                              color="green"
+                            />
+                            {joinsCount}
+                          </Feed.Label>
+                        </Feed.Meta>
+                        {/* <Button onClick={handleJoin}>
                         <JoinButton  />
                         {joinsCount}
-                        </Button>
+                        </Button> */}
                       </Comment.Action>
                     </Comment.Actions>
                   </Comment>
