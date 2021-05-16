@@ -72,7 +72,8 @@ export default function PostForm({ onSubmit, post }) {
           <Modal.Description>
             <Form success>
               <Form.Group widths="equal">
-                <Form.Field>
+                <Form.Field required>
+
                   <label>Location or Trail</label>
                   <Form.Input
                     fluid
@@ -81,7 +82,7 @@ export default function PostForm({ onSubmit, post }) {
                     onChange={(e) => setPostLocation(e.target.value)}
                   />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label>Distance in km</label>
                   <Form.Input
                     placeholder="35"
@@ -90,10 +91,11 @@ export default function PostForm({ onSubmit, post }) {
                   />
                 </Form.Field>
               </Form.Group>
-              <Form.Field>
+              <Form.Field required>
                 <label>About my hike (250 characters max)</label>
                 <Form.Input
                   fluid
+                  
                   maxLength="250"
                   placeholder="I recommend because..."
                   value={body}
