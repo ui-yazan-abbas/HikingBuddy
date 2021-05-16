@@ -14,7 +14,9 @@ export default function CommentCard({ comment, onDeleteClick, user }) {
       <Comment.Group>
         <Comment>
         <Link to={`/${comment.user}/profile`}>
-          <Comment.Avatar src={user.imageUrl} />
+
+        <Comment.Avatar src="https://i.imgur.com/G5UIwnL.png" />
+          {/* <Comment.Avatar src={user.imageUrl} /> */}
           </Link>
           <Comment.Content>
             <Link to={`/${comment.user}/profile`}>

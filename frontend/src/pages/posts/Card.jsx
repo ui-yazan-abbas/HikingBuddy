@@ -98,13 +98,21 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
       <Segment.Group>
 
       
+      {/* Avatars from Semantic UI
+      https://gist.github.com/tuur29/2daf51872917b6143f439c01f922364b */}
+
         <Segment>
           <Link to={`/${post.user}/profile`}>
             <Image
               floated="left"
               size="mini"
               as="a"
-              src={user.imageUrl || null}
+              
+
+              src="https://i.imgur.com/G5UIwnL.png"
+              // src="https://i.imgur.com/6OUVDLi.png"
+              
+              // src={user.imageUrl}
             />
           </Link>
 
@@ -237,6 +245,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               post={post}
             />
           )}
+
+
 
           <div className="comments-form">
             <CommentForm id={post.id} onSubmit={createComment} />

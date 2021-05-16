@@ -195,7 +195,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 floated="left"
                 size="mini"
                 as="a"
-                src={user.imageUrl || null}
+                src="https://i.imgur.com/G5UIwnL.png"
+                // src={user.imageUrl || null}
               />
               <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
             </Link>
@@ -213,7 +214,9 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                   {" "}
                   <a href={isNewHyperlink} target="_blank">
                     {" "}
-                    Click to see Trail Location: {isNewTrailName}
+                    <h3>
+                      <u>Trail Location: {isNewTrailName}</u>
+                    </h3>
                   </a>
                 </Comment.Text>
 

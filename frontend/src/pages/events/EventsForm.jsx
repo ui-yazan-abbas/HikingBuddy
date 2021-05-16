@@ -78,7 +78,10 @@ export default function EventsForm({ onSubmit }) {
         }
       >
         <Header as="h3" dividing basic color="green">
-          <h2> Create Your Hiking Event</h2>
+          <h3>
+            {" "}
+            <b>Create Your Hiking Event</b>
+          </h3>
         </Header>
 
         <Modal.Content image scrolling>
@@ -196,16 +199,6 @@ export default function EventsForm({ onSubmit }) {
 
         <Modal.Actions>
           <Button
-            onClick={() => setOpen(false)}
-            as="a"
-            inverted
-            color="red"
-            type="submit"
-          >
-            Cancel <Icon name="remove" />
-          </Button>
-
-          <Button
             as="a"
             inverted
             color="blue"
@@ -218,6 +211,16 @@ export default function EventsForm({ onSubmit }) {
           >
             Create event
             <Icon name="chevron right" />
+          </Button>
+
+          <Button
+            onClick={() => setOpen(false)}
+            as="a"
+            inverted
+            color="red"
+            type="submit"
+          >
+            Cancel           <Icon name="remove" />
           </Button>
         </Modal.Actions>
       </Modal>

@@ -63,7 +63,7 @@ export default function PostForm({ onSubmit, post }) {
         }
       >
         <Header as="h3" dividing basic color="green">
-          <h2>Enjoyed a hike? Share and recommend!</h2>
+          <h3><b>Enjoyed a hike? Recommend and share!</b></h3>
         </Header>
 
         {/* <h4 className="card-title">Make a new post</h4> */}
@@ -113,17 +113,8 @@ export default function PostForm({ onSubmit, post }) {
         </Modal.Content>
 
         <Modal.Actions>
-          <Button
-            onClick={() => setOpen(false)}
-            as="a"
-            inverted
-            color="red"
-            type="submit"
-          >
-            Cancel <Icon name="remove" />
-          </Button>
 
-          <Button
+        <Button
             as="a"
             inverted
             color="blue"
@@ -134,8 +125,21 @@ export default function PostForm({ onSubmit, post }) {
             }}
             type="submit"
           >
-            Post
+            Post <Icon name="chevron right" />
           </Button>
+
+          <Button
+            onClick={() => setOpen(false)}
+            as="a"
+            inverted
+            color="red"
+            type="submit"
+          >
+            Cancel <Icon name="remove" />
+          </Button>
+
+          
+
         </Modal.Actions>
       </Modal>
     </Card>
