@@ -23,7 +23,7 @@ public class JoinEventService {
     private UserRepository userRepository;
 
     @Autowired
-    public JoinEventService(EventRepository eventRepository, JoinEventRepository joinEventRepositoryRepository,
+    public JoinEventService(EventRepository eventRepository, JoinEventRepository joinEventRepository,
             AuthService authService, UserRepository userRepository) {
         this.eventRepository = eventRepository;
         this.joinEventRepository = joinEventRepository;

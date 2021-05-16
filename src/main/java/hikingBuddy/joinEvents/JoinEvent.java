@@ -52,7 +52,7 @@ public class JoinEvent {
         return joinUser;
     }
 
-    public void setJoinUser(User JoinUser) {
+    public void setJoinUser(User joinUser) {
         this.joinUser = joinUser;
     }
 }
