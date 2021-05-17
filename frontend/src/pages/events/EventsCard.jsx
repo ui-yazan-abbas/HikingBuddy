@@ -210,21 +210,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const linkName = readMore ? "Hide Details << " : "See Details >> ";
 
   return (
-    <Container>
-      <br></br>
-
-      {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
-      <Comment.Group>
-        <Comment>
-          {/* <Comment.Content> */}
-
-          {/* <Link to={`/${event.user}/profile`}>
-              <Comment.Avatar as="a" src={user.imageUrl} />
-            </Link> */}
-
-          {/* <Grid columns={1} textAlign="left">  */}
-
-          <Feed.Summary>
+    <Container className="Container">
+        
+        <Segment.Group>
+          
+          <Segment>
+          <Feed.Label>
             <Link to={`/${event.user}/profile`}>
               <Image
                 floated="left"
@@ -233,51 +224,54 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 src="https://i.imgur.com/G5UIwnL.png"
                 // src={user.imageUrl || null}
               />
-              <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
+ 
+
+              <Comment.Author  as="a"> Created by {event.user}</Comment.Author>{" "}
             </Link>
-          </Feed.Summary>
+          </Feed.Label>
 
           <Feed.Summary>
             <Comment.Metadata>
               <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
             </Comment.Metadata>
           </Feed.Summary>
-          {/* </Grid>   */}
-        </Comment>
-      </Comment.Group>
 
-      <br></br>
-
-      <Grid centered columns={1}>
-        <Segment.Group>
-          <Segment textAlign="center">
-            <Comment.Text>
+            <div className="AvatarWrap">
               {" "}
+              
               <a href={isNewHyperlink} target="_blank">
                 {" "}
+
+                
                 <h3>
+
                   <u>Trail Location: {isNewTrailName}</u>
                 </h3>
               </a>
-            </Comment.Text>
+              </div>
 
-            <Comment.Metadata>
+              <Feed.Extra className="shadow">
+              <a href={isNewHyperlink} target="_blank">
               <Image
-                rounded
+
                 href={isNewHyperlink}
-                target="_blank"
+
                 src={Nice_map2}
-              />
-            </Comment.Metadata>
-
+                className="shadow" /> 
+                  </a>
+              
+                  </Feed.Extra>
             <br></br>
+            <Grid centered columns={1}>
 
-            <Comment.Text>
+            <Feed.Summary className="ma
+             <Comment.Text>rgin-left">
+            <Comment.Metadata>
               <a>
                 <Icon name="chart area" />
                 Distance: {isNewEventDistance} km
               </a>
-            </Comment.Text>
+        
 
             <Comment.Text>
               <a>
@@ -292,10 +286,14 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 {isNewMaxNum}
               </a>
             </Comment.Text>
-
+            </Comment.Metadata>
+            </Feed.Summary>
+            
+</Grid>
+<br></br>
             <br></br>
-
-            <Button
+<Grid centered columns={1}>
+<Button
               basic
               color="green"
               type="submit"
@@ -304,11 +302,19 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               }}
             >
               {linkName}
-            </Button>
+              
+                          </Button>
+                          
+            </Grid>
             <br></br>
             <br></br>
 
+            <Header as="h4" dividing content="" textAlign="center">
             {readMore && extraContent}
+            </Header>
+            <br></br>
+
+               
 
             <Header as="h3" dividing content="" textAlign="center"></Header>
             <br></br>
@@ -353,6 +359,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         </Button> */}
                     </Comment.Action>
                   </Comment.Actions>
+                  
                 </Comment>
               </Comment.Group>
 
@@ -386,6 +393,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               </Button.Group>
               {/* Buttons for share to social media finish here  */}
             </Grid>
+            
           </Segment>
 
           <br></br>
@@ -420,13 +428,14 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             <div className="comments-form">
               <EventCommentForm id={event.id} onSubmit={createEventComment} />
             </div>
+            
           </Segment>
         </Segment.Group>
 
         {/* </Comment.Content> */}
 
         {/* </Grid.Column>  */}
-      </Grid>
+
       <br></br>
       <br></br>
       <br></br>
