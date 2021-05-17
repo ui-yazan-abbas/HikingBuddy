@@ -23,14 +23,12 @@ export default function EventsPage({ event, onDeleteClick, user }) {
     try {
       const response = await EventsApi.createEvent(eventData);
       const event = response.data;
-      const newEvents = events.concat(event);
-
+      const newEvents = events.concat(event).reverse();
       setEvents(newEvents);
     } catch (e) {
       console.error(e);
     }
   }
-
   async function deleteEvent(event) {
     try {
       await EventsApi.deleteEvent(event.id);
