@@ -14,7 +14,7 @@ export default function IntroHome(mobile) {
         style={{ minHeight: 400, padding: "1em 0em" }}
         vertical
       >
-        <video autoPlay loop muted className="video">
+        <video autoPlay loop muted className="video" >
           <source src={introVid} typer="video/mp4" />
         </video>
         <Container text textAlign="center">
