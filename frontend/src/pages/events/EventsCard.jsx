@@ -36,6 +36,7 @@ import {
 
 export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
+
   const [eventComments, setEventComments] = useState([]);
   const [joinToggler, setJoinToggler] = useState();
   const [joinsCount, setJoinsCount] = useState(event.listOfJoin?.length | 0);
@@ -222,7 +223,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             </Link> */}
 
           {/* <Grid columns={1} textAlign="left">  */}
-          
+
           <Feed.Summary>
             <Link to={`/${event.user}/profile`}>
               <Image
@@ -232,8 +233,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 src="https://i.imgur.com/G5UIwnL.png"
                 // src={user.imageUrl || null}
               />
- 
-
               <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
             </Link>
           </Feed.Summary>
@@ -244,7 +243,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             </Comment.Metadata>
           </Feed.Summary>
           {/* </Grid>   */}
-          
         </Comment>
       </Comment.Group>
 
