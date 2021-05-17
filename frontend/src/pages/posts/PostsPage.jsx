@@ -7,6 +7,11 @@ import PostForm from "./Form";
 import Card from "./Card";
 import emptyStateImg from "../../assets/empstate.jpg";
 
+// Semantic UI
+import {
+  Grid,
+} from "semantic-ui-react";
+
 export default function PostsPage({ user }) {
   // Local state
   const [posts, setPosts] = useState([]);
@@ -60,9 +65,11 @@ export default function PostsPage({ user }) {
       {posts.length !== 0 ? (
         <div>{CardsArray}</div>
       ) : (
-        <div className="empty-state">
+        <Grid centered columns={1}>
+        <div className="empty-state"> 
           <img src={imgSrc} alt="empty-state" />
-        </div>
+        </div> 
+        </Grid>
       )}
     </div>
   );

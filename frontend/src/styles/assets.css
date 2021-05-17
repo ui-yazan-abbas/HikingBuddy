@@ -55,7 +55,7 @@
   flex-direction: column;
 }
 
-.cent .empty-state {
+/* .cent .empty-state {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -64,4 +64,4 @@
 
 .empty-img {
   margin-right: 3rem;
-}
+} */
