@@ -330,7 +330,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                         {/* {eventComments.length} comment(s) */}
                       </Comment.Action>
                       <Comment.Action active>
-                        <Feed.Meta>
+                       
                           <Feed.Label>
                             <Icon
                               name="group"
@@ -340,7 +340,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                             />
                             {joinsCount}
                           </Feed.Label>
-                        </Feed.Meta>
+                        
                         {/* <Button onClick={handleJoin}>
                         <JoinButton  />
                         {joinsCount}

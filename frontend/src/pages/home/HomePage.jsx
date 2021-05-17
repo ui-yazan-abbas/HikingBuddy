@@ -67,7 +67,7 @@ const HomepageLayout = () => (
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column width={8}>
-            <Header as="h3" style={{ fontSize: "2em" }}>
+            <Header as="h3" style={{ fontSize: "2em"}}>
               Connect and share best moments
             </Header>
             <p style={{ fontSize: "1.33em" }}>

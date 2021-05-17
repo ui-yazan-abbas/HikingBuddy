@@ -129,7 +129,7 @@ export default function Navbar({ onLogout, currentUser }) {
         <Link className="navbar-brand" to="/feed">
             <img
               className="Avatar"
-              src="https://www.linkpicture.com/q/1_453.jpg"
+              src="https://www.linkpicture.com/q/imageedit_6_6679600314.png"
               alt=""
             />
             </Link>
