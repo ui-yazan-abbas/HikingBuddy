@@ -19,7 +19,7 @@ This web is based on Spring, PostgreSQL, React, React router and Axios. Check th
 
 ### Designed with 
 
-- [Material-ui](https://react.semantic-ui.com/)
+- [semanitc-ui](https://react.semantic-ui.com/)
 - [Sketch](https://www.sketch.com/)
 
 ### Dev Dependencies
@@ -74,7 +74,7 @@ npm start
 
 ## About the project:  
 
-This project is done during the Backend Development Module of the KTH Software Development Academy.
+This is the final group project carried out during KTH Software Development Academy in which we have learned how to work as a team with the agile method, organizing the work with GitHub projects, issues and milestones and communicating every day by Slack.
 
 ## About the team
 
