@@ -17,6 +17,7 @@ export default function EventCommentForm({ id, onSubmit }) {
     // Clear the input field
     setValue("");
   };
+
   function removeTags(str) {
     if (str === null || str === "") return false;
     else str = str.toString();
@@ -26,6 +27,7 @@ export default function EventCommentForm({ id, onSubmit }) {
     // HTML tag with a null string.
     return str.replace(/(<([^>]+)>)/gi, "");
   }
+  
   return (
     <div className="card">
       <div className="card-body">
@@ -40,7 +42,7 @@ export default function EventCommentForm({ id, onSubmit }) {
                     toolbar: "emoticons",
                     toolbar_location: "bottom",
                     placeholder: "Comment...",
-                    menubar: true,
+                    menubar: false,
                   }}
                   value={value}
                   onEditorChange={(newValue, editor) => setValue(newValue)}
