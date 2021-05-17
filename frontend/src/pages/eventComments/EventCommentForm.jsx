@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form, Header } from "semantic-ui-react";
+import Emoji from "../../components/Emoji";
 
 export default function EventCommentForm({ id, onSubmit }) {
   const [body, setBody] = React.useState("");
@@ -20,13 +21,15 @@ export default function EventCommentForm({ id, onSubmit }) {
             <Form>
               <Form.Field>
                 <input
+                  id="commentInput"
                   placeholder="Comment...."
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
                 />
+                <Emoji editorTextChanged={(newText) => setBody(newText)}></Emoji>
               </Form.Field>
               <Button
-              s="a"
+                s="a"
                 inverted
                 color="blue"
                 onClick={handleSubmit}
@@ -34,11 +37,7 @@ export default function EventCommentForm({ id, onSubmit }) {
                 icon="edit"
                 content="Add Comment"
               />
-
-
             </Form>
-
-          
           </div>
         </div>
       </div>
