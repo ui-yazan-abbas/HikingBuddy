@@ -22,7 +22,7 @@ export default function Footer() {
            
               <Image
                 size="small"
-                src="https://www.linkpicture.com/q/logo5_5.png"
+                src="https://www.linkpicture.com/q/imageedit_6_6679600314.png"
                 href="/"
               />
                
