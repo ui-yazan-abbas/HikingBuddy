@@ -13,7 +13,6 @@ export default function EditUserProfile({ currentUser, setToggler, setUser }) {
 
   const change = ({ target: { name, value } }) => {
     setUserForm({ ...userForm, [name]: value });
-    console.log("here", userForm);
   };
 
   const updateUser = async () => {

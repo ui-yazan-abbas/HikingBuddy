@@ -43,7 +43,6 @@ export default function App() {
     getcurrentUser();
     return () => abortFetch.abort();
   }, [loggedIn]);
-  console.log("currentUser", currentUser);
 
   return (
     <div className="container">

@@ -5,7 +5,6 @@ import axios from "axios";
 export default function ImgUpload({ uploadImg }) {
   const [imgFile, setImgFile] = useState(null);
   const imgUpload = (e) => {
-    console.log(e);
     let imageFile = e[0]; //from console it index 0
     let imagePreset = new FormData();
     imagePreset.append("file", imageFile);

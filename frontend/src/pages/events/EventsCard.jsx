@@ -5,7 +5,6 @@ import moment from "moment";
 import map from "../../assets/map.png";
 import Nice_map2 from "../../assets/Nice_map2.jpg";
 
-
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
 import EventCommentForm from "../eventComments/EventCommentForm";
@@ -40,7 +39,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const [joinToggler, setJoinToggler] = useState();
   const [joinsCount, setJoinsCount] = useState(event.listOfJoin?.length | 0);
   const [readMore, setReadMore] = useState(false);
-
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -110,7 +108,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   // Join button handling
 
   const handleJoin = () => {
-    console.log("here");
     if (joinToggler) {
       setJoinsCount(joinsCount - 1);
       undoJoinEvent();
@@ -212,47 +209,43 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   return (
     <Container>
       <Segment.Group>
-      <Segment>
-
-      
-        {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
-        <Comment.Group textAlign="left">
-          <Comment>
-            {/* <Comment.Content> */}
-            <br></br>
-            <br></br>
-            {/* <Link to={`/${event.user}/profile`}>
+        <Segment>
+          {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
+          <Comment.Group textAlign="left">
+            <Comment>
+              {/* <Comment.Content> */}
+              <br></br>
+              <br></br>
+              {/* <Link to={`/${event.user}/profile`}>
               <Comment.Avatar as="a" src={user.imageUrl} />
             </Link> */}
 
+              <Link to={`/${event.user}/profile`}>
+                <Image
+                  floated="left"
+                  size="mini"
+                  as="a"
+                  src="https://i.imgur.com/G5UIwnL.png"
+                  // src={user.imageUrl || null}
+                />
+                <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
+              </Link>
 
-
-            <Link to={`/${event.user}/profile`}>
-              <Image
-                floated="left"
-                size="mini"
-                as="a"
-                src="https://i.imgur.com/G5UIwnL.png"
-                // src={user.imageUrl || null}
-              />
-              <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
-            </Link>
-
-            <Feed.Summary>
-            <Comment.Metadata>
-              <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
-            </Comment.Metadata>
-            </Feed.Summary>
-
-           
+              <Feed.Summary>
+                <Comment.Metadata>
+                  <div>
+                    {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
+                  </div>
+                </Comment.Metadata>
+              </Feed.Summary>
             </Comment>
-            </Comment.Group>
-             
-            <Grid centered columns={1}>
+          </Comment.Group>
+
+          <Grid centered columns={1}>
             <Segment.Group>
               <Segment textAlign="center">
                 <Comment.Text>
-                {" "}
+                  {" "}
                   <a href={isNewHyperlink} target="_blank">
                     {" "}
                     <h3>
@@ -262,7 +255,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 </Comment.Text>
 
                 <Comment.Metadata>
-                  <Image rounded href={isNewHyperlink} target="_blank" src={Nice_map2} />
+                  <Image
+                    rounded
+                    href={isNewHyperlink}
+                    target="_blank"
+                    src={Nice_map2}
+                  />
                 </Comment.Metadata>
 
                 <br></br>
@@ -418,11 +416,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               </Segment>
             </Segment.Group>
             {/* </Comment.Content> */}
-         
-        {/* </Grid.Column>  */}
-      </Grid>
 
-      </Segment>
+            {/* </Grid.Column>  */}
+          </Grid>
+        </Segment>
       </Segment.Group>
     </Container>
   );
