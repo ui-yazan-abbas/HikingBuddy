@@ -33,7 +33,7 @@ export default function FollowerList({ match }) {
             /></Feed.Label>
           
           <Feed.Content>
-            <Feed.Date content= {moment('Thu May 13 2021 17:30:03 GMT+0300').fromNow(true)}  /> 
+            <Feed.Date content= {moment('Thu May 17 2021 17:30:03 GMT+0300').fromNow()}  /> 
             <Link to={`/${i.name}/profile`}>
             <Feed.Summary>
                <a>{i.name}</a> started to follow {user.name}.
