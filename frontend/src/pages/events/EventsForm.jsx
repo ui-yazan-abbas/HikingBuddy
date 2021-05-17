@@ -15,6 +15,7 @@ import {
   Header,
   Card,
   Grid,
+  Label,
 } from "semantic-ui-react";
 
 export default function EventsForm({ onSubmit }) {
@@ -151,24 +152,29 @@ export default function EventsForm({ onSubmit }) {
                 />
               </Form.Group>
 
-              <Form.Group widths="equal">
+              
                 <Form.Field
                   required
                   control={Input}
-                  label="Meeting point & time"
+                  label="Meeting point and time"
                   placeholder="Central station, Stockholm, 14:05"
                   value={meetPoint}
                   onChange={(e) => setMeetPoint(e.target.value)}
                 />
 
-                <Form.Field
-                  control={Input}
-                  label="Your GoogleMap link"
-                  placeholder="https://goo.gl/maps/T3dWA3q3bGjQxePk9"
-                  value={trailHyperlink}
-                  onChange={(e) => setTrailHyperlink(e.target.value)}
-                />
-              </Form.Group>
+                <Form.Field>
+                  <label>
+                    
+                    <a href="
+https://maps.google.com" target="_blank"><u>Select location in GoogleMaps</u> </a> and share a link 
+                  </label>
+                  <Form.Input
+                    placeholder="https://goo.gl/maps/T3dWA3q3bGjQxePk9"
+                    value={trailHyperlink}
+                    onChange={(e) => setTrailHyperlink(e.target.value)}
+                  />
+                </Form.Field>
+              
 
               <Form.Field
                 control={Input}
@@ -187,12 +193,6 @@ export default function EventsForm({ onSubmit }) {
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
               />
-
-              {/*   <Message
-                success
-                header="Event Created"
-                content="Nice! Now you can go back and see all events"
-              /> */}
             </Form>
           </Modal.Description>
         </Modal.Content>
@@ -220,7 +220,7 @@ export default function EventsForm({ onSubmit }) {
             color="red"
             type="submit"
           >
-            Cancel           <Icon name="remove" />
+            Cancel <Icon name="remove" />
           </Button>
         </Modal.Actions>
       </Modal>

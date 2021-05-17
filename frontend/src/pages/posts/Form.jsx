@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+
 import {
   Button,
   Form,
@@ -44,9 +45,10 @@ export default function PostForm({ onSubmit, post }) {
   };
 
   // to close a Recommed hiking form
-  const closeForm = () => setOpen(false);
+  const closeForm = () => {
+    setOpen(false);
+  };
 
-  //modal
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -63,7 +65,9 @@ export default function PostForm({ onSubmit, post }) {
         }
       >
         <Header as="h3" dividing basic color="green">
-          <h3><b>Enjoyed a hike? Recommend and share!</b></h3>
+          <h3>
+            <b>Enjoyed a hike? Recommend and share!</b>
+          </h3>
         </Header>
 
         {/* <h4 className="card-title">Make a new post</h4> */}
@@ -73,7 +77,6 @@ export default function PostForm({ onSubmit, post }) {
             <Form success>
               <Form.Group widths="equal">
                 <Form.Field required>
-
                   <label>Location or Trail</label>
                   <Form.Input
                     fluid
@@ -95,7 +98,6 @@ export default function PostForm({ onSubmit, post }) {
                 <label>About my hike (250 characters max)</label>
                 <Form.Input
                   fluid
-                  
                   maxLength="250"
                   placeholder="I recommend because..."
                   value={body}
@@ -113,8 +115,7 @@ export default function PostForm({ onSubmit, post }) {
         </Modal.Content>
 
         <Modal.Actions>
-
-        <Button
+          <Button
             as="a"
             inverted
             color="blue"
@@ -137,9 +138,6 @@ export default function PostForm({ onSubmit, post }) {
           >
             Cancel <Icon name="remove" />
           </Button>
-
-          
-
         </Modal.Actions>
       </Modal>
     </Card>

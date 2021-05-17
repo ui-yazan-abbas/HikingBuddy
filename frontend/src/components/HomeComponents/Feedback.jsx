@@ -5,18 +5,20 @@ import { Grid, Header, Image, Segment } from "semantic-ui-react";
 
 export default function Feedback() {
   return (
-    <Segment style={{ padding: "0em" }} vertical>
+    <Segment style={{ padding: "5em 0em" }} vertical>
       <Grid celled="internally" columns="equal" stackable>
         <Grid.Row textAlign="center">
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
             <Header as="h3" style={{ fontSize: "2em" }}>
               "The best place to find adventure buddies"
             </Header>
+            <p style={{ fontSize: "1.33em" }}>
             <Image
               avatar
               src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
             />
-            <b>Eduardo </b>
+            <b>Eduardo Alvarez Nowak</b>
+            </p>
           </Grid.Column>
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
             <Header as="h3" style={{ fontSize: "2em" }}>
