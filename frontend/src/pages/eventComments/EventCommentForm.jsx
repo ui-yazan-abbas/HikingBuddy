@@ -14,7 +14,7 @@ export default function EventCommentForm({ id, onSubmit }) {
     const newValue = removeTags(value);
     console.log(newValue);
 
-    onSubmit({ "eduardo!!!!" });
+    onSubmit("eduardo");
 
     // Clear the input field
     setValue("");
