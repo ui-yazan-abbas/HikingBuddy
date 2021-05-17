@@ -6,6 +6,7 @@
   font-size: 0;
   border-radius: 5px;
   overflow: hidden;
+  
 }
 .activeContainer2 {
   width: 250px;
@@ -14,18 +15,21 @@
   display: inline-block;
   font-size: 15px;
   vertical-align: top;
+  
 }
 
 .activeContainer2 {
   font-size: 14px;
   font-weight: normal;
-  color: royalblue;
+  color: #3c5898;
+  border-radius: 15px;
 }
 
 .bar2 {
-  box-shadow: 0px 10px 14px -7px #276873;
-  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-  background-color: #599bb3;
+  box-shadow: 0px 10px 14px -7px #54c7ff;
+  background: linear-gradient(to bottom, #54c7ff 5%, #3c5898 100%);
+  background-color: #54c7ff;
+  
 }
 
 .activeItem2 {

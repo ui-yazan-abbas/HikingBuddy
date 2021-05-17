@@ -3,6 +3,8 @@ import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
 import map from "../../assets/map.png";
+import Nice_map2 from "../../assets/Nice_map2.jpg";
+
 
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
@@ -10,8 +12,8 @@ import EventCommentForm from "../eventComments/EventCommentForm";
 
 import {
   Button,
-  Comment,
   Feed,
+  Comment,
   Header,
   Icon,
   Segment,
@@ -38,7 +40,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   const [joinToggler, setJoinToggler] = useState();
   const [joinsCount, setJoinsCount] = useState(event.listOfJoin?.length | 0);
   const [readMore, setReadMore] = useState(false);
-  console.log("eventssss", event);
+
 
   //Hooks for Event fields
   const [isNewTrailName, setNewTrailName] = useState(event.trailName);
@@ -105,7 +107,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     }
   }
 
-  //=====================================
+  // Join button handling
+
   const handleJoin = () => {
     console.log("here");
     if (joinToggler) {
@@ -134,7 +137,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       console.error(e);
     }
   };
-  //=====================================
+  // end of Join button handling
 
   useEffect(() => {
     EventCommentsApi.getEventComments(event.id)
@@ -187,7 +190,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
       <p>
         <a href={isNewHyperlink} target="_blank">
-          See on Google Map
+          View in GoogleMaps
         </a>
       </p>
 
@@ -208,9 +211,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
   return (
     <Container>
-      <Grid centered columns={1}>
+      <Segment.Group>
+      <Segment>
+
+      
         {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
-        <Comment.Group>
+        <Comment.Group textAlign="left">
           <Comment>
             {/* <Comment.Content> */}
             <br></br>
@@ -219,35 +225,44 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               <Comment.Avatar as="a" src={user.imageUrl} />
             </Link> */}
 
+
+
             <Link to={`/${event.user}/profile`}>
               <Image
                 floated="left"
                 size="mini"
                 as="a"
-                src={user.imageUrl || null}
+                src="https://i.imgur.com/G5UIwnL.png"
+                // src={user.imageUrl || null}
               />
               <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
             </Link>
 
+            <Feed.Summary>
             <Comment.Metadata>
               <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
             </Comment.Metadata>
+            </Feed.Summary>
 
-            <br></br>
-            {/* <br></br>
-              <br></br> */}
+           
+            </Comment>
+            </Comment.Group>
+             
+            <Grid centered columns={1}>
             <Segment.Group>
               <Segment textAlign="center">
                 <Comment.Text>
-                  {" "}
+                {" "}
                   <a href={isNewHyperlink} target="_blank">
                     {" "}
-                    Click to see Trail Location: {isNewTrailName}
+                    <h3>
+                      <u>Trail Location: {isNewTrailName}</u>
+                    </h3>
                   </a>
                 </Comment.Text>
 
                 <Comment.Metadata>
-                  <Image href={isNewHyperlink} target="_blank" src={map} />
+                  <Image rounded href={isNewHyperlink} target="_blank" src={Nice_map2} />
                 </Comment.Metadata>
 
                 <br></br>
@@ -272,6 +287,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                     {isNewMaxNum}
                   </a>
                 </Comment.Text>
+
+                <br></br>
 
                 <Button
                   basic
@@ -309,7 +326,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                       )}
 
                       <Comment.Action active>
-                        {eventComments.length} comment(s)
+                        {/* {eventComments.length} comment(s) */}
                       </Comment.Action>
                       <Comment.Action active>
                         <Feed.Meta>
@@ -401,10 +418,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
               </Segment>
             </Segment.Group>
             {/* </Comment.Content> */}
-          </Comment>
-        </Comment.Group>
+         
         {/* </Grid.Column>  */}
       </Grid>
+
+      </Segment>
+      </Segment.Group>
     </Container>
   );
 }

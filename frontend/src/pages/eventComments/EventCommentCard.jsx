@@ -17,7 +17,11 @@ export default function EventCommentCard({
       <Comment.Group>
         <Comment>
           <Link to={`/${eventComment.user}/profile`}>
-            <Comment.Avatar src={user.imageUrl} />
+
+          <Comment.Avatar src="https://i.imgur.com/G5UIwnL.png" />
+
+            {/* {<Comment.Avatar src={user.imageUrl} />} */}
+
           </Link>
           <Comment.Content>
             <Link to={`/${eventComment.user}/profile`}>

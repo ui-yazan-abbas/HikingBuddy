@@ -22,22 +22,18 @@ import ChevronRightIcon from "@material-ui/icons/AccountCircle";
 import ChevronLeftIcon from "@material-ui/icons/AccountCircle";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ForumIcon from "@material-ui/icons/Forum";
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import green from '@material-ui/core/colors/green';
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import green from "@material-ui/core/colors/green";
 
 const drawerWidth = 240;
-
-
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
   root: {
     display: "flex",
-    
- 
   },
   appBar: {
-    background : '#387c6d',
+    background: "#079D48",
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -120,22 +116,23 @@ export default function Navbar({ onLogout, currentUser }) {
       <CssBaseline />
       <AppBar
         position="fixed"
-       
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
-        <Link className="navbar-brand" to="/feed">
+          <Link className="navbar-brand" to="/feed">
             <img
               className="Avatar"
               src="https://www.linkpicture.com/q/1_453.jpg"
               alt=""
             />
-            </Link>
-          <Typography variant="h6" noWrap className={classes.title}>
-    
-          </Typography>
+          </Link>
+          <Typography
+            variant="h6"
+            noWrap
+            className={classes.title}
+          ></Typography>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -166,7 +163,7 @@ export default function Navbar({ onLogout, currentUser }) {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            <ArrowForwardIcon  color="primary"/>
+            <ArrowForwardIcon color="primary" />
           </IconButton>
         </div>
         <Divider />

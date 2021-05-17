@@ -1,7 +1,7 @@
 .infoBar2 {
-  box-shadow: 0px 10px 14px -7px #276873;
-  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-  background-color: #599bb3;
+  box-shadow: 0px 10px 14px -7px #54c7ff;
+  background: linear-gradient(to bottom, #54c7ff 5%, #3c5898 100%);
+  background-color: #54c7ff;
   border-radius: 1px;
   display: inline-block;
   cursor: pointer;
@@ -36,4 +36,5 @@
 
 .onlineIcon {
   margin-right: 5%;
+  margin-top: 3%;
 }
