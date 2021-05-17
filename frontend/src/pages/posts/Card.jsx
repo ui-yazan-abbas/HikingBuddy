@@ -38,7 +38,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
-  
+
   async function createComment(commentData) {
     try {
       const response = await CommentsApi.createComment(post.id, commentData);
@@ -131,9 +131,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     <Container>
       <br></br>
       <Segment.Group>
-
-      
-      {/* Avatars from Semantic UI
+        {/* Avatars from Semantic UI
       https://gist.github.com/tuur29/2daf51872917b6143f439c01f922364b */}
 
         <Segment>
@@ -142,11 +140,9 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               floated="left"
               size="mini"
               as="a"
-              
-
               src="https://i.imgur.com/G5UIwnL.png"
               // src="https://i.imgur.com/6OUVDLi.png"
-              
+
               // src={user.imageUrl}
             />
           </Link>
@@ -216,6 +212,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     <Feed.Like>
                       <Icon
                         name="like"
+                        size="large"
                         inverted
                         color="red"
                         onClick={handleLike}
@@ -282,8 +279,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               post={post}
             />
           )}
-
-
 
           <div className="comments-form">
             <CommentForm id={post.id} onSubmit={createComment} />
