@@ -6,7 +6,7 @@ import TextContainer from "../TextContainer/TextContainer";
 import Messages from "../Messages/Messages";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
-import events from "../../../pages/events/EventsCard";
+import feed from "../../../pages/posts/Card";
 import { useHistory } from "react-router-dom";
 
 
@@ -66,7 +66,7 @@ const Chat = ({ location }) => {
   const history = useHistory();
 
   const changeRoute = () =>{
-    history.push('events');
+    history.push('feed');
   }
 
   const disconnectSocket = (socket) => {
