@@ -10,6 +10,7 @@ import emptyStateImg from "../../assets/empstate.jpg";
 // Semantic UI
 import {
   Grid,
+  Container
 } from "semantic-ui-react";
 
 export default function PostsPage({ user }) {
@@ -65,11 +66,13 @@ export default function PostsPage({ user }) {
       {posts.length !== 0 ? (
         <div>{CardsArray}</div>
       ) : (
+        <Container>
         <Grid centered columns={1}>
         <div className="empty-state"> 
           <img src={imgSrc} alt="empty-state" />
         </div> 
         </Grid>
+        </Container>
       )}
     </div>
   );

@@ -10,6 +10,7 @@ import emptyStateImg from "../../assets/em-state-events.jpeg";
 // Semantic UI
 import {
   Grid,
+  Container
 } from "semantic-ui-react";
 
 export default function EventsPage({ event, onDeleteClick, user }) {
@@ -63,11 +64,13 @@ export default function EventsPage({ event, onDeleteClick, user }) {
       {events?.length !== 0 ? (
         <div>{CardsArray1}</div>
       ) : (
+        <Container>
         <Grid centered columns={1}>
         <div className="empty-state">
           <img className="empty-img" src={imgSrc} />
         </div>
         </Grid>
+        </Container>
       )}
     </div>
   );
