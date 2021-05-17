@@ -15,7 +15,6 @@ export default function PostsPage({ user }) {
   // Methods
 
   // Components
-
   async function createPost(postData) {
     try {
       const response = await PostsApi.createPost(postData);

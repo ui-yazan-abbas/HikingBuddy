@@ -38,7 +38,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [postTitle, setPostTitle] = useState(post.postLocation);
   const [postKm, setPostKm] = useState(post.postDistance);
   const [postBody, setPostBody] = useState(post.body);
-  console.log("listOf", post.listOfLikes.length);
+  console.log("listOf", post.listOfLikes?.length);
   async function createComment(commentData) {
     try {
       const response = await CommentsApi.createComment(post.id, commentData);
