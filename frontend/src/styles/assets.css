@@ -26,10 +26,9 @@
 
 .shadow {
   max-width: 100%;
-    height: auto;
-    display: table;
-    margin: 0 auto;
-
+  height: auto;
+  display: table;
+  margin: 0 auto;
 }
 
 .margin-left {
@@ -44,10 +43,24 @@
 }
 
 .modal.show {
-  z-index: 100000!important;
+  z-index: 100000 !important;
 }
 
-.modal{
+.modal {
   top: 50px;
-  
+}
+.cent {
+  display: flex;
+  flex-direction: column;
+}
+
+.cent .empty-state {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.empty-img {
+  margin-right: 3rem;
 }

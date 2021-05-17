@@ -13,7 +13,7 @@ export default function SignIn() {
         <h1 className="heading2">HIKING BUDDY CHAT</h1>
         <div>
           <input
-            placeholder="Name or NickName"
+            placeholder="Chat Nickname"
             className="joinInput2"
             type="text"
             onChange={(event) => setName(event.target.value)}
@@ -22,7 +22,7 @@ export default function SignIn() {
         {
           <div>
             <input
-              placeholder="Event Name"
+              placeholder="Event Chat Name"
               className="joinInput2"
               type="text"
               onChange={(event) => setRoom(event.target.value)}
