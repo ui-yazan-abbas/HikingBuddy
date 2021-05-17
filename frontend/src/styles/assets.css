@@ -16,6 +16,7 @@
 }
 .video {
   position: absolute;
+  background-color: #4a5335;
   top: 50%;
   left: 50%;
   width: 100%;
@@ -54,7 +55,7 @@
   flex-direction: column;
 }
 
-.cent .empty-state {
+/* .cent .empty-state {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -63,4 +64,4 @@
 
 .empty-img {
   margin-right: 3rem;
-}
+} */

@@ -212,6 +212,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                     <Feed.Like>
                       <Icon
                         name="like"
+                        size="large"
                         inverted
                         color="red"
                         onClick={handleLike}
