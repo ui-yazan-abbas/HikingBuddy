@@ -72,12 +72,7 @@ const Input = ({message, setMessage, sendMessage}) => {
                 }
 
             />
-            <button
-                className="sendButton"
-                onClick={() => onClickEmoji()}
-            >
-                Emoji
-            </button>
+
             <button className="sendButton" onClick={() => sendMessage(text)}>
                 SEND
             </button>
