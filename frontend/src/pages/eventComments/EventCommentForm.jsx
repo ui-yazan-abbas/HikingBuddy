@@ -5,6 +5,7 @@ import Emoji from "../../components/Emoji";
 export default function EventCommentForm({ id, onSubmit }) {
   const [body, setBody] = React.useState("");
 
+
   const handleSubmit = () => {
     // Invoke the passed in event callback
     onSubmit({ body });
@@ -12,6 +13,8 @@ export default function EventCommentForm({ id, onSubmit }) {
     // Clear the input field
     setBody("");
   };
+
+ 
 
   return (
     <div className="card">
@@ -21,12 +24,16 @@ export default function EventCommentForm({ id, onSubmit }) {
             <Form>
               <Form.Field>
                 <input
+                  className="commentInput"
                   id="commentInput"
                   placeholder="Comment...."
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
                 />
-                <Emoji editorTextChanged={(newText) => setBody(newText)}></Emoji>
+                <Emoji
+                  editorTextChanged={(newText) => setBody(newText)}
+                  onSubmited={(newText) => setBody(newText)}
+                ></Emoji>
               </Form.Field>
               <Button
                 s="a"
