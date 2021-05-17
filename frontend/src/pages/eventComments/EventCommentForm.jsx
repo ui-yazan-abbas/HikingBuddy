@@ -8,13 +8,11 @@ export default function EventCommentForm({ id, onSubmit }) {
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
-    console.log("eduardo");
-    console.log(value);
 
     const newValue = removeTags(value);
     console.log(newValue);
 
-    onSubmit("eduardo");
+    onSubmit({ body: newValue });
 
     // Clear the input field
     setValue("");
