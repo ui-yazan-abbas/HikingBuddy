@@ -9,6 +9,14 @@ import Input from "../Input/Input";
 import feed from "../../../pages/posts/Card";
 import { useHistory } from "react-router-dom";
 
+import {
+  
+  Container,
+  Segment,
+  
+  Grid,
+} from "semantic-ui-react";
+
 
 import "./Chat.css";
 
@@ -79,6 +87,8 @@ const Chat = ({ location }) => {
   }
 
   return (
+    <Container>
+   
     <div className="outerContainerc2">
       <button className='ExitButton' type={"button"} onClick={() => disconnectSocket(socket) }>
         Leave Chat
@@ -94,6 +104,8 @@ const Chat = ({ location }) => {
       </div>
       <TextContainer users={users} />
     </div>
+  
+    </Container>
   );
 };
 

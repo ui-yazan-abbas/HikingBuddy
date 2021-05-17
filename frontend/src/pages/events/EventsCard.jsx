@@ -211,7 +211,6 @@ export default function EventsCard({ event, onDeleteClick, user }) {
   return (
     <Container>
       <br></br>
-      
 
       {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
       <Comment.Group>
@@ -221,11 +220,10 @@ export default function EventsCard({ event, onDeleteClick, user }) {
           {/* <Link to={`/${event.user}/profile`}>
               <Comment.Avatar as="a" src={user.imageUrl} />
             </Link> */}
+
+          {/* <Grid columns={1} textAlign="left">  */}
           
-
-
-
-          <Grid columns={1} textAlign="left" stackable>
+          <Feed.Summary>
             <Link to={`/${event.user}/profile`}>
               <Image
                 floated="left"
@@ -234,22 +232,23 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 src="https://i.imgur.com/G5UIwnL.png"
                 // src={user.imageUrl || null}
               />
-              <Comment.Author as="a"> Created by {event.user}
-              </Comment.Author>{" "}
-            </Link>
+ 
 
-            <Feed.Summary>
-              <Comment.Metadata>
-                <div>
-                  {moment(event.createAt).format("MMMM Do, YYYY HH:mm")}
-                </div>
-              </Comment.Metadata>
-            </Feed.Summary>
-          </Grid>
+              <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
+            </Link>
+          </Feed.Summary>
+
+          <Feed.Summary>
+            <Comment.Metadata>
+              <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
+            </Comment.Metadata>
+          </Feed.Summary>
+          {/* </Grid>   */}
+          
         </Comment>
       </Comment.Group>
 
-    
+      <br></br>
 
       <Grid centered columns={1}>
         <Segment.Group>
@@ -359,11 +358,8 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 </Comment>
               </Comment.Group>
 
-              <br></br>
-              <br></br>
-
               {/* Buttons for share to social media and like button */}
-              <Button.Group size="small">
+              <Button.Group size="small" className="AvatarWrap">
                 {/* <JoinButton /> */}
                 <FacebookShareButton
                   url={window.location.href} //share the actual link of the event
@@ -428,12 +424,14 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             </div>
           </Segment>
         </Segment.Group>
-        <br></br>
-        <br></br>
+
         {/* </Comment.Content> */}
 
         {/* </Grid.Column>  */}
       </Grid>
+      <br></br>
+      <br></br>
+      <br></br>
     </Container>
   );
 }
