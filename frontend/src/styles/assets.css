@@ -38,8 +38,8 @@
 
 .Avatar {
   display: inline-block;
-  width: 6.2rem;
-  height: 4.7rem;
+  width: 8.2rem;
+  height: 5.7rem;
   border-radius: 8px;
 }
 
@@ -55,13 +55,14 @@
   flex-direction: column;
 }
 
-/* .cent .empty-state {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.content {
+  flex: 1 0 auto;
+  padding: 10px;
 }
 
-.empty-img {
-  margin-right: 3rem;
-} */
+.footer {
+  flex-shrink: 0;
+  text-align: center;
+  background-color: tomato;
+  color: white;
+}
