@@ -1,21 +1,33 @@
 import React from "react";
 import { Button, Form, Header } from "semantic-ui-react";
-import Emoji from "../../components/Emoji";
+
+import { Editor } from "@tinymce/tinymce-react";
 
 export default function EventCommentForm({ id, onSubmit }) {
-  const [body, setBody] = React.useState("");
-
+  const [value, setValue] = React.useState("");
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
-    onSubmit({ body });
+    console.log("eduardo");
+    console.log(value);
+
+    const newValue = removeTags(value);
+    console.log(newValue);
+
+    onSubmit({ newValue });
 
     // Clear the input field
-    setBody("");
+    setValue("");
   };
+  function removeTags(str) {
+    if (str === null || str === "") return false;
+    else str = str.toString();
 
- 
-
+    // Regular expression to identify HTML tags in
+    // the input string. Replacing the identified
+    // HTML tag with a null string.
+    return str.replace(/(<([^>]+)>)/gi, "");
+  }
   return (
     <div className="card">
       <div className="card-body">
@@ -23,17 +35,18 @@ export default function EventCommentForm({ id, onSubmit }) {
           <div className="form-group">
             <Form>
               <Form.Field>
-                <input
-                  className="commentInput"
-                  id="commentInput"
-                  placeholder="Comment...."
-                  value={body}
-                  onChange={(e) => setBody(e.target.value)}
+                <Editor
+                  apiKey="iut1j4labqnppzak9lf427f88allim69nszid2pkxdg51bqq"
+                  init={{
+                    plugins: "emoticons",
+                    toolbar: "emoticons",
+                    toolbar_location: "bottom",
+                    placeholder: "Comment...",
+                    menubar: true,
+                  }}
+                  value={value}
+                  onEditorChange={(newValue, editor) => setValue(newValue)}
                 />
-                <Emoji
-                  editorTextChanged={(newText) => setBody(newText)}
-                  onSubmited={(newText) => setBody(newText)}
-                ></Emoji>
               </Form.Field>
               <Button
                 s="a"
