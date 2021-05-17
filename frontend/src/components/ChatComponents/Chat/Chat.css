@@ -40,14 +40,16 @@
 }
 
 .ExitButton {
-  background-color: darkred;
+  background-color: red;
   border-radius: 15px;
-  border: 1px solid #18ab29;
-  display: inline-block;
+  font: bolder;
+  font-size: 16px;
+  
+  display:flexbox;
   cursor: pointer;
   color: #ffffff;
   padding: 10px 15px;
-  position: absolute;
+  position:absolute;
   top: 75%;
   left: 40%;
 }

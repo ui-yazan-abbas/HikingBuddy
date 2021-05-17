@@ -124,9 +124,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
     (item) => item.commentedPost == post.id
   );
 
-  console.log("ss", post);
-  console.log("ssss", post.user);
-
   return (
     <Container>
       <br></br>
@@ -154,7 +151,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
           <Feed.Summary>
             <Comment.Metadata>
-              <div>{moment(post.createAt).format("MMMM Do, YYYY HH:mm")}</div>
+              <div>{moment(post.createAt).format("MMMM Do, YYYY HH:mm")}
+              </div>
             </Comment.Metadata>
           </Feed.Summary>
 
@@ -208,6 +206,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   <Comment.Action active>
                     {/* {comments.length} comment(s) */}
                   </Comment.Action>
+
                   <Comment.Action active>
                     <Feed.Like>
                       <Icon

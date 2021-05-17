@@ -13,7 +13,7 @@ import {
 
 export default function Footer() {
   return (
-    <Segment inverted vertical color="green" style={{ padding: "5em 0em" }}>
+    <Segment inverted vertical color="green" style={{ padding: "2em 0em" }}>
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>
