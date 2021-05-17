@@ -59,7 +59,7 @@ const Input = ({message, setMessage, sendMessage}) => {
     }
 
         return (
-        <form2 className="form" onSubmit={() => onSubmit()}>
+        <form2 className="form2" onSubmit={() => onSubmit()}>
             {showEmojii()}
             <input
                 className="inputp2"

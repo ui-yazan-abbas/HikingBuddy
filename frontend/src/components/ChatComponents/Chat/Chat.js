@@ -80,6 +80,9 @@ const Chat = ({ location }) => {
 
   return (
     <div className="outerContainerc2">
+      <button className='ExitButton' type={"button"} onClick={() => disconnectSocket(socket) }>
+        Leave Chat
+      </button>
       <div className="containerc2">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
@@ -89,9 +92,6 @@ const Chat = ({ location }) => {
           sendMessage={sendMessage}
         />
       </div>
-      <button className='sendButton' type={"button"} onClick={() => disconnectSocket(socket) }>
-        Leave Chat
-      </button>
       <TextContainer users={users} />
     </div>
   );
