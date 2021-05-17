@@ -8,7 +8,7 @@ const InfoBar = ({ room }) => (
   <div className="infoBar2">
     <div className="leftInnerContaineri2">
       <img className="onlineIcon" src={onlineIcon} alt="online icon" />
-      <h3> {room}, Chat Room</h3>
+      <h3> Chat Room "{room}" </h3>
     </div>
   </div>
 );
