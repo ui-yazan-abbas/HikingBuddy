@@ -46,6 +46,7 @@ export default function IntroHome(mobile) {
               centered
               as="h2"
               content="Join HikingBuddy"
+            
               style={{
                 fontSize: mobile ? "1.5em" : "1.7em",
                 fontWeight: "normal",

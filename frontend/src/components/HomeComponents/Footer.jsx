@@ -8,33 +8,36 @@ import {
   Image,
   List,
   Segment,
+  Feed
 } from "semantic-ui-react";
 
 export default function Footer() {
   return (
-    <Segment inverted vertical color="blue" style={{ padding: "5em 0em" }}>
+    <Segment inverted vertical color="green" style={{ padding: "5em 0em" }}>
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}></Grid.Column>
             <Grid.Column width={7}>
+           
               <Image
                 size="small"
                 src="https://www.linkpicture.com/q/logo5_5.png"
                 href="/"
               />
+               
               <p>
-                For nature and mountain lovers, for lovers of safety and good
-                company.
+                Where hikers meet and share
               </p>
             </Grid.Column>
             <Grid.Column width={3}>
               <Header inverted as="h4" content="About" />
               <List link inverted>
-                <List.Item as="a">Our events</List.Item>
+                
                 <List.Item as="a">Contact Us</List.Item>
+                <List.Item as="a">Our events</List.Item>
                 <List.Item as="a">We love nature</List.Item>
-                <List.Item as="a">Best plans ever</List.Item>
+                <List.Item as="a">Best plans ever</List.Item> 
               </List>
             </Grid.Column>
           </Grid.Row>

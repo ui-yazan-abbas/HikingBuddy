@@ -241,7 +241,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
 
             <Feed.Summary>
             <Comment.Metadata>
-              <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
+              <div>{moment(event.createdAt).format("MMMM Do, YYYY HH:mm")}</div>
             </Comment.Metadata>
             </Feed.Summary>
 

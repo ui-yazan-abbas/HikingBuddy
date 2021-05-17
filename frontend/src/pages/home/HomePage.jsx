@@ -8,7 +8,6 @@ import SwedenTrails from "../../components/HomeComponents/SwedenTrails";
 import IntroHome from "../../components/HomeComponents/IntroHome";
 import NavHome from "../../components/HomeComponents/NavHome";
 
-
 //Styling
 
 import PropTypes from "prop-types";
@@ -64,26 +63,28 @@ const HomepageLayout = () => (
   <Segment>
     <NavHome />
     <IntroHome />
-    <Segment style={{ padding: "8em 0em" }} vertical>
+    <Segment style={{ padding: "5em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column width={8}>
             <Header as="h3" style={{ fontSize: "2em" }}>
-              Connect and share
+              Connect and share best moments
             </Header>
             <p style={{ fontSize: "1.33em" }}>
-              The place made to connect people who love hiking and staying
-              outdoors. Share your experiences, recommend a dream hike, create
-              and join hiking events and share the best moments together!
+              We are a vibrant community of hikers. Everyone is welcome, from
+              hiking experts to hikers-to-be. Share your best (or worst!)
+              experiences, recommend a dream hike, talk to other hiking
+              enthusiasts and follow them online.
             </p>
             <Header as="h3" style={{ fontSize: "2em" }}>
-              Do you love nature as we love?
+              Create and join events
             </Header>
 
             <p style={{ fontSize: "1.33em" }}>
-              Let's organise hiking routes and enjoy amazing moments in nature.
-              For all those passionate about nature and hiking, this is the
-              place to be!
+              So many roads to take...and no one to go with? See what others are
+              up to and join a hike that suits your pace and preferred
+              locations. Or create your own event, give must-bring tips and
+              enjoy amazing moments in nature together.
             </p>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
@@ -106,7 +107,7 @@ const HomepageLayout = () => (
     </Segment>
     <BlogPost />
     <SwedenTrails />
-    <Divider inverted section />
+
     <Header as="h2" icon textAlign="center">
       <Icon color="blue" name="users" circular />
       <Header.Content>What do our users say about us? </Header.Content>
