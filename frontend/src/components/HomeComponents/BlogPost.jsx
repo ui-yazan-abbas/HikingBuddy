@@ -5,7 +5,7 @@ import { Button, Container, Divider, Header, Segment } from "semantic-ui-react";
 
 export default function BlogPost() {
   return (
-    <Segment style={{ padding: "8em 0em" }} vertical>
+    <Segment style={{ padding: "5em 0em" }} vertical>
       <Container text>
         <Header as="h3" style={{ fontSize: "2em" }}>
           Top hiking routes in Sweden
