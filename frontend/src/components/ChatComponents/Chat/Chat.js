@@ -6,6 +6,17 @@ import TextContainer from "../TextContainer/TextContainer";
 import Messages from "../Messages/Messages";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
+import feed from "../../../pages/posts/Card";
+import { useHistory } from "react-router-dom";
+
+import {
+  
+  Container,
+  Segment,
+  
+  Grid,
+} from "semantic-ui-react";
+
 
 import "./Chat.css";
 
@@ -53,15 +64,35 @@ const Chat = ({ location }) => {
     });
   }, []);
   const sendMessage = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
 
     if (message) {
       socket.emit("sendMessage", message, () => setMessage(""));
     }
   };
 
+  const history = useHistory();
+
+  const changeRoute = () =>{
+    history.push('feed');
+  }
+
+  const disconnectSocket = (socket) => {
+    try {
+      socket && socket.emit("sign-out");
+      changeRoute()
+    } catch(e) {
+      console.error(e)
+    }
+  }
+
   return (
+    <Container>
+   
     <div className="outerContainerc2">
+      <button className='ExitButton' type={"button"} onClick={() => disconnectSocket(socket) }>
+        Leave Chat
+      </button>
       <div className="containerc2">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
@@ -73,6 +104,8 @@ const Chat = ({ location }) => {
       </div>
       <TextContainer users={users} />
     </div>
+  
+    </Container>
   );
 };
 

@@ -150,7 +150,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
           <Feed.Summary>
             <Comment.Metadata>
-              <div>{moment(post.createAt).format("MMMM Do, YYYY HH:mm")}</div>
+              <div>{moment(post.createAt).format("MMMM Do, YYYY HH:mm")}
+              </div>
             </Comment.Metadata>
           </Feed.Summary>
 
@@ -180,6 +181,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
           <Header as="h3" dividing content="" textAlign="center"></Header>
           <br></br>
+          <br></br>
 
           <Grid columns={2} textAlign="center" stackable>
             <Comment.Group size="large">
@@ -204,10 +206,12 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
                   <Comment.Action active>
                     {/* {comments.length} comment(s) */}
                   </Comment.Action>
+
                   <Comment.Action active>
                     <Feed.Like>
                       <Icon
                         name="like"
+                        size="large"
                         inverted
                         color="red"
                         onClick={handleLike}

@@ -1,17 +1,24 @@
 // NPM Packages
 import React from "react";
 // Project styiling from semantic ui
-import { Container, Image, Menu, Button } from "semantic-ui-react";
+import { Container, Image, Menu, Button, Grid } from "semantic-ui-react";
 
 export default function Footer() {
   return (
-    <Menu size="large">
+    <Menu text size="large">
       <Container>
+      <Menu.Item position="left">
+      
+
+       
+      
         <Image
+        rounded
           size="tiny"
           src="https://www.linkpicture.com/q/logo5_5.png"
           href="/"
         />
+        </Menu.Item>
 
         {/* This is commented because we will add more links when the page is advancing */}
         {/* <Menu.Item as="a">Connect</Menu.Item>
@@ -32,6 +39,8 @@ export default function Footer() {
             </Button>
           </Button.Group>
         </Menu.Item>
+      
+       
       </Container>
     </Menu>
   );

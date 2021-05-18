@@ -2,6 +2,7 @@
 import React from "react";
 // Project styiling from semantic ui
 import { Segment, Container, Header, Button, Card } from "semantic-ui-react";
+import NavHome from "../../components/HomeComponents/NavHome";
 import Intro from "../../assets/intro3.mp4";
 
 export default function IntroHome(mobile) {
@@ -17,6 +18,7 @@ export default function IntroHome(mobile) {
         <video autoPlay loop muted className="video">
           <source src={introVid} typer="video/mp4" />
         </video>
+        <NavHome />
         <Container text textAlign="center">
           <Header
             as="h1"
