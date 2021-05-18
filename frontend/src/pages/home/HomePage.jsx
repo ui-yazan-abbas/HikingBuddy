@@ -48,6 +48,7 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? "0.5em" : "1.5em",
       }}
     />
+    <Footer />
     <Button as="a" color="green" size="huge">
       <a href="/signup">Find hiking buddies and join a hike</a>
       <Icon name="right arrow" />
@@ -61,13 +62,12 @@ HomepageHeading.propTypes = {
 
 const HomepageLayout = () => (
   <Segment>
-    <NavHome />
     <IntroHome />
     <Segment style={{ padding: "5em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column width={8}>
-            <Header as="h3" style={{ fontSize: "2em"}}>
+            <Header as="h3" style={{ fontSize: "2em" }}>
               Connect and share best moments
             </Header>
             <p style={{ fontSize: "1.33em" }}>

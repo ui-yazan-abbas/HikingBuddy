@@ -2,6 +2,7 @@
 import React from "react";
 // Project styiling from semantic ui
 import { Segment, Container, Header, Button, Card } from "semantic-ui-react";
+import NavHome from "../../components/HomeComponents/NavHome";
 import Intro from "../../assets/intro3.mp4";
 
 export default function IntroHome(mobile) {
@@ -14,9 +15,10 @@ export default function IntroHome(mobile) {
         style={{ minHeight: 400, padding: "1em 0em" }}
         vertical
       >
-        <video autoPlay loop muted className="video" >
+        <video autoPlay loop muted className="video">
           <source src={introVid} typer="video/mp4" />
         </video>
+        <NavHome />
         <Container text textAlign="center">
           <Header
             as="h1"
@@ -46,7 +48,6 @@ export default function IntroHome(mobile) {
               centered
               as="h2"
               content="Join HikingBuddy"
-            
               style={{
                 fontSize: mobile ? "1.5em" : "1.7em",
                 fontWeight: "normal",

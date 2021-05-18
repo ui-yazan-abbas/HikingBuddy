@@ -7,6 +7,9 @@ import hikingBuddy.joinEvents.JoinEvent;
 import hikingBuddy.posts.Post;
 import hikingBuddy.postLikes.PostLike;
 import org.hibernate.validator.constraints.Length;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -59,9 +62,11 @@ public class User {
     List<PostLike> likedPosts;
 
     @OneToMany(mappedBy = "joinUser")
-     List<JoinEvent> joinEvent;
+    List<JoinEvent> joinEvent;
 
     @ManyToMany
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
     private Collection<User> followersList;
 
     // Hibernate needs a default constructor to function
