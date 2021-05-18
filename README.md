@@ -35,7 +35,7 @@ This web is based on Spring, PostgreSQL, React, React router and Axios. Check th
 
 Follow this link to see the project: https://hiking-buddysda.web.app/
 
-You will need a password of more than five digits to register on our site.
+You will need to create an account to have access to the services of the website.
 
 ## Setup
 Our development environment for a full-stack web application will consist of three main parts:
