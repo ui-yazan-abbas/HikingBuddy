@@ -22,9 +22,10 @@ export default function FollowerList({ match }) {
         <Card.Header color="green">{user.name}'s Followers</Card.Header>
       </Card.Content>
       <Card.Content>
+      
         <Feed>
           {user.follwersList?.length == 0 ? (
-            <div>no followers yet</div>
+            <h3>no followers yet</h3>
           ) : (
             user.followersList?.map((i, index) => (
               <>

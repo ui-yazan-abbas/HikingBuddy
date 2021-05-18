@@ -24,7 +24,7 @@ export default function UserProfile({ currentUser, match }) {
   const info = match.params.name.replace(/\s/g, "%20");
   const [postsState, setPostsState] = useState(true);
   const [followerState, setFollowerState] = useState(false);
-
+ 
   useEffect(() => {
     try {
       UserApi.getUserByName(info).then((res) => setUser(res.data));
@@ -37,6 +37,7 @@ export default function UserProfile({ currentUser, match }) {
     try {
       let name = user.name.replace(/\s/g, "%20");
       await UserApi.addFollower(name, currentUser);
+      window.location.reload(false);
     } catch (err) {
       console.error(err);
     }
@@ -114,9 +115,9 @@ export default function UserProfile({ currentUser, match }) {
                 </Comment.Action>
               )}
               <br></br>
-              {currentUser.name !== user.name &&
-                user.followersList?.filter((u) => u.id == currentUser.id)
-                  .length === 0 && (
+              {currentUser.id !== user.id &&
+                !user.followersList?.find((u) => u == currentUser.name)
+                 && (
                   <Button inverted color="green" onClick={followUser}>
                     Follow
                   </Button>
