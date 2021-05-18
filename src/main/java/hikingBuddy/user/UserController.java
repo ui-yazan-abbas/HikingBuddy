@@ -38,7 +38,7 @@ public class UserController {
         User user = userService.findUserByEmail(userName);
         updateUserData = userService.updateUser(user, updateUserData);
         userRepository.save(updateUserData);
-        return ResponseEntity.ok(updateUserData);
+        return ResponseEntity.ok(user);
 
     }
 
@@ -58,16 +58,16 @@ public class UserController {
         User user = userService.findUserByEmail(userName);
         userRepository.delete(user);
     }
-/*
-    // @PutMapping("/follow")
-    // public ResponseEntity<User> followUser(@RequestBody User user, Principal
-    // principal){
-    // String userName = principal.getName();
-    // User wantToFollow = userService.findUserByEmail(userName);
-    // User toBeFollowed = userService.findUserByEmail(user.getEmail());
-    // toBeFollowed.addFollower(wantToFollow);
-    // return ResponseEntity.ok(toBeFollowed);
-
-    // }*/
+    /*
+     * // @PutMapping("/follow") // public ResponseEntity<User>
+     * followUser(@RequestBody User user, Principal // principal){ // String
+     * userName = principal.getName(); // User wantToFollow =
+     * userService.findUserByEmail(userName); // User toBeFollowed =
+     * userService.findUserByEmail(user.getEmail()); //
+     * toBeFollowed.addFollower(wantToFollow); // return
+     * ResponseEntity.ok(toBeFollowed);
+     * 
+     * // }
+     */
 
 }

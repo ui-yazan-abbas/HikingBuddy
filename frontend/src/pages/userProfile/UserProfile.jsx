@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import UserApi from "../../api/UserApi";
-import { Button, Card, Image, Icon, Comment, Menu, Segment, Grid, Header } from "semantic-ui-react";
+import {
+  Button,
+  Card,
+  Image,
+  Icon,
+  Comment,
+  Menu,
+  Segment,
+  Grid,
+  Header,
+} from "semantic-ui-react";
 import EditUserProfile from "./editUserProfile";
 import moment from "moment";
 import PostCard from "../posts/Card";
@@ -14,7 +24,7 @@ export default function UserProfile({ currentUser, match }) {
   const info = match.params.name.replace(/\s/g, "%20");
   const [postsState, setPostsState] = useState(true);
   const [followerState, setFollowerState] = useState(false);
-
+ 
   useEffect(() => {
     try {
       UserApi.getUserByName(info).then((res) => setUser(res.data));
@@ -27,6 +37,7 @@ export default function UserProfile({ currentUser, match }) {
     try {
       let name = user.name.replace(/\s/g, "%20");
       await UserApi.addFollower(name, currentUser);
+      window.location.reload(false);
     } catch (err) {
       console.error(err);
     }
@@ -40,18 +51,17 @@ export default function UserProfile({ currentUser, match }) {
   );
   const btnStyle1 = {
     margin: "1px",
-    color: "red"
+    color: "red",
   };
   const btnDefault = {
     margin: "1px",
-    color: "green"
+    color: "green",
   };
-  
 
   console.log(currentUser);
 
   const followUser = () => {
-    setUser({ ...user, followersList: [...user.followersList, currentUser] });
+    // setUser({ ...user, followersList: [...user.followersList, currentUser] });
     updateUser();
   };
   console.log("user", user);
@@ -76,12 +86,9 @@ export default function UserProfile({ currentUser, match }) {
   };
   return (
     <>
-    
       {!toggler && (
         <>
-      
-
-          <Card centered color='green'> 
+          <Card centered color="green">
             <Image
               src={user.imageUrl || "https://www.linkpicture.com/q/2_20.jpeg"}
               alt=""
@@ -93,40 +100,32 @@ export default function UserProfile({ currentUser, match }) {
               <Card.Meta>
                 Joined in {moment(user.createAt).format("YYYY")}
               </Card.Meta>
-              <Card.Description>
-                 {user.bio}
-              </Card.Description>
+              <Card.Description>{user.bio}</Card.Description>
             </Card.Content>
             <Card.Content extra>
               <a name="followes" class="tablinks" onClick={handleView}>
-                <Icon name='user' style={ btnDefault}/>
-            {user.followersList?.length} Followers
+                <Icon name="user" style={btnDefault} />
+                {user.followersList?.length} Followers
               </a>
               <br></br>
               {currentUser.name === user.name && (
-                
-               <Comment.Action
-               
-               as="a" onClick={() => setToggler(true)}>
-                  <Icon name="edit" style={ btnDefault} />
-                Edit Profile
+                <Comment.Action as="a" onClick={() => setToggler(true)}>
+                  <Icon name="edit" style={btnDefault} />
+                  Edit Profile
                 </Comment.Action>
-            )}
-            <br></br>
-            {currentUser.name !== user.name &&
-              user.followersList?.filter((u) => u.name == currentUser.name)
-                .length === 0 && (
-
-                <Button inverted color="green" onClick={followUser}>
-                  Follow
-                </Button>
               )}
+              <br></br>
+              {currentUser.id !== user.id &&
+                !user.followersList?.find((u) => u == currentUser.name)
+                 && (
+                  <Button inverted color="green" onClick={followUser}>
+                    Follow
+                  </Button>
+                )}
             </Card.Content>
           </Card>
-         
-          <div className="btn-position">
-           
-          </div>
+
+          <div className="btn-position"></div>
         </>
       )}
       {toggler && (
@@ -137,32 +136,29 @@ export default function UserProfile({ currentUser, match }) {
         />
       )}
 
+      <Button.Group attached="top" widths={2}>
+        <Button name="posts" class="tablinks" onClick={handleView}>
+          {" "}
+          Posts
+        </Button>
+        <Button.Or />
+        <Button name="followes" class="tablinks" onClick={handleView}>
+          Followers
+        </Button>
+      </Button.Group>
 
-
-<Button.Group attached='top' widths={2}>
-          <Button   name="posts" class="tablinks" onClick={handleView}> Posts</Button>
-          <Button.Or />
-          <Button  name="followes" class="tablinks" onClick={handleView}>Followers</Button>
-        </Button.Group>
-
-        <Segment style={{ padding: '0em' }} vertical>
-      <Grid celled='internally' columns='equal' stackable>
-        <Grid.Row textAlign='center'>
-          <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-          {postsState && <UsersPosts match={match} />}
-          
-          </Grid.Column>
-          <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-          {followerState && <FollowerList match={match} />}
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
-
-  
-
-
-     
+      <Segment style={{ padding: "0em" }} vertical>
+        <Grid celled="internally" columns="equal" stackable>
+          <Grid.Row textAlign="center">
+            <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
+              {postsState && <UsersPosts match={match} />}
+            </Grid.Column>
+            <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
+              {followerState && <FollowerList match={match} />}
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Segment>
     </>
   );
 }
