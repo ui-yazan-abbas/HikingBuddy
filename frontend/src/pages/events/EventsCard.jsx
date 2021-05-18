@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import EventsApi from "../../api/EventsApi";
 import UpdateEvent from "./UpdateEvent";
 import moment from "moment";
-import map from "../../assets/map.png";
-import Nice_map2 from "../../assets/Nice_map2.jpg";
+
+// map in orange and blue
+import Sweden_map_sights3 from "../../assets/sweden-map-sights3.jpg";
+// map in green and blue
+import Cartoon_map from "../../assets/Cartoon_map.jpg";
+
+
 
 import EventCommentsApi from "../../api/EventCommentsApi";
 import EventCommentCard from "../eventComments/EventCommentCard";
@@ -230,17 +235,22 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             {" "}
             <a href={isNewHyperlink} target="_blank">
               {" "}
-              <h3>
+              <h4>
                 <u>Trail Location: {isNewTrailName}</u>
-              </h3>
+              </h4>
             </a>
           </div>
 
           <Feed.Extra className="shadow">
             <a href={isNewHyperlink} target="_blank">
-              <Image href={isNewHyperlink} src={Nice_map2} className="shadow" />
+              <Image
+                href={isNewHyperlink}
+                src={Sweden_map_sights3}
+                className="shadow"
+              />
             </a>
           </Feed.Extra>
+          <br></br>
           <br></br>
           <Grid centered columns={1}>
             <Feed.Summary
