@@ -234,7 +234,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             <a href={isNewHyperlink} target="_blank">
               {" "}
               <h4>
-                <u>Trail Location: {isNewTrailName}</u>
+                <a>Trail Location: {isNewTrailName}</a>
               </h4>
             </a>
           </div>
@@ -245,6 +245,7 @@ export default function EventsCard({ event, onDeleteClick, user }) {
                 href={isNewHyperlink}
                 src={Sweden_map_sights3}
                 className="shadow"
+                target="_blank"
               />
             </a>
           </Feed.Extra>
