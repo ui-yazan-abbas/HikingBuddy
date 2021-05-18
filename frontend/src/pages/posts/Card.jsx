@@ -182,6 +182,7 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
 
           <Header as="h3" dividing content="" textAlign="center"></Header>
           <br></br>
+          <br></br>
 
           <Grid columns={2} textAlign="center" stackable>
             <Comment.Group size="large">

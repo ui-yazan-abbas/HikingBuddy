@@ -36,6 +36,7 @@ import {
 
 export default function EventsCard({ event, onDeleteClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
+
   const [eventComments, setEventComments] = useState([]);
   const [joinToggler, setJoinToggler] = useState();
   const [joinsCount, setJoinsCount] = useState(event.listOfJoin?.length | 0);
@@ -158,18 +159,12 @@ export default function EventsCard({ event, onDeleteClick, user }) {
     </a>
   );
 
-  /* const seeComments = (
-  ); */
-
   /* Variables for See more-see less details */
   const extraContent = (
-    // <Comment>
-    //       <Comment.Content>
     <Comment.Text>
-      {/* <Segment textAlign="left"> */}
-
       <p>
-        <b>Trail Location:</b> {isNewTrailName}
+        <b>Trail Location: </b>
+        {isNewTrailName}
       </p>
       <p>
         <b>Difficulty:</b> {isNewEventDifficulty}
@@ -199,104 +194,85 @@ export default function EventsCard({ event, onDeleteClick, user }) {
       <p>
         <b>About event:</b> {isRefreshingBody}
       </p>
+      <br></br>
 
       {/* </Segment> */}
     </Comment.Text>
-    // </Comment.Content>
-    // </Comment>
   );
 
   const linkName = readMore ? "Hide Details << " : "See Details >> ";
 
   return (
-    <Container>
-      <br></br>
-
-      {/* <Grid.Column mobile={16} tablet={8} computer={4}>  */}
-      <Comment.Group>
-        <Comment>
-          {/* <Comment.Content> */}
-
-          {/* <Link to={`/${event.user}/profile`}>
-              <Comment.Avatar as="a" src={user.imageUrl} />
-            </Link> */}
-
-          {/* <Grid columns={1} textAlign="left">  */}
-          
-          <Feed.Summary>
+    <Container className="Container">
+      <Segment.Group>
+        <Segment>
+          <Feed.Label>
             <Link to={`/${event.user}/profile`}>
               <Image
+                rounded
                 floated="left"
                 size="mini"
                 as="a"
                 src="https://i.imgur.com/G5UIwnL.png"
                 // src={user.imageUrl || null}
               />
- 
-
               <Comment.Author as="a"> Created by {event.user}</Comment.Author>{" "}
             </Link>
-          </Feed.Summary>
+          </Feed.Label>
 
           <Feed.Summary>
             <Comment.Metadata>
               <div>{moment(event.createAt).format("MMMM Do, YYYY HH:mm")}</div>
             </Comment.Metadata>
           </Feed.Summary>
-          {/* </Grid>   */}
-          
-        </Comment>
-      </Comment.Group>
 
-      <br></br>
-
-      <Grid centered columns={1}>
-        <Segment.Group>
-          <Segment textAlign="center">
-            <Comment.Text>
+          <div className="AvatarWrap">
+            {" "}
+            <a href={isNewHyperlink} target="_blank">
               {" "}
-              <a href={isNewHyperlink} target="_blank">
-                {" "}
-                <h3>
-                  <u>Trail Location: {isNewTrailName}</u>
-                </h3>
-              </a>
-            </Comment.Text>
+              <h3>
+                <u>Trail Location: {isNewTrailName}</u>
+              </h3>
+            </a>
+          </div>
 
-            <Comment.Metadata>
-              <Image
-                rounded
-                href={isNewHyperlink}
-                target="_blank"
-                src={Nice_map2}
-              />
-            </Comment.Metadata>
+          <Feed.Extra className="shadow">
+            <a href={isNewHyperlink} target="_blank">
+              <Image href={isNewHyperlink} src={Nice_map2} className="shadow" />
+            </a>
+          </Feed.Extra>
+          <br></br>
+          <Grid centered columns={1}>
+            <Feed.Summary
+              className="ma
+             <Comment.Text>rgin-left"
+            >
+              <Comment.Metadata>
+                <a>
+                  <Icon name="chart area" />
+                  Distance: {isNewEventDistance} km
+                </a>
 
-            <br></br>
+                <Comment.Text>
+                  <a>
+                    <Icon name="fire" />
+                    Difficulty: {isNewEventDifficulty}
+                  </a>
+                </Comment.Text>
 
-            <Comment.Text>
-              <a>
-                <Icon name="chart area" />
-                Distance: {isNewEventDistance} km
-              </a>
-            </Comment.Text>
+                <Comment.Text>
+                  <a>
+                    <Icon name="calendar" />
+                    {isNewMaxNum}
+                  </a>
+                </Comment.Text>
+              </Comment.Metadata>
+            </Feed.Summary>
+          </Grid>
+          <br></br>
+          <br></br>
 
-            <Comment.Text>
-              <a>
-                <Icon name="fire" />
-                Difficulty: {isNewEventDifficulty}
-              </a>
-            </Comment.Text>
-
-            <Comment.Text>
-              <a>
-                <Icon name="calendar" />
-                {isNewMaxNum}
-              </a>
-            </Comment.Text>
-
-            <br></br>
-
+          <Grid centered columns={1}>
             <Button
               basic
               color="green"
@@ -307,128 +283,130 @@ export default function EventsCard({ event, onDeleteClick, user }) {
             >
               {linkName}
             </Button>
-            <br></br>
-            <br></br>
+          </Grid>
 
+          <Header as="h5" dividing content="" textAlign="center">
             {readMore && extraContent}
+          </Header>
+          <br></br>
+          <br></br>
 
-            <Header as="h3" dividing content="" textAlign="center"></Header>
-            <br></br>
+          {/* <Header as="h3" dividing content="" textAlign="center"></Header> */}
 
-            <Grid columns={2} textAlign="center" stackable>
-              <Comment.Group size="large">
-                <Comment>
-                  <Comment.Actions>
-                    {event.user == user.name && (
-                      <>
-                        <Comment.Action
-                          active
-                          onClick={() => setIsUpdating(true)}
-                        >
-                          Edit event
-                        </Comment.Action>
-                        <Comment.Action onClick={onDeleteClick} active>
-                          {" "}
-                          Delete event
-                        </Comment.Action>
-                      </>
-                    )}
+          <Grid columns={2} textAlign="center" stackable>
+            <Comment.Group size="large">
+              <Comment>
+                <Comment.Actions>
+                  {event.user == user.name && (
+                    <>
+                      <Comment.Action
+                        active
+                        onClick={() => setIsUpdating(true)}
+                      >
+                        Edit event
+                      </Comment.Action>
+                      <Comment.Action onClick={onDeleteClick} active>
+                        {" "}
+                        Delete event
+                      </Comment.Action>
+                    </>
+                  )}
 
-                    <Comment.Action active>
-                      {/*  View Comments/Hide comments can go here */}
-                    </Comment.Action>
-                    <Comment.Action active>
-                      <Feed.Label>
-                        <Icon
-                          name="group"
-                          size="large"
-                          onClick={handleJoin}
-                          inverted
-                          color="green"
-                        />
-                        {joinsCount}
-                      </Feed.Label>
+                  <Comment.Action active>
+                    {/*  View Comments/Hide comments can go here */}
+                  </Comment.Action>
+                  <Comment.Action active>
+                    <Feed.Label>
+                      <Icon
+                        name="group"
+                        size="large"
+                        onClick={handleJoin}
+                        inverted
+                        color="green"
+                      />
+                      {joinsCount}
+                    </Feed.Label>
 
-                      {/* <Button onClick={handleJoin}>
+                    {/* <Button onClick={handleJoin}>
                         <JoinButton  />
                         {joinsCount}
                         </Button> */}
-                    </Comment.Action>
-                  </Comment.Actions>
-                </Comment>
-              </Comment.Group>
+                  </Comment.Action>
+                </Comment.Actions>
+              </Comment>
+            </Comment.Group>
 
-              {/* Buttons for share to social media and like button */}
-              <Button.Group size="small" className="AvatarWrap">
-                {/* <JoinButton /> */}
-                <FacebookShareButton
-                  url={window.location.href} //share the actual link of the event
-                  title={event.user} //the user who created the event
-                  description={isNewTrailName} //the title written in the event is shared
-                  quote="link"
-                >
-                  <FacebookIcon className="mx-3" size={35} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                  url={window.location.href}
-                  title={isNewTrailName} //the title written in the event is shared
-                  quote="link"
-                  hashtag="hiking"
-                >
-                  <TwitterIcon className="mx-3" size={35} />
-                </TwitterShareButton>
-                <WhatsappShareButton
-                  url={window.location.href}
-                  separator=""
-                  title={isNewTrailName} //the title written in the event is shared
-                  quote="link"
-                >
-                  <WhatsappIcon size={35} />
-                </WhatsappShareButton>
-              </Button.Group>
-              {/* Buttons for share to social media finish here  */}
-            </Grid>
-          </Segment>
+            {/* Buttons for share to social media and like button */}
+            <Button.Group size="small" className="AvatarWrap">
+              {/* <JoinButton /> */}
+              <FacebookShareButton
+                url={window.location.href} //share the actual link of the event
+                title={event.user} //the user who created the event
+                description={isNewTrailName} //the title written in the event is shared
+                quote="link"
+              >
+                <FacebookIcon className="mx-3" size={35} />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={window.location.href}
+                title={isNewTrailName} //the title written in the event is shared
+                quote="link"
+                hashtag="hiking"
+              >
+                <TwitterIcon className="mx-3" size={35} />
+              </TwitterShareButton>
+              <WhatsappShareButton
+                url={window.location.href}
+                separator=""
+                title={isNewTrailName} //the title written in the event is shared
+                quote="link"
+              >
+                <WhatsappIcon size={35} />
+              </WhatsappShareButton>
+            </Button.Group>
+            {/* Buttons for share to social media finish here  */}
+          </Grid>
+        </Segment>
 
-          <br></br>
+        <br></br>
 
-          <Segment textAlign="left">
-            {/*  <Header
+        <Segment textAlign="left">
+          {/*  <Header
                     as="h3"
                     dividing
                     content=""
                     textAlign="center"
                   ></Header> */}
 
-            <div className="comments-container">
-              {eventComments &&
-                filteredEventCommentList.map((eventComment) => (
-                  <EventCommentCard
-                    key={event.id}
-                    eventComment={eventComment}
-                    onDeleteClick={() => deleteEventComment(eventComment)}
-                    user={user}
-                  />
-                ))}
-            </div>
-            {isUpdating && (
-              <UpdateEvent
-                onUpdateClick={(eventData) => updateEvent(eventData)}
-                event={event}
-                onSubmite={() => setIsUpdating(false)}
-              />
-            )}
+          <div className="comments-container">
+            {eventComments &&
+              filteredEventCommentList.map((eventComment) => (
+                <EventCommentCard
+                  key={event.id}
+                  eventComment={eventComment}
+                  onDeleteClick={() => deleteEventComment(eventComment)}
+                  user={user}
+                />
+              ))}
+          </div>
+          {isUpdating && (
+            <UpdateEvent
+              onUpdateClick={(eventData) => updateEvent(eventData)}
+              event={event}
+              onSubmite={() => setIsUpdating(false)}
+            />
+          )}
 
-            <div className="comments-form">
-              <EventCommentForm id={event.id} onSubmit={createEventComment} />
-            </div>
-          </Segment>
-        </Segment.Group>
+          <div className="comments-form">
+            <EventCommentForm id={event.id} onSubmit={createEventComment} />
+          </div>
+        </Segment>
+      </Segment.Group>
 
-        {/* </Comment.Content> */}
+      {/* </Comment.Content> */}
 
-        {/* </Grid.Column>  */}
-      </Grid>
+      {/* </Grid.Column>  */}
+
       <br></br>
       <br></br>
       <br></br>
